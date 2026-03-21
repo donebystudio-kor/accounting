@@ -32,4 +32,28 @@ export const CALCULATORS: CalculatorDef[] = [
     href: "/calculator/ecl-ifrs9",
     relatedConceptTag: "IFRS9",
   },
+  {
+    slug: "inventory-cost-ias2",
+    title: "재고자산 평가 계산기",
+    standard: "IAS 2",
+    description: "선입선출법·가중평균법으로 기말재고와 매출원가 자동 계산",
+    href: "/calculator/inventory-cost-ias2",
+    relatedConceptTag: "IAS2",
+  },
+  {
+    slug: "income-tax-ias12",
+    title: "법인세 계산기",
+    standard: "IAS 12",
+    description: "당기법인세·이연법인세 자산·부채 자동 계산",
+    href: "/calculator/income-tax-ias12",
+    relatedConceptTag: "IAS12",
+  },
+  {
+    slug: "provision-present-value-ias37",
+    title: "충당부채 현재가치 계산기",
+    standard: "IAS 37",
+    description: "복구충당부채 등 미래 지출의 현재가치와 이자전입액 자동 계산",
+    href: "/calculator/provision-present-value-ias37",
+    relatedConceptTag: "IAS37",
+  },
 ];
