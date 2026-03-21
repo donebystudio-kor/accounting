@@ -6,7 +6,6 @@ export interface Standard {
 }
 
 export const STANDARDS: Standard[] = [
-  { id: "common", name: "공통", description: "모든 기준에 적용되는 기본 회계", emoji: "📚" },
   { id: "k-ifrs", name: "K-IFRS", description: "상장사·대기업 회계기준", emoji: "🏢" },
   { id: "general", name: "일반기업", description: "중소기업 회계기준", emoji: "🏪" },
   { id: "bank", name: "은행업", description: "은행업 회계기준", emoji: "🏦" },

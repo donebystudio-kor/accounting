@@ -9,7 +9,19 @@ export const metadata: Metadata = {
   description: "분개 문제, K-IFRS 문제, OX 퀴즈. 클릭형 인터랙티브 회계 학습 사이트.",
 };
 
+function countProblems(standardId: string, categoryId: string) {
+  // 해당 기준 문제 + 공통 문제(같은 카테고리)
+  return PROBLEMS.filter(
+    (p) =>
+      p.category === categoryId &&
+      (p.standard === standardId || p.standard === "common")
+  ).length;
+}
+
 export default function Home() {
+  // 공통 카테고리
+  const commonCats = CATEGORIES.filter((c) => c.standard === "common");
+
   return (
     <div>
       <section className="text-center py-8 mb-6">
@@ -19,9 +31,44 @@ export default function Home() {
         </p>
       </section>
 
+      {/* 공통 문제 — 기준과 무관하게 바로 풀기 */}
+      <section className="mb-8">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xl">📚</span>
+          <div>
+            <h2 className="font-bold text-text">공통 기본</h2>
+            <p className="text-xs text-text-sub">모든 회계기준에 적용되는 기본 문제</p>
+          </div>
+        </div>
+        <div className="grid gap-2">
+          {commonCats.map((cat) => {
+            const count = PROBLEMS.filter(
+              (p) => p.standard === "common" && p.category === cat.id
+            ).length;
+            return (
+              <Link
+                key={cat.id}
+                href={`/quiz/common/${cat.id}`}
+                className="flex items-center justify-between p-4 bg-surface border border-border rounded-lg hover:border-primary transition-colors"
+              >
+                <div>
+                  <h3 className="font-semibold text-sm text-text">{cat.name}</h3>
+                  <p className="text-xs text-text-sub mt-0.5">{cat.description}</p>
+                </div>
+                <span className="text-xs text-text-sub whitespace-nowrap ml-4">
+                  {count}문제
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 기준별 문제 — 해당 기준 + 공통 문제 합산 표시 */}
       {STANDARDS.map((std) => {
-        const cats = CATEGORIES.filter((c) => c.standard === std.id);
-        if (cats.length === 0) return null;
+        const stdCats = CATEGORIES.filter((c) => c.standard === std.id);
+        // 해당 기준 전용 카테고리 + 공통 카테고리 모두 표시
+        const allCats = [...stdCats, ...commonCats];
         return (
           <section key={std.id} className="mb-8">
             <div className="flex items-center gap-2 mb-3">
@@ -32,10 +79,9 @@ export default function Home() {
               </div>
             </div>
             <div className="grid gap-2">
-              {cats.map((cat) => {
-                const count = PROBLEMS.filter(
-                  (p) => p.standard === std.id && p.category === cat.id
-                ).length;
+              {allCats.map((cat) => {
+                const count = countProblems(std.id, cat.id);
+                if (count === 0) return null;
                 return (
                   <Link
                     key={cat.id}
@@ -45,10 +91,11 @@ export default function Home() {
                     <div>
                       <h3 className="font-semibold text-sm text-text">
                         {cat.name}
+                        {cat.standard === "common" && (
+                          <span className="ml-1.5 text-[10px] text-text-sub font-normal">공통</span>
+                        )}
                       </h3>
-                      <p className="text-xs text-text-sub mt-0.5">
-                        {cat.description}
-                      </p>
+                      <p className="text-xs text-text-sub mt-0.5">{cat.description}</p>
                     </div>
                     <span className="text-xs text-text-sub whitespace-nowrap ml-4">
                       {count}문제

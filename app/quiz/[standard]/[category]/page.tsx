@@ -10,33 +10,56 @@ interface Props {
   params: Promise<{ standard: string; category: string }>;
 }
 
+const ALL_STANDARDS = [{ id: "common" }, ...STANDARDS];
+
 export async function generateStaticParams() {
-  return CATEGORIES.map((cat) => ({
-    standard: cat.standard,
-    category: cat.id,
-  }));
+  const params: { standard: string; category: string }[] = [];
+  // 공통 카테고리의 경우: common + 각 기준에서도 접근 가능
+  CATEGORIES.forEach((cat) => {
+    params.push({ standard: cat.standard, category: cat.id });
+  });
+  // 각 기준에서 공통 카테고리 접근
+  const commonCats = CATEGORIES.filter((c) => c.standard === "common");
+  STANDARDS.forEach((std) => {
+    commonCats.forEach((cat) => {
+      params.push({ standard: std.id, category: cat.id });
+    });
+  });
+  return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { standard, category } = await params;
-  const std = STANDARDS.find((s) => s.id === standard);
-  const cat = CATEGORIES.find((c) => c.id === category && c.standard === standard);
+  const std = ALL_STANDARDS.find((s) => s.id === standard);
+  const cat = CATEGORIES.find((c) => c.id === category);
   if (!std || !cat) return {};
+  const stdName = standard === "common" ? "공통" : (STANDARDS.find(s => s.id === standard)?.name ?? standard);
   return {
-    title: `${cat.name} — ${std.name} — 회계던`,
-    description: `${std.name} ${cat.description}. 클릭형 인터랙티브 문제 풀이.`,
+    title: `${cat.name} — ${stdName} — 회계던`,
+    description: `${stdName} ${cat.description}. 클릭형 인터랙티브 문제 풀이.`,
   };
 }
 
 export default async function QuizPage({ params }: Props) {
   const { standard, category } = await params;
-  const std = STANDARDS.find((s) => s.id === standard);
-  const cat = CATEGORIES.find((c) => c.id === category && c.standard === standard);
-  if (!std || !cat) notFound();
+  const cat = CATEGORIES.find((c) => c.id === category);
+  if (!cat) notFound();
 
-  const problems = PROBLEMS.filter(
-    (p) => p.standard === standard && p.category === category
-  );
+  const isCommonStandard = standard === "common";
+  const stdName = isCommonStandard
+    ? "공통"
+    : (STANDARDS.find((s) => s.id === standard)?.name ?? standard);
+
+  // 해당 기준 문제 + 공통 문제 합산 (common 직접 접근 시는 common만)
+  const problems = isCommonStandard
+    ? PROBLEMS.filter((p) => p.standard === "common" && p.category === category)
+    : PROBLEMS.filter(
+        (p) =>
+          p.category === category &&
+          (p.standard === standard || p.standard === "common")
+      );
+
+  if (problems.length === 0) notFound();
 
   return (
     <div>
@@ -45,11 +68,11 @@ export default async function QuizPage({ params }: Props) {
           ← 홈
         </Link>
         <span className="text-xs text-border">/</span>
-        <span className="text-xs text-text-sub">{std.name}</span>
+        <span className="text-xs text-text-sub">{stdName}</span>
         <span className="text-xs text-border">/</span>
         <span className="text-xs font-semibold text-text">{cat.name}</span>
       </div>
-      <QuizSession problems={problems} categoryName={cat.name} />
+      <QuizSession problems={problems} categoryName={`${stdName} · ${cat.name}`} />
     </div>
   );
 }
