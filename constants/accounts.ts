@@ -42,6 +42,7 @@ export const ACCOUNTS: Account[] = [
   { name: "장기차입금", type: "부채", standards: ["common"] },
   { name: "예수금", type: "부채", standards: ["common"] },
   { name: "부가세예수금", type: "부채", standards: ["common"] },
+  { name: "부가세대급금", type: "자산", standards: ["common"] },
   { name: "리스부채", type: "부채", standards: ["k-ifrs"] },
   { name: "충당부채", type: "부채", standards: ["k-ifrs", "common"] },
   // 자본

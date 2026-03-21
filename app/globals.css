@@ -35,3 +35,39 @@ body {
   color: var(--color-text);
   font-feature-settings: "ss01";
 }
+
+/* SVG 다이어그램 색상 클래스 */
+:root {
+  --svg-text: #212529;
+  --svg-blue: #1864AB;
+  --svg-blue-bg: #D0EBFF;
+  --svg-teal: #0B7285;
+  --svg-teal-bg: #C3FAE8;
+  --svg-coral: #C92A2A;
+  --svg-coral-bg: #FFE3E3;
+  --svg-purple: #7048E8;
+  --svg-purple-bg: #E5DBFF;
+  --svg-amber: #E67700;
+  --svg-amber-bg: #FFF3BF;
+  --svg-gray: #495057;
+  --svg-gray-bg: #F1F3F5;
+  --svg-arrow: #868E96;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --svg-text: #E9ECEF;
+    --svg-blue: #74C0FC;
+    --svg-blue-bg: #1864AB;
+    --svg-teal: #63E6BE;
+    --svg-teal-bg: #0B7285;
+    --svg-coral: #FFA8A8;
+    --svg-coral-bg: #C92A2A;
+    --svg-purple: #B197FC;
+    --svg-purple-bg: #7048E8;
+    --svg-amber: #FFD43B;
+    --svg-amber-bg: #E67700;
+    --svg-gray: #CED4DA;
+    --svg-gray-bg: #495057;
+    --svg-arrow: #ADB5BD;
+  }
+}
