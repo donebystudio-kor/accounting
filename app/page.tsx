@@ -4,19 +4,34 @@ import { PROBLEMS } from "@/constants/problems";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "회계던 — 회계 기준별 인터랙티브 문제 풀이",
-  description: "분개 문제, K-IFRS 문제, OX 퀴즈까지. 계정과목 버튼 클릭으로 회계를 연습하세요.",
+  title: "회계던 | 회계기준별 인터랙티브 문제 풀이",
+  description: "K-IFRS, 일반기업, 은행업, 공기업 회계기준별 분개·OX·계산 문제 555개. 무료 회계 학습 플랫폼.",
   openGraph: {
-    title: "회계던 — 회계 기준별 인터랙티브 문제 풀이",
-    description: "분개 문제, K-IFRS 문제, OX 퀴즈까지. 계정과목 버튼 클릭으로 회계를 연습하세요.",
+    title: "회계던 | 회계기준별 인터랙티브 문제 풀이",
+    description: "K-IFRS, 일반기업, 은행업, 공기업 회계기준별 분개·OX·계산 문제 555개. 무료 회계 학습 플랫폼.",
     url: "/",
   },
   alternates: { canonical: "/" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationalApplication",
+  name: "회계던",
+  description: "회계기준별 인터랙티브 문제 풀이",
+  applicationCategory: "EducationApplication",
+  inLanguage: "ko",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
+};
+
 export default function Home() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <section className="text-center py-8 mb-8">
         <h1 className="text-3xl font-extrabold text-primary mb-1">회계던</h1>
         <p className="text-text-sub text-sm">

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import StandardPage from "@/components/StandardPage";
 
 export const metadata: Metadata = {
-  title: "K-IFRS 회계 문제 풀이",
-  description: "K-IFRS(한국채택국제회계기준) 분개 문제, OX 퀴즈. 상장사·대기업 회계기준 학습.",
+  title: "K-IFRS 회계 문제 풀이 | 회계던",
+  description: "IFRS 16 리스, IFRS 9 금융상품, IFRS 15 수익인식 등 K-IFRS 분개·OX·계산 문제 160개+",
   openGraph: {
     title: "K-IFRS 회계 문제 풀이 | 회계던",
-    description: "K-IFRS 분개 문제, OX 퀴즈. 상장사·대기업 회계기준 학습.",
+    description: "IFRS 16 리스, IFRS 9 금융상품, IFRS 15 수익인식 등 K-IFRS 분개·OX·계산 문제 160개+",
     url: "/k-ifrs",
   },
   alternates: { canonical: "/k-ifrs" },
