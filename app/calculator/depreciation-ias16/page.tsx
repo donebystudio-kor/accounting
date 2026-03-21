@@ -49,17 +49,28 @@ export default function DepreciationCalculator() {
         rows.push({ year: y, expense: exp, accumulated: acc, bookValue: c - acc });
       }
     } else {
+      // 잔존가치 0이면 정률법 적용 불가
+      if (r <= 0) return { rows: [], annualStraight: null, firstYearDeclining: null, decliningZeroResidual: true };
       const rate = 1 - Math.pow(r / c, 1 / n);
       let bv = c;
       for (let y = 1; y <= n; y++) {
-        let exp = Math.round(bv * rate);
-        if (y === n) exp = bv - r;
+        let exp: number;
+        if (y === n) {
+          // 마지막 연도: 잔존가치까지 정확히 상각
+          exp = Math.round(bv - r);
+          bv = r;
+        } else {
+          exp = Math.round(bv * rate);
+          bv -= exp;
+          // 잔존가치 밑으로 내려가면 보정
+          if (bv < r) { exp = Math.round(bv + exp - r); bv = r; }
+        }
         acc += exp;
-        bv -= exp;
-        rows.push({ year: y, expense: exp, accumulated: acc, bookValue: Math.max(bv, r) });
+        rows.push({ year: y, expense: exp, accumulated: acc, bookValue: bv });
       }
+      return { rows, annualStraight: null, firstYearDeclining: rows[0]?.expense ?? null, decliningZeroResidual: false };
     }
-    return { rows, annualStraight: method === "straight" ? Math.round((c - r) / n) : null };
+    return { rows, annualStraight: method === "straight" ? Math.round((c - r) / n) : null, firstYearDeclining: null, decliningZeroResidual: false };
   }, [canCalc, cost, residual, life, method]);
 
   return (
@@ -94,12 +105,24 @@ export default function DepreciationCalculator() {
         {errors.length > 0 && <div className="text-xs text-wrong">{errors.join(" ")}</div>}
       </div>
 
-      {result && (
+      {result?.decliningZeroResidual && (
+        <div className="bg-amber-50 border border-amber-300 rounded-lg p-4 mb-5 text-sm text-amber-800">
+          잔존가치가 0인 경우 정률법을 적용할 수 없습니다. 정액법을 사용하거나 잔존가치를 1 이상으로 설정해주세요.
+        </div>
+      )}
+
+      {result && !result.decliningZeroResidual && result.rows.length > 0 && (
         <>
           {result.annualStraight !== null && (
             <div className="bg-primary-bg/30 border border-primary/20 rounded-lg p-4 mb-4 text-center">
               <p className="text-xs text-text-sub mb-1">연간 감가상각비</p>
               <p className="text-2xl font-extrabold text-primary">{result.annualStraight.toLocaleString()}원</p>
+            </div>
+          )}
+          {result.firstYearDeclining !== null && (
+            <div className="bg-primary-bg/30 border border-primary/20 rounded-lg p-4 mb-4 text-center">
+              <p className="text-xs text-text-sub mb-1">1차년도 감가상각비</p>
+              <p className="text-2xl font-extrabold text-primary">{result.firstYearDeclining.toLocaleString()}원</p>
             </div>
           )}
           <div className="bg-surface border border-border rounded-lg p-3 mb-4">
