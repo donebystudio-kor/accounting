@@ -40,8 +40,6 @@ export default function Home() {
         </p>
       </section>
 
-      <HomeStats />
-
       <section className="mb-8">
         <h2 className="font-bold text-text mb-3">회계기준 선택</h2>
         <Link
@@ -79,6 +77,8 @@ export default function Home() {
           })}
         </div>
       </section>
+
+      <HomeStats />
 
       <section className="p-4 bg-primary-bg/40 border border-primary/10 rounded-lg text-sm text-text-sub">
         <p className="font-semibold text-primary mb-1">사용법</p>
