@@ -1,13 +1,23 @@
 "use client";
 
-import { GLOSSARY } from "@/constants/glossary";
+// 용어 추가: constants/glossary.json에 항목 추가하면 자동 반영
+import glossaryData from "@/constants/glossary.json";
 
 interface Props {
   text: string;
 }
 
+// _comment 필드 제외
+const GLOSSARY: Record<string, string> = Object.fromEntries(
+  Object.entries(glossaryData).filter(([k]) => !k.startsWith("_"))
+);
+
+// 긴 용어부터 먼저 매칭 (감가상각 > 상각, 충당부채 > 부채 등)
 const terms = Object.keys(GLOSSARY).sort((a, b) => b.length - a.length);
-const pattern = new RegExp(`(${terms.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`, "g");
+const pattern = new RegExp(
+  `(${terms.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`,
+  "g"
+);
 
 export default function GlossaryText({ text }: Props) {
   const parts = text.split(pattern);
