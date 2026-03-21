@@ -73,6 +73,7 @@ export const ACCOUNTS: Account[] = [
   { name: "여비교통비", type: "비용", standards: ["common"] },
   { name: "복리후생비", type: "비용", standards: ["common"] },
   { name: "유형자산처분손실", type: "비용", standards: ["common"] },
+  { name: "제품보증비", type: "비용", standards: ["k-ifrs"] },
   { name: "대손상각비", type: "비용", standards: ["common", "k-ifrs"] },
   { name: "재고자산평가손실", type: "비용", standards: ["k-ifrs"] },
 ];

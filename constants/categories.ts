@@ -13,4 +13,5 @@ export const CATEGORIES: Category[] = [
   // k-ifrs
   { id: "kifrs-basic", standard: "k-ifrs", name: "K-IFRS 기본 (초급)", description: "K-IFRS 기본 분개와 개념" },
   { id: "kifrs-intermediate", standard: "k-ifrs", name: "K-IFRS 심화 (중급)", description: "K-IFRS 특수 거래 분개" },
+  { id: "kifrs-ox", standard: "k-ifrs", name: "K-IFRS OX 퀴즈", description: "K-IFRS 핵심 개념 참/거짓 판별" },
 ];

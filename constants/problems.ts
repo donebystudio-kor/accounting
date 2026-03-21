@@ -405,9 +405,9 @@ export const PROBLEMS: Problem[] = [
   {
     id: "kb07", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
     text: "충당부채 2,000,000원을 설정하였다. (제품 보증 관련)",
-    debit: [{ account: "급여", amount: 2000000 }],
+    debit: [{ account: "제품보증비", amount: 2000000 }],
     credit: [{ account: "충당부채", amount: 2000000 }],
-    explanation: "미래 지출이 예상되는 경우 충당부채(부채) 설정. 관련 비용 인식.",
+    explanation: "제품보증비(비용) 인식, 충당부채(부채) 설정. 미래 보증 지출이 예상될 때 인식.",
     hint: "충당부채는 금액이나 시기가 불확실한 부채입니다.",
     distractors: ["미지급비용", "선수금", "예수금"],
   },
@@ -477,5 +477,68 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "충당부채", amount: 800000 }],
     explanation: "예상 대손에 대해 대손상각비(비용)를 인식하고 충당부채를 설정합니다.",
     distractors: ["매출채권", "미지급비용", "유형자산처분손실"],
+  },
+  // ══════════════════════════════════════
+  // k-ifrs / kifrs-ox (10개)
+  // ══════════════════════════════════════
+  {
+    id: "kox01", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
+    text: "K-IFRS에서 재고자산은 취득원가와 순실현가능가치 중 낮은 금액으로 평가한다.",
+    answer: true,
+    explanation: "저가법 적용. 순실현가능가치가 낮으면 평가손실 인식.",
+  },
+  {
+    id: "kox02", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
+    text: "K-IFRS에서 외상매출금은 매출채권으로 표시한다.",
+    answer: true,
+    explanation: "K-IFRS는 매출채권, 일반기업회계기준은 외상매출금 사용.",
+  },
+  {
+    id: "kox03", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
+    text: "IFRS 16에 따라 리스이용자는 모든 리스를 운용리스와 금융리스로 구분한다.",
+    answer: false,
+    explanation: "IFRS 16은 리스이용자의 운용/금융리스 구분을 폐지. 단일 모델로 사용권자산과 리스부채를 인식.",
+  },
+  {
+    id: "kox04", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
+    text: "사용권자산은 리스부채와 동일한 금액으로 최초 인식한다.",
+    answer: false,
+    explanation: "사용권자산 = 리스부채 + 선급리스료 + 초기직접원가 + 복구원가 등. 동일하지 않을 수 있음.",
+  },
+  {
+    id: "kox05", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
+    text: "K-IFRS에서 투자부동산은 원가모형 또는 공정가치모형을 선택 적용할 수 있다.",
+    answer: true,
+    explanation: "원가모형과 공정가치모형 중 선택. 공정가치모형은 감가상각 불필요.",
+  },
+  {
+    id: "kox06", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
+    text: "충당부채는 지출의 시기 또는 금액이 불확실한 부채이다.",
+    answer: true,
+    explanation: "현재 의무, 경제적 효익 유출 가능성, 신뢰성 있는 추정 세 가지 조건 충족 시 인식.",
+  },
+  {
+    id: "kox07", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
+    text: "K-IFRS에서 유형자산은 원가모형만 적용할 수 있다.",
+    answer: false,
+    explanation: "원가모형과 재평가모형 중 선택 가능. 재평가모형은 공정가치로 재평가.",
+  },
+  {
+    id: "kox08", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
+    text: "대손충당금은 매출채권에서 차감하는 형식으로 표시한다.",
+    answer: true,
+    explanation: "재무상태표에서 매출채권 차감 표시. 순액으로 보고.",
+  },
+  {
+    id: "kox09", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
+    text: "K-IFRS에서 연구비는 자산으로 인식할 수 있다.",
+    answer: false,
+    explanation: "연구단계 지출은 전액 비용. 개발단계 지출만 조건 충족 시 무형자산 인식 가능.",
+  },
+  {
+    id: "kox10", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
+    text: "기타포괄손익은 당기손익에 포함된다.",
+    answer: false,
+    explanation: "기타포괄손익은 당기손익과 구분. 포괄손익계산서에 별도 표시.",
   },
 ];
