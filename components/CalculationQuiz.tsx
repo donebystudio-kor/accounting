@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Problem } from "@/constants/problems";
 import GlossaryText from "./GlossaryText";
 import { DEFAULT_HINTS } from "@/constants/hints";
+import HintToggle from "./HintToggle";
 
 interface Props {
   problem: Problem;
@@ -47,7 +48,7 @@ export default function CalculationQuiz({ problem, onResult, onNext }: Props) {
     <div>
       <div className="bg-surface border border-border rounded-lg p-4 mb-4">
         <p className="font-medium leading-relaxed"><GlossaryText text={problem.text} /></p>
-        <p className="text-xs text-primary mt-2">💡 {problem.hint || DEFAULT_HINTS.calculation}</p>
+        <HintToggle hint={problem.hint || DEFAULT_HINTS.calculation} />
       </div>
 
       {!submitted ? (

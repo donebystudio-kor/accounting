@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Problem } from "@/constants/problems";
 import GlossaryText from "./GlossaryText";
 import { DEFAULT_HINTS } from "@/constants/hints";
+import HintToggle from "./HintToggle";
 
 interface Props {
   problem: Problem;
@@ -27,7 +28,7 @@ export default function OxQuiz({ problem, onResult, onNext }: Props) {
     <div>
       <div className="bg-surface border border-border rounded-lg p-4 mb-6">
         <p className="font-medium leading-relaxed"><GlossaryText text={problem.text} /></p>
-        <p className="text-xs text-primary mt-2">💡 {problem.hint || DEFAULT_HINTS.ox}</p>
+        <HintToggle hint={problem.hint || DEFAULT_HINTS.ox} />
       </div>
 
       {!submitted ? (
