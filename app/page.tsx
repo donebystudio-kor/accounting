@@ -66,7 +66,7 @@ export default function Home() {
           })}
         </div>
         <Link
-          href="/quiz/common/journal"
+          href="/common"
           className="mt-3 flex items-center justify-between p-4 bg-surface border border-border rounded-lg hover:border-primary transition-colors"
         >
           <div className="flex items-center gap-3">
