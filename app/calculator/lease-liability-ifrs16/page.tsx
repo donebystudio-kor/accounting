@@ -2,257 +2,186 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import NumberInput from "@/components/NumberInput";
+import { PROBLEMS } from "@/constants/problems";
 
-/* ── helpers ── */
-function fmt(n: number): string {
-  return n.toLocaleString("ko-KR", {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  });
-}
-
-function parseNum(v: string): number {
-  return Number(v.replace(/,/g, "")) || 0;
-}
-
-function toCommaInput(v: string): string {
-  const raw = v.replace(/[^0-9]/g, "");
-  if (!raw) return "";
-  return Number(raw).toLocaleString("ko-KR");
-}
-
-/* ── types ── */
-interface Row {
-  period: number;
-  opening: number;
-  interest: number;
-  payment: number;
-  closing: number;
-}
-
-/* ── JSON-LD ── */
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
+  "@type": "WebPage",
   name: "IFRS16 리스부채 계산기",
-  description: "리스료 현재가치 및 상환스케줄 자동 계산",
-  applicationCategory: "FinanceApplication",
-  inLanguage: "ko",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
+  description: "리스료, 할인율을 입력하면 IFRS16 기준 리스부채 현재가치와 상환 스케줄을 자동 계산합니다.",
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "홈", item: "https://accounting-theta-pink.vercel.app" },
+      { "@type": "ListItem", position: 2, name: "계산기", item: "https://accounting-theta-pink.vercel.app/calculator" },
+      { "@type": "ListItem", position: 3, name: "리스부채 계산기" },
+    ],
+  },
 };
 
-export default function LeaseCalculatorPage() {
-  const [paymentInput, setPaymentInput] = useState("");
-  const [periods, setPeriods] = useState("");
-  const [rateInput, setRateInput] = useState("");
+interface Row { period: number; opening: number; interest: number; payment: number; closing: number; }
+
+export default function LeaseCalculator() {
+  const [payment, setPayment] = useState<number | null>(null);
+  const [periods, setPeriods] = useState<number | null>(null);
+  const [rate, setRate] = useState<number | null>(null);
   const [timing, setTiming] = useState<"end" | "beginning">("end");
 
-  const payment = parseNum(paymentInput);
-  const n = Number(periods) || 0;
-  const r = (Number(rateInput) || 0) / 100;
+  const problemCount = PROBLEMS.filter((p) => p.tags?.includes("IFRS16")).length;
+
+  const errors = useMemo(() => {
+    const e: string[] = [];
+    if (payment !== null && payment <= 0) e.push("리스료는 0보다 커야 합니다.");
+    if (periods !== null && (periods < 1 || !Number.isInteger(periods))) e.push("기간은 1 이상 정수여야 합니다.");
+    if (rate !== null && rate < 0) e.push("할인율은 0 이상이어야 합니다.");
+    return e;
+  }, [payment, periods, rate]);
+
+  const canCalc = payment !== null && payment > 0 && periods !== null && periods >= 1 && rate !== null && rate >= 0 && errors.length === 0;
 
   const result = useMemo(() => {
-    if (payment <= 0 || n <= 0 || r <= 0) return null;
+    if (!canCalc) return null;
+    const r = rate! / 100;
+    const n = periods!;
+    const pmt = payment!;
 
-    /* PV 계산 */
-    const pvEnd = payment * (1 - Math.pow(1 + r, -n)) / r;
-    const pv = timing === "beginning" ? pvEnd * (1 + r) : pvEnd;
-
-    /* 상환스케줄 */
-    const rows: Row[] = [];
-    let balance = pv;
-
-    for (let i = 1; i <= n; i++) {
-      if (timing === "beginning" && i === 1) {
-        // 기초 지급: 첫 회차는 이자 없이 리스료 지급
-        rows.push({
-          period: i,
-          opening: balance,
-          interest: 0,
-          payment,
-          closing: balance - payment,
-        });
-        balance = balance - payment;
-      } else {
-        const interest = Math.round(balance * r);
-        const closing = balance + interest - payment;
-        rows.push({
-          period: i,
-          opening: balance,
-          interest,
-          payment,
-          closing: Math.max(closing, 0),
-        });
-        balance = Math.max(closing, 0);
-      }
+    let pv: number;
+    if (r === 0) {
+      pv = pmt * n;
+    } else {
+      pv = pmt * (1 - Math.pow(1 + r, -n)) / r;
+      if (timing === "beginning") pv *= (1 + r);
     }
 
+    // 상환 스케줄
+    const rows: Row[] = [];
+    let balance = pv;
+    for (let i = 1; i <= n; i++) {
+      const opening = balance;
+      let interest: number;
+      let principal: number;
+
+      if (timing === "beginning" && i === 1) {
+        interest = 0;
+        principal = pmt;
+      } else {
+        interest = opening * r;
+        principal = pmt - interest;
+      }
+
+      let closing = opening - principal;
+      // 마지막 회차 반올림 보정
+      if (i === n) {
+        closing = 0;
+        principal = opening - interest > 0 ? opening : pmt - interest;
+        interest = pmt - principal > 0 ? pmt - principal : interest;
+      }
+
+      rows.push({
+        period: i,
+        opening: Math.round(opening),
+        interest: Math.round(interest),
+        payment: Math.round(pmt),
+        closing: Math.max(0, Math.round(closing)),
+      });
+      balance = closing;
+    }
+    // 마지막 행 기말잔액 강제 0
+    if (rows.length > 0) rows[rows.length - 1].closing = 0;
+
     return { pv: Math.round(pv), rows };
-  }, [payment, n, r, timing]);
+  }, [canCalc, payment, periods, rate, timing]);
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <title>IFRS16 리스부채 계산기 | 리스 현재가치 자동 계산</title>
-      <meta
-        name="description"
-        content="IFRS16 리스부채 현재가치와 상환스케줄을 자동 계산합니다. 기말/기초 지급 방식 모두 지원."
-      />
+      <div className="flex items-center gap-2 mb-5">
+        <Link href="/" className="text-xs text-text-sub hover:text-primary">← 홈</Link>
+        <span className="text-xs text-border">/</span>
+        <Link href="/calculator" className="text-xs text-text-sub hover:text-primary">계산기</Link>
+        <span className="text-xs text-border">/</span>
+        <span className="text-xs font-semibold text-text">리스부채</span>
+      </div>
 
-      <h1 className="text-2xl font-extrabold text-primary mb-1">
-        IFRS 16 리스부채 계산기
-      </h1>
-      <p className="text-sm text-text-sub mb-6">
-        리스료의 현재가치와 상환스케줄을 자동으로 계산합니다.
-      </p>
+      <h1 className="text-xl font-extrabold text-text mb-1">IFRS16 리스부채 계산기</h1>
+      <p className="text-xs text-text-sub mb-5">리스 현재가치와 상환 스케줄 자동 계산</p>
 
-      {/* 입력 폼 */}
-      <div className="bg-surface border border-border rounded-lg p-5 mb-6 space-y-4">
+      <div className="bg-surface border border-border rounded-lg p-4 mb-5 space-y-3">
         <div>
-          <label className="block text-sm font-semibold text-text mb-1">
-            연간 리스료 (원)
-          </label>
-          <input
-            type="text"
-            inputMode="numeric"
-            value={paymentInput}
-            onChange={(e) => setPaymentInput(toCommaInput(e.target.value))}
-            placeholder="10,000,000"
-            className="w-full border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary"
-          />
+          <label className="text-xs font-medium text-text block mb-1">리스료 (연간)</label>
+          <NumberInput value={payment} onChange={setPayment} placeholder="1,000,000" suffix="원" className="w-full" />
         </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-semibold text-text mb-1">
-              리스 기간 (년)
-            </label>
-            <input
-              type="number"
-              min={1}
-              value={periods}
-              onChange={(e) => setPeriods(e.target.value)}
-              placeholder="5"
-              className="w-full border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-text mb-1">
-              할인율 (%)
-            </label>
-            <input
-              type="number"
-              min={0}
-              step={0.1}
-              value={rateInput}
-              onChange={(e) => setRateInput(e.target.value)}
-              placeholder="5"
-              className="w-full border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary"
-            />
-          </div>
-        </div>
-
         <div>
-          <label className="block text-sm font-semibold text-text mb-1">
-            지급 시점
-          </label>
-          <div className="flex gap-3">
+          <label className="text-xs font-medium text-text block mb-1">기간</label>
+          <NumberInput value={periods} onChange={setPeriods} placeholder="5" suffix="년" integer className="w-full" min={1} />
+        </div>
+        <div>
+          <label className="text-xs font-medium text-text block mb-1">할인율</label>
+          <NumberInput value={rate} onChange={setRate} placeholder="5" suffix="%" className="w-full" min={0} />
+        </div>
+        <div>
+          <label className="text-xs font-medium text-text block mb-1">지급시점</label>
+          <div className="flex gap-2">
             {(["end", "beginning"] as const).map((t) => (
-              <button
-                key={t}
-                onClick={() => setTiming(t)}
-                className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                  timing === t
-                    ? "bg-primary text-white"
-                    : "bg-surface border border-border text-text-sub hover:border-primary"
-                }`}
-              >
+              <button key={t} onClick={() => setTiming(t)} className={`flex-1 min-h-[40px] px-3 py-2 text-xs border rounded-md font-medium transition-colors ${timing === t ? "border-primary bg-primary-bg/30 text-primary" : "border-border text-text-sub"}`}>
                 {t === "end" ? "기말 지급" : "기초 지급"}
               </button>
             ))}
           </div>
         </div>
+        {errors.length > 0 && (
+          <div className="text-xs text-wrong">{errors.join(" ")}</div>
+        )}
       </div>
 
-      {/* 결과 */}
       {result && (
         <>
-          {/* 현재가치 */}
-          <div className="bg-primary-bg/40 border border-primary/10 rounded-lg p-5 mb-6 text-center">
-            <p className="text-sm text-text-sub mb-1">리스부채 현재가치</p>
-            <p className="text-3xl font-extrabold text-primary">
-              {fmt(result.pv)}
-              <span className="text-base font-normal text-text-sub ml-1">
-                원
-              </span>
-            </p>
+          <div className="bg-primary-bg/30 border border-primary/20 rounded-lg p-4 mb-4 text-center">
+            <p className="text-xs text-text-sub mb-1">리스부채 현재가치</p>
+            <p className="text-2xl font-extrabold text-primary">{result.pv.toLocaleString()}원</p>
           </div>
 
-          {/* 분개 */}
-          <div className="bg-surface border border-border rounded-lg p-5 mb-6">
-            <h2 className="font-bold text-text mb-3">인식 시 분개</h2>
-            <div className="text-sm space-y-1">
-              <p>
-                <span className="text-debit font-semibold">(차) 사용권자산</span>{" "}
-                {fmt(result.pv)}
-              </p>
-              <p>
-                <span className="text-credit font-semibold">
-                  (대) 리스부채
-                </span>{" "}
-                {fmt(result.pv)}
-              </p>
-            </div>
+          <div className="bg-surface border border-border rounded-lg p-3 mb-4">
+            <p className="text-xs font-bold text-text mb-1">최초 인식 분개</p>
+            <p className="text-xs text-debit">(차) 사용권자산 {result.pv.toLocaleString()}</p>
+            <p className="text-xs text-credit">(대) 리스부채 {result.pv.toLocaleString()}</p>
           </div>
 
-          {/* 상환스케줄 */}
-          <div className="bg-surface border border-border rounded-lg p-5 mb-6">
-            <h2 className="font-bold text-text mb-3">상환 스케줄</h2>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm text-right">
-                <thead>
-                  <tr className="border-b border-border text-text-sub">
-                    <th className="py-2 pr-3 text-left font-semibold">기간</th>
-                    <th className="py-2 pr-3 font-semibold">기초 잔액</th>
-                    <th className="py-2 pr-3 font-semibold">이자비용</th>
-                    <th className="py-2 pr-3 font-semibold">리스료</th>
-                    <th className="py-2 font-semibold">기말 잔액</th>
+          <div className="overflow-x-auto mb-5">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-border text-text-sub">
+                  <th className="py-2 text-center">회차</th>
+                  <th className="py-2 text-right">기초잔액</th>
+                  <th className="py-2 text-right">이자비용</th>
+                  <th className="py-2 text-right">리스료</th>
+                  <th className="py-2 text-right">기말잔액</th>
+                </tr>
+              </thead>
+              <tbody>
+                {result.rows.map((r) => (
+                  <tr key={r.period} className="border-b border-border/50">
+                    <td className="py-2 text-center">{r.period}</td>
+                    <td className="py-2 text-right">{r.opening.toLocaleString()}</td>
+                    <td className="py-2 text-right">{r.interest.toLocaleString()}</td>
+                    <td className="py-2 text-right">{r.payment.toLocaleString()}</td>
+                    <td className="py-2 text-right">{r.closing.toLocaleString()}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {result.rows.map((row) => (
-                    <tr key={row.period} className="border-b border-border/50">
-                      <td className="py-2 pr-3 text-left">{row.period}</td>
-                      <td className="py-2 pr-3">{fmt(row.opening)}</td>
-                      <td className="py-2 pr-3">{fmt(row.interest)}</td>
-                      <td className="py-2 pr-3">{fmt(row.payment)}</td>
-                      <td className="py-2">{fmt(row.closing)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
         </>
       )}
 
-      {/* 내부 링크 */}
-      <div className="flex flex-wrap gap-3 text-sm">
-        <Link
-          href="/concept/ifrs16"
-          className="text-primary hover:underline font-semibold"
-        >
-          IFRS 16 개념 정리 &rarr;
+      <div className="flex gap-2">
+        <Link href="/concept/ifrs16" className="flex-1 min-h-[44px] py-2.5 text-center border border-primary text-primary rounded-lg text-sm font-bold">
+          IFRS 16 개념 보기
         </Link>
-        <Link
-          href="/calculator"
-          className="text-text-sub hover:underline"
-        >
-          계산기 목록으로
+        <Link href="/quiz?tag=IFRS16" className="flex-1 min-h-[44px] py-2.5 text-center bg-primary text-white rounded-lg text-sm font-bold">
+          문제 풀기 ({problemCount})
         </Link>
       </div>
     </div>
