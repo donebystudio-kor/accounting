@@ -15,10 +15,10 @@ export default function OxQuiz({ problem, onResult, onNext }: Props) {
   const [pick, setPick] = useState<boolean | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (answer: boolean) => {
-    setPick(answer);
+  const handleSubmit = () => {
+    if (pick === null) return;
     setSubmitted(true);
-    onResult(answer === problem.answer, false);
+    onResult(pick === problem.answer, false);
   };
 
   const isCorrect = submitted && pick === problem.answer;
@@ -31,25 +31,42 @@ export default function OxQuiz({ problem, onResult, onNext }: Props) {
       </div>
 
       {!submitted ? (
-        <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              onClick={() => setPick(true)}
+              className={`min-h-[56px] py-4 bg-surface border-2 rounded-lg text-lg font-bold transition-colors active:scale-[0.97] ${
+                pick === true
+                  ? "border-correct bg-green-50 text-correct"
+                  : "border-border hover:border-correct hover:text-correct"
+              }`}
+            >
+              ⭕ 맞다
+            </button>
+            <button
+              onClick={() => setPick(false)}
+              className={`min-h-[56px] py-4 bg-surface border-2 rounded-lg text-lg font-bold transition-colors active:scale-[0.97] ${
+                pick === false
+                  ? "border-wrong bg-red-50 text-wrong"
+                  : "border-border hover:border-wrong hover:text-wrong"
+              }`}
+            >
+              ❌ 틀리다
+            </button>
+          </div>
           <button
-            onClick={() => handleSubmit(true)}
-            className="py-4 bg-surface border-2 border-border rounded-lg text-lg font-bold hover:border-correct hover:text-correct transition-colors active:scale-[0.97]"
+            onClick={handleSubmit}
+            disabled={pick === null}
+            className="w-full min-h-[44px] py-2.5 bg-primary text-white rounded-lg font-bold text-sm disabled:opacity-40 active:scale-[0.98] transition-transform"
           >
-            ⭕ 맞다
-          </button>
-          <button
-            onClick={() => handleSubmit(false)}
-            className="py-4 bg-surface border-2 border-border rounded-lg text-lg font-bold hover:border-wrong hover:text-wrong transition-colors active:scale-[0.97]"
-          >
-            ❌ 틀리다
+            제출
           </button>
         </div>
       ) : (
         <div className="space-y-3">
           <div className="grid grid-cols-2 gap-3">
             <div
-              className={`py-4 text-center border-2 rounded-lg text-lg font-bold ${
+              className={`min-h-[56px] py-4 text-center border-2 rounded-lg text-lg font-bold ${
                 problem.answer === true
                   ? "border-correct bg-green-50 text-correct"
                   : pick === true
@@ -60,7 +77,7 @@ export default function OxQuiz({ problem, onResult, onNext }: Props) {
               ⭕ 맞다
             </div>
             <div
-              className={`py-4 text-center border-2 rounded-lg text-lg font-bold ${
+              className={`min-h-[56px] py-4 text-center border-2 rounded-lg text-lg font-bold ${
                 problem.answer === false
                   ? "border-correct bg-green-50 text-correct"
                   : pick === false
@@ -83,7 +100,7 @@ export default function OxQuiz({ problem, onResult, onNext }: Props) {
 
           <button
             onClick={onNext}
-            className="w-full py-2.5 bg-primary text-white rounded-lg font-bold text-sm active:scale-[0.98] transition-transform"
+            className="w-full min-h-[44px] py-2.5 bg-primary text-white rounded-lg font-bold text-sm active:scale-[0.98] transition-transform"
           >
             다음 문제
           </button>
