@@ -119,9 +119,9 @@ export default function EclCalculator() {
               <p className="text-text-sub">기존 잔액</p>
               <p className="font-bold text-text">{result.existing.toLocaleString()}</p>
             </div>
-            <div className={`border rounded-lg p-3 ${result.additional >= 0 ? "bg-red-50 border-wrong/30" : "bg-green-50 border-correct/30"}`}>
-              <p className="text-text-sub">{result.additional >= 0 ? "추가 설정" : "환입"}</p>
-              <p className={`font-bold ${result.additional >= 0 ? "text-wrong" : "text-correct"}`}>{Math.abs(result.additional).toLocaleString()}</p>
+            <div className={`border rounded-lg p-3 ${result.additional > 0 ? "bg-red-50 border-wrong/30" : result.additional < 0 ? "bg-green-50 border-correct/30" : "bg-surface border-border"}`}>
+              <p className="text-text-sub">{result.additional > 0 ? "추가 설정" : result.additional < 0 ? "환입" : "추가 설정 없음"}</p>
+              <p className={`font-bold ${result.additional > 0 ? "text-wrong" : result.additional < 0 ? "text-correct" : "text-text"}`}>{Math.abs(result.additional).toLocaleString()}</p>
             </div>
           </div>
 
