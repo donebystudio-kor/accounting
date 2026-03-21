@@ -30,4 +30,13 @@ export const CATEGORIES: Category[] = [
   // 공공기관
   { id: "public-basic", standard: "public", name: "기본 분개", description: "공공기관회계 기본 분개" },
   { id: "public-ox", standard: "public", name: "OX 퀴즈", description: "공공기관회계 참/거짓 판별" },
+  // 고급 카테고리
+  { id: "journal-advanced", standard: "common", name: "고급 분개", description: "복합·특수 거래 고급 분개" },
+  { id: "ox-advanced", standard: "common", name: "고급 OX 퀴즈", description: "심화 회계 개념 참/거짓" },
+  { id: "calc-advanced", standard: "common", name: "고급 계산", description: "심화 회계 계산 문제" },
+  { id: "kifrs-advanced", standard: "k-ifrs", name: "K-IFRS 고급 분개", description: "K-IFRS 복합·특수 거래" },
+  { id: "kifrs-ox-advanced", standard: "k-ifrs", name: "K-IFRS 고급 OX", description: "K-IFRS 심화 개념 참/거짓" },
+  { id: "kifrs-calc-advanced", standard: "k-ifrs", name: "K-IFRS 고급 계산", description: "K-IFRS 심화 계산 문제" },
+  { id: "general-advanced", standard: "general", name: "고급 분개", description: "일반기업 복합·특수 거래" },
+  { id: "general-ox-advanced", standard: "general", name: "고급 OX 퀴즈", description: "일반기업 심화 개념 참/거짓" },
 ];
