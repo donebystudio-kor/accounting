@@ -7,7 +7,7 @@ import JournalQuiz from "./JournalQuiz";
 import OxQuiz from "./OxQuiz";
 import CalculationQuiz from "./CalculationQuiz";
 import StatementQuiz from "./StatementQuiz";
-import { addWrong, getWrongCount, isBookmarked, toggleBookmark, savePosition } from "@/lib/storage";
+import { addWrong, addSolved, getWrongCount, isBookmarked, toggleBookmark, savePosition } from "@/lib/storage";
 
 export interface QuizResult {
   problemId: string;
@@ -77,7 +77,8 @@ export default function QuizSession({ problems, categoryName }: Props) {
     };
     setResults((prev) => [...prev, result]);
 
-    // 오답 저장
+    // 풀이 기록
+    addSolved(problem.id);
     if (!correct) addWrong(problem.id);
 
     if (correct) {

@@ -4,6 +4,7 @@
 const WRONG_KEY = "accounting_wrong";
 const BOOKMARKS_KEY = "accounting_bookmarks";
 const POSITION_KEY = "accounting_last_position";
+const SOLVED_KEY = "accounting_solved";
 
 // === 오답 ===
 export function getWrongCounts(): Record<string, number> {
@@ -93,4 +94,34 @@ export function clearPosition() {
 export function isPositionStale(pos: LastPosition): boolean {
   const saved = new Date(pos.savedAt).getTime();
   return Date.now() - saved > 24 * 60 * 60 * 1000;
+}
+
+// === 푼 문제 ===
+export function getSolved(): Record<string, true> {
+  if (typeof window === "undefined") return {};
+  try { return JSON.parse(localStorage.getItem(SOLVED_KEY) || "{}"); }
+  catch { return {}; }
+}
+
+export function addSolved(id: string) {
+  const data = getSolved();
+  data[id] = true;
+  if (typeof window !== "undefined") localStorage.setItem(SOLVED_KEY, JSON.stringify(data));
+}
+
+export function getSolvedCount(): number {
+  return Object.keys(getSolved()).length;
+}
+
+export function isSolved(id: string): boolean {
+  return !!getSolved()[id];
+}
+
+export function getUnsolvedIds(allIds: string[]): string[] {
+  const solved = getSolved();
+  return allIds.filter((id) => !solved[id]);
+}
+
+export function clearSolved() {
+  if (typeof window !== "undefined") localStorage.removeItem(SOLVED_KEY);
 }

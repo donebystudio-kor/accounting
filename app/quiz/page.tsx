@@ -5,7 +5,7 @@ import { Suspense, useEffect, useState, useCallback } from "react";
 import { PROBLEMS, Problem } from "@/constants/problems";
 import QuizSession from "@/components/QuizSession";
 import Link from "next/link";
-import { getWrongIds, getWrongCount, getBookmarks, removeWrong } from "@/lib/storage";
+import { getWrongIds, getWrongCount, getBookmarks, removeWrong, getUnsolvedIds } from "@/lib/storage";
 
 function QuizRouter() {
   const searchParams = useSearchParams();
@@ -27,18 +27,24 @@ function QuizRouter() {
       const ps = ids.map((id) => PROBLEMS.find((p) => p.id === id)).filter(Boolean) as Problem[];
       setModeProblems(ps);
       setModeLabel(`북마크 (${ps.length}문제)`);
+    } else if (mode === "unsolved") {
+      const allIds = PROBLEMS.map((p) => p.id);
+      const ids = getUnsolvedIds(allIds);
+      const ps = ids.map((id) => PROBLEMS.find((p) => p.id === id)).filter(Boolean) as Problem[];
+      setModeProblems(ps);
+      setModeLabel(`안 푼 문제 (${ps.length}문제)`);
     }
   }, [mode]);
 
   useEffect(() => { loadProblems(); }, [loadProblems, refreshKey]);
 
   // 오답/북마크 모드
-  if (mode === "wrong" || mode === "bookmark") {
+  if (mode === "wrong" || mode === "bookmark" || mode === "unsolved") {
     if (modeProblems === null) return <div className="text-center py-12 text-text-sub">로딩 중...</div>;
     if (modeProblems.length === 0) {
       return (
         <div className="text-center py-12">
-          <p className="text-text-sub mb-4">{mode === "wrong" ? "오답 기록이 없습니다." : "북마크된 문제가 없습니다."}</p>
+          <p className="text-text-sub mb-4">{mode === "wrong" ? "오답 기록이 없습니다." : mode === "bookmark" ? "북마크된 문제가 없습니다." : "모든 문제를 풀었습니다! 🎉"}</p>
           <Link href="/" className="text-primary text-sm hover:underline">홈으로</Link>
         </div>
       );
