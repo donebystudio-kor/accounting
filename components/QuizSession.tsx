@@ -137,6 +137,31 @@ export default function QuizSession({ problems, categoryName }: Props) {
         </div>
       </div>
 
+      {/* 여기까지만 풀기 */}
+      {results.length > 0 && (
+        <div className="mb-3">
+          <button
+            onClick={() => {
+              const allResults = [...results];
+              const totalElapsed = allResults.reduce((s, r) => s + r.elapsed, 0);
+              const summary: QuizSummary = {
+                categoryName,
+                problems: shuffled.slice(0, results.length),
+                results: allResults,
+                totalScore: score,
+                totalElapsed,
+                timerUsed,
+              };
+              sessionStorage.setItem("quizSummary", JSON.stringify(summary));
+              router.push("/result");
+            }}
+            className="w-full py-1.5 text-xs border border-border rounded-lg text-text-sub hover:border-primary hover:text-primary transition-colors"
+          >
+            여기까지만 풀기 ({results.length}/{shuffled.length}문제)
+          </button>
+        </div>
+      )}
+
       {/* 진행 바 */}
       <div className="w-full h-1 bg-border rounded-full mb-5">
         <div

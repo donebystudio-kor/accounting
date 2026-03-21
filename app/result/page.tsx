@@ -56,6 +56,9 @@ export default function ResultPage() {
       <div className="text-center mb-8">
         <p className="text-5xl font-extrabold text-primary">{totalScore}</p>
         <p className="text-xs text-text-sub mt-1">/ {maxScore}점</p>
+        {results.length < problems.length && (
+          <p className="text-xs text-partial mt-1">{problems.length}문제 중 {results.length}문제 풀었습니다</p>
+        )}
         <div className="w-full max-w-xs mx-auto h-2 bg-border rounded-full mt-4">
           <div
             className="h-full bg-primary rounded-full transition-all"
