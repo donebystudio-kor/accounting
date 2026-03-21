@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Problem } from "@/constants/problems";
+import GlossaryText from "./GlossaryText";
 
 interface Props {
   problem: Problem;
@@ -24,7 +25,7 @@ export default function OxQuiz({ problem, onResult, onNext }: Props) {
   return (
     <div>
       <div className="bg-surface border border-border rounded-lg p-4 mb-6">
-        <p className="font-medium leading-relaxed">{problem.text}</p>
+        <p className="font-medium leading-relaxed"><GlossaryText text={problem.text} /></p>
       </div>
 
       {!submitted ? (

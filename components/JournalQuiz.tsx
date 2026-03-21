@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { Problem, JournalEntry } from "@/constants/problems";
 import { ACCOUNTS, ACCOUNT_TYPE_STYLE, AccountType } from "@/constants/accounts";
+import GlossaryText from "./GlossaryText";
 
 const TYPES: AccountType[] = ["자산", "부채", "자본", "수익", "비용"];
 
@@ -120,7 +121,7 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
     <div>
       {/* 문제 */}
       <div className="bg-surface border border-border rounded-lg p-4 mb-4">
-        <p className="font-medium leading-relaxed">{problem.text}</p>
+        <p className="font-medium leading-relaxed"><GlossaryText text={problem.text} /></p>
         {!isCompound && (
           <p className="text-sm text-text-sub mt-1">금액: {totalAmount.toLocaleString()}원</p>
         )}
