@@ -78,8 +78,11 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
     const creditAccOk = creditEntries.every((e, i) => creditPicks[i]?.account === e.account);
     const debitAmtOk = !isCompound || debitEntries.every((e, i) => debitPicks[i]?.amount === e.amount);
     const creditAmtOk = !isCompound || creditEntries.every((e, i) => creditPicks[i]?.amount === e.amount);
-    const full = debitAccOk && creditAccOk && debitAmtOk && creditAmtOk;
-    const partial = !full && (debitAccOk || creditAccOk);
+    const allAccOk = debitAccOk && creditAccOk;
+    const allAmtOk = debitAmtOk && creditAmtOk;
+    const full = allAccOk && allAmtOk;
+    // 부분정답: 양쪽 계정 맞고 금액 틀림 OR 한쪽만 완전 정답
+    const partial = !full && (allAccOk || debitAccOk || creditAccOk);
     return { full, partial };
   };
 

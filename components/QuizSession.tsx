@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import { Problem } from "@/constants/problems";
 import JournalQuiz from "./JournalQuiz";
 import OxQuiz from "./OxQuiz";
+import CalculationQuiz from "./CalculationQuiz";
+import StatementQuiz from "./StatementQuiz";
 
 interface Props {
   problems: Problem[];
@@ -140,6 +142,22 @@ export default function QuizSession({ problems, categoryName }: Props) {
       )}
       {problem.type === "ox" && (
         <OxQuiz
+          key={key}
+          problem={problem}
+          onResult={handleResult}
+          onNext={handleNext}
+        />
+      )}
+      {problem.type === "calculation" && (
+        <CalculationQuiz
+          key={key}
+          problem={problem}
+          onResult={handleResult}
+          onNext={handleNext}
+        />
+      )}
+      {problem.type === "statement" && (
+        <StatementQuiz
           key={key}
           problem={problem}
           onResult={handleResult}
