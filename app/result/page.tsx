@@ -29,12 +29,12 @@ export default function ResultPage() {
     );
   }
 
-  const { problems, results, totalScore, totalElapsed, categoryName } = summary;
+  const { problems, results, totalScore, totalElapsed, categoryName, timerUsed } = summary;
   const correctCount = results.filter((r) => r.correct).length;
   const partialCount = results.filter((r) => r.partial && !r.correct).length;
   const wrongCount = results.length - correctCount - partialCount;
   const maxScore = problems.length * 10;
-  const pct = Math.round((totalScore / maxScore) * 100);
+  const pct = Math.min(Math.round((totalScore / maxScore) * 100), 100);
   const minutes = Math.floor(totalElapsed / 60);
   const seconds = totalElapsed % 60;
 
@@ -80,9 +80,14 @@ export default function ResultPage() {
         </div>
         <div className="bg-surface border border-border rounded-lg p-3 text-center">
           <p className="text-lg font-bold text-text">
-            {minutes > 0 ? `${minutes}m` : ""}{seconds}s
+            {timerUsed
+              ? (minutes > 0 ? `${minutes}분 ${seconds}초` : `${seconds}초`)
+              : "-"
+            }
           </p>
-          <p className="text-[10px] text-text-sub">소요시간</p>
+          <p className="text-[10px] text-text-sub">
+            {timerUsed ? "소요시간" : "타이머 미사용"}
+          </p>
         </div>
       </div>
 
@@ -108,7 +113,7 @@ export default function ResultPage() {
                   {r.correct ? "✅" : r.partial ? "🟡" : "❌"}
                 </span>
                 <span className="flex-1 truncate">{p.text}</span>
-                <span className="text-xs text-text-sub">{r.elapsed}s</span>
+                {timerUsed && <span className="text-xs text-text-sub">{r.elapsed}s</span>}
                 <span className="text-xs text-text-sub">{isExpanded ? "▾" : "▸"}</span>
               </button>
               {isExpanded && (

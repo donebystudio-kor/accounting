@@ -21,6 +21,7 @@ export interface QuizSummary {
   results: QuizResult[];
   totalScore: number;
   totalElapsed: number;
+  timerUsed: boolean;
 }
 
 interface Props {
@@ -44,14 +45,16 @@ export default function QuizSession({ problems, categoryName }: Props) {
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [timerEnabled, setTimerEnabled] = useState(false);
+  const [timerUsed, setTimerUsed] = useState(false);
   const [elapsed, setElapsed] = useState(0);
-  const [totalElapsed, setTotalElapsed] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [results, setResults] = useState<QuizResult[]>([]);
   const [key, setKey] = useState(0);
 
+  // 타이머 켜면 timerUsed 플래그 설정
   useEffect(() => {
     if (timerEnabled) {
+      setTimerUsed(true);
       timerRef.current = setInterval(() => setElapsed((e) => e + 1), 1000);
     }
     return () => {
@@ -61,6 +64,7 @@ export default function QuizSession({ problems, categoryName }: Props) {
 
   const problem = shuffled[index];
 
+  // 점수: 정답 10점, 부분정답 5점, 오답 0점. 보너스 없음. 만점 = 문제수 × 10
   const handleResult = (correct: boolean, partial: boolean) => {
     if (timerRef.current) clearInterval(timerRef.current);
 
@@ -68,15 +72,12 @@ export default function QuizSession({ problems, categoryName }: Props) {
       problemId: problem.id,
       correct,
       partial,
-      elapsed,
+      elapsed: timerEnabled ? elapsed : 0,
     };
-    const newResults = [...results, result];
-    setResults(newResults);
-    setTotalElapsed((t) => t + elapsed);
+    setResults((prev) => [...prev, result]);
 
     if (correct) {
-      const streakBonus = streak >= 2 ? Math.min(streak, 5) : 0;
-      setScore((s) => s + 10 + streakBonus);
+      setScore((s) => s + 10);
       setStreak((s) => s + 1);
     } else if (partial) {
       setScore((s) => s + 5);
@@ -88,14 +89,16 @@ export default function QuizSession({ problems, categoryName }: Props) {
 
   const handleNext = () => {
     if (index + 1 >= shuffled.length) {
-      const finalElapsed = totalElapsed + elapsed;
-      const finalScore = score;
+      // 결과 집계
+      const allResults = [...results];
+      const totalElapsed = allResults.reduce((s, r) => s + r.elapsed, 0);
       const summary: QuizSummary = {
         categoryName,
         problems: shuffled,
-        results: [...results],
-        totalScore: finalScore,
-        totalElapsed: finalElapsed,
+        results: allResults,
+        totalScore: score,
+        totalElapsed,
+        timerUsed,
       };
       sessionStorage.setItem("quizSummary", JSON.stringify(summary));
       router.push("/result");
@@ -115,7 +118,7 @@ export default function QuizSession({ problems, categoryName }: Props) {
         </span>
         <div className="flex items-center gap-3">
           <span className="font-bold text-primary">{score}점</span>
-          {streak >= 2 && (
+          {streak >= 3 && (
             <span className="text-correct font-bold">🔥 {streak}연속</span>
           )}
           <button
