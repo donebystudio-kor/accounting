@@ -183,6 +183,12 @@ export default function IncomeTaxCalculator() {
         )}
       </div>
 
+      {!canCalc && errors.length === 0 && (
+        <p className="text-center text-xs text-text-sub py-6">값을 입력하면 자동 계산됩니다</p>
+      )}
+      {!canCalc && errors.length > 0 && (
+        <div className="text-xs text-wrong py-4">{errors.join(" ")}</div>
+      )}
       {result && (
         <>
           {/* 요약 */}
