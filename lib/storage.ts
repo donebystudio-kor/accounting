@@ -29,6 +29,12 @@ export function getWrongIds(): string[] {
     .map(([id]) => id);
 }
 
+export function removeWrong(id: string) {
+  const data = getWrongCounts();
+  delete data[id];
+  if (typeof window !== "undefined") localStorage.setItem(WRONG_KEY, JSON.stringify(data));
+}
+
 export function clearWrong() {
   if (typeof window !== "undefined") localStorage.removeItem(WRONG_KEY);
 }
