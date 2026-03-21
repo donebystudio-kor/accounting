@@ -2201,7 +2201,7 @@ export const PROBLEMS: Problem[] = [
     hint: "보증을 제공하면 미래 지급 의무가 생기므로 부채로 인식합니다.",
   },
   {
-    id: "kia13", type: "ox", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
+    id: "kia13", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
     text: "해외사업장의 재무제표 환산 시 발생하는 환산차이는 기타포괄손익으로 인식한다.",
     answer: true,
     explanation: "해외사업환산차이는 기타포괄손익(자본)으로 누적. 해외사업 처분 시 당기손익으로 재분류(재분류 조정).",
@@ -2911,7 +2911,7 @@ export const PROBLEMS: Problem[] = [
     hint: "신탁재산은 은행 고유재산과 별도로 신탁계정에서 관리합니다.",
   },
   {
-    id: "bja02", type: "ox", standard: "bank", category: "bank-advanced", difficulty: "advanced",
+    id: "bja02", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
     text: "BIS 자기자본비율은 자기자본을 위험가중자산으로 나눈 값으로, 국제결제은행 기준 최소 8% 이상을 유지해야 한다.",
     answer: true,
     explanation: "BIS 비율 = 자기자본 / 위험가중자산 × 100%. 바젤협약에 따라 최소 8%(기본자본 6%) 이상 유지 의무. 은행 건전성의 핵심 지표.",
@@ -3514,7 +3514,7 @@ export const PROBLEMS: Problem[] = [
     hint: "적격자산의 차입원가는 비용이 아닌 자산 원가로 처리합니다.",
   },
   {
-    id: "kib11", type: "ox", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
+    id: "kib11", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
     text: "희석주당이익(희석EPS)은 기본주당이익(기본EPS)보다 항상 작거나 같다.",
     answer: true,
     explanation: "희석EPS: 잠재적 보통주(스톡옵션, 전환사채 등) 전환 가정 시 주식수 증가 → EPS 감소. 기본EPS ≥ 희석EPS.",
@@ -3870,7 +3870,7 @@ export const PROBLEMS: Problem[] = [
     hint: "손상차손환입은 당기손익으로 처리합니다.",
   },
   {
-    id: "kic19", type: "ox", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
+    id: "kic19", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
     text: "무형자산의 상각이 완료(잔존가치 0)되어도 계속 사용 중이면 장부에서 제거하지 않는다.",
     answer: true,
     explanation: "상각 완료 후 장부가액 0인 자산도 계속 사용 중이면 장부에 유지. 처분/폐기 시에만 제거.",
