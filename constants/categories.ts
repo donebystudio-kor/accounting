@@ -39,4 +39,13 @@ export const CATEGORIES: Category[] = [
   { id: "kifrs-calc-advanced", standard: "k-ifrs", name: "K-IFRS 고급 계산", description: "K-IFRS 심화 계산 문제" },
   { id: "general-advanced", standard: "general", name: "고급 분개", description: "일반기업 복합·특수 거래" },
   { id: "general-ox-advanced", standard: "general", name: "고급 OX 퀴즈", description: "일반기업 심화 개념 참/거짓" },
+  { id: "general-calc-advanced", standard: "general", name: "고급 계산", description: "일반기업 심화 계산 문제" },
+  // 은행업 고급
+  { id: "bank-advanced", standard: "bank", name: "고급 분개", description: "은행업 복합·특수 거래" },
+  { id: "bank-ox-advanced", standard: "bank", name: "고급 OX 퀴즈", description: "은행업 심화 개념 참/거짓" },
+  { id: "bank-calc-advanced", standard: "bank", name: "고급 계산", description: "은행업 심화 계산 문제" },
+  // 공공기관 고급
+  { id: "public-advanced", standard: "public", name: "고급 분개", description: "공공기관 복합·특수 거래" },
+  { id: "public-ox-advanced", standard: "public", name: "고급 OX 퀴즈", description: "공공기관 심화 개념 참/거짓" },
+  { id: "public-calc-advanced", standard: "public", name: "고급 계산", description: "공공기관 심화 계산 문제" },
 ];
