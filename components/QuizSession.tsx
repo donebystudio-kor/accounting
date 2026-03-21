@@ -1,11 +1,27 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { Problem } from "@/constants/problems";
 import JournalQuiz from "./JournalQuiz";
 import OxQuiz from "./OxQuiz";
 import CalculationQuiz from "./CalculationQuiz";
 import StatementQuiz from "./StatementQuiz";
+
+export interface QuizResult {
+  problemId: string;
+  correct: boolean;
+  partial: boolean;
+  elapsed: number;
+}
+
+export interface QuizSummary {
+  categoryName: string;
+  problems: Problem[];
+  results: QuizResult[];
+  totalScore: number;
+  totalElapsed: number;
+}
 
 interface Props {
   problems: Problem[];
@@ -13,94 +29,73 @@ interface Props {
 }
 
 export default function QuizSession({ problems, categoryName }: Props) {
+  const router = useRouter();
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
-  const [bonus, setBonus] = useState(0);
   const [timerEnabled, setTimerEnabled] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  const [totalElapsed, setTotalElapsed] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const [done, setDone] = useState(false);
-  // force re-mount quiz components
+  const [results, setResults] = useState<QuizResult[]>([]);
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    if (timerEnabled && !done) {
+    if (timerEnabled) {
       timerRef.current = setInterval(() => setElapsed((e) => e + 1), 1000);
     }
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [timerEnabled, done, index]);
+  }, [timerEnabled, index]);
 
   const problem = problems[index];
 
   const handleResult = (correct: boolean, partial: boolean) => {
     if (timerRef.current) clearInterval(timerRef.current);
+
+    const result: QuizResult = {
+      problemId: problem.id,
+      correct,
+      partial,
+      elapsed,
+    };
+    const newResults = [...results, result];
+    setResults(newResults);
+    setTotalElapsed((t) => t + elapsed);
+
     if (correct) {
       const streakBonus = streak >= 2 ? Math.min(streak, 5) : 0;
       setScore((s) => s + 10 + streakBonus);
-      setBonus(streakBonus);
       setStreak((s) => s + 1);
     } else if (partial) {
       setScore((s) => s + 5);
-      setBonus(0);
       setStreak(0);
     } else {
-      setBonus(0);
       setStreak(0);
     }
   };
 
   const handleNext = () => {
     if (index + 1 >= problems.length) {
-      setDone(true);
+      // 결과를 sessionStorage에 저장하고 result 페이지로 이동
+      const finalElapsed = totalElapsed + elapsed;
+      const finalScore = score; // 이미 handleResult에서 업데이트됨
+      const summary: QuizSummary = {
+        categoryName,
+        problems,
+        results: [...results],
+        totalScore: finalScore,
+        totalElapsed: finalElapsed,
+      };
+      sessionStorage.setItem("quizSummary", JSON.stringify(summary));
+      router.push("/result");
       return;
     }
     setIndex((i) => i + 1);
     setElapsed(0);
     setKey((k) => k + 1);
   };
-
-  if (done) {
-    const maxScore = problems.length * 10;
-    const pct = Math.round((score / maxScore) * 100);
-    return (
-      <div className="text-center py-10">
-        <p className="text-4xl font-extrabold text-primary mb-2">{score}점</p>
-        <p className="text-text-sub text-sm mb-1">
-          {problems.length}문제 · 달성률 {pct}%
-        </p>
-        <div className="w-full max-w-xs mx-auto h-2 bg-border rounded-full mt-3 mb-6">
-          <div
-            className="h-full bg-primary rounded-full transition-all"
-            style={{ width: `${pct}%` }}
-          />
-        </div>
-        <div className="flex gap-3 justify-center">
-          <button
-            onClick={() => {
-              setIndex(0);
-              setScore(0);
-              setStreak(0);
-              setElapsed(0);
-              setDone(false);
-              setKey((k) => k + 1);
-            }}
-            className="px-5 py-2 bg-primary text-white rounded-lg text-sm font-bold"
-          >
-            다시 풀기
-          </button>
-          <a
-            href="/"
-            className="px-5 py-2 border border-border rounded-lg text-sm text-text-sub"
-          >
-            홈으로
-          </a>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div>
@@ -133,36 +128,16 @@ export default function QuizSession({ problems, categoryName }: Props) {
 
       {/* 문제 렌더 */}
       {problem.type === "journal" && (
-        <JournalQuiz
-          key={key}
-          problem={problem}
-          onResult={handleResult}
-          onNext={handleNext}
-        />
+        <JournalQuiz key={key} problem={problem} onResult={handleResult} onNext={handleNext} />
       )}
       {problem.type === "ox" && (
-        <OxQuiz
-          key={key}
-          problem={problem}
-          onResult={handleResult}
-          onNext={handleNext}
-        />
+        <OxQuiz key={key} problem={problem} onResult={handleResult} onNext={handleNext} />
       )}
       {problem.type === "calculation" && (
-        <CalculationQuiz
-          key={key}
-          problem={problem}
-          onResult={handleResult}
-          onNext={handleNext}
-        />
+        <CalculationQuiz key={key} problem={problem} onResult={handleResult} onNext={handleNext} />
       )}
       {problem.type === "statement" && (
-        <StatementQuiz
-          key={key}
-          problem={problem}
-          onResult={handleResult}
-          onNext={handleNext}
-        />
+        <StatementQuiz key={key} problem={problem} onResult={handleResult} onNext={handleNext} />
       )}
     </div>
   );
