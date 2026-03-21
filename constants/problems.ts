@@ -21,6 +21,7 @@ export interface Problem {
   // 공통
   explanation: string;
   hint?: string;
+  tags?: string[];
 }
 
 export const PROBLEMS: Problem[] = [
@@ -35,6 +36,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "사업주가 현금을 출자하면 자산(현금) 증가, 자본(자본금) 증가.",
     hint: "출자 거래에서 어떤 자산이 들어오고, 자본이 어떻게 변하는지 생각해보세요.",
     distractors: ["보통예금", "이익잉여금", "선수금"],
+    tags: ["기초회계"],
   },
   {
     id: "cjb02", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -44,6 +46,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "상품(자산) 증가, 현금(자산) 감소.",
     hint: "현금으로 무언가를 구입했을 때 자산 간 교환을 떠올려보세요.",
     distractors: ["매출원가", "외상매입금", "선급금"],
+    tags: ["재고자산"],
   },
   {
     id: "cjb03", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -53,6 +56,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "현금(자산) 증가, 매출(수익) 발생.",
     hint: "물건을 팔고 돈을 받았을 때, 수익은 어느 쪽에 기록될까요?",
     distractors: ["외상매출금", "선수금", "매출원가"],
+    tags: ["재고자산"],
   },
   {
     id: "cjb04", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -62,6 +66,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "외상 매입: 상품(자산) 증가, 외상매입금(부채) 증가.",
     hint: "대금을 나중에 지급하기로 했다면, 부채가 발생합니다.",
     distractors: ["미지급금", "지급어음", "선수금"],
+    tags: ["재고자산"],
   },
   {
     id: "cjb05", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -71,6 +76,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "외상 판매: 외상매출금(자산) 증가, 매출(수익) 발생.",
     hint: "대금을 나중에 받기로 했다면, 채권이 발생합니다.",
     distractors: ["미수금", "받을어음", "선급금"],
+    tags: ["재고자산"],
   },
   {
     id: "cjb06", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -80,6 +86,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "외상매입금(부채) 감소, 현금(자산) 감소.",
     hint: "부채를 갚는 거래입니다. 부채 감소는 어느 쪽일까요?",
     distractors: ["미지급금", "지급어음", "상품"],
+    tags: ["재고자산"],
   },
   {
     id: "cjb07", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -89,6 +96,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "현금(자산) 증가, 외상매출금(자산) 감소.",
     hint: "채권을 회수하는 거래입니다. 자산 간 교환을 생각해보세요.",
     distractors: ["미수금", "받을어음", "매출"],
+    tags: ["기초회계"],
   },
   {
     id: "cjb08", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -98,6 +106,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "보통예금(자산) 증가, 단기차입금(부채) 증가.",
     hint: "돈을 빌리면 자산이 늘고, 동시에 갚아야 할 의무도 생깁니다.",
     distractors: ["현금", "장기차입금", "미지급금"],
+    tags: ["기초회계"],
   },
   {
     id: "cjb09", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -107,6 +116,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "임차료(비용) 발생, 현금(자산) 감소.",
     hint: "매달 지급하는 비용입니다. 비용은 어느 쪽에 기록될까요?",
     distractors: ["임대료수익", "선급비용", "미지급비용"],
+    tags: ["기초회계"],
   },
   {
     id: "cjb10", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -116,6 +126,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "급여(비용) 발생, 보통예금(자산) 감소.",
     hint: "직원에게 지급하는 비용입니다. 지급 수단이 무엇인지 확인하세요.",
     distractors: ["현금", "미지급비용", "예수금"],
+    tags: ["기초회계"],
   },
   {
     id: "cjb11", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -125,6 +136,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "비품(자산) 증가, 현금(자산) 감소.",
     hint: "오래 사용할 물건을 구입했습니다. 비용일까요, 자산일까요?",
     distractors: ["소모품비", "미지급금", "선급금"],
+    tags: ["유형자산"],
   },
   {
     id: "cjb12", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -134,6 +146,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "선급금(자산) 증가, 현금(자산) 감소. 선급금은 미리 지급한 금액.",
     hint: "아직 물건을 받지 않았지만 미리 돈을 줬습니다. 이건 자산일까요, 비용일까요?",
     distractors: ["선급비용", "선수금", "미지급금"],
+    tags: ["기초회계"],
   },
   {
     id: "cjb13", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -143,6 +156,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "현금(자산) 증가, 선수금(부채) 증가. 상품 인도 전에 받은 금액은 부채.",
     hint: "아직 물건을 주지 않았지만 미리 돈을 받았습니다. 이건 수익일까요, 부채일까요?",
     distractors: ["매출", "선급금", "예수금"],
+    tags: ["재고자산"],
   },
   {
     id: "cjb14", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -152,6 +166,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "보험료(비용) 발생, 현금(자산) 감소.",
     hint: "정기적으로 납부하는 비용입니다. 비용 발생과 현금 감소를 분개해보세요.",
     distractors: ["선급비용", "미지급비용", "세금과공과"],
+    tags: ["기초회계"],
   },
   {
     id: "cjb15", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -161,6 +176,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "보통예금(자산) 증가, 이자수익(수익) 발생.",
     hint: "은행에서 돈이 들어왔습니다. 예금 이자는 수익입니다.",
     distractors: ["현금", "미수수익", "이자비용"],
+    tags: ["기초회계"],
   },
   {
     id: "cjb16", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -170,6 +186,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "상품(자산) 증가, 지급어음(부채) 증가. 어음 발행은 외상매입금과 구분.",
     hint: "어음을 발행했다는 건 나중에 갚겠다는 약속입니다. 외상매입금과 구분해보세요.",
     distractors: ["외상매입금", "미지급금", "받을어음"],
+    tags: ["재고자산"],
   },
   {
     id: "cjb17", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -179,6 +196,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "받을어음(자산) 증가, 매출(수익) 발생. 외상매출금과 구분.",
     hint: "어음을 받았다는 건 나중에 받을 권리입니다. 외상매출금과 구분해보세요.",
     distractors: ["외상매출금", "미수금", "지급어음"],
+    tags: ["재고자산"],
   },
   {
     id: "cjb18", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -188,6 +206,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "단기대여금(자산) 증가, 현금(자산) 감소. 단기차입금과 혼동 주의.",
     hint: "돈을 빌려주는 거래입니다. 빌려주는 것과 빌리는 것의 계정을 구분하세요.",
     distractors: ["단기차입금", "미수금", "선급금"],
+    tags: ["기초회계"],
   },
   {
     id: "cjb19", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -197,6 +216,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "현금(자산) 증가, 임대료수익(수익) 발생. 임차료(비용)와 구분.",
     hint: "건물을 빌려주고 돈을 받는 거래입니다. 빌려주는 입장의 수익을 생각하세요.",
     distractors: ["임차료", "선수수익", "미수수익"],
+    tags: ["유형자산"],
   },
   {
     id: "cjb20", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -206,6 +226,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "광고선전비(비용) 발생, 보통예금(자산) 감소.",
     hint: "홍보를 위해 지출한 비용입니다. 접대비와 구분해보세요.",
     distractors: ["접대비", "현금", "미지급비용"],
+    tags: ["기초회계"],
   },
   // ══════════════════════════════════════
   // common / journal-intermediate (10개)
@@ -221,6 +242,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "원금(부채 감소) + 이자(비용 발생). 차변 합계 3,060,000 = 대변 3,060,000.",
     hint: "원금 상환과 이자 지급이 동시에 일어납니다. 각각의 성격을 구분하세요.",
     distractors: ["장기차입금", "현금", "미지급비용"],
+    tags: ["기초회계"],
   },
   {
     id: "cji02", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -230,6 +252,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "상품 이외 자산의 외상 구입은 미지급금. 외상매입금은 상품 거래에만 사용.",
     hint: "상품이 아닌 자산을 외상으로 구입했습니다. 외상매입금과 다른 계정을 사용합니다.",
     distractors: ["외상매입금", "지급어음", "미지급비용"],
+    tags: ["재고자산", "유형자산"],
   },
   {
     id: "cji03", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -242,6 +265,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "처분가액 > 장부가액 → 처분이익 200,000. 상품 외 자산 처분은 미수금 사용.",
     hint: "자산을 팔았는데 장부가액보다 비싸게 팔았습니다. 그 차이는 무엇일까요?",
     distractors: ["외상매출금", "유형자산처분손실", "매출"],
+    tags: ["재고자산", "유형자산"],
   },
   {
     id: "cji04", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -254,6 +278,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "복합 결제: 어음분은 지급어음, 외상분은 외상매입금.",
     hint: "하나의 매입에 두 가지 결제 수단을 사용했습니다. 각각 어떤 부채인지 구분하세요.",
     distractors: ["현금", "미지급금", "받을어음"],
+    tags: ["재고자산"],
   },
   {
     id: "cji05", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -266,6 +291,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "급여 총액(비용). 원천징수 → 예수금(부채), 실지급 → 보통예금 감소.",
     hint: "급여 총액에서 일부를 공제합니다. 공제한 금액은 회사가 대신 보관하는 것입니다.",
     distractors: ["현금", "미지급비용", "세금과공과"],
+    tags: ["기초회계"],
   },
   {
     id: "cji06", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -278,6 +304,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "처분가액 < 장부가액 → 처분손실 200,000.",
     hint: "자산을 팔았는데 장부가액보다 싸게 팔았습니다. 그 차이는 무엇일까요?",
     distractors: ["유형자산처분이익", "미수금", "감가상각비"],
+    tags: ["유형자산"],
   },
   {
     id: "cji07", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -287,6 +314,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "결산 수정분개. 선급비용(자산) 감소 → 보험료(비용) 인식.",
     hint: "미리 지급한 비용 중 올해 해당분을 비용으로 전환하는 결산 분개입니다.",
     distractors: ["선급금", "미지급비용", "현금"],
+    tags: ["기초회계"],
   },
   {
     id: "cji08", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -296,6 +324,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "결산 수정분개. 차기 귀속 수익을 선수수익(부채)으로 이연.",
     hint: "미리 받은 수익 중 내년 해당분을 부채로 전환하는 결산 분개입니다.",
     distractors: ["선수금", "미수수익", "임차료"],
+    tags: ["기초회계"],
   },
   {
     id: "cji09", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -305,6 +334,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "감가상각비(비용) 인식, 건물(자산) 장부가액 감소.",
     hint: "자산의 가치가 시간이 지남에 따라 줄어듭니다. 이를 비용으로 인식하는 분개입니다.",
     distractors: ["수선비", "임차료", "미지급비용"],
+    tags: ["유형자산"],
   },
   {
     id: "cji10", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -317,6 +347,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "공급가액 → 임차료(비용), 부가세 → 부가세예수금. 합계 일치 확인.",
     hint: "부가세가 포함된 거래입니다. 공급가액과 부가세를 분리해서 생각하세요.",
     distractors: ["현금", "미지급비용", "선급비용", "세금과공과"],
+    tags: ["기초회계"],
   },
   // ══════════════════════════════════════
   // common / ox-basic (10개)
@@ -327,6 +358,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "자산의 증가는 차변, 감소는 대변에 기록합니다.",
     hint: "자산, 부채, 자본, 수익, 비용 각각의 증가/감소가 차변과 대변 중 어디인지 정리해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cox02", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -334,6 +366,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "부채의 증가는 대변(오른쪽)에 기록합니다. 부채 감소가 차변입니다.",
     hint: "부채는 자산과 반대 방향으로 기록됩니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox03", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -341,6 +374,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "비용의 발생은 차변(왼쪽)에 기록합니다.",
     hint: "비용의 성격을 생각해보세요. 비용은 자본을 줄이는 요소입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox04", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -348,6 +382,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "수익의 발생은 대변에 기록합니다.",
     hint: "수익의 성격을 생각해보세요. 수익은 자본을 늘리는 요소입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox05", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -355,6 +390,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "외상매입금은 상품 매입 대금, 미지급금은 상품 외 거래 대금입니다.",
     hint: "두 계정의 사용 범위 차이를 생각해보세요. 상품 거래와 그 외 거래를 구분합니다.",
+    tags: ["재고자산"],
   },
   {
     id: "cox06", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -362,6 +398,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "선급금은 미리 지급한 금액으로 자산 계정입니다. 선수금이 부채.",
     hint: "미리 지급한 금액의 성격을 생각해보세요. 나중에 돌려받거나 물건을 받을 권리입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox07", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -369,6 +406,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "복식부기의 기본 원리. 대차평균의 원리.",
     hint: "복식부기의 가장 기본적인 원리를 떠올려보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cox08", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -376,6 +414,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "감가상각비는 비용 계정입니다. 자산의 가치 감소를 비용으로 인식.",
     hint: "자산의 가치 감소를 기록하는 항목의 성격을 생각해보세요.",
+    tags: ["유형자산"],
   },
   {
     id: "cox09", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -383,6 +422,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "이자수익은 수익 계정입니다. 이자비용이 비용.",
     hint: "은행에 돈을 맡기고 받는 대가의 성격을 생각해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cox10", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -390,6 +430,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "재무상태표(대차대조표)는 특정 시점의 재무 상태를 보여줍니다. 손익계산서가 기간.",
     hint: "재무상태표와 손익계산서의 차이를 생각해보세요. 시점 vs 기간.",
+    tags: ["재무제표표시"],
   },
   // ══════════════════════════════════════
   // k-ifrs / kifrs-basic (10개)
@@ -402,6 +443,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "K-IFRS에서는 상품 대신 재고자산, 외상매입금 대신 매입채무를 사용합니다.",
     hint: "K-IFRS에서 상품과 외상매입금 대신 사용하는 계정명을 떠올려보세요.",
     distractors: ["상품", "외상매입금", "미지급금"],
+    tags: ["IAS2", "재고자산"],
   },
   {
     id: "kb02", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -411,6 +453,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "K-IFRS에서는 외상매출금 대신 매출채권을 사용합니다.",
     hint: "K-IFRS에서 외상매출금 대신 사용하는 계정명을 떠올려보세요.",
     distractors: ["외상매출금", "미수금", "받을어음"],
+    tags: ["IAS2", "재고자산"],
   },
   {
     id: "kb03", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -420,6 +463,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "매출채권 회수 불가능 시 대손상각비(비용) 인식, 매출채권(자산) 감소.",
     hint: "회수 불가능한 채권에 대해 어떤 비용을 인식하는지 생각해보세요.",
     distractors: ["유형자산처분손실", "충당부채", "이자비용"],
+    tags: ["IAS16", "유형자산"],
   },
   {
     id: "kb04", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -429,6 +473,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "감가상각비(비용) 인식, 건물(자산) 장부가액 감소.",
     hint: "유형자산의 가치 감소를 기간별로 인식하는 분개입니다.",
     distractors: ["수선비", "임차료", "투자부동산"],
+    tags: ["IAS16", "유형자산", "IAS40", "투자부동산"],
   },
   {
     id: "kb05", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -438,6 +483,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "토지(자산) 증가, 현금(자산) 감소. K-IFRS와 일반기업회계기준 동일.",
     hint: "토지는 감가상각하지 않는 자산입니다. 취득 시 분개를 생각해보세요.",
     distractors: ["건물", "투자부동산", "보통예금"],
+    tags: ["IAS16", "유형자산", "IAS40", "투자부동산"],
   },
   {
     id: "kb06", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -445,8 +491,9 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "재고자산평가손실", amount: 300000 }],
     credit: [{ account: "재고자산", amount: 300000 }],
     explanation: "재고자산의 순실현가능가치가 취득원가보다 낮을 때 평가손실 인식.",
-    hint: "재고자산의 시가가 원가보다 낮아졌을 때 인식하는 손실입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
     distractors: ["매출원가", "상품", "감가상각비"],
+    tags: ["IAS2", "재고자산", "IAS16", "유형자산"],
   },
   {
     id: "kb07", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -454,8 +501,9 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "제품보증비", amount: 2000000 }],
     credit: [{ account: "충당부채", amount: 2000000 }],
     explanation: "제품보증비(비용) 인식, 충당부채(부채) 설정. 미래 보증 지출이 예상될 때 인식.",
-    hint: "충당부채는 금액이나 시기가 불확실한 부채입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
     distractors: ["미지급비용", "선수금", "예수금"],
+    tags: ["IAS2", "재고자산"],
   },
   {
     id: "kb08", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -465,6 +513,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "매입채무(부채) 감소, 보통예금(자산) 감소.",
     hint: "K-IFRS에서 상품 매입 대금을 갚을 때 사용하는 계정을 생각해보세요.",
     distractors: ["외상매입금", "미지급금", "현금"],
+    tags: ["기초회계"],
   },
   {
     id: "kb09", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -474,6 +523,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "기계장치(자산) 증가, 보통예금(자산) 감소.",
     hint: "생산 설비를 구입하는 거래입니다. 어떤 자산 계정을 사용할까요?",
     distractors: ["비품", "현금", "미지급금"],
+    tags: ["IAS16", "유형자산"],
   },
   {
     id: "kb10", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -483,6 +533,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "장기차입금(부채) 감소, 보통예금(자산) 감소.",
     hint: "장기간 빌린 돈을 갚는 거래입니다. 단기차입금과 구분하세요.",
     distractors: ["단기차입금", "현금", "이자비용"],
+    tags: ["기초회계"],
   },
   // ══════════════════════════════════════
   // k-ifrs / kifrs-intermediate (5개)
@@ -495,6 +546,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "IFRS 16: 리스이용자는 사용권자산(자산)과 리스부채(부채)를 인식합니다.",
     hint: "IFRS 16에서 리스이용자가 인식하는 두 가지 항목을 생각해보세요.",
     distractors: ["비품", "임차료", "장기차입금"],
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "ki02", type: "journal", standard: "k-ifrs", category: "kifrs-intermediate", difficulty: "intermediate",
@@ -502,8 +554,9 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "이자비용", amount: 200000 }],
     credit: [{ account: "리스부채", amount: 200000 }],
     explanation: "리스부채에 대한 이자비용 인식. 리스부채 장부금액 증가(유효이자법).",
-    hint: "리스부채에 대한 이자를 인식합니다. 유효이자법을 떠올려보세요.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
     distractors: ["임차료", "감가상각비", "미지급비용"],
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "ki03", type: "journal", standard: "k-ifrs", category: "kifrs-intermediate", difficulty: "intermediate",
@@ -511,8 +564,9 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "감가상각비", amount: 2400000 }],
     credit: [{ account: "사용권자산", amount: 2400000 }],
     explanation: "사용권자산을 리스기간에 걸쳐 감가상각합니다.",
-    hint: "사용권자산도 일반 유형자산처럼 감가상각합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
     distractors: ["임차료", "리스부채", "건물"],
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "ki04", type: "journal", standard: "k-ifrs", category: "kifrs-intermediate", difficulty: "intermediate",
@@ -522,6 +576,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "투자부동산 원가모형 적용 시 감가상각비를 인식합니다.",
     hint: "투자 목적으로 보유하는 부동산의 감가상각입니다. 원가모형 적용 시.",
     distractors: ["건물", "임대료수익", "수선비"],
+    tags: ["IAS16", "유형자산", "IAS40", "투자부동산"],
   },
   {
     id: "ki05", type: "journal", standard: "k-ifrs", category: "kifrs-intermediate", difficulty: "intermediate",
@@ -531,6 +586,7 @@ export const PROBLEMS: Problem[] = [
     explanation: "예상 대손에 대해 대손상각비(비용)를 인식하고 대손충당금을 설정합니다.",
     hint: "매출채권의 예상 회수 불능분을 차감하는 계정을 생각해보세요.",
     distractors: ["매출채권", "미지급비용", "유형자산처분손실"],
+    tags: ["IAS16", "유형자산"],
   },
   // ══════════════════════════════════════
   // k-ifrs / kifrs-ox (10개)
@@ -541,6 +597,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "저가법 적용. 순실현가능가치가 낮으면 평가손실 인식.",
     hint: "재고자산 평가 시 적용하는 방법을 생각해보세요. 원가와 시가 중 어느 쪽?",
+    tags: ["IAS2", "재고자산"],
   },
   {
     id: "kox02", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
@@ -548,6 +605,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "K-IFRS는 매출채권, 일반기업회계기준은 외상매출금 사용.",
     hint: "K-IFRS와 일반기업회계기준에서 사용하는 계정명 차이를 떠올려보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "kox03", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
@@ -555,6 +613,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "IFRS 16은 리스이용자의 운용/금융리스 구분을 폐지. 단일 모델로 사용권자산과 리스부채를 인식.",
     hint: "IFRS 16이 리스이용자의 회계처리를 어떻게 단순화했는지 생각해보세요.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kox04", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
@@ -562,6 +621,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "사용권자산 = 리스부채 + 선급리스료 + 초기직접원가 + 복구원가 등. 동일하지 않을 수 있음.",
     hint: "사용권자산의 최초 측정에 포함되는 항목들을 떠올려보세요.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kox05", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
@@ -569,6 +629,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "원가모형과 공정가치모형 중 선택. 공정가치모형은 감가상각 불필요.",
     hint: "투자부동산의 후속 측정에 사용할 수 있는 두 가지 모형을 생각해보세요.",
+    tags: ["IAS16", "유형자산", "IAS40", "투자부동산"],
   },
   {
     id: "kox06", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
@@ -576,6 +637,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "현재 의무, 경제적 효익 유출 가능성, 신뢰성 있는 추정 세 가지 조건 충족 시 인식.",
     hint: "충당부채의 인식 조건 세 가지를 떠올려보세요.",
+    tags: ["IAS37", "충당부채"],
   },
   {
     id: "kox07", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
@@ -583,6 +645,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "원가모형과 재평가모형 중 선택 가능. 재평가모형은 공정가치로 재평가.",
     hint: "유형자산의 후속 측정에 사용할 수 있는 모형이 하나뿐인지 생각해보세요.",
+    tags: ["IAS16", "유형자산"],
   },
   {
     id: "kox08", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
@@ -590,6 +653,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "재무상태표에서 매출채권 차감 표시. 순액으로 보고.",
     hint: "매출채권의 재무상태표 표시 방법을 생각해보세요. 총액 vs 순액.",
+    tags: ["IAS1", "재무제표표시"],
   },
   {
     id: "kox09", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
@@ -597,6 +661,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "연구단계 지출은 전액 비용. 개발단계 지출만 조건 충족 시 무형자산 인식 가능.",
     hint: "연구단계와 개발단계의 회계처리 차이를 생각해보세요.",
+    tags: ["IAS38", "무형자산"],
   },
   {
     id: "kox10", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
@@ -604,6 +669,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "기타포괄손익은 당기손익과 구분. 포괄손익계산서에 별도 표시.",
     hint: "포괄손익계산서의 구성 요소를 떠올려보세요. 당기손익과 구분되는 것이 있습니다.",
+    tags: ["IAS1", "재무제표표시"],
   },
   // ══════════════════════════════════════
   // Batch 1 추가 (90개)
@@ -615,7 +681,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 150000 }],
     distractors: ["소모품비", "미지급금", "선급금"],
     explanation: "소모품(자산) 증가, 현금(자산) 감소. 소모품은 자산, 소모품비는 비용으로 구분.",
-    hint: "구입한 소모품은 아직 사용 전이므로 자산입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb22", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -624,7 +691,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "소모품", amount: 100000 }],
     distractors: ["현금", "미지급비용"],
     explanation: "소모품 사용분은 소모품비(비용)로 대체. 소모품(자산) 감소.",
-    hint: "사용한 소모품은 비용으로 전환됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb23", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -634,6 +702,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["장기차입금", "보통예금"],
     explanation: "단기차입금(부채) 감소, 현금(자산) 감소.",
     hint: "빌린 돈을 갚으면 부채가 줄어듭니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb24", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -642,7 +711,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 240000 }],
     distractors: ["선급비용", "현금"],
     explanation: "보험료(비용) 발생, 보통예금(자산) 감소.",
-    hint: "당기에 해당하는 보험료는 비용으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["유형자산"],
   },
   {
     id: "cjb25", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -652,6 +722,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["미수수익", "수수료비용"],
     explanation: "현금(자산) 증가, 수수료수익(수익) 발생.",
     hint: "용역을 제공하고 받은 대가는 수익입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb26", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -660,7 +731,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 200000 }],
     distractors: ["복리후생비", "미지급비용"],
     explanation: "여비교통비(비용) 발생, 현금(자산) 감소.",
-    hint: "출장 관련 비용은 여비교통비 계정을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb27", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -670,6 +742,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["자본금", "현금"],
     explanation: "배당 결의 시 이익잉여금(자본) 감소, 미지급배당금(부채) 증가. 실제 지급 시 현금 감소.",
     hint: "배당 결의는 지급 전이므로 미지급 부채로 처리합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb28", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -679,6 +752,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이익잉여금", "보통예금"],
     explanation: "미지급배당금(부채) 감소, 현금(자산) 감소.",
     hint: "이미 결의된 배당금을 실제로 지급하는 분개입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb29", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -687,7 +761,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 30000 }],
     distractors: ["법인세비용", "미지급세금"],
     explanation: "세금과공과(비용) 발생, 현금(자산) 감소.",
-    hint: "재산세, 자동차세 등은 세금과공과 계정을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["법인세"],
   },
   {
     id: "cjb30", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -696,7 +771,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 50000 }],
     distractors: ["수도광열비", "현금"],
     explanation: "통신비(비용) 발생, 보통예금(자산) 감소.",
-    hint: "전화요금, 인터넷비용 등은 통신비 계정을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb31", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -705,7 +781,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 120000 }],
     distractors: ["통신비", "미지급비용"],
     explanation: "수도광열비(비용) 발생, 현금(자산) 감소.",
-    hint: "전기, 수도, 가스요금은 수도광열비 계정을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb32", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -714,7 +791,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "받을어음", amount: 1000000 }],
     distractors: ["현금", "외상매출금"],
     explanation: "어음 만기 회수: 보통예금(자산) 증가, 받을어음(자산) 감소.",
-    hint: "만기된 어음을 회수하면 받을어음이 줄어듭니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb33", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -723,7 +801,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 800000 }],
     distractors: ["외상매입금", "현금"],
     explanation: "지급어음(부채) 감소, 보통예금(자산) 감소.",
-    hint: "만기된 어음을 결제하면 지급어음 부채가 사라집니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb34", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -733,6 +812,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["건물", "미지급금"],
     explanation: "유지보수 목적의 수선은 수선비(비용)로 처리. 자산 가치 향상 목적이면 자본적 지출로 자산화.",
     hint: "단순 유지보수 목적의 수선은 비용으로 처리합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "cjb35", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -742,6 +822,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["단기차입금"],
     explanation: "보통예금(자산) 증가, 현금(자산) 감소. 자산 내 대체 거래.",
     hint: "현금을 은행에 입금하면 자산의 종류가 바뀝니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb36", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -750,7 +831,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 150000 }],
     distractors: ["광고선전비", "미지급비용"],
     explanation: "접대비(비용) 발생, 현금(자산) 감소.",
-    hint: "거래처 식사, 선물 등은 접대비 계정을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb37", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -759,7 +841,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "이자수익", amount: 30000 }],
     distractors: ["미수수익", "이자비용"],
     explanation: "현금(자산) 증가, 이자수익(수익) 발생.",
-    hint: "돈을 빌려주고 받는 이자는 이자수익입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb38", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -768,7 +851,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 200000 }],
     distractors: ["급여", "미지급비용"],
     explanation: "복리후생비(비용) 발생, 현금(자산) 감소.",
-    hint: "직원 식대, 경조사비 등은 복리후생비 계정을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb39", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -778,6 +862,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이자수익", "미지급금"],
     explanation: "결산 수정: 이자비용(비용) 발생 인식, 미지급비용(부채) 계상.",
     hint: "아직 지급하지 않은 이자도 발생주의에 따라 비용으로 인식합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb40", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -786,7 +871,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "미수수익", amount: 50000 }],
     distractors: ["보통예금", "이자수익"],
     explanation: "현금(자산) 증가, 미수수익(자산) 감소. 이미 수익으로 인식한 금액을 실제 회수.",
-    hint: "이미 수익으로 인식된 미수수익을 받으면 자산 간 대체입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cji11", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -795,7 +881,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 500000 }],
     distractors: ["법인세비용", "현금", "미지급세금"],
     explanation: "중간예납은 선급법인세(자산)로 처리. 결산 시 법인세비용과 상계.",
-    hint: "미리 납부한 세금은 자산(선급법인세)으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["법인세"],
   },
   {
     id: "cji12", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -804,7 +891,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "선급법인세", amount: 500000 }, { account: "미지급세금", amount: 1500000 }],
     distractors: ["보통예금"],
     explanation: "법인세비용(비용) 2,000,000 = 선급법인세(자산) 500,000 상계 + 미지급세금(부채) 1,500,000.",
-    hint: "법인세비용에서 이미 낸 선급법인세를 차감한 나머지가 미지급세금입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["법인세"],
   },
   {
     id: "cji13", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -813,7 +901,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "외상매출금", amount: 300000 }],
     distractors: ["현금"],
     explanation: "대손충당금 200,000 먼저 상계. 부족분 100,000은 대손상각비(비용)로 추가 인식.",
-    hint: "대손충당금이 있으면 먼저 상계하고, 부족하면 비용으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cji14", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -823,6 +912,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["대손상각비"],
     explanation: "① 채권 복구: (차) 외상매출금 / (대) 대손충당금. ② 현금 회수: (차) 현금 / (대) 외상매출금. 대손상각비 환입이 아닌 대손충당금 복구.",
     hint: "대손 회수는 채권을 먼저 복구한 뒤 현금으로 받는 2단계로 처리합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cji15", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -831,7 +921,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "임차료", amount: 60000 }],
     distractors: ["선급금", "선수수익"],
     explanation: "차기 해당분 임차료를 선급비용(자산)으로 이연. 비용 감소.",
-    hint: "차기에 해당하는 비용은 선급비용으로 이연합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cji16", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -841,6 +932,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이자비용", "선급비용"],
     explanation: "발생주의: 아직 못 받은 이자도 이자수익(수익) 인식, 미수수익(자산) 계상.",
     hint: "받지 않았어도 기간이 경과한 이자는 수익으로 인식합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cji17", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -850,6 +942,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["수선비", "미지급금"],
     explanation: "자산 가치 증가 지출(자본적 지출)은 자산으로 처리. 수선비(수익적 지출)와 구분.",
     hint: "자산의 가치나 내용연수를 늘리는 지출은 자산으로 처리합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "cji18", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -858,7 +951,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "자본금", amount: 1000000 }, { account: "주식발행초과금", amount: 4000000 }],
     distractors: ["이익잉여금", "현금"],
     explanation: "액면가 1,000 × 1,000주 = 자본금 1,000,000. 초과분 4,000,000 = 주식발행초과금(자본잉여금).",
-    hint: "발행금액에서 액면가를 빼면 주식발행초과금입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cji19", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -868,6 +962,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["유형자산처분손실"],
     explanation: "처분가 12,000,000 > 장부가 10,000,000 → 처분이익 2,000,000.",
     hint: "처분가액이 장부가액보다 크면 처분이익입니다.",
+    tags: ["유형자산"],
   },
   {
     id: "cji20", type: "journal", standard: "common", category: "journal-intermediate", difficulty: "intermediate",
@@ -877,6 +972,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["매출", "선수수익"],
     explanation: "상품권 발행: 현금(자산) 증가, 선수금(부채) 증가. 상품권 사용 시 매출 인식.",
     hint: "상품권은 아직 상품을 제공하지 않았으므로 부채입니다.",
+    tags: ["재고자산"],
   },
   {
     id: "cox11", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -884,6 +980,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "소모품 구입 시 자산(소모품)으로 처리하고, 사용 시 비용(소모품비)으로 대체합니다.",
     hint: "구입과 사용은 다른 시점입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox12", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -891,6 +988,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "복식부기의 핵심 원리. 하나의 거래가 차변과 대변에 동일 금액으로 기록됩니다.",
     hint: "복식부기에서 거래는 항상 두 계정에 영향을 줍니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox13", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -898,6 +996,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "자본금은 자본 계정입니다. 자산 = 부채 + 자본 관계에서 자본에 해당합니다.",
     hint: "재무상태표 오른쪽에 있는 항목을 생각해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cox14", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -905,6 +1004,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "손익계산서는 기간 재무제표. 재무상태표는 시점 재무제표입니다.",
     hint: "손익계산서는 '기간' 동안의 경영 성과를 보여줍니다.",
+    tags: ["재무제표표시"],
   },
   {
     id: "cox15", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -912,6 +1012,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "미지급금은 상품 외 자산 구입 대금, 미지급비용은 발생했으나 지급하지 않은 비용입니다.",
     hint: "미지급금은 구입 거래, 미지급비용은 발생주의 관련 계정입니다.",
+    tags: ["재고자산"],
   },
   {
     id: "cox16", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -919,6 +1020,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "수익 발생은 대변. 수익 취소는 차변에 기록합니다.",
     hint: "수익과 부채는 같은 쪽(대변)에서 증가합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox17", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -926,6 +1028,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "선수금은 미래에 상품/서비스를 제공해야 하는 의무이므로 부채 계정입니다.",
     hint: "받은 돈에 대해 아직 의무가 남아있으면 부채입니다.",
+    tags: ["재고자산"],
   },
   {
     id: "cox18", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -933,6 +1036,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "발생주의는 현금 수수와 관계없이 수익/비용이 발생한 시점에 인식합니다. 현금주의와 반대.",
     hint: "발생주의는 현금 흐름이 아닌 경제적 사건 발생 시점 기준입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox19", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -940,6 +1044,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "대손충당금은 자산의 차감 계정. 재무상태표에서 외상매출금에서 차감하여 순액 표시.",
     hint: "대손충당금은 자산을 줄이는 역할을 합니다.",
+    tags: ["재무제표표시"],
   },
   {
     id: "cox20", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -947,6 +1052,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "자본적 지출은 자산으로 처리 후 감가상각합니다. 수익적 지출이 당기 비용입니다.",
     hint: "자산 가치를 높이는 지출은 자산으로, 단순 유지는 비용으로 처리합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "cox21", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -954,6 +1060,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "이익잉여금은 자본 계정입니다. 누적된 이익이 자본으로 쌓인 것입니다.",
     hint: "이익잉여금은 재무상태표의 자본 항목에 표시됩니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox22", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -961,6 +1068,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "미수수익은 이미 발생했지만 아직 받지 못한 수익으로 자산 계정입니다.",
     hint: "받아야 할 것은 자산, 줘야 할 것은 부채입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox23", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -968,6 +1076,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "처분가액 < 장부가액 → 처분손실. 처분가액 > 장부가액 → 처분이익.",
     hint: "비싸게 팔면 이익, 싸게 팔면 손실입니다.",
+    tags: ["유형자산"],
   },
   {
     id: "cox24", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -975,6 +1084,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "주식발행초과금은 액면가 초과 발행 금액으로 자본잉여금에 포함됩니다.",
     hint: "자본잉여금은 주주와의 거래에서 발생하는 자본입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox25", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -982,6 +1092,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "받을어음은 자산(받아야 할 것), 지급어음은 부채(줘야 할 것)입니다.",
     hint: "어음의 방향을 생각해보세요. 받는 건 자산, 주는 건 부채.",
+    tags: ["기초회계"],
   },
   {
     id: "ccalc01", type: "calculation", standard: "common", category: "calc-basic", difficulty: "basic",
@@ -989,6 +1100,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 3800000,
     explanation: "기초 자본 = 5,000,000 - 2,000,000 = 3,000,000. 기말 자본 = 3,000,000 + 1,000,000 - 200,000 = 3,800,000.",
     hint: "자본 = 자산 - 부채. 당기 순이익은 자본을 늘리고, 배당금은 자본을 줄입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "ccalc02", type: "calculation", standard: "common", category: "calc-basic", difficulty: "basic",
@@ -996,6 +1108,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 2000000,
     explanation: "매출총이익 = 10,000,000 - 6,000,000 = 4,000,000. 영업이익 = 4,000,000 - 2,000,000 = 2,000,000.",
     hint: "영업이익 = 매출액 - 매출원가 - 판매관리비",
+    tags: ["재고자산"],
   },
   {
     id: "ccalc03", type: "calculation", standard: "common", category: "calc-basic", difficulty: "basic",
@@ -1003,6 +1116,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 540000,
     explanation: "정액법 = (3,000,000 - 300,000) / 5 = 540,000원/년.",
     hint: "정액법: (취득원가 - 잔존가치) ÷ 내용연수",
+    tags: ["유형자산"],
   },
   {
     id: "ccalc04", type: "calculation", standard: "common", category: "calc-basic", difficulty: "basic",
@@ -1010,6 +1124,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 700000,
     explanation: "기말 = 500,000 + 2,000,000 - 1,800,000 = 700,000원.",
     hint: "기말 잔액 = 기초 잔액 + 발생액 - 회수액",
+    tags: ["기초회계"],
   },
   {
     id: "ccalc05", type: "calculation", standard: "common", category: "calc-basic", difficulty: "basic",
@@ -1017,6 +1132,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 850000,
     explanation: "매출원가 = 200,000 + 800,000 - 150,000 = 850,000원.",
     hint: "매출원가 = 기초재고 + 당기매입 - 기말재고",
+    tags: ["재고자산"],
   },
   {
     id: "kb11", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1026,6 +1142,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["매출채권", "미지급비용"],
     explanation: "K-IFRS: 기대신용손실 모형에 따라 대손상각비(비용) 인식, 대손충당금(차감계정) 설정.",
     hint: "K-IFRS는 손실이 발생하기 전에 미리 기대신용손실을 인식합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "kb12", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1035,6 +1152,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["매도가능금융자산", "보통예금"],
     explanation: "K-IFRS 9: 단기 매매 목적 금융자산은 당기손익-공정가치측정(FVTPL)으로 분류.",
     hint: "K-IFRS 9에서 금융자산 분류는 사업모형과 현금흐름 특성에 따릅니다.",
+    tags: ["IFRS9", "금융상품"],
   },
   {
     id: "kb13", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1044,6 +1162,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["기타포괄손익", "미실현이익"],
     explanation: "FVTPL 금융자산 평가이익은 당기손익(수익)으로 인식. 기타포괄손익 아님.",
     hint: "FVTPL은 평가손익이 당기손익에 반영됩니다.",
+    tags: ["IFRS9", "금융상품"],
   },
   {
     id: "kb14", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1053,6 +1172,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["장기차입금", "현금"],
     explanation: "사채 액면발행: 발행금액 = 액면금액. 보통예금(자산) 증가, 사채(부채) 증가.",
     hint: "사채는 회사채로 장기 부채입니다.",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "kb15", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1062,6 +1182,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["연구비", "개발비"],
     explanation: "외부 구입한 특허권은 무형자산으로 인식. 취득원가로 측정.",
     hint: "외부에서 구입한 무형자산은 취득원가로 자산 인식합니다.",
+    tags: ["IAS38", "무형자산"],
   },
   {
     id: "kb16", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1071,6 +1192,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["연구비", "무형자산"],
     explanation: "K-IFRS: 개발단계 지출은 요건 충족 시 무형자산(개발비)으로 인식. 연구단계는 전액 비용.",
     hint: "연구단계는 비용, 개발단계는 요건 충족 시 자산입니다.",
+    tags: ["IAS38", "무형자산"],
   },
   {
     id: "kb17", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1079,7 +1201,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "재평가잉여금", amount: 1000000 }],
     distractors: ["유형자산평가이익", "기타포괄손익"],
     explanation: "재평가 증가분은 기타포괄손익(재평가잉여금, 자본)으로 인식. 당기손익 아님.",
-    hint: "유형자산 재평가이익은 당기손익이 아닌 기타포괄손익으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS16", "유형자산"],
   },
   {
     id: "kb18", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1089,6 +1212,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["임차료", "사용권자산"],
     explanation: "리스료 지급 = 원금 상환(리스부채 감소) + 이자비용 인식. IFRS 16 적용.",
     hint: "리스료는 원금과 이자로 나뉩니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kb19", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1097,7 +1221,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "투자부동산평가이익", amount: 500000 }],
     distractors: ["재평가잉여금", "기타포괄손익"],
     explanation: "투자부동산 공정가치모형: 평가손익을 당기손익으로 인식. 재평가잉여금(기타포괄) 아님.",
-    hint: "투자부동산 공정가치모형의 평가손익은 당기손익입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS40", "투자부동산"],
   },
   {
     id: "kb20", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1106,7 +1231,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "자본금", amount: 3000000 }, { account: "주식발행초과금", amount: 2000000 }],
     distractors: ["사채"],
     explanation: "전환사채(부채) 감소, 자본금 + 주식발행초과금(자본) 증가. 부채의 자본 전환.",
-    hint: "전환사채가 주식으로 바뀌면 부채가 자본이 됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "kb21", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1115,7 +1241,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "확정급여채무", amount: 1000000 }],
     distractors: ["퇴직급여충당부채", "예수금"],
     explanation: "K-IFRS 19: 확정급여제도에서 퇴직급여(비용) 인식, 확정급여채무(부채) 계상.",
-    hint: "K-IFRS에서는 퇴직급여충당부채 대신 확정급여채무를 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS19", "종업원급여"],
   },
   {
     id: "kb22", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1125,6 +1252,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["임차료", "장기차입금"],
     explanation: "IFRS 16: 리스개시일에 사용권자산(자산)과 리스부채(부채)를 동시에 인식.",
     hint: "IFRS 16에서 리스는 자산과 부채를 동시에 인식합니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kb23", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1134,6 +1262,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["개발비", "무형자산"],
     explanation: "K-IFRS: 연구단계 지출은 전액 당기비용. 개발단계와 달리 자산화 불가.",
     hint: "연구단계는 항상 비용입니다.",
+    tags: ["IAS38", "무형자산"],
   },
   {
     id: "kb24", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1142,7 +1271,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "매출채권", amount: 2000000 }],
     distractors: ["단기차입금"],
     explanation: "매출채권 양도: 현금 수취 + 처분손실 인식. 차이 100,000원은 처분손실.",
-    hint: "매출채권 양도 시 수취액과 장부가액의 차이는 손익입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "kb25", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1151,7 +1281,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 500000 }],
     distractors: ["투자자산", "이익잉여금"],
     explanation: "자기주식은 자본의 차감 계정. 자산이 아닌 자본(마이너스)으로 처리.",
-    hint: "자기주식은 자본을 줄이는 계정입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "kb26", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1161,6 +1292,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["감가상각비", "유형자산처분손실"],
     explanation: "K-IFRS 36: 자산 회수가능액이 장부가액 미만이면 손상차손(비용) 인식.",
     hint: "손상은 자산 가치가 기대보다 크게 하락할 때 인식합니다.",
+    tags: ["IAS16", "유형자산", "IAS36", "자산손상"],
   },
   {
     id: "kb27", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1169,7 +1301,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "매출채권", amount: 11000000 }, { account: "외환차익", amount: 1000000 }],
     distractors: ["외환차손"],
     explanation: "결제일 환율(1,200) > 장부 환율(1,100) → 외환차익 1,000,000. $10,000 × (1,200-1,100) = 1,000,000.",
-    hint: "결제 시점 환율이 장부 환율보다 높으면 외환차익입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS21", "환율변동"],
   },
   {
     id: "kb28", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1178,7 +1311,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "이연정부보조금", amount: 2000000 }],
     distractors: ["정부보조금수익", "이익잉여금"],
     explanation: "자산 관련 정부보조금: 이연정부보조금(부채)으로 처리 후 자산 내용연수에 걸쳐 수익 인식.",
-    hint: "자산 관련 정부보조금은 즉시 수익이 아니라 이연정부보조금(부채)으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "kb29", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1188,6 +1322,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["미지급비용", "급여"],
     explanation: "K-IFRS 2: 주식결제형 주식기준보상은 주식보상비용(비용) + 주식선택권(자본).",
     hint: "주식으로 결제하는 보상은 자본을 증가시킵니다.",
+    tags: ["IFRS2", "주식기준보상"],
   },
   {
     id: "kb30", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -1196,7 +1331,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "리스부채", amount: 400000 }],
     distractors: ["사용권자산", "임차료"],
     explanation: "유효이자법: 이자비용 = 8,000,000 × 5% = 400,000. 리스부채 장부가액 증가.",
-    hint: "이자비용은 리스부채 잔액에 유효이자율을 곱해 계산합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kox11", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1204,6 +1340,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "연구단계 지출은 전액 비용 처리. 개발단계만 요건 충족 시 무형자산 인식 가능.",
     hint: "연구는 비용, 개발은 조건부 자산입니다.",
+    tags: ["IAS38", "무형자산"],
   },
   {
     id: "kox12", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1211,13 +1348,15 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "단기리스(12개월 이하)와 소액자산 리스는 사용권자산/리스부채 인식 면제. 임차료로 처리 가능.",
     hint: "IFRS 16은 단기리스와 소액 리스에 대한 예외를 허용합니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kox13", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
     text: "K-IFRS에서 투자부동산에 공정가치모형을 적용하면 감가상각을 인식한다.",
     answer: false,
     explanation: "공정가치모형 적용 시 감가상각 불필요. 원가모형 적용 시에만 감가상각 인식.",
-    hint: "공정가치로 측정하면 이미 가치 변동이 반영되므로 감가상각이 필요 없습니다.",
+    hint: "핵심 키워드에 집중하세요. 예외가 있는지, 조건이 정확한지 확인해보세요.",
+    tags: ["IAS16", "유형자산", "IAS40", "투자부동산"],
   },
   {
     id: "kox14", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1225,6 +1364,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "자기주식은 자본의 차감 항목으로 분류. 자산이 아닙니다.",
     hint: "회사가 자신의 주식을 사면 자본이 줄어듭니다.",
+    tags: ["기초회계"],
   },
   {
     id: "kox15", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1232,6 +1372,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "유형자산 측정 모형은 원가모형 또는 재평가모형 중 선택. 동일 분류 내 일관 적용.",
     hint: "K-IFRS는 유형자산에 대해 두 가지 측정 모형을 허용합니다.",
+    tags: ["IAS16", "유형자산"],
   },
   {
     id: "kox16", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1239,6 +1380,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "재평가잉여금은 기타포괄손익으로 처리. 당기손익에 포함되지 않습니다.",
     hint: "재평가이익은 포괄손익계산서에서 기타포괄손익 항목입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "kox17", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1246,13 +1388,15 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "FVTPL(당기손익-공정가치측정) 금융자산은 평가손익 전액 당기손익 반영.",
     hint: "FVTPL은 공정가치 변동이 바로 손익에 반영됩니다.",
+    tags: ["IFRS9", "금융상품"],
   },
   {
     id: "kox18", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
     text: "K-IFRS에서 손상차손 환입은 항상 허용된다.",
     answer: false,
     explanation: "영업권의 손상차손은 환입 불가. 기타 자산은 환입 가능.",
-    hint: "영업권 손상차손은 한번 인식하면 되돌릴 수 없습니다.",
+    hint: "핵심 키워드에 집중하세요. 예외가 있는지, 조건이 정확한지 확인해보세요.",
+    tags: ["IAS38", "무형자산", "IAS36", "자산손상"],
   },
   {
     id: "kox19", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1260,6 +1404,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "화폐성 항목의 외화환산손익은 당기손익. 기타포괄손익이 아닙니다.",
     hint: "외화환산손익은 일반적으로 당기손익입니다.",
+    tags: ["IAS21", "환율변동"],
   },
   {
     id: "kox20", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1267,6 +1412,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "충당부채 인식 3요건: ① 현재의무 ② 경제적 효익 유출 가능 ③ 금액 신뢰성 추정 가능.",
     hint: "충당부채는 세 가지 조건을 모두 충족해야 합니다.",
+    tags: ["IAS37", "충당부채"],
   },
   {
     id: "kox21", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1274,6 +1420,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "소액자산 리스는 리스기간과 무관하게 면제 가능. 12개월 기준은 단기리스에 해당.",
     hint: "소액자산 리스는 기간과 무관하게 면제됩니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kox22", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1281,6 +1428,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "K-IFRS 15: 수익인식 5단계 모형에서 핵심은 고객에게 통제가 이전되는 시점.",
     hint: "K-IFRS 15에서 수익 인식의 핵심은 '통제의 이전'입니다.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "kox23", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1288,6 +1436,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "전환사채의 전환권(자본요소)은 자본으로 분류. 부채요소(사채)와 자본요소(전환권)로 분리.",
     hint: "전환사채는 부채요소와 자본요소로 분리합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "kox24", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1295,6 +1444,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "재분류 가능: 해외사업환산차이, FVOCI 채무상품 등. 재분류 불가: 재평가잉여금, FVOCI 지분상품 등.",
     hint: "기타포괄손익은 재분류 가능 여부에 따라 두 가지로 구분됩니다.",
+    tags: ["IFRS9", "금융상품", "IAS21", "환율변동"],
   },
   {
     id: "kox25", type: "ox", standard: "k-ifrs", category: "ox-basic", difficulty: "basic",
@@ -1302,6 +1452,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "K-IFRS: 영업권은 비상각 자산. 매년 또는 손상 징후 시 손상검사 실시.",
     hint: "영업권은 상각하지 않고 손상 여부만 검토합니다.",
+    tags: ["IAS38", "무형자산"],
   },
   {
     id: "kcalc01", type: "calculation", standard: "k-ifrs", category: "kifrs-calc", difficulty: "basic",
@@ -1309,6 +1460,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 7600000,
     explanation: "이자비용 = 10,000,000 × 6% = 600,000. 원금 상환 = 3,000,000 - 600,000 = 2,400,000. 기말 리스부채 = 10,000,000 - 2,400,000 = 7,600,000.",
     hint: "리스료 = 이자 + 원금상환. 원금상환액만큼 부채가 줄어듭니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kcalc02", type: "calculation", standard: "k-ifrs", category: "kifrs-calc", difficulty: "basic",
@@ -1316,6 +1468,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 900000,
     explanation: "(5,000,000 - 500,000) ÷ 5 = 900,000원.",
     hint: "사용권자산도 일반 유형자산과 동일하게 감가상각합니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kcalc03", type: "calculation", standard: "k-ifrs", category: "kifrs-calc", difficulty: "basic",
@@ -1323,6 +1476,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 300000,
     explanation: "평가이익 = 2,300,000 - 2,000,000 = 300,000원. FVTPL은 당기손익 반영.",
     hint: "공정가치 - 장부가액 = 평가손익",
+    tags: ["IFRS9", "금융상품"],
   },
   {
     id: "kcalc04", type: "calculation", standard: "k-ifrs", category: "kifrs-calc", difficulty: "basic",
@@ -1330,13 +1484,15 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 500000,
     explanation: "장부가액 = 10,000,000 - 3,000,000 = 7,000,000. 손상차손 = 7,000,000 - 6,500,000 = 500,000.",
     hint: "손상차손 = 장부가액 - 회수가능액",
+    tags: ["IAS16", "유형자산", "IAS36", "자산손상"],
   },
   {
     id: "kcalc05", type: "calculation", standard: "k-ifrs", category: "kifrs-calc", difficulty: "basic",
     text: "매출채권 잔액 5,000,000원에 대해 기대신용손실률 3%를 적용할 때 대손충당금 설정액은?",
     correctAnswer: 150000,
     explanation: "대손충당금 = 5,000,000 × 3% = 150,000원.",
-    hint: "기대신용손실 = 매출채권 잔액 × 기대신용손실률",
+    hint: "필요한 공식을 떠올리고, 주어진 숫자를 하나씩 대입해보세요.",
+    tags: ["기초회계"],
   },
   // ══════════════════════════════════════
   // Batch 2 추가 (100개) - 일반기업/은행업/공공기관
@@ -1349,6 +1505,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["재고자산", "매입채무"],
     explanation: "일반기업회계기준에서는 상품, 외상매입금 계정 사용. K-IFRS의 재고자산, 매입채무와 구분.",
     hint: "일반기업회계기준은 K-IFRS보다 전통적인 계정과목 명칭을 사용합니다.",
+    tags: ["재고자산"],
   },
   {
     id: "gjb02", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1357,7 +1514,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "매출", amount: 2000000 }],
     distractors: ["매출채권", "매출액"],
     explanation: "일반기업회계기준: 외상매출금 사용. K-IFRS의 매출채권과 구분.",
-    hint: "일반기업회계기준은 외상매출금, K-IFRS는 매출채권을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["재고자산"],
   },
   {
     id: "gjb03", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1366,7 +1524,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "감가상각누계액", amount: 500000 }],
     distractors: ["건물", "수선비"],
     explanation: "간접법: 자산에서 직접 차감하지 않고 감가상각누계액(차감계정) 사용. 직접법은 자산에서 직접 차감.",
-    hint: "간접법은 감가상각누계액 계정을 사용하여 원가 정보를 유지합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["유형자산"],
   },
   {
     id: "gjb04", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1375,7 +1534,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "퇴직급여충당부채", amount: 1000000 }],
     distractors: ["확정급여채무", "예수금"],
     explanation: "일반기업회계기준: 퇴직급여충당부채 사용. K-IFRS의 확정급여채무와 구분.",
-    hint: "일반기업회계기준은 퇴직급여충당부채, K-IFRS는 확정급여채무를 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["종업원급여"],
   },
   {
     id: "gjb05", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1385,6 +1545,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["퇴직급여", "현금"],
     explanation: "퇴직금 지급: 퇴직급여충당부채(부채) 감소, 보통예금(자산) 감소.",
     hint: "미리 설정한 충당부채에서 실제 지급액을 차감합니다.",
+    tags: ["종업원급여"],
   },
   {
     id: "gjb06", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1393,7 +1554,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 1000000 }],
     distractors: ["단기매매증권", "투자자산"],
     explanation: "일반기업회계기준: 매도가능증권으로 분류. K-IFRS의 FVOCI 금융자산에 해당.",
-    hint: "일반기업회계기준의 매도가능증권은 K-IFRS의 FVOCI에 대응됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "gjb07", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1402,7 +1564,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "단기매매증권평가이익", amount: 100000 }],
     distractors: ["매도가능증권평가이익", "이익잉여금"],
     explanation: "단기매매증권 평가이익은 당기손익. 매도가능증권 평가이익은 기타포괄손익(자본)과 구분.",
-    hint: "단기매매증권 평가손익은 손익계산서, 매도가능증권 평가손익은 자본에 반영됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "gjb08", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1411,7 +1574,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "매도가능증권평가이익", amount: 200000 }],
     distractors: ["단기매매증권평가이익", "이익잉여금"],
     explanation: "매도가능증권 평가이익은 기타포괄손익누계액(자본)으로 처리. 당기손익 아님.",
-    hint: "매도가능증권 평가이익은 자본에 쌓이고 처분 시 손익으로 전환됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "gjb09", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1420,7 +1584,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "대손충당금", amount: 100000 }],
     distractors: ["외상매출금", "잡손실"],
     explanation: "대손충당금 설정: 대손상각비(비용) 인식, 대손충당금(차감계정) 설정.",
-    hint: "대손충당금은 외상매출금에서 차감하는 형식으로 표시합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "gjb10", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1429,7 +1594,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 5000000 }],
     distractors: ["매도가능증권", "단기매매증권"],
     explanation: "만기까지 보유 목적 채권은 만기보유증권으로 분류. 상각후원가로 측정.",
-    hint: "만기보유증권은 상각후원가로 측정하며 평가손익을 인식하지 않습니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "gjb11", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1438,7 +1604,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 3000000 }],
     distractors: ["경상개발비", "연구비"],
     explanation: "일반기업회계기준: 개발단계 지출 중 요건 충족분은 개발비(무형자산). 요건 미충족은 경상개발비(비용).",
-    hint: "일반기업회계기준에서 요건 미충족 개발비는 경상개발비로 비용 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["무형자산"],
   },
   {
     id: "gjb12", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1447,7 +1614,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 2000000 }],
     distractors: ["무형자산", "개발비"],
     explanation: "영업권(무형자산) 취득. 일반기업회계기준에서는 영업권을 상각(최대 20년).",
-    hint: "일반기업회계기준은 영업권을 상각하지만 K-IFRS는 상각하지 않습니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["무형자산"],
   },
   {
     id: "gjb13", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1456,7 +1624,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "사채할인발행차금", amount: 50000 }],
     distractors: ["사채", "현금"],
     explanation: "사채 할인발행 시 사채할인발행차금(차감계정)을 유효이자법으로 상각. 이자비용 인식.",
-    hint: "사채할인발행차금 상각은 이자비용을 증가시킵니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["차입원가"],
   },
   {
     id: "gjb14", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1466,6 +1635,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["복리후생비", "미지급비용"],
     explanation: "임원 상여금은 급여(비용)로 처리. 현금(자산) 감소.",
     hint: "임원 상여금은 급여 계정에 포함됩니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gjb15", type: "journal", standard: "general", category: "general-basic", difficulty: "basic",
@@ -1474,7 +1644,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "건물", amount: 10000000 }, { account: "유형자산처분이익", amount: 1000000 }],
     distractors: ["유형자산처분손실"],
     explanation: "장부가액 = 10,000,000 - 3,000,000 = 7,000,000. 처분가 8,000,000 > 장부가 → 처분이익 1,000,000.",
-    hint: "감가상각누계액은 처분 시 제거합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["유형자산"],
   },
   {
     id: "gji01", type: "journal", standard: "general", category: "general-intermediate", difficulty: "intermediate",
@@ -1483,7 +1654,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 500000 }],
     distractors: ["사용권자산", "리스부채"],
     explanation: "일반기업회계기준: 운용리스는 임차료(비용)로 처리. K-IFRS의 사용권자산/리스부채 인식 없음.",
-    hint: "일반기업회계기준은 K-IFRS 16 이전 방식으로 운용리스를 임차료로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["리스"],
   },
   {
     id: "gji02", type: "journal", standard: "general", category: "general-intermediate", difficulty: "intermediate",
@@ -1491,7 +1663,8 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "현금", amount: 1500000 }, { account: "매도가능증권평가이익", amount: 200000 }],
     credit: [{ account: "매도가능증권", amount: 1200000 }, { account: "매도가능증권처분이익", amount: 500000 }],
     explanation: "처분 시 자본에 쌓인 평가이익 200,000 제거. 처분이익 = 처분가 1,500,000 - 장부가 1,200,000 = 300,000. (단, 재분류 포함 총 500,000 인식)",
-    hint: "매도가능증권 처분 시 자본에 있던 평가손익을 당기손익으로 재분류합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "gji03", type: "journal", standard: "general", category: "general-intermediate", difficulty: "intermediate",
@@ -1500,7 +1673,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "영업권", amount: 200000 }],
     distractors: ["감가상각비", "손상차손"],
     explanation: "일반기업회계기준: 영업권 상각. 2,000,000 ÷ 10년 = 200,000/년. K-IFRS는 영업권 미상각.",
-    hint: "일반기업회계기준에서 영업권은 최대 20년간 상각합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["유형자산", "무형자산", "자산손상"],
   },
   {
     id: "gji04", type: "journal", standard: "general", category: "general-intermediate", difficulty: "intermediate",
@@ -1510,6 +1684,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["상품", "매출원가"],
     explanation: "저가법 적용: 순실현가능가치 < 취득원가 시 평가손실 인식. 재고자산평가충당금(차감계정) 설정.",
     hint: "재고자산도 저가법에 따라 평가손실을 인식합니다.",
+    tags: ["재고자산"],
   },
   {
     id: "gji05", type: "journal", standard: "general", category: "general-intermediate", difficulty: "intermediate",
@@ -1519,6 +1694,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["연구비", "현금"],
     explanation: "개발 성공 확인 시 자산화 가능. 비용(경상개발비)에서 자산(개발비)으로 대체.",
     hint: "개발 성공이 확인되면 이전에 비용처리한 금액을 자산으로 전환할 수 있습니다.",
+    tags: ["무형자산"],
   },
   {
     id: "gji06", type: "journal", standard: "general", category: "general-intermediate", difficulty: "intermediate",
@@ -1527,7 +1703,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "리스부채", amount: 5000000 }],
     distractors: ["사용권자산", "임차료"],
     explanation: "일반기업회계기준 금융리스: 리스자산(자산)과 리스부채(부채) 인식. K-IFRS의 사용권자산과 유사하나 명칭 다름.",
-    hint: "일반기업회계기준은 리스자산, K-IFRS는 사용권자산이라는 명칭을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["리스"],
   },
   {
     id: "gji07", type: "journal", standard: "general", category: "general-intermediate", difficulty: "intermediate",
@@ -1537,6 +1714,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["광고선전비", "이익잉여금"],
     explanation: "주식발행비용은 주식발행초과금에서 차감. 주식발행초과금이 없으면 이익잉여금 차감.",
     hint: "주식발행 직접 비용은 자본에서 차감합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gji08", type: "journal", standard: "general", category: "general-intermediate", difficulty: "intermediate",
@@ -1545,7 +1723,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "외상매출금", amount: 250000 }],
     distractors: ["외환차익", "현금"],
     explanation: "기말 환율(1,050) < 장부 환율(1,100) → 외환차손. $5,000 × (1,100-1,050) = 250,000.",
-    hint: "기말 환율이 낮아지면 외화자산 가치가 줄어 외환차손이 발생합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["환율변동"],
   },
   {
     id: "gji09", type: "journal", standard: "general", category: "general-intermediate", difficulty: "intermediate",
@@ -1555,6 +1734,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["대손상각비", "외상매출금"],
     explanation: "대손충당금 잉여분 환입: 대손충당금 감소, 대손충당금환입(수익) 인식. 300,000 - 200,000 = 100,000 환입.",
     hint: "실제 대손이 충당금보다 적으면 잉여분을 수익으로 환입합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gji10", type: "journal", standard: "general", category: "general-intermediate", difficulty: "intermediate",
@@ -1563,7 +1743,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "사채", amount: 5000000 }],
     distractors: ["사채발행비"],
     explanation: "할인발행: 현금 4,500,000 + 사채할인발행차금(차감계정) 500,000 = 사채 액면 5,000,000.",
-    hint: "사채할인발행차금은 사채의 차감 계정입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["차입원가"],
   },
   {
     id: "gox01", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1571,6 +1752,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "일반기업회계기준은 영업권을 상각(최대 20년). K-IFRS만 영업권 비상각.",
     hint: "K-IFRS와 일반기업회계기준은 영업권 처리가 다릅니다.",
+    tags: ["무형자산"],
   },
   {
     id: "gox02", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1578,6 +1760,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "일반기업회계기준: 운용리스 = 임차료 비용처리. K-IFRS 16처럼 사용권자산을 인식하지 않음.",
     hint: "일반기업회계기준은 K-IFRS 이전의 리스 회계를 적용합니다.",
+    tags: ["리스"],
   },
   {
     id: "gox03", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1585,6 +1768,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "단기매매증권 평가손익은 당기손익. 매도가능증권 평가손익은 기타포괄손익(자본)으로 처리.",
     hint: "단기매매증권과 매도가능증권의 평가손익 처리가 다릅니다.",
+    tags: ["금융상품"],
   },
   {
     id: "gox04", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1592,6 +1776,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "매도가능증권 평가손익은 기타포괄손익누계액(자본). 처분 시 당기손익으로 재분류.",
     hint: "매도가능증권은 팔기 전까지 평가손익이 자본에 남아있습니다.",
+    tags: ["금융상품"],
   },
   {
     id: "gox05", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1599,6 +1784,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "외상매출금은 일반기업회계기준 용어, 매출채권은 K-IFRS 용어. 개념은 같으나 명칭이 다름.",
     hint: "두 기준은 같은 내용을 다른 계정과목 명칭으로 표현합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gox06", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1606,6 +1792,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "두 계정 모두 종업원의 미래 퇴직급여 지급 의무를 나타냄. 명칭과 측정 방법에 차이 있음.",
     hint: "내용은 유사하지만 측정 방법(현재가치 할인 여부 등)에서 차이가 납니다.",
+    tags: ["종업원급여"],
   },
   {
     id: "gox07", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1613,6 +1800,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "요건 충족 시 무형자산(개발비)으로 자산화 가능. 미충족 시 경상개발비(비용).",
     hint: "개발 성공 가능성 등 요건 충족 여부에 따라 자산화 또는 비용화합니다.",
+    tags: ["무형자산"],
   },
   {
     id: "gox08", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1620,6 +1808,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "일반기업회계기준: 손익계산서. K-IFRS: 포괄손익계산서. 명칭과 표시 방법이 다름.",
     hint: "K-IFRS는 포괄손익계산서, 일반기업회계기준은 손익계산서를 작성합니다.",
+    tags: ["재무제표표시"],
   },
   {
     id: "gox09", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1627,6 +1816,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "사채할인발행차금은 사채(부채)의 차감 계정. 재무상태표에서 사채 액면에서 차감하여 장부가액 표시.",
     hint: "사채할인발행차금은 사채를 줄이는 역할을 합니다.",
+    tags: ["차입원가"],
   },
   {
     id: "gox10", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1634,6 +1824,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "일반기업회계기준은 중소기업(비상장·비공개법인)에 적용. 상장사는 K-IFRS 의무 적용.",
     hint: "K-IFRS는 상장사, 일반기업회계기준은 비상장 중소기업에 적용됩니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gox11", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1641,6 +1832,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "만기보유증권은 상각후원가로 측정. 공정가치 평가하지 않으므로 평가손익 없음.",
     hint: "만기보유증권은 만기까지 보유 목적이므로 공정가치 변동을 반영하지 않습니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gox12", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1648,6 +1840,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "저가법: 취득원가와 순실현가능가치 중 낮은 금액으로 평가. 평가손실 인식.",
     hint: "재고자산은 두 기준 모두 저가법을 적용합니다.",
+    tags: ["재고자산"],
   },
   {
     id: "gox13", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1655,6 +1848,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "간접법: 감가상각누계액을 유형자산에서 차감하여 장부가액 표시. 취득원가 정보 유지.",
     hint: "감가상각누계액은 자산을 줄이는 차감 계정입니다.",
+    tags: ["유형자산"],
   },
   {
     id: "gox14", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1662,6 +1856,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "기타포괄손익누계액(매도가능증권평가손익 등)은 자본 항목. 손익계산서 통과 전 자본에 직접 반영.",
     hint: "기타포괄손익누계액은 재무상태표 자본 섹션에 표시됩니다.",
+    tags: ["금융상품"],
   },
   {
     id: "gox15", type: "ox", standard: "general", category: "general-ox", difficulty: "basic",
@@ -1669,6 +1864,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "대손충당금 잉여분 환입 시 대손충당금환입(수익) 인식. 판매비와관리비의 마이너스 또는 영업외수익.",
     hint: "불필요해진 충당금을 줄이면 수익이 발생합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gcalc01", type: "calculation", standard: "general", category: "general-calc", difficulty: "basic",
@@ -1676,6 +1872,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 1000000,
     explanation: "장부가액 = 6,000,000 - 2,000,000 = 4,000,000. 처분이익 = 5,000,000 - 4,000,000 = 1,000,000.",
     hint: "처분손익 = 처분가액 - 장부가액(취득원가 - 감가상각누계액)",
+    tags: ["유형자산"],
   },
   {
     id: "gcalc02", type: "calculation", standard: "general", category: "general-calc", difficulty: "basic",
@@ -1683,6 +1880,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 20000,
     explanation: "필요 충당금 = 3,000,000 × 1% = 30,000. 추가 설정 = 30,000 - 10,000 = 20,000.",
     hint: "추가 설정액 = 필요 충당금 - 기존 충당금 잔액",
+    tags: ["기초회계"],
   },
   {
     id: "gcalc03", type: "calculation", standard: "general", category: "general-calc", difficulty: "basic",
@@ -1690,6 +1888,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 990000,
     explanation: "1년차 장부가 = 4,000,000 - (4,000,000 × 45%) = 2,200,000. 2년차 상각 = 2,200,000 × 45% = 990,000.",
     hint: "정률법은 매년 장부가액에 상각률을 곱합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "gcalc04", type: "calculation", standard: "general", category: "general-calc", difficulty: "basic",
@@ -1697,6 +1896,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 1400000,
     explanation: "연간 상각 = 2,000,000 ÷ 10 = 200,000. 3년 상각 = 600,000. 장부가 = 2,000,000 - 600,000 = 1,400,000.",
     hint: "일반기업회계기준에서 영업권은 정액법으로 상각합니다.",
+    tags: ["무형자산"],
   },
   {
     id: "gcalc05", type: "calculation", standard: "general", category: "general-calc", difficulty: "basic",
@@ -1704,6 +1904,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 300000,
     explanation: "전기말 장부가 1,200,000 → 당기말 공정가치 900,000. 당기 평가손실 = 1,200,000 - 900,000 = 300,000.",
     hint: "전기말 공정가치에서 당기말 공정가치를 빼면 당기 평가손익입니다.",
+    tags: ["금융상품"],
   },
   {
     id: "bjb01", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1713,6 +1914,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["저축성예금", "보통예금"],
     explanation: "은행 입장: 현금(자산) 증가, 요구불예금(부채) 증가. 고객의 예금은 은행에게 부채.",
     hint: "은행이 고객으로부터 예금을 받으면 갚아야 할 부채가 생깁니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb02", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1722,6 +1924,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["단기대여금", "예수금"],
     explanation: "은행 대출 실행: 대출금(자산) 증가, 현금(자산) 감소. 대출금은 은행의 자산.",
     hint: "은행이 빌려준 돈은 받을 권리이므로 자산입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb03", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1731,6 +1934,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이자비용", "미수이자"],
     explanation: "대출이자 수령: 현금(자산) 증가, 이자수익(수익) 발생. 은행의 핵심 수익원.",
     hint: "대출금에서 받는 이자는 은행의 주요 수익입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb04", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1740,6 +1944,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이자수익", "요구불예금"],
     explanation: "예금이자 지급: 이자비용(비용) 발생, 현금(자산) 감소.",
     hint: "고객 예금에 지급하는 이자는 은행의 비용입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb05", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1749,6 +1954,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["대출금", "신용손실충당금"],
     explanation: "은행도 대출금에 대한 대손충당금 설정. 대손상각비(비용) 인식.",
     hint: "은행의 대출금도 회수 불능 가능성에 대해 충당금을 설정합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb06", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1757,7 +1963,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 500000 }],
     distractors: ["예치금", "보통예금"],
     explanation: "지급준비금: 한국은행에 의무 예치금. 지급준비금(자산) 증가, 현금(자산) 감소.",
-    hint: "지급준비금은 한국은행에 맡기는 법정 의무 예치금입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb07", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1766,7 +1973,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 10000000 }],
     distractors: ["단기매매증권", "투자자산"],
     explanation: "국채 매입: 유가증권(자산) 증가, 현금(자산) 감소. 은행 운용자산.",
-    hint: "은행이 보유하는 국채는 유가증권 계정으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "bjb08", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1775,7 +1983,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "요구불예금", amount: 500000 }],
     distractors: ["현금", "보통예금"],
     explanation: "타행에서 받은 송금: 타행환(자산) 증가, 요구불예금(부채) 증가.",
-    hint: "타행에서 받은 자금은 타행환(당좌예금 등) 계정으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb09", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1785,6 +1994,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["요구불예금"],
     explanation: "만기 지급: 저축성예금(부채) 감소 + 이자비용(비용) 인식, 현금(자산) 감소.",
     hint: "원금과 이자를 동시에 지급하므로 두 가지를 함께 분개합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb10", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1793,7 +2003,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 13000000 }],
     distractors: ["외환차익", "유가증권"],
     explanation: "외화 매입: 외화자산(자산) 증가, 원화현금(자산) 감소. $10,000 × 1,300 = 13,000,000.",
-    hint: "외화를 사면 외화자산이 늘고 원화가 줄어듭니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["환율변동"],
   },
   {
     id: "bjb11", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1803,6 +2014,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이자비용", "대출금"],
     explanation: "발생주의: 받지 못한 이자도 미수이자(자산) 계상, 이자수익(수익) 인식.",
     hint: "발생한 이자는 받지 못해도 수익으로 인식합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb12", type: "journal", standard: "bank", category: "bank-basic", difficulty: "basic",
@@ -1812,6 +2024,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["저축성예금", "사채"],
     explanation: "CD 상환: 양도성예금증서(부채) 감소, 현금(자산) 감소.",
     hint: "CD는 은행이 발행한 채무증서로 부채입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bji01", type: "journal", standard: "bank", category: "bank-intermediate", difficulty: "intermediate",
@@ -1821,6 +2034,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["현금"],
     explanation: "대손충당금 1,500,000 먼저 상계. 부족분 500,000은 대손상각비(비용) 추가 인식.",
     hint: "충당금이 부족하면 그 차액을 비용으로 추가 인식합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bji02", type: "journal", standard: "bank", category: "bank-intermediate", difficulty: "intermediate",
@@ -1830,6 +2044,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["기타포괄손익", "유가증권"],
     explanation: "매매 목적 파생상품 평가이익은 당기손익. 헤징 목적이면 기타포괄손익 처리 가능.",
     hint: "매매 목적 파생상품의 평가손익은 당기손익입니다.",
+    tags: ["금융상품"],
   },
   {
     id: "bji03", type: "journal", standard: "bank", category: "bank-intermediate", difficulty: "intermediate",
@@ -1838,7 +2053,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 5000000 }],
     distractors: ["투자자산", "유가증권"],
     explanation: "신디케이트 대출 참여: 참여 은행도 동일하게 대출금(자산) 처리.",
-    hint: "신디케이트 대출 참여 은행도 자신의 지분만큼 대출금으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bji04", type: "journal", standard: "bank", category: "bank-intermediate", difficulty: "intermediate",
@@ -1848,6 +2064,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["유가증권", "단기차입금"],
     explanation: "RP 매도: 현금(자산) 증가, 환매조건부채권매도(부채) 증가. 실질은 단기 자금 차입.",
     hint: "RP 매도는 증권을 담보로 자금을 빌리는 것과 유사합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bji05", type: "journal", standard: "bank", category: "bank-intermediate", difficulty: "intermediate",
@@ -1857,6 +2074,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["대출금", "충당부채"],
     explanation: "K-IFRS 9 도입 후 은행도 기대신용손실(ECL) 모형 적용. 손실 발생 전 미리 충당금 설정.",
     hint: "ECL 모형은 손실이 발생하기 전에 예상 손실을 미리 인식합니다.",
+    tags: ["충당부채"],
   },
   {
     id: "bji06", type: "journal", standard: "bank", category: "bank-intermediate", difficulty: "intermediate",
@@ -1865,7 +2083,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "후순위채권", amount: 5000000 }],
     distractors: ["사채", "자본금"],
     explanation: "후순위채권: 일반 채권보다 변제 순위가 낮은 부채. 은행 BIS 자기자본비율 산정 시 자본으로 인정.",
-    hint: "후순위채권은 부채이지만 은행 자본건전성 지표에서 일부 자본으로 인정됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bji07", type: "journal", standard: "bank", category: "bank-intermediate", difficulty: "intermediate",
@@ -1875,6 +2094,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["대출금", "부실채권"],
     explanation: "고정이하여신 분류 시 추가 충당금 설정. 여신 분류(정상/요주의/고정/회수의문/추정손실)에 따라 충당금 비율 차등.",
     hint: "은행 여신은 건전성 분류에 따라 충당금 적립 비율이 다릅니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bji08", type: "journal", standard: "bank", category: "bank-intermediate", difficulty: "intermediate",
@@ -1884,6 +2104,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["단기대여금", "콜머니"],
     explanation: "콜론: 은행 간 초단기 대출(자산). 콜머니: 은행 간 초단기 차입(부채).",
     hint: "콜론은 빌려준 것(자산), 콜머니는 빌린 것(부채)입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "box01", type: "ox", standard: "bank", category: "bank-ox", difficulty: "basic",
@@ -1891,6 +2112,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "예금은 고객에게 돌려줘야 할 의무이므로 은행의 부채.",
     hint: "은행의 예금 수취는 갚아야 할 의무가 생기는 것입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "box02", type: "ox", standard: "bank", category: "bank-ox", difficulty: "basic",
@@ -1898,6 +2120,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "대출금은 고객에게 받아야 할 권리이므로 은행의 자산.",
     hint: "빌려준 돈은 받아야 할 권리, 즉 자산입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "box03", type: "ox", standard: "bank", category: "bank-ox", difficulty: "basic",
@@ -1905,6 +2128,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "한국은행법에 따라 은행은 예금 잔액의 일정 비율을 지급준비금으로 한국은행에 예치 의무.",
     hint: "지급준비금은 뱅크런 등 긴급 상황을 대비한 법정 예치금입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "box04", type: "ox", standard: "bank", category: "bank-ox", difficulty: "basic",
@@ -1912,6 +2136,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "콜론은 초단기 대출(자산). 콜머니가 초단기 차입금(부채).",
     hint: "론(Loan)은 빌려준 것, 머니(Money)는 빌린 것입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "box05", type: "ox", standard: "bank", category: "bank-ox", difficulty: "basic",
@@ -1919,6 +2144,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "은행의 이자수익은 대출금에서 발생. 예금은 이자비용의 원천.",
     hint: "은행은 대출로 돈을 벌고, 예금에 이자를 지급합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "box06", type: "ox", standard: "bank", category: "bank-ox", difficulty: "basic",
@@ -1926,6 +2152,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "후순위채권은 부채. 다만 BIS 자기자본비율 산정 시 일부 보완자본으로 인정.",
     hint: "재무제표상 부채이지만 자본건전성 규제에서는 일부 자본으로 인정합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "box07", type: "ox", standard: "bank", category: "bank-ox", difficulty: "basic",
@@ -1933,6 +2160,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "RP 매도: 증권을 담보로 일시적으로 자금을 조달. 만기에 재매입 조건 → 단기 차입 성격.",
     hint: "나중에 다시 사줘야 하므로 자금을 빌린 것과 유사합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "box08", type: "ox", standard: "bank", category: "bank-ox", difficulty: "basic",
@@ -1940,6 +2168,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "NIM = 이자수익 - 이자비용. 대출금리와 예금금리의 차이가 은행의 핵심 수익원.",
     hint: "NIM은 은행 수익성의 핵심 지표입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "box09", type: "ox", standard: "bank", category: "bank-ox", difficulty: "basic",
@@ -1947,6 +2176,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "은행이 발행한 CD는 부채. 투자자 입장에서는 자산이지만 발행 은행은 갚아야 할 의무.",
     hint: "발행자 입장에서 CD는 갚아야 할 채무입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "box10", type: "ox", standard: "bank", category: "bank-ox", difficulty: "basic",
@@ -1954,6 +2184,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "여신 건전성 분류: 정상 → 요주의 → 고정 → 회수의문 → 추정손실. 고정이하는 고정+회수의문+추정손실.",
     hint: "고정이하여신부터 부실채권으로 간주합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalc01", type: "calculation", standard: "bank", category: "bank-calc", difficulty: "basic",
@@ -1961,6 +2192,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 3400000,
     explanation: "이자수익 = 100,000,000 × 5% = 5,000,000. 이자비용 = 80,000,000 × 2% = 1,600,000. 순이자수익 = 5,000,000 - 1,600,000 = 3,400,000.",
     hint: "순이자수익 = 이자수익 - 이자비용",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalc02", type: "calculation", standard: "bank", category: "bank-calc", difficulty: "basic",
@@ -1968,6 +2200,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 200000,
     explanation: "대손충당금 = 1,000,000 × 20% = 200,000원.",
     hint: "충당금 = 대출금 잔액 × 충당금률",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalc03", type: "calculation", standard: "bank", category: "bank-calc", difficulty: "basic",
@@ -1975,13 +2208,15 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 200000,
     explanation: "매도가 1,320 - 매입가 1,300 = 20원/달러. 수익 = $10,000 × 20원 = 200,000원.",
     hint: "환전 수익 = (매도환율 - 매입환율) × 외화 금액",
+    tags: ["환율변동"],
   },
   {
     id: "bcalc04", type: "calculation", standard: "bank", category: "bank-calc", difficulty: "basic",
     text: "예금 잔액 50,000,000원, 지급준비율 3.5%일 때 법정 지급준비금은?",
     correctAnswer: 1750000,
     explanation: "지급준비금 = 50,000,000 × 3.5% = 1,750,000원.",
-    hint: "지급준비금 = 예금 잔액 × 지급준비율",
+    hint: "필요한 공식을 떠올리고, 주어진 숫자를 하나씩 대입해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalc05", type: "calculation", standard: "bank", category: "bank-calc", difficulty: "basic",
@@ -1989,6 +2224,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 10003836,
     explanation: "이자 = 10,000,000 × 2% × 7/365 = 3,836원(반올림). 재매입가 = 10,000,000 + 3,836 = 10,003,836원.",
     hint: "이자 = 원금 × 연이율 × 일수/365",
+    tags: ["은행업회계"],
   },
   {
     id: "pjb01", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -1998,6 +2234,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이연정부보조금", "자본금"],
     explanation: "운영 목적 보조금은 수령 시 즉시 수익 인식. 자산 취득 목적 보조금과 다름.",
     hint: "운영보조금은 바로 수익으로 인식하고, 자산보조금은 이연 처리합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb02", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2007,6 +2244,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["정부보조금수익", "자본금"],
     explanation: "시설(자산) 취득 목적 보조금은 이연정부보조금(부채)으로 처리 후 자산 내용연수에 걸쳐 수익 인식.",
     hint: "자산 취득 목적 보조금은 이연 처리합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb03", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2015,7 +2253,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "영업수익", amount: 3000000 }],
     distractors: ["매출", "정부보조금수익"],
     explanation: "공기업 사용료 수익은 영업수익으로 처리. 전기, 수도, 가스 등 공공서비스 요금.",
-    hint: "공기업의 서비스 사용료는 영업수익으로 인식합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb04", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2025,6 +2264,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["사채", "장기차입금"],
     explanation: "공기업이 발행하는 채권은 공채(부채). 일반 기업의 사채와 유사.",
     hint: "공기업이 발행하는 채권을 공채라고 합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb05", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2033,7 +2273,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "장기차입금", amount: 50000000 }],
     distractors: ["공채", "단기차입금"],
     explanation: "장기 시설투자 차입금: 보통예금(자산) 증가, 장기차입금(부채) 증가.",
-    hint: "만기가 1년 이상이면 장기차입금으로 분류합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb06", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2043,6 +2284,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["발전설비", "수선비"],
     explanation: "간접법으로 감가상각비(비용) 인식, 감가상각누계액(차감계정) 계상.",
     hint: "공기업의 설비도 동일한 방식으로 감가상각합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "pjb07", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2052,6 +2294,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["인건비", "현금"],
     explanation: "급여(비용) 발생, 보통예금(자산) 감소. 공기업도 일반기업과 동일.",
     hint: "공기업도 급여 지급은 일반 기업과 같은 방식으로 처리합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb08", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2060,7 +2303,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "미수금", amount: 1000000 }],
     distractors: ["영업수익", "외상매출금"],
     explanation: "미수금(자산) 회수: 현금(자산) 증가, 미수금(자산) 감소.",
-    hint: "이미 수익으로 인식한 미수금을 회수하는 분개입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb09", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2069,7 +2313,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 500000 }],
     distractors: ["공채", "현금"],
     explanation: "공채 이자 지급: 이자비용(비용) 발생, 보통예금(자산) 감소.",
-    hint: "공채에 대한 이자 지급은 이자비용으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb10", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2078,7 +2323,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 200000 }],
     distractors: ["환경비용", "미지급금"],
     explanation: "환경부담금 등 준조세성 비용은 세금과공과(비용)로 처리.",
-    hint: "법정 부담금은 세금과공과 계정으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb11", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2087,7 +2333,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "복구충당부채", amount: 3000000 }],
     distractors: ["유형자산", "충당부채"],
     explanation: "자산 해체/복구 의무가 있으면 복구충당부채(부채) 설정. 복구원가(비용 또는 자산 원가 가산) 인식.",
-    hint: "발전소 등 해체 의무가 있는 자산은 복구충당부채를 설정합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["유형자산"],
   },
   {
     id: "pjb12", type: "journal", standard: "public", category: "public-basic", difficulty: "basic",
@@ -2097,6 +2344,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["정부보조금수익", "자본금"],
     explanation: "무상으로 받은 자산: 토지(자산) 공정가치 인식, 자산수증이익(수익) 발생.",
     hint: "무상으로 받은 자산은 공정가치로 자산 인식하고 수익으로 처리합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "pox01", type: "ox", standard: "public", category: "public-ox", difficulty: "basic",
@@ -2104,6 +2352,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "공기업·준정부기관 회계기준은 기획재정부 고시. 민간기업의 K-IFRS(금융위원회)와 다름.",
     hint: "공기업 회계기준은 기획재정부 소관입니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pox02", type: "ox", standard: "public", category: "public-ox", difficulty: "basic",
@@ -2111,6 +2360,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "운영보조금은 수령 즉시 수익 인식. 이연 처리하는 것은 자산 취득 목적 보조금.",
     hint: "운영 목적과 자산 취득 목적 보조금의 처리가 다릅니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pox03", type: "ox", standard: "public", category: "public-ox", difficulty: "basic",
@@ -2118,6 +2368,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "공기업 발행 채권은 공채. 회계처리는 일반 기업의 사채와 유사.",
     hint: "공기업이 발행하는 채권의 명칭입니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pox04", type: "ox", standard: "public", category: "public-ox", difficulty: "basic",
@@ -2125,6 +2376,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "공기업·준정부기관 회계기준 미규정 사항은 K-IFRS 준용. 보충적 적용 관계.",
     hint: "공기업 회계기준은 K-IFRS를 보충적으로 준용합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pox05", type: "ox", standard: "public", category: "public-ox", difficulty: "basic",
@@ -2132,6 +2384,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "무상취득 자산은 공정가치로 인식. 자산수증이익(수익) 계상.",
     hint: "공정가치로 측정하여 자산과 수익을 동시에 인식합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pox06", type: "ox", standard: "public", category: "public-ox", difficulty: "basic",
@@ -2139,6 +2392,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "자산 해체·복구 의무는 복구충당부채(부채)로 인식. K-IFRS의 충당부채 요건과 동일.",
     hint: "미래 복구 의무도 현재 부채로 인식합니다.",
+    tags: ["충당부채"],
   },
   {
     id: "pox07", type: "ox", standard: "public", category: "public-ox", difficulty: "basic",
@@ -2146,6 +2400,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "영업수익에는 요금수익(사용료), 정부보조금 외 서비스 판매 수익 등 다양한 항목 포함.",
     hint: "공기업도 요금수익, 서비스 수익 등 다양한 영업수익이 있습니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pox08", type: "ox", standard: "public", category: "public-ox", difficulty: "basic",
@@ -2153,6 +2408,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "공기업·준정부기관 회계기준이 양쪽 모두에 적용. 기획재정부 고시 기준.",
     hint: "두 기관 유형에 하나의 회계기준이 적용됩니다.",
+    tags: ["공기업회계"],
   },
   // ══════════════════════════════════════
   // Batch 3 추가 (100개) - 심화/고급
@@ -2165,6 +2421,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이자비용"],
     explanation: "할인발행: 유효이자율 > 액면이자율. 차액 713,000이 사채할인발행차금(사채 차감계정). 만기까지 유효이자법으로 상각.",
     hint: "유효이자율이 액면이자율보다 높으면 할인발행입니다.",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "kia02", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2173,7 +2430,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 400000 }, { account: "사채할인발행차금", amount: 157220 }],
     distractors: ["사채"],
     explanation: "유효이자법: 이자비용 = 9,287,000 × 6% = 557,220. 액면이자 400,000 현금 지급. 차액 157,220은 사채할인발행차금 상각(사채 장부가 증가).",
-    hint: "유효이자법에서 이자비용 = 기초 장부가액 × 유효이자율",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "kia03", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2183,6 +2441,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["사채할인발행차금"],
     explanation: "할증발행: 유효이자율 < 액면이자율. 사채할증발행차금(사채 가산계정, 부채)으로 처리. 만기까지 유효이자법으로 상각.",
     hint: "유효이자율이 액면이자율보다 낮으면 할증발행입니다.",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "kia04", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2191,7 +2450,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "확정급여채무", amount: 1800000 }],
     distractors: ["사외적립자산", "기타포괄손익"],
     explanation: "K-IFRS 19: 당기근무원가 + 이자원가 = 1,800,000 → 퇴직급여(비용), 확정급여채무(부채) 증가.",
-    hint: "확정급여제도에서 퇴직급여 비용은 당기근무원가와 이자원가로 구성됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS19", "종업원급여"],
   },
   {
     id: "kia05", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2200,7 +2460,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "퇴직급여", amount: 200000 }],
     distractors: ["이자수익", "확정급여채무"],
     explanation: "K-IFRS 19: 사외적립자산의 이자수익(순이자 개념, 확정급여채무 할인율 적용)은 퇴직급여 비용에서 차감. 실제 수익과의 차이는 재측정요소(기타포괄손익)로 처리.",
-    hint: "사외적립자산의 수익은 퇴직급여 비용을 줄여줍니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS19", "종업원급여"],
   },
   {
     id: "kia06", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2209,7 +2470,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "확정급여채무", amount: 500000 }],
     distractors: ["퇴직급여", "사외적립자산"],
     explanation: "K-IFRS 19: 보험수리적손익(재측정요소)은 기타포괄손익으로 인식. 당기손익 아님.",
-    hint: "확정급여채무의 보험수리적손익은 기타포괄손익으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS19", "종업원급여"],
   },
   {
     id: "kia07", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2218,7 +2480,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 50000000 }],
     distractors: ["자본금"],
     explanation: "영업권 = 이전대가 50,000,000 - 피취득자 순자산 공정가치 45,000,000 = 5,000,000.",
-    hint: "영업권 = 지급한 대가 - 취득한 순자산 공정가치",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS38", "무형자산"],
   },
   {
     id: "kia08", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2228,6 +2491,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["금융자산평가이익", "당기손익-공정가치측정금융자산"],
     explanation: "FVOCI 금융자산 평가손익은 기타포괄손익. FVTPL과 달리 당기손익에 영향 없음.",
     hint: "FVOCI 평가손익은 기타포괄손익, FVTPL 평가손익은 당기손익입니다.",
+    tags: ["IFRS9", "금융상품"],
   },
   {
     id: "kia09", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2236,7 +2500,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "법인세비용", amount: 200000 }],
     distractors: ["미지급세금", "이연법인세부채"],
     explanation: "일시적 차이로 미래에 세금 덜 낼 권리: 이연법인세자산(자산) 인식, 법인세비용 감소.",
-    hint: "이연법인세자산은 미래에 세금을 덜 내게 해주는 자산입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS12", "법인세"],
   },
   {
     id: "kia10", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2245,7 +2510,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "이연법인세부채", amount: 150000 }],
     distractors: ["미지급세금", "이연법인세자산"],
     explanation: "가산 일시적 차이: 미래에 세금 더 낼 의무. 이연법인세부채(부채) 인식, 법인세비용 증가.",
-    hint: "이연법인세부채는 미래에 세금을 더 내야 할 의무입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS12", "법인세"],
   },
   {
     id: "kia11", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2253,7 +2519,8 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "사용권자산", amount: 8500000 }],
     credit: [{ account: "리스부채", amount: 8000000 }, { account: "현금", amount: 200000 }, { account: "복구충당부채", amount: 300000 }],
     explanation: "사용권자산 = 리스부채 8,000,000 + 초기직접원가 200,000 + 복구원가 300,000 = 8,500,000.",
-    hint: "사용권자산은 리스부채, 초기직접원가, 복구원가 등을 합산합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kia12", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2263,6 +2530,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["충당부채", "현금"],
     explanation: "금융보증계약: 보증 제공 시 금융보증부채(부채) 최초 인식. 공정가치로 측정.",
     hint: "보증을 제공하면 미래 지급 의무가 생기므로 부채로 인식합니다.",
+    tags: ["IAS37", "충당부채"],
   },
   {
     id: "kia13", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2270,6 +2538,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "해외사업환산차이는 기타포괄손익(자본)으로 누적. 해외사업 처분 시 당기손익으로 재분류(재분류 조정).",
     hint: "해외사업장 환산차이는 처분 시까지 자본에 쌓입니다.",
+    tags: ["IAS21", "환율변동"],
   },
   {
     id: "kia14", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2279,6 +2548,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["파생상품평가이익", "당기손익"],
     explanation: "현금흐름위험회피 파생상품 평가손익: 기타포괄손익. 공정가치위험회피는 당기손익.",
     hint: "위험회피 유형에 따라 평가손익 처리가 달라집니다.",
+    tags: ["IFRS9", "금융상품"],
   },
   {
     id: "kia15", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2288,6 +2558,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["감가상각비", "감가상각누계액"],
     explanation: "무형자산은 직접법으로 상각(자산에서 직접 차감). 감가상각누계액 계정 사용 안 함.",
     hint: "무형자산 상각은 직접법(자산에서 직접 차감)이 일반적입니다.",
+    tags: ["IAS16", "유형자산", "IAS38", "무형자산"],
   },
   {
     id: "kia16", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2297,6 +2568,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["미지급비용", "자본금"],
     explanation: "주식결제형: 주식보상비용(비용) + 주식선택권(자본) 인식. 가득기간에 걸쳐 인식.",
     hint: "주식으로 결제되는 보상은 자본을 증가시킵니다.",
+    tags: ["IFRS2", "주식기준보상"],
   },
   {
     id: "kia17", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2304,7 +2576,8 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "현금", amount: 600000 }, { account: "주식선택권", amount: 200000 }],
     credit: [{ account: "자본금", amount: 500000 }, { account: "주식발행초과금", amount: 300000 }],
     explanation: "주식선택권 행사: 행사가격 현금 수취 + 주식선택권(자본) 제거 → 자본금 + 주식발행초과금 증가. 차변 합계 800,000 = 대변 합계 800,000.",
-    hint: "행사가격 현금 수취와 주식선택권 제거를 동시에 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS2", "주식기준보상"],
   },
   {
     id: "kia18", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2313,7 +2586,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "손상차손환입", amount: 400000 }],
     distractors: ["손상차손", "감가상각비"],
     explanation: "유형자산 손상차손환입: 당기손익으로 인식. 단, 환입 후 장부가액이 손상 미인식 시 장부가액 초과 불가.",
-    hint: "유형자산 손상차손은 환입 가능하지만, 영업권은 환입 불가입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS16", "유형자산", "IAS36", "자산손상"],
   },
   {
     id: "kia19", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2322,7 +2596,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "영업권", amount: 500000 }, { account: "유형자산", amount: 1500000 }],
     distractors: ["무형자산"],
     explanation: "CGU 손상차손: 영업권 먼저 배분 후 나머지를 기타자산에 비례 배분.",
-    hint: "CGU 손상 시 영업권에 먼저 배분합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS16", "유형자산", "IAS38", "무형자산", "IAS36", "자산손상"],
   },
   {
     id: "kia20", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2331,7 +2606,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "계약부채", amount: 1000000 }],
     distractors: ["선수금", "매출"],
     explanation: "K-IFRS 15: 수행의무 미이행 시 선수금을 계약부채(부채)로 인식. 수행의무 완료 시 수익 인식.",
-    hint: "K-IFRS 15에서 선수금은 계약부채라는 명칭을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "kia21", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2340,7 +2616,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "매출", amount: 1000000 }],
     distractors: ["현금", "선수금"],
     explanation: "수행의무 완료 시 계약부채(부채)를 수익으로 인식. 통제 이전 시점이 수익 인식 시점.",
-    hint: "수행의무를 완료하면 계약부채를 수익으로 전환합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "kia22", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2349,7 +2626,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "재고자산", amount: 500000 }],
     distractors: ["매출원가", "재고자산평가충당금"],
     explanation: "K-IFRS 2: 저가법 적용. 순실현가능가치 < 원가 시 평가손실 인식. 재고자산에서 직접 차감.",
-    hint: "K-IFRS는 재고자산 평가손실을 직접 자산에서 차감합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS2", "주식기준보상", "IAS2", "재고자산"],
   },
   {
     id: "kia23", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2358,7 +2636,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "재고자산평가손실환입", amount: 300000 }],
     distractors: ["매출원가", "재고자산평가손실"],
     explanation: "순실현가능가치 회복 시 평가손실 환입. 단, 최초 원가를 초과하여 환입 불가.",
-    hint: "재고자산 평가손실은 가치가 회복되면 환입할 수 있습니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS2", "재고자산"],
   },
   {
     id: "kia24", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2367,7 +2646,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "유형자산", amount: 800000 }],
     distractors: ["기타포괄손익"],
     explanation: "재평가손실: 기존 재평가잉여금 잔액(300,000) 먼저 상계 후 초과분(500,000)을 당기손익(재평가손실)으로 인식.",
-    hint: "재평가손실은 먼저 재평가잉여금과 상계하고, 초과분은 당기손익입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS16", "유형자산"],
   },
   {
     id: "kia25", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "advanced",
@@ -2376,7 +2656,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "자기주식", amount: 300000 }, { account: "자기주식처분이익", amount: 100000 }],
     distractors: ["유형자산처분이익"],
     explanation: "자기주식 처분이익은 당기손익이 아닌 자본잉여금(자기주식처분이익)으로 처리.",
-    hint: "자기주식 처분손익은 손익계산서가 아닌 자본에 반영됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS16", "유형자산"],
   },
   {
     id: "koa01", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2384,6 +2665,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "K-IFRS: 사채할인발행차금은 유효이자법으로 상각. 정액법 사용 불가.",
     hint: "K-IFRS는 금융상품에 유효이자법을 요구합니다.",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "koa02", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2391,6 +2673,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "자기주식 처분이익은 자본잉여금(자기주식처분이익). 당기손익 아님.",
     hint: "자기주식 관련 거래는 자본 거래로 손익에 영향을 주지 않습니다.",
+    tags: ["기초회계"],
   },
   {
     id: "koa03", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2398,6 +2681,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "K-IFRS 19 개정: 보험수리적손익(재측정요소)은 기타포괄손익으로 인식. 당기손익 재분류 불가.",
     hint: "보험수리적손익은 기타포괄손익에서 당기손익으로 재분류되지 않습니다.",
+    tags: ["IAS19", "종업원급여"],
   },
   {
     id: "koa04", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2405,6 +2689,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "K-IFRS 15 핵심: 통제 이전 시점 = 수익 인식 시점. 위험과 보상 이전 기준(구 기준) 대체.",
     hint: "K-IFRS 15의 수익인식 핵심은 통제 이전입니다.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "koa05", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2412,6 +2697,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "현금흐름위험회피: 기타포괄손익. 공정가치위험회피: 당기손익. 위험회피 유형에 따라 다름.",
     hint: "위험회피 유형에 따라 평가손익의 처리가 달라집니다.",
+    tags: ["IFRS9", "금융상품"],
   },
   {
     id: "koa06", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2419,6 +2705,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "이연법인세자산은 미래 과세소득이 충분할 가능성이 높을 때만 인식. 회수 가능성 평가 필요.",
     hint: "이연법인세자산은 실현 가능성이 높아야 인식합니다.",
+    tags: ["IAS12", "법인세"],
   },
   {
     id: "koa07", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2426,6 +2713,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "CGU 손상: 영업권에 먼저 배분 후, 나머지를 기타자산에 장부가액 비례 배분.",
     hint: "영업권이 가장 먼저 손상됩니다.",
+    tags: ["IAS38", "무형자산", "IAS36", "자산손상"],
   },
   {
     id: "koa08", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2433,6 +2721,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "재고자산 평가손실은 일반적으로 매출원가에 포함하여 표시. 중요하면 별도 공시 가능.",
     hint: "재고자산 관련 비용은 매출원가로 분류됩니다.",
+    tags: ["IAS2", "재고자산"],
   },
   {
     id: "koa09", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2440,6 +2729,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "변동대가는 유의적인 수익 환원 가능성이 없을 때까지의 금액을 수익에 포함.",
     hint: "변동대가도 조건에 따라 수익으로 인식할 수 있습니다.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "koa10", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -2447,6 +2737,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "재평가손실 > 기존 재평가잉여금 잔액 → 초과분 당기손익(재평가손실). 잉여금 잔액까지는 기타포괄손익 차감.",
     hint: "재평가손실은 기존 잉여금을 먼저 소진하고, 초과분은 손익으로 처리합니다.",
+    tags: ["IAS16", "유형자산"],
   },
   {
     id: "kcalca01", type: "calculation", standard: "k-ifrs", category: "kifrs-calc-advanced", difficulty: "advanced",
@@ -2454,6 +2745,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 557220,
     explanation: "이자비용 = 발행가 9,287,000 × 유효이자율 6% = 557,220원.",
     hint: "유효이자법 이자비용 = 기초 장부가액 × 유효이자율",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "kcalca02", type: "calculation", standard: "k-ifrs", category: "kifrs-calc-advanced", difficulty: "advanced",
@@ -2461,6 +2753,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 10500000,
     explanation: "사용권자산 = 10,000,000 + 300,000 + 200,000 = 10,500,000원.",
     hint: "사용권자산 = 리스부채 + 초기직접원가 + 복구원가(현재가치)",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kcalca03", type: "calculation", standard: "k-ifrs", category: "kifrs-calc-advanced", difficulty: "advanced",
@@ -2468,6 +2761,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 2000000,
     explanation: "총 손상차손 = 20,000,000 - 15,000,000 = 5,000,000. 영업권 먼저 전액 배분 → 2,000,000. 나머지 3,000,000은 기타자산.",
     hint: "CGU 손상차손은 영업권에 먼저 배분합니다.",
+    tags: ["IAS38", "무형자산", "IAS36", "자산손상"],
   },
   {
     id: "kcalca04", type: "calculation", standard: "k-ifrs", category: "kifrs-calc-advanced", difficulty: "advanced",
@@ -2475,13 +2769,15 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 10700000,
     explanation: "기말 = 10,000,000 + 1,000,000 + 500,000 - 800,000 = 10,700,000원.",
     hint: "기말 확정급여채무 = 기초 + 당기근무원가 + 이자원가 - 급여지급",
+    tags: ["IAS19", "종업원급여"],
   },
   {
     id: "kcalca05", type: "calculation", standard: "k-ifrs", category: "kifrs-calc-advanced", difficulty: "advanced",
     text: "이연법인세: 일시적 차이 2,000,000원, 법인세율 22%일 때 이연법인세자산(또는 부채)은?",
     correctAnswer: 440000,
     explanation: "이연법인세 = 2,000,000 × 22% = 440,000원.",
-    hint: "이연법인세 = 일시적 차이 × 법인세율",
+    hint: "필요한 공식을 떠올리고, 주어진 숫자를 하나씩 대입해보세요.",
+    tags: ["IAS12", "법인세"],
   },
   {
     id: "cja01", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2490,7 +2786,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보험료", amount: 90000 }],
     distractors: ["선급금", "선수수익"],
     explanation: "결산 수정: 차기 귀속 보험료를 선급비용(자산)으로 이연. 당기 비용 감소.",
-    hint: "차기에 속하는 비용은 선급비용으로 이연합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cja02", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2500,6 +2797,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["현금", "선수수익"],
     explanation: "기초 재대체 분개: 선급비용(자산)을 당기 비용(보험료)으로 환원.",
     hint: "새 회계연도 시작 시 이연 계정을 원래 계정으로 되돌립니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cja03", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2508,7 +2806,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "이익잉여금", amount: 3000000 }],
     distractors: ["자본금", "배당금"],
     explanation: "결산 마감: 손익 계정(수익-비용 집합)을 이익잉여금(자본)으로 대체.",
-    hint: "당기순이익은 이익잉여금으로 대체되어 자본을 증가시킵니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cja04", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2518,6 +2817,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이익잉여금"],
     explanation: "마감 분개: 수익(매출) 차변 마감, 비용(매출원가) 대변 마감. 차액이 손익(매출총이익).",
     hint: "마감 분개에서 수익은 차변, 비용은 대변으로 마감합니다.",
+    tags: ["재고자산"],
   },
   {
     id: "cja05", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2526,7 +2826,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "잡이익", amount: 50000 }],
     distractors: ["잡손실", "현금"],
     explanation: "현금 초과분의 원인 불명 시 결산에서 잡이익(수익) 처리. 부족분은 잡손실.",
-    hint: "현금이 많으면 잡이익, 적으면 잡손실로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cja06", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2535,7 +2836,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "상품", amount: 2000000 }],
     distractors: ["잡손실"],
     explanation: "화재손실: 보험금 청구분은 미수금(자산), 미보상분은 재해손실(비용). 상품(자산) 감소.",
-    hint: "보험금 청구 예정액은 미수금으로, 나머지는 재해손실로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["재고자산"],
   },
   {
     id: "cja07", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2545,6 +2847,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["당좌예금", "받을어음"],
     explanation: "타인 발행 당좌수표는 즉시 현금으로 처리. 본인 발행 당좌수표는 당좌예금 감소.",
     hint: "타인이 발행한 수표는 현금과 동일하게 처리합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cja08", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2553,7 +2856,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "당좌예금", amount: 300000 }],
     distractors: ["현금", "받을어음"],
     explanation: "당점 발행 당좌수표: 당좌예금(자산) 감소. 타인이 받은 수표는 현금 처리.",
-    hint: "우리 회사가 발행한 수표는 당좌예금에서 차감됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cja09", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2562,7 +2866,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "미지급금", amount: 400000 }],
     distractors: ["외상매입금", "현금"],
     explanation: "신용카드 결제: 상품 매입이지만 카드사에 갚아야 할 미지급금(부채). 외상매입금은 거래처 직접 외상.",
-    hint: "신용카드 결제는 카드사에 대한 미지급금입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["재고자산"],
   },
   {
     id: "cja10", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2572,6 +2877,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["퇴직급여충당부채", "사외적립자산"],
     explanation: "확정기여형(DC): 납입 즉시 비용(퇴직급여) 처리. 확정급여형(DB)과 달리 추가 의무 없음.",
     hint: "확정기여형은 납입 시점에 비용으로 처리합니다.",
+    tags: ["종업원급여"],
   },
   {
     id: "cja11", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2581,6 +2887,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["현금", "상품"],
     explanation: "상품권 사용 시 선수금(부채) 감소, 매출(수익) 인식. 현금 수취는 발행 시점에 이미 처리.",
     hint: "상품권 사용 시 부채를 수익으로 전환합니다.",
+    tags: ["재고자산"],
   },
   {
     id: "cja12", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2589,7 +2896,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "선급비용", amount: 30000 }],
     distractors: ["보험료", "잡이익"],
     explanation: "선급비용(자산)으로 처리된 보험료 환급: 현금(자산) 증가, 선급비용(자산) 감소.",
-    hint: "미리 납부한 보험료가 환급되면 선급비용을 줄입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["유형자산"],
   },
   {
     id: "cja13", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2598,7 +2906,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 2000000 }],
     distractors: ["현금성자산", "장기금융상품"],
     explanation: "만기 3개월 초과~1년 이내 정기예금: 단기금융상품(유동자산). 만기 3개월 이내는 현금성자산, 1년 초과는 장기금융상품.",
-    hint: "만기 3개월 이내 → 현금성자산, 3개월 초과 1년 이내 → 단기금융상품, 1년 초과 → 장기금융상품",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "cja14", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2608,6 +2917,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["단기차입금", "현금"],
     explanation: "결산 시 1년 내 상환 예정인 장기부채는 유동성장기부채(유동부채)로 재분류.",
     hint: "1년 내 갚아야 하는 장기부채는 유동부채로 분류합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cja15", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2616,7 +2926,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "건물", amount: 200000 }],
     distractors: ["수선비", "전기오류수정손실"],
     explanation: "중요한 전기 오류 수정: 이익잉여금(자본)으로 소급 수정. 당기 손익으로 처리 안 함.",
-    hint: "중요한 전기 오류는 이익잉여금으로 소급 수정합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["유형자산"],
   },
   {
     id: "cja16", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2625,6 +2936,7 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "사채할인발행차금", amount: 200000 }, { account: "현금", amount: 10100000 }],
     explanation: "장부가액 = 10,000,000 - 200,000 = 9,800,000. 상환가 10,100,000 > 장부가 9,800,000 → 사채상환손실 300,000.",
     hint: "사채 조기상환 시 장부가액과 상환금액의 차이가 손익입니다.",
+    tags: ["차입원가"],
   },
   {
     id: "cja17", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2633,7 +2945,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 500000 }],
     distractors: ["접대비", "기타비용"],
     explanation: "기부금(비용) 발생, 현금(자산) 감소. 기부금은 세법상 한도 내에서만 손금 인정.",
-    hint: "기부금은 영업외비용으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cja18", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2642,7 +2955,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 500000 }],
     distractors: ["급여", "보통예금"],
     explanation: "전기 계상된 미지급비용(부채)을 당기에 지급: 미지급비용(부채) 감소, 현금(자산) 감소.",
-    hint: "이미 비용으로 인식된 미지급비용을 지급하면 부채가 줄어듭니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cja19", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2651,7 +2965,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "임대보증금", amount: 10000000 }],
     distractors: ["선수금", "임대료수익"],
     explanation: "임대보증금 수령: 보통예금(자산) 증가, 임대보증금(부채) 증가. 임차 종료 시 반환 의무.",
-    hint: "임대보증금은 나중에 돌려줘야 하므로 부채입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["유형자산"],
   },
   {
     id: "cja20", type: "journal", standard: "common", category: "journal-advanced", difficulty: "advanced",
@@ -2661,6 +2976,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["현금"],
     explanation: "기능별 비용 분류: 급여를 제조원가와 판매비로 배분. 제조 인력 급여는 제조원가, 영업/관리 인력은 판매비.",
     hint: "급여는 담당 기능에 따라 제조원가 또는 판매관리비로 배분합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa01", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2668,6 +2984,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "타인 발행 당좌수표는 즉시 현금화 가능하여 현금으로 처리.",
     hint: "당좌수표는 당좌예금에서 바로 인출되는 수표입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa02", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2675,6 +2992,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "확정기여형(DC): 납입 즉시 비용 처리. 충당부채 설정하는 것은 확정급여형(DB).",
     hint: "확정기여형은 회사의 추가 의무가 없어 충당부채를 설정하지 않습니다.",
+    tags: ["종업원급여"],
   },
   {
     id: "coa03", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2682,6 +3000,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "임대보증금은 임차 종료 시 반환해야 하는 의무이므로 부채.",
     hint: "돌려줘야 할 보증금은 부채입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa04", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2689,6 +3008,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "유동성장기부채는 1년 내 상환 예정이므로 유동부채로 분류.",
     hint: "1년 이내 상환 예정이면 유동부채입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa05", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2696,6 +3016,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "중요한 전기 오류는 이익잉여금으로 소급 수정. 비중요 오류는 당기 손익.",
     hint: "중요한 오류는 비교 표시 재무제표를 수정하는 소급법으로 처리합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa06", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2703,6 +3024,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "결산 시 원인 미파악 현금과부족: 초과분 → 잡이익, 부족분 → 잡손실.",
     hint: "결산 시까지 원인을 모르면 잡손익으로 처리합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa07", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2710,6 +3032,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "신용카드 매입: 미지급금(카드사에 갚아야 할 금액). 외상매입금은 거래처 직접 외상.",
     hint: "카드사에 갚아야 하므로 미지급금입니다.",
+    tags: ["재고자산"],
   },
   {
     id: "coa08", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2717,6 +3040,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "만기 3개월 이내 정기예금은 현금성자산으로 분류. 단기금융상품은 만기 3개월 초과~1년 이내.",
     hint: "만기 3개월 이내는 현금성자산, 3개월 초과 1년 이내는 단기금융상품입니다.",
+    tags: ["금융상품"],
   },
   {
     id: "coa09", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2724,6 +3048,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "수익(대변 잔액)은 차변으로 마감하여 잔액을 0으로, 비용(차변 잔액)은 대변으로 마감.",
     hint: "마감 분개는 잔액의 반대편에 기입하여 계정을 영(0)으로 만듭니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa10", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2731,6 +3056,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "기부금은 영업외비용. 판매비와관리비는 영업활동 관련 비용.",
     hint: "기부금은 영업과 직접 관련 없는 영업외비용입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa11", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2738,6 +3064,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "당점 발행 수표: 당좌예금(자산) 감소. 타인 발행 수표 수취: 현금(자산) 증가.",
     hint: "우리가 발행한 수표는 우리의 당좌예금에서 지급됩니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa12", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2745,13 +3072,15 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "재해손실(화재, 수해 등)은 비경상적 손실로 영업외비용 처리.",
     hint: "재해는 영업활동과 무관한 비경상적 사건입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa13", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
     text: "만기보유목적 채권은 공정가치로 평가한다.",
     answer: false,
     explanation: "만기보유증권: 상각후원가 측정. 공정가치 평가 불필요. 단기매매증권만 공정가치.",
-    hint: "만기까지 보유할 것이므로 공정가치 변동이 의미 없습니다.",
+    hint: "핵심 키워드에 집중하세요. 예외가 있는지, 조건이 정확한지 확인해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "coa14", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2759,6 +3088,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "선수수익은 미래에 서비스를 제공해야 할 의무이므로 부채.",
     hint: "미리 받은 수익 중 아직 제공하지 않은 부분은 부채입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "coa15", type: "ox", standard: "common", category: "ox-advanced", difficulty: "advanced",
@@ -2766,6 +3096,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "사채상환가 > 장부가액 → 사채상환손실(비용). 상환가 < 장부가액 → 사채상환이익(수익).",
     hint: "비싸게 갚으면 손실, 싸게 갚으면 이익입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "ccalca01", type: "calculation", standard: "common", category: "calc-advanced", difficulty: "advanced",
@@ -2773,6 +3104,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 9400,
     explanation: "기말 외상매출금 = 1,000,000 + 3,000,000 - 2,500,000 - 30,000 = 1,470,000. 필요 충당금 = 1,470,000 × 2% = 29,400. 기존 충당금 잔액 = 50,000 - 30,000 = 20,000. 추가 설정 = 29,400 - 20,000 = 9,400.",
     hint: "대손 확정으로 기존 충당금이 줄고, 기말 잔액 기준으로 필요 충당금을 재산정합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "ccalca02", type: "calculation", standard: "common", category: "calc-advanced", difficulty: "advanced",
@@ -2780,6 +3112,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 30000,
     explanation: "감모손실 = 장부 재고 280,000 - 실사 재고 250,000 = 30,000.",
     hint: "감모손실 = 장부재고 - 실사재고",
+    tags: ["재고자산"],
   },
   {
     id: "ccalca03", type: "calculation", standard: "common", category: "calc-advanced", difficulty: "advanced",
@@ -2787,6 +3120,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 1000000,
     explanation: "기말자본 = 기초자본 + 유상증자 + 당기순이익 - 배당금. 7,500,000 = 5,000,000 + 2,000,000 + 순이익 - 500,000. 순이익 = 1,000,000.",
     hint: "기말자본 = 기초자본 + 자본거래 + 당기순이익 - 배당",
+    tags: ["기초회계"],
   },
   {
     id: "ccalca04", type: "calculation", standard: "common", category: "calc-advanced", difficulty: "advanced",
@@ -2794,6 +3128,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 1000000,
     explanation: "연수합계 = 5+4+3+2+1 = 15. 3년차 상각률 = 3/15. 3년차 상각비 = 5,000,000 × 3/15 = 1,000,000. (1년차: 5/15, 2년차: 4/15, 3년차: 3/15)",
     hint: "연수합계법: 잔여내용연수/연수합계 × 상각대상금액",
+    tags: ["유형자산"],
   },
   {
     id: "ccalca05", type: "calculation", standard: "common", category: "calc-advanced", difficulty: "advanced",
@@ -2801,6 +3136,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 1760000,
     explanation: "영업이익 = 10,000,000 - 6,000,000 - 1,500,000 = 2,500,000. 세전이익 = 2,500,000 - 300,000 = 2,200,000. 당기순이익 = 2,200,000 × (1-20%) = 1,760,000.",
     hint: "당기순이익 = 세전이익 × (1 - 법인세율)",
+    tags: ["재고자산", "법인세"],
   },
   {
     id: "gia01", type: "journal", standard: "general", category: "general-advanced", difficulty: "advanced",
@@ -2809,7 +3145,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "단기매매증권", amount: 1200000 }, { account: "단기매매증권처분이익", amount: 300000 }],
     distractors: ["유가증권처분이익"],
     explanation: "단기매매증권 처분이익 = 1,500,000 - 1,200,000 = 300,000. 당기손익 인식.",
-    hint: "단기매매증권 처분이익은 당기손익입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "gia02", type: "journal", standard: "general", category: "general-advanced", difficulty: "advanced",
@@ -2819,6 +3156,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["배당수익", "이익잉여금"],
     explanation: "지분법: 피투자회사 당기순이익 중 지분 해당액을 지분법이익(수익)으로 인식, 투자주식(자산) 증가.",
     hint: "지분법에서는 피투자회사의 이익 중 내 지분만큼을 수익으로 인식합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gia03", type: "journal", standard: "general", category: "general-advanced", difficulty: "advanced",
@@ -2828,6 +3166,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["배당수익", "이자수익"],
     explanation: "지분법 배당: 투자주식(자산) 감소. 배당은 이미 지분법이익으로 인식된 부분의 회수이므로 수익 아님.",
     hint: "지분법에서 배당은 수익이 아니라 투자자산의 회수입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gia04", type: "journal", standard: "general", category: "general-advanced", difficulty: "advanced",
@@ -2836,7 +3175,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "이자수익", amount: 288000 }],
     distractors: ["이자비용"],
     explanation: "만기보유증권 할인취득: 유효이자(288,000) = 현금이자(240,000) + 할인차금 상각(48,000). 투자자 입장.",
-    hint: "할인 취득한 만기보유증권은 유효이자율로 이자를 인식하고 차액을 자산 증가로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "gia05", type: "journal", standard: "general", category: "general-advanced", difficulty: "advanced",
@@ -2846,6 +3186,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["감가상각비", "무형자산상각비"],
     explanation: "무형자산 손상: 회수가능액 < 장부가액 시 손상차손 인식. 개발비에서 직접 차감.",
     hint: "무형자산도 손상검사를 통해 손상차손을 인식할 수 있습니다.",
+    tags: ["유형자산", "무형자산", "자산손상"],
   },
   {
     id: "gia06", type: "journal", standard: "general", category: "general-advanced", difficulty: "advanced",
@@ -2855,6 +3196,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["미수금", "현금"],
     explanation: "결산 시 장기채권 중 1년 내 회수분을 유동자산(외상매출금)으로 재분류.",
     hint: "1년 내 회수 예정인 장기채권은 유동자산으로 분류합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gia07", type: "journal", standard: "general", category: "general-advanced", difficulty: "advanced",
@@ -2863,7 +3205,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 100000 }],
     distractors: ["광고선전비", "사채"],
     explanation: "사채발행비는 사채할인발행차금에 가산하여 유효이자율에 반영. 즉시 비용 처리 안 함.",
-    hint: "사채 발행 비용은 사채할인발행차금에 포함하여 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["차입원가"],
   },
   {
     id: "gia08", type: "journal", standard: "general", category: "general-advanced", difficulty: "advanced",
@@ -2872,7 +3215,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "결손금", amount: 1000000 }],
     distractors: ["이익잉여금", "현금"],
     explanation: "자본준비금(주식발행초과금)으로 결손금 보전: 자본 내 계정 간 대체.",
-    hint: "결손금 보전에는 이익준비금, 자본준비금 순으로 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "gia09", type: "journal", standard: "general", category: "general-advanced", difficulty: "advanced",
@@ -2881,7 +3225,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "상품", amount: 30000 }],
     distractors: ["잡손실"],
     explanation: "정상 감모: 매출원가에 포함. 비정상 감모: 재고자산감모손실(영업외비용) 별도 인식.",
-    hint: "정상적인 감모는 매출원가, 비정상적인 감모는 별도 손실로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["재고자산"],
   },
   {
     id: "gia10", type: "journal", standard: "general", category: "general-advanced", difficulty: "advanced",
@@ -2890,7 +3235,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "전환사채", amount: 4500000 }, { account: "전환권대가", amount: 500000 }],
     distractors: ["주식선택권"],
     explanation: "전환사채 발행: 부채요소(전환사채)와 자본요소(전환권대가)로 분리하여 인식.",
-    hint: "전환사채는 부채요소와 자본요소를 분리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["주식기준보상"],
   },
   {
     id: "goa01", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "advanced",
@@ -2898,6 +3244,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "지분법 배당: 투자주식(자산) 차감. 이미 지분법이익으로 인식된 이익의 회수이므로 수익 아님.",
     hint: "지분법에서 배당은 이미 인식한 이익의 회수입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "goa02", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "advanced",
@@ -2905,6 +3252,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "할인 취득: 취득가 < 액면가 → 유효이자율 > 액면이자율. 할증 취득은 반대.",
     hint: "싸게 사면 실질 수익률이 표면 이자율보다 높습니다.",
+    tags: ["기초회계"],
   },
   {
     id: "goa03", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "advanced",
@@ -2912,6 +3260,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "단기매매증권: 공정가치. 만기보유증권: 상각후원가. 매도가능증권: 공정가치(평가손익은 자본).",
     hint: "보유 목적에 따라 평가 방법이 달라집니다.",
+    tags: ["금융상품"],
   },
   {
     id: "goa04", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "advanced",
@@ -2919,6 +3268,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "결손금 보전 순서: 임의적립금 → 이익준비금 → 자본준비금. 자본준비금도 보전에 사용 가능.",
     hint: "자본준비금은 결손금 보전 목적으로 사용할 수 있습니다.",
+    tags: ["기초회계"],
   },
   {
     id: "goa05", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "advanced",
@@ -2926,6 +3276,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "비정상 감모손실은 영업외비용(재고자산감모손실)으로 별도 처리. 정상 감모는 매출원가.",
     hint: "비정상적인 손실은 영업외비용으로 처리합니다.",
+    tags: ["재고자산"],
   },
   {
     id: "goa06", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "advanced",
@@ -2933,6 +3284,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "전환사채: 부채요소(사채 부분) + 자본요소(전환권 부분)으로 분리. 복합금융상품.",
     hint: "전환사채는 사채와 전환권이 결합된 복합금융상품입니다.",
+    tags: ["금융상품"],
   },
   {
     id: "goa07", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "advanced",
@@ -2940,6 +3292,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "사채발행비는 사채할인발행차금에 가산하여 유효이자율에 반영. 즉시 비용화 안 함.",
     hint: "사채발행비는 사채의 실질 이자율을 조정하는 데 사용됩니다.",
+    tags: ["차입원가"],
   },
   {
     id: "goa08", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "advanced",
@@ -2947,6 +3300,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "지분법 손실이 투자주식 장부가액을 초과하면 초과분은 인식하지 않음. 단, 추가 의무가 있으면 예외.",
     hint: "지분법 손실은 투자주식 장부가액까지만 인식합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "goa09", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "advanced",
@@ -2954,6 +3308,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "일반기업회계기준: 무형자산 내용연수 최대 20년. K-IFRS는 내용연수 제한 없음(비한정 가능).",
     hint: "일반기업회계기준은 무형자산 내용연수에 상한을 두고 있습니다.",
+    tags: ["무형자산"],
   },
   {
     id: "goa10", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "advanced",
@@ -2961,6 +3316,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "결손금이 있어도 자본금이나 자본잉여금이 충분히 크면 자본총계는 양수일 수 있음.",
     hint: "자본총계 = 자본금 + 자본잉여금 + 이익잉여금(결손금). 다른 자본이 더 클 수 있습니다.",
+    tags: ["기초회계"],
   },
   // ══════════════════════════════════════
   // Batch 4 추가 (100개) - 은행업/공공기관 심화 + 추가
@@ -2973,6 +3329,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["유가증권", "예수금"],
     explanation: "신탁계정은 고유계정과 분리 운영. 신탁유가증권(자산) - 신탁원본(부채) 구조.",
     hint: "신탁재산은 은행 고유재산과 별도로 신탁계정에서 관리합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja02", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -2980,6 +3337,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "BIS 비율 = 자기자본 / 위험가중자산 × 100%. 바젤협약에 따라 최소 8%(기본자본 6%) 이상 유지 의무. 은행 건전성의 핵심 지표.",
     hint: "BIS 비율이 낮을수록 자본 대비 위험이 크다는 의미입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja03", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -2988,7 +3346,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 496301370 }, { account: "선수이자", amount: 3698630 }],
     distractors: ["이자수익"],
     explanation: "CP 할인매입: 할인액 = 500,000,000 × 3% × 90/365 ≈ 3,698,630. 액면 취득 후 선수이자를 만기까지 수익으로 인식.",
-    hint: "어음 할인매입 시 할인액은 선수이자(부채)로 처리 후 기간 배분합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja04", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -2997,7 +3356,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "외화환산이익", amount: 5000000 }],
     distractors: ["외환차익", "외화환산손실"],
     explanation: "기말 환율(1,350) > 장부 환율(1,300) → 외화자산 평가이익. $100,000 × 50 = 5,000,000.",
-    hint: "기말 환율이 상승하면 외화대출금(자산) 가치가 올라 평가이익 발생.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["환율변동"],
   },
   {
     id: "bja05", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3006,7 +3366,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 200000 }],
     distractors: ["파생상품평가손실", "파생금융부채"],
     explanation: "공정가치위험회피 스왑 정산: 순지급액은 이자비용으로 처리. 헤징 효과로 고정금리 부채의 이자비용과 상계.",
-    hint: "이자율스왑 정산금은 이자비용 또는 이자수익으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "bja06", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3015,7 +3376,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "미수이자", amount: 150000 }],
     distractors: ["대손상각비", "대출금"],
     explanation: "무수익여신: 이자 인식 중단. 계상된 미수이자를 이자수익 차감으로 제각. 실질적 이자 인식 취소.",
-    hint: "무수익여신으로 분류되면 미수이자를 제각하고 이자 인식을 중단합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja07", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3025,6 +3387,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["대출금", "충당부채"],
     explanation: "고정여신 충당금 = 10,000,000 × 7% = 700,000. 여신 건전성 분류별 충당금률 적용.",
     hint: "여신 건전성 분류(정상/요주의/고정/회수의문/추정손실)에 따라 충당금률이 다릅니다.",
+    tags: ["충당부채"],
   },
   {
     id: "bja08", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3033,7 +3396,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "외화예금", amount: 65000000 }],
     distractors: ["외화자산", "요구불예금"],
     explanation: "외화예금 수입: 현금(자산) 증가, 외화예금(부채) 증가. $50,000 × 1,300 = 65,000,000.",
-    hint: "외화예금도 은행에게는 부채입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["환율변동"],
   },
   {
     id: "bja09", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3042,7 +3406,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "한국은행차입금", amount: 20000000 }],
     distractors: ["단기차입금", "콜머니"],
     explanation: "한국은행 차입: 현금(자산) 증가, 한국은행차입금(부채) 증가. 중앙은행 최종대부자 기능.",
-    hint: "한국은행으로부터의 차입은 별도 계정(한국은행차입금)으로 관리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja10", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3052,6 +3417,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["미수이자"],
     explanation: "원리금 수령: 현금(자산) 증가. 원금부분: 대출금(자산) 감소. 이자부분: 이자수익(수익) 인식.",
     hint: "원리금 수령 시 원금과 이자를 구분하여 처리합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja11", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3061,6 +3427,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["수수료비용"],
     explanation: "가맹점 지급: 가맹점채무(부채) 감소. 수수료 2% = 200,000은 수수료수익(수익).",
     hint: "가맹점 수수료는 카드사의 수익입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja12", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3070,6 +3437,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["투자자산", "현금"],
     explanation: "출자전환: 대출금(채권)이 주식(지분)으로 전환. 대출금(자산) 감소, 주식(자산) 증가.",
     hint: "출자전환은 대출채권을 주식으로 바꾸는 거래입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja13", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3078,7 +3446,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "선수수익", amount: 300000 }],
     distractors: ["수수료수익", "보증수수료수익"],
     explanation: "보증서 수수료: 보증기간에 걸쳐 수익 인식. 수취 시 선수수익(부채) 처리.",
-    hint: "보증기간에 걸쳐 인식할 수수료는 선수수익으로 이연합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja14", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3087,7 +3456,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 50000000 }],
     distractors: ["사채", "현금"],
     explanation: "은행채 만기 상환: 은행채(부채) 감소, 보통예금(자산) 감소.",
-    hint: "은행이 발행한 채권(은행채) 상환은 부채 감소입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja15", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3097,6 +3467,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["대출금", "충당부채"],
     explanation: "회수의문여신 충당금 = 5,000,000 × 75% = 3,750,000. 회수의문은 정상(0.5%)보다 훨씬 높은 비율 적용.",
     hint: "회수의문여신은 50~75%의 높은 충당금률을 적용합니다.",
+    tags: ["충당부채"],
   },
   {
     id: "bja16", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3106,6 +3477,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["외환차익", "파생금융자산"],
     explanation: "외화 매입(원화 지급): 외화현금(자산) 증가, 원화현금(자산) 감소. $100,000 × 1,300 = 130,000,000. 만기 역스왑 의무는 선도계약으로 별도 인식.",
     hint: "외화를 사면(매입) 외화자산이 늘고 원화가 줄어듭니다.",
+    tags: ["금융상품", "환율변동"],
   },
   {
     id: "bja17", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3114,6 +3486,7 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "대출금", amount: 5000000 }, { account: "부실채권매각이익", amount: 1000000 }],
     explanation: "NPL 매각: 충당금으로 대출금 제각 후, 매각대금 1,000,000은 추가 이익. 장부가 0인 채권을 매각하여 전액 이익.",
     hint: "충당금이 100% 설정된 채권 매각 시 수취액 전액이 이익입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja18", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3122,7 +3495,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "퇴직급여", amount: 3000000 }],
     distractors: ["이자수익", "확정급여채무"],
     explanation: "사외적립자산 운용수익: 사외적립자산(자산) 증가, 퇴직급여(비용) 차감 처리. 운용수익만큼 실질 퇴직급여 비용이 감소하는 효과.",
-    hint: "사외적립자산의 수익은 퇴직급여 비용을 줄여줍니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["종업원급여"],
   },
   {
     id: "bja19", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3132,6 +3506,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["유동화증권부채", "ABS발행이익"],
     explanation: "제거 요건 충족 시 대출금(자산) 제거. 처분가액과 장부가액 차이는 손익.",
     hint: "위험과 보상이 실질적으로 이전되면 자산을 제거합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bja20", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "advanced",
@@ -3140,7 +3515,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 5000000 }],
     distractors: ["법인세비용", "미지급세금"],
     explanation: "법인세 중간예납: 선급법인세(자산) 처리. 결산 시 법인세비용과 상계.",
-    hint: "중간에 낸 법인세는 자산(선급법인세)으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["법인세"],
   },
   {
     id: "boa01", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -3148,6 +3524,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "BIS 비율 = 자기자본 / 위험가중자산 × 100%. 국제결제은행(BIS) 기준 최소 8% 이상.",
     hint: "BIS 비율은 은행 건전성의 핵심 지표입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boa02", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -3155,6 +3532,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "무수익여신(NPL): 이자 인식 중단. 기 계상 미수이자도 제각. 실제 수령 시 수익 인식.",
     hint: "무수익여신은 이자를 받을 가능성이 없어 인식을 중단합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boa03", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -3162,6 +3540,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "신탁계정은 고유계정과 분리 운영. 재무제표도 별도 또는 구분 표시.",
     hint: "신탁재산은 고유재산과 분리하여 관리합니다.",
+    tags: ["재무제표표시"],
   },
   {
     id: "boa04", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -3169,6 +3548,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "RP 매입: 증권 담보로 자금을 빌려주고 만기에 되받음 → 단기 대출 성격.",
     hint: "RP 매입은 담보부 단기 자금 운용입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boa05", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -3176,6 +3556,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "장부가 0(충당금 100%)인 채권 매각 시 수취액 전액이 매각이익.",
     hint: "장부가액이 0이면 수취액 모두가 이익입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boa06", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -3183,6 +3564,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "여신 건전성 분류별 충당금: 정상 0.5%, 요주의 2%, 고정 7~20%, 회수의문 50~75%, 추정손실 100%.",
     hint: "추정손실은 회수 가능성이 없다고 판단하여 100% 충당금을 설정합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boa07", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -3190,6 +3572,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "출자전환: 대출금(채권) → 주식(지분)으로 전환. 부채 구조조정 수단.",
     hint: "출자전환은 채권자가 채무자의 주주가 되는 거래입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boa08", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -3197,6 +3580,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "자산유동화: 제거 요건(위험·보상 실질적 이전) 충족 시 기초자산 제거.",
     hint: "위험과 보상이 넘어가면 자산에서 빼야 합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boa09", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -3204,6 +3588,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "지급준비율은 예금 종류(요구불/저축성)에 따라 다르게 적용될 수 있음.",
     hint: "예금 종류별로 지급준비율이 다릅니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boa10", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "advanced",
@@ -3211,6 +3596,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "보증수수료: 보증 용역이 제공되는 기간에 걸쳐 안분하여 수익 인식.",
     hint: "보증 서비스는 기간에 걸쳐 제공되므로 수익도 기간 배분합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalca01", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "advanced",
@@ -3218,6 +3604,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 10,
     explanation: "BIS 비율 = 5,000,000 / 50,000,000 × 100% = 10%.",
     hint: "BIS 비율 = 자기자본 / 위험가중자산 × 100%",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalca02", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "advanced",
@@ -3225,6 +3612,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 1600000,
     explanation: "정상: 100,000,000 × 0.5% = 500,000. 요주의: 20,000,000 × 2% = 400,000. 고정: 10,000,000 × 7% = 700,000. 합계 = 1,600,000.",
     hint: "각 건전성 분류별로 충당금을 계산하여 합산합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalca03", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "advanced",
@@ -3232,6 +3620,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 9926027,
     explanation: "할인액 = 10,000,000 × 3% × 90/365 = 73,973. 수령액 = 10,000,000 - 73,973 = 9,926,027.",
     hint: "수령액 = 액면가 - (액면가 × 할인율 × 일수/365), 원 미만 버림은 최종 수령액 기준",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalca04", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "advanced",
@@ -3239,6 +3628,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 2.5,
     explanation: "NIM = (이자수익 - 이자비용) / 평균이자발생자산 × 100 = 5,000,000 / 200,000,000 × 100 = 2.5%.",
     hint: "NIM = 순이자수익 / 평균이자발생자산 × 100%",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalca05", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "advanced",
@@ -3246,6 +3636,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 8000000,
     explanation: "$200,000 × (1,320 - 1,280) = $200,000 × 40 = 8,000,000원.",
     hint: "외화환산손익 = 외화금액 × (기말환율 - 기초환율)",
+    tags: ["환율변동"],
   },
   {
     id: "pja01", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3255,6 +3646,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["선수수익"],
     explanation: "발생주의: 전력 공급분 전액 수익 인식. 미청구분은 미수금(자산)으로 계상.",
     hint: "제공한 서비스는 청구 여부와 관계없이 수익으로 인식합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pja02", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3264,6 +3656,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["유형자산", "충당부채"],
     explanation: "원전 해체 의무: 복구충당부채(부채) 현재가치로 설정. 복구원가는 관련 자산(발전소) 취득원가에 가산하거나 당기 비용으로 처리. 실무상 자산 원가 가산이 일반적.",
     hint: "핵발전소 같은 자산은 해체 비용도 처음부터 부채로 인식합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "pja03", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3272,7 +3665,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "복구충당부채", amount: 1500000 }],
     distractors: ["복구원가", "현금"],
     explanation: "복구충당부채 시간가치: 50,000,000 × 3% = 1,500,000. 이자비용(비용) 인식, 부채 증가.",
-    hint: "현재가치로 측정된 충당부채는 매기 이자비용을 인식하여 부채가 증가합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["충당부채"],
   },
   {
     id: "pja04", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3281,7 +3675,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 300000000 }],
     distractors: ["급여", "현금"],
     explanation: "경영평가 성과급: 성과급(비용) 발생, 보통예금(자산) 감소.",
-    hint: "성과급은 급여와 구분하여 별도 계정으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["공기업회계"],
   },
   {
     id: "pja05", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3291,6 +3686,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["정부보조금수익", "자본잉여금"],
     explanation: "무상 취득 자산: 공정가치로 자산 인식, 자산수증이익(수익) 계상.",
     hint: "공짜로 받은 자산은 공정가치로 인식하고 수익을 계상합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "pja06", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3300,6 +3696,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["현금"],
     explanation: "공채 상환: 원금(공채 부채 감소) + 이자(이자비용 인식). 보통예금 감소.",
     hint: "원금과 이자를 동시에 지급하므로 각각 처리합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pja07", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3309,6 +3706,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["토지", "정부보조금수익"],
     explanation: "기부채납 인프라: 인프라자산(자산) 인식, 자산수증이익(수익) 계상. 도로, 교량 등 인프라 자산.",
     hint: "기부채납 받은 인프라시설은 자산으로 인식합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "pja08", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3317,7 +3715,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "이자수익", amount: 200000000 }],
     distractors: ["영업수익", "정부보조금수익"],
     explanation: "국고채 이자: 이자수익(수익) 인식. 공기업도 금융수익은 이자수익으로 처리.",
-    hint: "채권 이자는 이자수익으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["공기업회계"],
   },
   {
     id: "pja09", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3327,6 +3726,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["영업수익", "미수금"],
     explanation: "연체료 수령: 현금(자산) 증가, 연체료수익(수익) 인식.",
     hint: "연체료는 별도 수익 계정으로 처리합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pja10", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3336,6 +3736,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["감가상각비", "현금"],
     explanation: "이연정부보조금 기간 배분: 10,000,000 ÷ 10년 = 1,000,000/년. 이연정부보조금(부채) 감소, 수익 인식.",
     hint: "자산 관련 보조금은 자산 내용연수에 걸쳐 수익으로 인식합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "pja11", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3345,6 +3746,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이연정부보조금", "자본금"],
     explanation: "정책손실 보전 지원금: 운영 목적이므로 즉시 정부보조금수익(수익) 인식.",
     hint: "운영 목적 보조금은 수령 시 즉시 수익 인식합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pja12", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3354,6 +3756,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이익잉여금", "현금"],
     explanation: "결의된 배당금 지급: 미지급배당금(부채) 감소, 보통예금(자산) 감소.",
     hint: "공기업도 주주(정부)에게 배당금을 지급합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pja13", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3363,6 +3766,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["현금"],
     explanation: "자산 폐기: 장부가액(200,000,000) 전액 처분손실. 감가상각누계액도 함께 제거.",
     hint: "폐기 시 장부가액 전액이 처분손실입니다.",
+    tags: ["유형자산"],
   },
   {
     id: "pja14", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3372,6 +3776,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["영업수익", "이연정부보조금"],
     explanation: "운영손실 보전금: 즉시 수익 인식. 노인·장애인 무임수송 등 정책비용 보전.",
     hint: "운영 보조금은 즉시 수익으로 처리합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pja15", type: "journal", standard: "public", category: "public-advanced", difficulty: "advanced",
@@ -3381,6 +3786,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["개발비", "소프트웨어"],
     explanation: "시스템 구축 비용: 자산인식 요건 미충족 시 경상개발비(비용). 요건 충족 시 무형자산(소프트웨어).",
     hint: "시스템 구축 비용은 요건에 따라 비용 또는 자산으로 처리합니다.",
+    tags: ["무형자산"],
   },
   {
     id: "poa01", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "advanced",
@@ -3388,6 +3794,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "운영보조금: 즉시 수익. 자산취득 보조금: 이연정부보조금(부채)으로 처리 후 기간 배분.",
     hint: "보조금의 목적에 따라 인식 방법이 달라집니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "poa02", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "advanced",
@@ -3395,6 +3802,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "현재가치로 측정된 복구충당부채: 매기 할인율 × 잔액만큼 이자비용 인식, 부채 증가.",
     hint: "현재가치 충당부채는 시간이 갈수록 미래가치에 가까워집니다.",
+    tags: ["충당부채"],
   },
   {
     id: "poa03", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "advanced",
@@ -3402,6 +3810,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "무상취득 자산: 공정가치로 인식, 자산수증이익 계상.",
     hint: "무상으로 받은 자산은 공정가치로 측정합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "poa04", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "advanced",
@@ -3409,6 +3818,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "공기업도 이익이 발생하면 정부(주주)에게 배당금 지급. 경영평가 결과에 따라 결정.",
     hint: "공기업도 이익이 나면 주주인 정부에게 배당합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "poa05", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "advanced",
@@ -3416,6 +3826,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "공기업 회계기준 미규정 사항은 K-IFRS를 준용. 더 엄격하다기보다 추가적 특수 사항을 규정.",
     hint: "공기업 회계기준은 K-IFRS를 보완하는 성격입니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "poa06", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "advanced",
@@ -3423,6 +3834,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "정책손실 보전금은 운영 목적이므로 즉시 수익 인식. 이연정부보조금 처리 대상 아님.",
     hint: "운영 목적 보조금은 즉시 수익입니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "poa07", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "advanced",
@@ -3430,6 +3842,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "자산 관련 보조금(이연정부보조금): 자산 내용연수 동안 기간 배분하여 수익 인식.",
     hint: "자산과 관련된 보조금은 자산을 사용하는 기간에 걸쳐 수익화합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "poa08", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "advanced",
@@ -3437,6 +3850,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "공기업 연체요금: 연체료 수익 인식. 은행 무수익여신 이자인식 중단과 다름.",
     hint: "공기업의 연체료는 은행 무수익여신 규정과 다르게 처리합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "poa09", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "advanced",
@@ -3444,6 +3858,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "성과급은 별도 계정(성과급)으로 처리하여 급여와 구분.",
     hint: "성과급은 급여와 구분하여 별도 계정으로 처리합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "poa10", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "advanced",
@@ -3451,6 +3866,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "자산 취득(건설) 시점부터 해체 의무 발생. 복구충당부채는 현재가치로 최초 인식.",
     hint: "의무는 자산 취득과 동시에 발생합니다.",
+    tags: ["충당부채"],
   },
   {
     id: "pcalca01", type: "calculation", standard: "public", category: "public-calc-advanced", difficulty: "advanced",
@@ -3458,6 +3874,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 74410000,
     explanation: "현재가치 = 100,000,000 × 0.7441 = 74,410,000원.",
     hint: "현재가치 = 미래금액 × 현가계수",
+    tags: ["충당부채"],
   },
   {
     id: "pcalca02", type: "calculation", standard: "public", category: "public-calc-advanced", difficulty: "advanced",
@@ -3465,6 +3882,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 2000000,
     explanation: "연간 수익 = 50,000,000 ÷ 25년 = 2,000,000원.",
     hint: "이연정부보조금은 자산 내용연수로 나누어 매년 수익화합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pcalca03", type: "calculation", standard: "public", category: "public-calc-advanced", difficulty: "advanced",
@@ -3472,6 +3890,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 4000000,
     explanation: "이자비용 = 100,000,000 × 4% = 4,000,000원.",
     hint: "이자비용 = 액면금액 × 이자율",
+    tags: ["공기업회계"],
   },
   {
     id: "pcalca04", type: "calculation", standard: "public", category: "public-calc-advanced", difficulty: "advanced",
@@ -3479,6 +3898,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 15000000,
     explanation: "(500,000,000 - 50,000,000) ÷ 30년 = 15,000,000원.",
     hint: "정액법 = (취득원가 - 잔존가치) ÷ 내용연수",
+    tags: ["유형자산"],
   },
   {
     id: "pcalca05", type: "calculation", standard: "public", category: "public-calc-advanced", difficulty: "advanced",
@@ -3486,6 +3906,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 200000000,
     explanation: "영업이익 = 1,000,000,000 + 50,000,000 - 700,000,000 - 150,000,000 = 200,000,000.",
     hint: "영업이익 = 영업수익(요금+보조금) - 영업비용(원가+관리비)",
+    tags: ["공기업회계"],
   },
   {
     id: "kib01", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3494,7 +3915,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "매출", amount: 500000 }],
     distractors: ["매출채권", "계약부채"],
     explanation: "K-IFRS 15: 수행의무는 완료했지만 청구권이 조건부인 경우 계약자산(자산) 인식.",
-    hint: "청구 조건이 충족되지 않으면 매출채권 대신 계약자산으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "kib02", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3503,7 +3925,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "계약자산", amount: 500000 }],
     distractors: ["매출", "현금"],
     explanation: "청구권 확정: 계약자산(자산) → 매출채권(자산)으로 대체. 수익은 이미 인식됨.",
-    hint: "청구 조건이 충족되면 계약자산을 매출채권으로 전환합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "kib03", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3512,7 +3935,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "계약부채", amount: 100000 }],
     distractors: ["선수금", "포인트비용"],
     explanation: "K-IFRS 15: 포인트는 별도 수행의무. 거래가격 중 포인트 배분액을 계약부채로 이연.",
-    hint: "포인트는 미래 서비스 제공 의무이므로 계약부채로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "kib04", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3522,6 +3946,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["선수금"],
     explanation: "K-IFRS 15: 반품 예상분은 수익에서 제외하고 환불부채(부채)로 처리.",
     hint: "반품이 예상되는 금액은 수익으로 인식하지 않습니다.",
+    tags: ["IFRS15", "수익인식", "IAS2", "재고자산"],
   },
   {
     id: "kib05", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3531,6 +3956,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["계약자산", "매출"],
     explanation: "진행기준: 공사수익 = 10,000,000 × 30% = 3,000,000. 미청구공사(자산) 계상.",
     hint: "건설계약은 진행률에 따라 수익을 인식합니다.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "kib06", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3539,7 +3965,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "종속기업투자주식", amount: 1000000 }],
     distractors: ["지분법손실", "유형자산처분손실"],
     explanation: "투자주식 손상: 장부가 5,000,000 - 회수가능액 4,000,000 = 손상차손 1,000,000.",
-    hint: "회수가능액이 장부가액보다 낮으면 손상차손을 인식합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS16", "유형자산", "IAS36", "자산손상"],
   },
   {
     id: "kib07", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3549,6 +3976,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["임대료수익", "리스부채"],
     explanation: "운용리스 제공자: 자산 보유 유지. 감가상각 계속 인식. 리스료는 임대료수익으로 인식.",
     hint: "운용리스 제공자는 자산을 계속 보유하므로 감가상각합니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kib08", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3558,6 +3986,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["리스부채", "이자수익"],
     explanation: "금융리스 제공자: 자산 제거, 리스채권(자산) 인식. 리스이용자의 부채 = 제공자의 채권.",
     hint: "금융리스 제공자는 자산을 팔고 채권을 인식합니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kib09", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3567,6 +3996,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["확정급여채무", "사외적립자산"],
     explanation: "확정기여형(DC): 납입 즉시 퇴직급여(비용) 인식. 추가 의무 없음.",
     hint: "확정기여형은 납입으로 회사의 의무가 종료됩니다.",
+    tags: ["IAS19", "종업원급여"],
   },
   {
     id: "kib10", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3576,6 +4006,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["현금", "건설중인자산"],
     explanation: "K-IFRS 23: 적격자산 취득 관련 차입원가는 자본화(비용에서 자산으로 대체). 이자비용을 인식한 후 자본화 조정으로 유형자산 원가에 가산. 비적격자산 차입원가는 즉시 비용.",
     hint: "적격자산의 차입원가는 비용이 아닌 자산 원가로 처리합니다.",
+    tags: ["IFRS2", "주식기준보상", "IAS16", "유형자산"],
   },
   {
     id: "kib11", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -3583,6 +4014,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "희석EPS: 잠재적 보통주(스톡옵션, 전환사채 등) 전환 가정 시 주식수 증가 → EPS 감소. 기본EPS ≥ 희석EPS.",
     hint: "주식수가 늘어나면 주당이익은 줄어듭니다.",
+    tags: ["기초회계"],
   },
   {
     id: "kib12", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3592,6 +4024,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["외환차익", "당기손익"],
     explanation: "해외사업장 자산 환산: 마감환율 적용. 환산차이 $10,000 × (1,350-1,300) = 500,000은 기타포괄손익.",
     hint: "해외사업장 환산차이는 당기손익이 아닌 기타포괄손익입니다.",
+    tags: ["IAS21", "환율변동"],
   },
   {
     id: "kib13", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3601,6 +4034,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["주식발행초과금", "현금"],
     explanation: "주식배당: 이익잉여금(자본) 감소, 자본금(자본) 증가. 자본 내 대체. 현금 유출 없음.",
     hint: "주식배당은 현금 지급 없이 자본 내에서 계정이 이동합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "kib14", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3610,6 +4044,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["연구비", "무형자산"],
     explanation: "내부 창출 무형자산: 개발단계 + 인식요건 충족 시 개발비(무형자산) 인식.",
     hint: "내부 창출이라도 요건을 충족하면 무형자산으로 인식합니다.",
+    tags: ["IAS38", "무형자산"],
   },
   {
     id: "kib15", type: "journal", standard: "k-ifrs", category: "kifrs-basic", difficulty: "basic",
@@ -3618,7 +4053,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "리스부채", amount: 1500000 }],
     distractors: ["임차료", "이자비용"],
     explanation: "리스 변경(기간 연장): 리스부채 재측정 증가분을 사용권자산에 가산.",
-    hint: "리스 조건 변경 시 사용권자산과 리스부채를 동시에 조정합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kob01", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -3626,6 +4062,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "포인트는 미래 재화/용역 제공 의무 → 별도 수행의무. 거래가격 배분하여 계약부채로 이연.",
     hint: "포인트는 미래 서비스 제공 의무이므로 별도 수행의무입니다.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "kob02", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -3633,6 +4070,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "적격자산 취득 관련 차입원가는 자본화. 비적격자산 차입원가만 즉시 비용.",
     hint: "적격자산의 차입원가는 자산 원가에 포함합니다.",
+    tags: ["IFRS2", "주식기준보상"],
   },
   {
     id: "kob03", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -3640,6 +4078,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "금융리스 제공자: 자산 제거 → 리스채권 인식. 자산 보유하는 것은 운용리스 제공자.",
     hint: "금융리스에서는 리스이용자가 실질적인 소유권을 갖습니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kob04", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -3647,6 +4086,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "희석EPS: 잠재적 보통주 전환 가정 → 주식수 증가, EPS 감소. 따라서 희석EPS ≤ 기본EPS.",
     hint: "주식수가 늘어나면 주당이익은 줄어듭니다.",
+    tags: ["기초회계"],
   },
   {
     id: "kob05", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "advanced",
@@ -3654,6 +4094,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "K-IFRS 15: 변동대가. 반품 예상분은 환불부채로 처리, 수익 인식 제외.",
     hint: "돌아올 것으로 예상되는 금액은 수익이 아닙니다.",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "gcalcb01", type: "calculation", standard: "general", category: "general-calc-advanced", difficulty: "advanced",
@@ -3661,6 +4102,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 350000,
     explanation: "처분 후 잔액 = 500,000 - 200,000 = 300,000. 기말 공정가치 350,000으로 평가. 평가이익 50,000 인식. 기말 장부가 = 350,000.",
     hint: "단기매매증권은 기말 공정가치로 평가합니다.",
+    tags: ["금융상품"],
   },
   {
     id: "gcalcb02", type: "calculation", standard: "general", category: "general-calc-advanced", difficulty: "advanced",
@@ -3668,6 +4110,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 3200000,
     explanation: "지분법이익 = 1,000,000 × 30% = 300,000. 배당 수령 차감 100,000. 기말 = 3,000,000 + 300,000 - 100,000 = 3,200,000.",
     hint: "기말 = 기초 + 지분법이익 - 배당금",
+    tags: ["기초회계"],
   },
   {
     id: "gcalcb03", type: "calculation", standard: "general", category: "general-calc-advanced", difficulty: "advanced",
@@ -3675,6 +4118,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 376000,
     explanation: "이자비용 = 발행가 4,700,000 × 유효이자율 8% = 376,000원.",
     hint: "유효이자법 이자비용 = 기초 장부가액 × 유효이자율",
+    tags: ["차입원가"],
   },
   {
     id: "gcalcb04", type: "calculation", standard: "general", category: "general-calc-advanced", difficulty: "advanced",
@@ -3682,6 +4126,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 10,
     explanation: "평균 외상매출금 = (10,000,000 + 14,000,000) / 2 = 12,000,000. 회전율 = 120,000,000 / 12,000,000 = 10회.",
     hint: "매출채권 회전율 = 매출액 / 평균 매출채권",
+    tags: ["기초회계"],
   },
   {
     id: "gcalcb05", type: "calculation", standard: "general", category: "general-calc-advanced", difficulty: "advanced",
@@ -3689,6 +4134,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 150,
     explanation: "유동비율 = 유동자산 / 유동부채 × 100 = 30,000,000 / 20,000,000 × 100 = 150%.",
     hint: "유동비율 = 유동자산 / 유동부채 × 100%",
+    tags: ["기초회계"],
   },
   {
     id: "cjb41", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -3697,7 +4143,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 200000 }],
     distractors: ["선급금", "급여"],
     explanation: "가불금: 가지급금(자산)으로 처리. 급여 지급일에 급여와 상계.",
-    hint: "정산 전 임시 지급금은 가지급금 계정을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb42", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -3707,6 +4154,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["보통예금"],
     explanation: "급여 지급 시 가불금 상계: 급여 2,500,000 - 가지급금 200,000 = 실지급 2,300,000.",
     hint: "가불금은 급여 지급 시 차감합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb43", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -3715,7 +4163,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 30000 }],
     distractors: ["잡손실", "잡이익"],
     explanation: "현금 부족: 현금과부족(임시계정)으로 처리. 원인 파악 후 해당 계정으로 대체.",
-    hint: "현금 차이는 원인 파악 전까지 현금과부족 계정을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb44", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -3724,7 +4173,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 50000 }],
     distractors: ["인쇄비", "사무용품비"],
     explanation: "인쇄비는 소모품비로 처리하거나 별도 인쇄비 계정 사용. 현금(자산) 감소.",
-    hint: "소모품 성격의 비용은 소모품비 계정을 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb45", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -3734,6 +4184,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["선급금", "임차료"],
     explanation: "임차보증금: 임차 종료 시 돌려받을 금액이므로 자산. 임대보증금(부채)과 반대 개념.",
     hint: "나중에 돌려받을 보증금은 자산입니다.",
+    tags: ["유형자산"],
   },
   {
     id: "cox26", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -3741,6 +4192,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "가지급금: 임시 계정. 원인 확정 시 해당 비용/자산 계정으로 대체.",
     hint: "가지급금은 임시 계정으로 정산 후 제거됩니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox27", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -3748,6 +4200,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "임차보증금은 나중에 돌려받을 금액이므로 자산. 임대보증금(받은 보증금)이 부채.",
     hint: "보증금을 낸 쪽은 자산, 받은 쪽은 부채입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox28", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -3755,6 +4208,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "결산 시 현금과부족 잔액: 차변(부족) → 잡손실, 대변(초과) → 잡이익.",
     hint: "원인 불명 차이는 결산에서 잡손익으로 마무리합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox29", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -3762,6 +4216,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "당좌차월: 당좌예금 한도 초과 수표 발행 시 발생. 부채(단기차입금과 유사).",
     hint: "당좌차월은 은행의 일시적 신용 제공으로 부채 성격입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox30", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -3769,6 +4224,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "임차보증금: 임차 기간이 1년 초과이면 비유동자산(장기). 1년 이내 반환 예정이면 유동.",
     hint: "장기 임차계약의 보증금은 비유동자산입니다.",
+    tags: ["유형자산"],
   },
   // ══════════════════════════════════════
   // Batch 5 추가 (100개) - 실전 문제
@@ -3780,7 +4236,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 1500000 }],
     distractors: ["사용권자산"],
     explanation: "이자비용 = 8,000,000 × 5% = 400,000. 원금 상환 = 1,500,000 - 400,000 = 1,100,000. 기말 리스부채 = 8,000,000 - 1,100,000 = 6,900,000.",
-    hint: "리스료 = 이자비용 + 원금상환. 원금상환 부분만 리스부채가 감소합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kic02", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3790,6 +4247,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["사채"],
     explanation: "이자비용 = 9,500,000 × 6% = 570,000. 현금이자 = 10,000,000 × 4% = 400,000. 할인차금 상각 = 570,000 - 400,000 = 170,000.",
     hint: "유효이자 - 현금이자 = 할인발행차금 상각액",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "kic03", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3799,6 +4257,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["미청구공사", "공사미수금"],
     explanation: "당기 공사수익 = 50,000,000 - 35,000,000 = 15,000,000. K-IFRS 15 기준 진행기준 적용 시 계약자산(자산) 계상. (구 기준의 미청구공사에 해당)",
     hint: "당기 수익 = 총 계약금액 - 전기 누적 인식액",
+    tags: ["IFRS15", "수익인식"],
   },
   {
     id: "kic04", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3808,6 +4267,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["금융자산평가이익", "이자수익"],
     explanation: "FVOCI 채무상품 평가이익: 기타포괄손익(자본). 처분 시 당기손익 재분류 가능.",
     hint: "FVOCI 평가손익은 기타포괄손익으로 자본에 누적됩니다.",
+    tags: ["IFRS9", "금융상품"],
   },
   {
     id: "kic05", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3816,7 +4276,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "확정급여채무", amount: 800000 }],
     distractors: ["이자비용", "사외적립자산"],
     explanation: "이자원가 = 20,000,000 × 4% = 800,000. 퇴직급여(비용) 인식, 확정급여채무(부채) 증가.",
-    hint: "이자원가 = 기초 확정급여채무 × 할인율",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS19", "종업원급여"],
   },
   {
     id: "kic06", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3826,6 +4287,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["매출원가", "재고자산평가충당금"],
     explanation: "필요 평가손실 = 2,000,000 - 1,700,000 = 300,000. 기 인식 200,000 차감. 추가 손실 = 100,000.",
     hint: "추가 손실 = 총 필요 손실 - 기 인식 손실",
+    tags: ["IAS2", "재고자산"],
   },
   {
     id: "kic07", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3834,7 +4296,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "재평가잉여금", amount: 1500000 }],
     distractors: ["유형자산평가이익", "기타포괄손익"],
     explanation: "재평가이익 1,500,000: 기타포괄손익(재평가잉여금, 자본) 인식. 당기손익 아님.",
-    hint: "유형자산 재평가이익은 기타포괄손익(재평가잉여금)으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS16", "유형자산"],
   },
   {
     id: "kic08", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3843,7 +4306,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 2000000 }],
     distractors: ["확정급여채무", "퇴직급여"],
     explanation: "사외적립자산 납입: 사외적립자산(자산) 증가, 현금(자산) 감소. 퇴직급여 비용과 무관.",
-    hint: "사외적립자산 납입은 자산 간 대체입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS19", "종업원급여"],
   },
   {
     id: "kic09", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3852,7 +4316,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "이연법인세부채", amount: 220000 }],
     distractors: ["이연법인세자산", "미지급세금"],
     explanation: "가산 일시적 차이: 미래 납세 의무 → 이연법인세부채 = 1,000,000 × 22% = 220,000.",
-    hint: "과세소득이 회계이익보다 크면 이연법인세부채를 인식합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS12", "법인세"],
   },
   {
     id: "kic10", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3862,6 +4327,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["미지급비용", "자본금"],
     explanation: "1년차 비용 = 3,000,000 ÷ 3년 = 1,000,000. 가득기간에 걸쳐 균등 인식.",
     hint: "총 보상원가를 가득기간으로 나누어 매년 인식합니다.",
+    tags: ["IFRS2", "주식기준보상"],
   },
   {
     id: "kic11", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3870,7 +4336,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "영업권", amount: 5000000 }, { account: "유형자산", amount: 3000000 }],
     distractors: ["무형자산"],
     explanation: "손상차손 = 30,000,000 - 22,000,000 = 8,000,000. 영업권 5,000,000 먼저 배분. 나머지 3,000,000은 유형자산.",
-    hint: "CGU 손상은 영업권부터 배분합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS16", "유형자산", "IAS38", "무형자산", "IAS36", "자산손상"],
   },
   {
     id: "kic12", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3879,6 +4346,7 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "자본금", amount: 3000000 }, { account: "주식발행초과금", amount: 2000000 }],
     explanation: "전환 시: 부채요소(전환사채) + 자본요소(전환권대가) 제거 → 자본금 + 주식발행초과금 증가.",
     hint: "전환 시 부채와 자본 양쪽을 모두 제거하고 신주를 발행합니다.",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "kic13", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3887,7 +4355,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "자기주식", amount: 500000 }],
     distractors: ["유형자산처분손실"],
     explanation: "자기주식 처분손실: 자본(자기주식처분손실)으로 처리. 당기손익 아님. 자기주식처분이익 잔액이 있으면 먼저 상계하고, 초과분만 자기주식처분손실로 처리.",
-    hint: "자기주식 처분손익은 당기손익이 아닌 자본에 반영됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS16", "유형자산"],
   },
   {
     id: "kic14", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3897,6 +4366,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["임차료"],
     explanation: "리스 축소: 리스부채 감소 > 사용권자산 감소 → 차액 200,000은 리스변경이익(당기손익).",
     hint: "리스 축소 시 부채 감소액과 자산 감소액의 차이는 당기손익입니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kic15", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3905,7 +4375,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 64000000 }, { account: "외환차익", amount: 1000000 }],
     distractors: ["외환차손"],
     explanation: "결제일 환율(1,280) < 장부 환율(1,300) → 부채 감소. $50,000 × (1,300-1,280) = 1,000,000 외환차익.",
-    hint: "외화부채 결제 시 환율이 하락하면 외환차익이 발생합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS21", "환율변동"],
   },
   {
     id: "kic16", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3915,6 +4386,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["외화환산손실", "기타포괄손익"],
     explanation: "기말 환율(1,350) > 장부 환율(1,300) → 외화자산 증가. $30,000 × 50 = 1,500,000 외화환산이익(당기손익).",
     hint: "기말 환율이 높아지면 외화채권(자산) 가치가 올라 환산이익이 발생합니다.",
+    tags: ["IAS21", "환율변동"],
   },
   {
     id: "kic17", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3922,7 +4394,8 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "법인세비용", amount: 3100000 }, { account: "이연법인세자산", amount: 100000 }],
     credit: [{ account: "미지급세금", amount: 3000000 }, { account: "이연법인세부채", amount: 200000 }],
     explanation: "법인세비용 = 당기법인세 3,000,000 + 이연법인세부채 200,000 - 이연법인세자산 100,000 = 3,100,000.",
-    hint: "법인세비용 = 당기법인세 + 이연법인세부채 증가 - 이연법인세자산 증가",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS12", "법인세"],
   },
   {
     id: "kic18", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3931,7 +4404,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "손상차손환입", amount: 600000 }],
     distractors: ["재평가잉여금", "기타포괄손익"],
     explanation: "손상차손환입: 당기손익(수익). 환입 후 장부가액은 손상 미인식 시 장부가액 초과 불가.",
-    hint: "손상차손환입은 당기손익으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["IAS16", "유형자산", "IAS36", "자산손상"],
   },
   {
     id: "kic19", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
@@ -3939,6 +4413,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "상각 완료 후 장부가액 0인 자산도 계속 사용 중이면 장부에 유지. 처분/폐기 시에만 제거.",
     hint: "자산은 처분하거나 폐기할 때 장부에서 제거합니다.",
+    tags: ["IAS38", "무형자산"],
   },
   {
     id: "kic20", type: "journal", standard: "k-ifrs", category: "kifrs-advanced", difficulty: "practical",
@@ -3947,7 +4422,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "자본금", amount: 5000000 }, { account: "주식발행초과금", amount: 35000000 }],
     distractors: ["이익잉여금"],
     explanation: "자본금 = 5,000주 × 1,000원(액면) = 5,000,000. 주식발행초과금 = 5,000주 × 7,000원 = 35,000,000.",
-    hint: "자본금 = 주식수 × 액면가, 주식발행초과금 = 주식수 × (발행가 - 액면가)",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "koc01", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
@@ -3955,6 +4431,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "IFRS 16: 리스료 = 이자비용(유효이자율 적용) + 리스부채 원금 상환. 유효이자법 적용.",
     hint: "리스료는 이자와 원금으로 구성됩니다.",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "koc02", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
@@ -3962,6 +4439,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "자기주식 처분손실은 자본(자기주식처분손실)으로 처리. 당기손익(영업외비용) 아님.",
     hint: "자기주식 거래는 자본 거래입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "koc03", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
@@ -3969,6 +4447,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "이자원가 = 기초 확정급여채무 × 할인율(우량회사채 수익률). 확정급여채무 증가.",
     hint: "이자원가는 기초 잔액에 할인율을 적용합니다.",
+    tags: ["IAS19", "종업원급여"],
   },
   {
     id: "koc04", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
@@ -3976,6 +4455,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "전환 시 전환권대가는 자본 내에서 주식발행초과금 등으로 대체. 당기손익 인식 안 함.",
     hint: "전환사채 전환은 자본 내 계정 이동입니다.",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "koc05", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
@@ -3983,13 +4463,15 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "법인세비용 = 당기법인세 ± 이연법인세 변동액. 포괄손익계산서에 표시.",
     hint: "법인세비용 = 당기법인세 + 이연법인세부채 증가 - 이연법인세자산 증가",
+    tags: ["IAS12", "법인세"],
   },
   {
     id: "koc06", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
     text: "K-IFRS에서 재고자산 평가손실이 회복되면 최초 원가를 초과하여 환입할 수 있다.",
     answer: false,
     explanation: "재고자산 평가손실 환입: 원래의 취득원가 한도 내에서만 가능. 초과 환입 불가.",
-    hint: "환입 후 장부가액은 최초 원가를 넘을 수 없습니다.",
+    hint: "핵심 키워드에 집중하세요. 예외가 있는지, 조건이 정확한지 확인해보세요.",
+    tags: ["IAS2", "재고자산"],
   },
   {
     id: "koc07", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
@@ -3997,6 +4479,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "화폐성 항목(현금, 채권, 채무 등): 기말 마감환율. 비화폐성 항목: 역사적 환율.",
     hint: "화폐성 항목은 현재 교환 가능한 금액, 즉 마감환율로 표시합니다.",
+    tags: ["IAS21", "환율변동"],
   },
   {
     id: "koc08", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
@@ -4004,6 +4487,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "주식결제형: 부여일 공정가치로 측정 후 가득기간에 걸쳐 인식. 이후 공정가치 변동 무시.",
     hint: "주식결제형은 부여일 공정가치가 고정됩니다.",
+    tags: ["기초회계"],
   },
   {
     id: "koc09", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
@@ -4011,6 +4495,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "K-IFRS: 사채 할인/할증발행차금은 유효이자법으로 상각. 정액법 사용 불가.",
     hint: "K-IFRS는 금융부채에 유효이자법을 적용합니다.",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "koc10", type: "ox", standard: "k-ifrs", category: "kifrs-ox-advanced", difficulty: "practical",
@@ -4018,6 +4503,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "주식발행초과금은 자본잉여금. 이익잉여금과 구분. 결손금 보전에는 사용 가능.",
     hint: "주식발행초과금은 자본잉여금으로 이익잉여금과 다릅니다.",
+    tags: ["기초회계"],
   },
   {
     id: "kcalcb01", type: "calculation", standard: "k-ifrs", category: "kifrs-calc-advanced", difficulty: "practical",
@@ -4025,6 +4511,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 580200,
     explanation: "2년차 이자비용 = 9,670,000 × 6% = 580,200원.",
     hint: "유효이자법에서 이자비용은 매년 달라집니다(장부가가 변하므로).",
+    tags: ["IAS23", "차입원가"],
   },
   {
     id: "kcalcb02", type: "calculation", standard: "k-ifrs", category: "kifrs-calc-advanced", difficulty: "practical",
@@ -4032,6 +4519,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 5745000,
     explanation: "이자비용 = 6,900,000 × 5% = 345,000. 원금 상환 = 1,500,000 - 345,000 = 1,155,000. 기말 = 6,900,000 - 1,155,000 = 5,745,000.",
     hint: "기말 리스부채 = 기초 - 원금상환액",
+    tags: ["IFRS16", "리스"],
   },
   {
     id: "kcalcb03", type: "calculation", standard: "k-ifrs", category: "kifrs-calc-advanced", difficulty: "practical",
@@ -4039,6 +4527,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 454,
     explanation: "희석EPS = 100,000,000 / (200,000 + 20,000) = 100,000,000 / 220,000 ≈ 454원.",
     hint: "희석EPS = 당기순이익 / (가중평균주식수 + 잠재적 추가주식수)",
+    tags: ["기초회계"],
   },
   {
     id: "kcalcb04", type: "calculation", standard: "k-ifrs", category: "kifrs-calc-advanced", difficulty: "practical",
@@ -4046,13 +4535,15 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 4000000,
     explanation: "연간 인식 = 6,000,000 / 3 = 2,000,000. 2년차 누적 = 2,000,000 × 2 = 4,000,000.",
     hint: "누적 인식액 = 연간 인식액 × 경과 연수",
+    tags: ["기초회계"],
   },
   {
     id: "kcalcb05", type: "calculation", standard: "k-ifrs", category: "kifrs-calc-advanced", difficulty: "practical",
     text: "법인세비용: 당기법인세 5,000,000원, 이연법인세자산 증가 300,000원, 이연법인세부채 증가 500,000원. 법인세비용은?",
     correctAnswer: 5200000,
     explanation: "법인세비용 = 5,000,000 - 300,000 + 500,000 = 5,200,000원.",
-    hint: "법인세비용 = 당기법인세 - 이연법인세자산증가 + 이연법인세부채증가",
+    hint: "필요한 공식을 떠올리고, 주어진 숫자를 하나씩 대입해보세요.",
+    tags: ["IAS12", "법인세"],
   },
   {
     id: "gic01", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4061,6 +4552,7 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "상품", amount: 100000 }],
     explanation: "정상 감모 → 매출원가. 비정상 감모 → 재고자산감모손실(영업외). 평가손실 → 재고자산평가손실. 합계 100,000.",
     hint: "세 가지를 각각 구분하여 처리합니다.",
+    tags: ["재고자산"],
   },
   {
     id: "gic02", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4069,6 +4561,7 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "사채할인발행차금", amount: 300000 }, { account: "현금", amount: 9500000 }, { account: "사채상환이익", amount: 200000 }],
     explanation: "장부가액 = 10,000,000 - 300,000 = 9,700,000. 상환가 9,500,000 < 장부가 → 사채상환이익 200,000.",
     hint: "상환가가 장부가보다 낮으면 상환이익입니다.",
+    tags: ["차입원가"],
   },
   {
     id: "gic03", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4077,7 +4570,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "매도가능증권", amount: 300000 }],
     distractors: ["단기매매증권평가손실", "매도가능증권평가손실"],
     explanation: "매도가능증권 평가손실: 기타포괄손익누계액(자본) 차감, 매도가능증권(자산) 감소. 당기손익에 영향 없음. 처분 시 손익으로 재분류.",
-    hint: "매도가능증권 평가손익은 자본(기타포괄손익누계액)에 직접 반영됩니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품"],
   },
   {
     id: "gic04", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4087,6 +4581,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["외화환산이익", "현금"],
     explanation: "기말 환율(1,320) > 장부 환율(1,300) → 외화부채 증가 → 환산손실. $20,000 × 20 = 400,000.",
     hint: "환율이 오르면 외화부채 상환 부담이 커져 환산손실이 발생합니다.",
+    tags: ["환율변동"],
   },
   {
     id: "gic05", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4095,7 +4590,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "단기매매증권", amount: 800000 }],
     distractors: ["유형자산처분손실"],
     explanation: "처분가(700,000) < 장부가(800,000) → 처분손실 100,000. 당기손익.",
-    hint: "단기매매증권 처분손실은 당기손익입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["금융상품", "유형자산"],
   },
   {
     id: "gic06", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4105,6 +4601,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["외상매출금", "잡손실"],
     explanation: "필요 충당금 = 5,000,000 × 2% = 100,000. 추가 설정 = 100,000 - 80,000 = 20,000.",
     hint: "보충법: 필요 충당금에서 기존 잔액을 빼면 추가 설정액입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gic07", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4114,6 +4611,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["현금"],
     explanation: "충당부채 잔액 초과분은 당기 퇴직급여(비용) 추가 인식. 3,500,000 - 3,000,000 = 500,000.",
     hint: "충당부채가 부족하면 초과분을 당기 비용으로 처리합니다.",
+    tags: ["종업원급여"],
   },
   {
     id: "gic08", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4123,6 +4621,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["감가상각비", "감가상각누계액"],
     explanation: "연간 상각 = 3,000,000 / 5년 = 600,000. 무형자산은 직접법(자산에서 직접 차감)으로 상각하는 것이 일반적. (직접법 적용 가정)",
     hint: "무형자산은 직접법으로 자산에서 직접 차감합니다.",
+    tags: ["유형자산", "무형자산"],
   },
   {
     id: "gic09", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4131,7 +4630,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "이익준비금", amount: 200000 }, { account: "미지급배당금", amount: 1000000 }],
     distractors: ["현금"],
     explanation: "잉여금 처분: 이익잉여금(자본) 감소 → 이익준비금(자본) + 미지급배당금(부채) 증가.",
-    hint: "이익준비금 적립과 배당 결의는 이익잉여금을 감소시킵니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "gic10", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4141,6 +4641,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이자비용"],
     explanation: "이자수익 = 4,850,000 × 7% = 339,500. 현금이자 = 5,000,000 × 4% = 200,000. 할인차금 상각 = 139,500(자산 증가).",
     hint: "할인 취득 시 유효이자가 현금이자보다 크고 차액만큼 자산이 증가합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gic11", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4149,7 +4650,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "결손금", amount: 800000 }],
     distractors: ["자본준비금"],
     explanation: "결손금 보전 순서: 임의적립금 → 이익준비금 → 자본준비금. 자본 내 대체.",
-    hint: "결손금 보전은 임의적립금부터 우선 사용합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "gic12", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4159,6 +4661,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["배당수익", "이익잉여금"],
     explanation: "지분법 손실: 지분법손실(비용) 인식, 투자주식(자산) 감소.",
     hint: "피투자회사 손실은 투자주식 장부가액을 줄입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gic13", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4168,6 +4671,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["미지급배당금", "배당금비용"],
     explanation: "중간배당: 이익잉여금(자본) 감소, 현금(자산) 감소. 500원 × 10,000주 = 5,000,000.",
     hint: "중간배당은 결의와 지급이 동시에 이루어집니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gic14", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4176,6 +4680,7 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "유형자산", amount: 8000000 }],
     explanation: "장부가액 = 8,000,000 - 5,500,000 = 2,500,000. 처분가(2,000,000) < 장부가(2,500,000) → 처분손실 500,000.",
     hint: "처분가 < 장부가이면 처분손실입니다.",
+    tags: ["유형자산"],
   },
   {
     id: "gic15", type: "journal", standard: "general", category: "general-advanced", difficulty: "practical",
@@ -4184,7 +4689,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "선급법인세", amount: 800000 }, { account: "미지급세금", amount: 2200000 }],
     distractors: ["보통예금"],
     explanation: "법인세비용 3,000,000 = 선급법인세 상계 800,000 + 미지급세금 2,200,000.",
-    hint: "기납부 선급법인세를 먼저 상계하고 나머지를 미지급세금으로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["법인세"],
   },
   {
     id: "goc01", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "practical",
@@ -4192,6 +4698,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "단기매매증권: 평가손익 → 당기손익. 매도가능증권: 평가손익 → 기타포괄손익(자본).",
     hint: "보유 목적에 따라 평가손익의 처리가 달라집니다.",
+    tags: ["금융상품"],
   },
   {
     id: "goc02", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "practical",
@@ -4199,6 +4706,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "결손금 보전 순서: 임의적립금 → 이익준비금 → 자본준비금. 자본준비금이 나중.",
     hint: "이익에서 쌓은 것(이익준비금)을 자본에서 쌓은 것(자본준비금)보다 먼저 사용합니다.",
+    tags: ["기초회계"],
   },
   {
     id: "goc03", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "practical",
@@ -4206,6 +4714,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "중간배당을 결의와 동시에 지급하는 경우: 이익잉여금 → 현금 직접 감소. 미지급배당금 불필요.",
     hint: "결의와 지급이 동시라면 중간 부채 계정이 필요 없습니다.",
+    tags: ["기초회계"],
   },
   {
     id: "goc04", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "practical",
@@ -4213,6 +4722,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "실제 퇴직금 < 충당부채 잔액: 차액은 충당부채 잔액으로 유지. 당기이익 인식 안 함.",
     hint: "충당부채는 실제 지급 시까지 유지됩니다.",
+    tags: ["종업원급여"],
   },
   {
     id: "goc05", type: "ox", standard: "general", category: "general-ox-advanced", difficulty: "practical",
@@ -4220,6 +4730,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "할인 취득: 유효이자 > 현금이자. 차액만큼 자산(만기보유증권) 증가. 만기에 액면 도달.",
     hint: "할인 취득 시 매기 할인차금 상각으로 장부가액이 액면에 가까워집니다.",
+    tags: ["기초회계"],
   },
   {
     id: "gcalcc01", type: "calculation", standard: "general", category: "general-calc-advanced", difficulty: "practical",
@@ -4227,6 +4738,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 150,
     explanation: "총부채 = 50,000,000 - 20,000,000 = 30,000,000. 부채비율 = 30,000,000 / 20,000,000 × 100 = 150%.",
     hint: "부채비율 = 총부채 / 자기자본 × 100%",
+    tags: ["기초회계"],
   },
   {
     id: "gcalcc02", type: "calculation", standard: "general", category: "general-calc-advanced", difficulty: "practical",
@@ -4234,6 +4746,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 125,
     explanation: "당좌비율 = 15,000,000 / 12,000,000 × 100 = 125%.",
     hint: "당좌비율 = 당좌자산 / 유동부채 × 100%",
+    tags: ["기초회계"],
   },
   {
     id: "gcalcc03", type: "calculation", standard: "general", category: "general-calc-advanced", difficulty: "practical",
@@ -4241,6 +4754,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 2800000,
     explanation: "연간 상각 = 4,000,000 / 10 = 400,000. 3년 상각 = 1,200,000. 장부가 = 4,000,000 - 1,200,000 = 2,800,000.",
     hint: "장부가 = 취득원가 - 누적상각액",
+    tags: ["무형자산"],
   },
   {
     id: "gcalcc04", type: "calculation", standard: "general", category: "general-calc-advanced", difficulty: "practical",
@@ -4248,6 +4762,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 10,
     explanation: "평균자기자본 = (40,000,000 + 60,000,000) / 2 = 50,000,000. ROE = 5,000,000 / 50,000,000 × 100 = 10%.",
     hint: "ROE = 당기순이익 / 평균자기자본 × 100%",
+    tags: ["기초회계"],
   },
   {
     id: "gcalcc05", type: "calculation", standard: "general", category: "general-calc-advanced", difficulty: "practical",
@@ -4255,6 +4770,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 6,
     explanation: "평균재고 = (8,000,000 + 12,000,000) / 2 = 10,000,000. 회전율 = 60,000,000 / 10,000,000 = 6회.",
     hint: "재고자산회전율 = 매출원가 / 평균재고자산",
+    tags: ["재고자산"],
   },
   {
     id: "bjb13", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "practical",
@@ -4263,6 +4779,7 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 1250760 }, { account: "예수금", amount: 9240 }],
     explanation: "이자 원천징수: 60,000 × 15.4% = 9,240(예수금). 실지급 = 1,200,000 + 60,000 - 9,240 = 1,250,760.",
     hint: "이자 지급 시 원천징수세를 차감하고 지급합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb14", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "practical",
@@ -4272,6 +4789,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["수수료수익", "우발부채"],
     explanation: "보증수수료 수취: 현금(자산) 증가, 선수수익(부채). 보증기간에 걸쳐 기간 배분하여 수익 인식(기간 배분 전제). 단기 보증의 경우 즉시 수익 인식도 가능. 보증 자체는 우발부채로 주석 공시.",
     hint: "보증서 수수료는 보증기간에 걸쳐 수익으로 인식합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb15", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "practical",
@@ -4281,6 +4799,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이자수익", "선수수익"],
     explanation: "방카슈랑스(보험상품 판매): 수수료수익(수익) 인식. 은행의 비이자수익 항목.",
     hint: "방카슈랑스 수수료는 보험사에서 받는 판매 수수료입니다.",
+    tags: ["재고자산"],
   },
   {
     id: "bjb16", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "practical",
@@ -4290,6 +4809,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["수수료수익", "이자수익"],
     explanation: "대출 선취 수수료: 대출기간(3년)에 걸쳐 이연. 선수수익(부채)으로 처리 후 기간 배분.",
     hint: "대출 관련 수수료는 대출기간에 걸쳐 이연합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb17", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "practical",
@@ -4299,6 +4819,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["외환차손"],
     explanation: "고객에게 달러 판매: 원화 수취 1,350,000. 외화현금 장부가 1,300,000 감소. 차익 50,000 = 외환매매이익.",
     hint: "은행은 매도환율(높은 환율)로 달러를 팔아 수익을 얻습니다.",
+    tags: ["환율변동"],
   },
   {
     id: "bjb18", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "practical",
@@ -4306,7 +4827,8 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "대손충당금", amount: 3000000 }, { account: "주식", amount: 2500000 }],
     credit: [{ account: "대출금", amount: 5000000 }, { account: "채권매각이익", amount: 500000 }],
     explanation: "출자전환: 충당금 3,000,000 상계 후 장부가 2,000,000. 주식 공정가치 2,500,000 > 장부가 2,000,000 → 채권매각이익 500,000.",
-    hint: "출자전환 시 주식 공정가치와 대출금 장부가액의 차이가 손익입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb19", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "practical",
@@ -4316,6 +4838,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["기타포괄손익", "유가증권평가손실"],
     explanation: "FVTPL 금융자산 평가손실: 당기손익 인식. 금융자산(자산) 감소.",
     hint: "FVTPL 평가손실은 바로 당기손익에 반영됩니다.",
+    tags: ["금융상품"],
   },
   {
     id: "bjb20", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "practical",
@@ -4325,6 +4848,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이자비용", "요구불예금"],
     explanation: "당좌대출 이자: 대출 잔액에 이자 가산. 당좌대출금(자산) 증가, 이자수익(수익) 인식.",
     hint: "마이너스 통장 이자는 대출잔액에 가산되어 대출금이 늘어납니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb21", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "practical",
@@ -4334,6 +4858,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["대출금", "현금"],
     explanation: "카드 회원 미납: 미수금(자산) 유지. 가맹점 지급 의무(부채)는 별도 관리.",
     hint: "신용카드 미납은 대출금이 아닌 미수금으로 처리합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bjb22", type: "journal", standard: "bank", category: "bank-advanced", difficulty: "practical",
@@ -4343,6 +4868,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["선수수익", "이자수익"],
     explanation: "펀드 판매보수: 당기 귀속분은 즉시 수수료수익 인식.",
     hint: "당기 귀속 수수료는 즉시 수익으로 인식합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boc01", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "practical",
@@ -4350,6 +4876,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "비이자수익: 수수료수익, 외환관련수익, 유가증권관련손익 등. 이자수익과 구분.",
     hint: "은행 수익은 이자수익과 비이자수익으로 나뉩니다.",
+    tags: ["환율변동"],
   },
   {
     id: "boc02", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "practical",
@@ -4357,6 +4884,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "대출 관련 수수료: 대출기간에 걸쳐 이연 인식. 유효이자율 조정 또는 선수수익 처리.",
     hint: "대출기간에 걸쳐 제공되는 서비스 수수료는 기간 배분합니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boc03", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "practical",
@@ -4364,6 +4892,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "마이너스 통장 이자: 대출 잔액에 가산. 대출금(자산) 증가, 이자수익 인식.",
     hint: "마이너스 통장은 이자가 잔액에 쌓입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "boc04", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "practical",
@@ -4371,6 +4900,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "보증서 발행: 우발부채로 주석 공시. 확정 의무 없으면 재무상태표 부채 계상 안 함.",
     hint: "불확실한 의무는 우발부채로 주석 처리합니다.",
+    tags: ["재무제표표시"],
   },
   {
     id: "boc05", type: "ox", standard: "bank", category: "bank-ox-advanced", difficulty: "practical",
@@ -4378,6 +4908,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "NIM = 순이자수익 / 평균이자발생자산. 높을수록 예대마진이 크고 수익성 우수.",
     hint: "NIM은 은행의 핵심 수익성 지표입니다.",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalcb01", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "practical",
@@ -4385,6 +4916,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 423000,
     explanation: "원천세 = 500,000 × 15.4% = 77,000. 실수령액 = 500,000 - 77,000 = 423,000.",
     hint: "실수령액 = 이자 × (1 - 원천세율)",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalcb02", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "practical",
@@ -4392,6 +4924,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 4000000,
     explanation: "매매수익 = $100,000 × (1,320 - 1,280) = $100,000 × 40 = 4,000,000.",
     hint: "매매수익 = 외화금액 × (매도환율 - 매입환율)",
+    tags: ["환율변동"],
   },
   {
     id: "bcalcb03", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "practical",
@@ -4399,6 +4932,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 32876,
     explanation: "할인액 = 5,000,000 × 4% × 60/365 = 32,876원(원 미만 버림).",
     hint: "할인액 = 액면가 × 할인율 × 일수/365",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalcb04", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "practical",
@@ -4406,6 +4940,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 6,
     explanation: "고정이하여신 = 20,000,000 + 8,000,000 + 2,000,000 = 30,000,000. 비율 = 30,000,000 / 500,000,000 × 100 = 6%.",
     hint: "고정이하여신비율 = 고정이하여신 합계 / 총여신 × 100%",
+    tags: ["은행업회계"],
   },
   {
     id: "bcalcb05", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "practical",
@@ -4413,6 +4948,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 80,
     explanation: "예대율 = 대출금 / 예금 × 100 = 800,000,000 / 1,000,000,000 × 100 = 80%.",
     hint: "예대율 = 대출금 / 예수금 × 100%",
+    tags: ["은행업회계"],
   },
   {
     id: "pjb13", type: "journal", standard: "public", category: "public-advanced", difficulty: "practical",
@@ -4422,6 +4958,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["선수수익"],
     explanation: "발생주의: 제공한 서비스 전액 수익 인식. 미청구분은 미수금(자산).",
     hint: "청구 여부와 무관하게 제공한 서비스는 수익으로 인식합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb14", type: "journal", standard: "public", category: "public-advanced", difficulty: "practical",
@@ -4431,6 +4968,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["배당수익", "영업수익"],
     explanation: "종속기업 지분법 적용: 종속기업투자주식(자산) 증가, 지분법이익(수익) 인식.",
     hint: "공기업도 자회사 이익을 지분법으로 인식합니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb15", type: "journal", standard: "public", category: "public-advanced", difficulty: "practical",
@@ -4439,7 +4977,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "매입채무", amount: 1000000000 }],
     distractors: ["재고자산", "외상매입금"],
     explanation: "연료 외상 매입: 연료재고자산(자산) 증가, 매입채무(부채) 증가.",
-    hint: "공기업도 원자재 외상 매입은 매입채무로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["재고자산"],
   },
   {
     id: "pjb16", type: "journal", standard: "public", category: "public-advanced", difficulty: "practical",
@@ -4449,6 +4988,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["매출원가", "소모품비"],
     explanation: "연료 사용: 연료재고자산(자산) 감소, 연료비(비용) 인식.",
     hint: "재고자산 사용분은 비용으로 대체합니다.",
+    tags: ["재고자산"],
   },
   {
     id: "pjb17", type: "journal", standard: "public", category: "public-advanced", difficulty: "practical",
@@ -4457,7 +4997,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 500000000 }],
     distractors: ["환경비용", "현금"],
     explanation: "환경개선부담금: 세금과공과(비용) 처리. 법정 부담금.",
-    hint: "법정 부담금은 세금과공과로 처리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["공기업회계"],
   },
   {
     id: "pjb18", type: "journal", standard: "public", category: "public-advanced", difficulty: "practical",
@@ -4467,6 +5008,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["자산수증이익", "정부보조금수익"],
     explanation: "정부 현물출자: 토지(자산) 공정가치 인식, 자본금(자본) 증가. 수익이 아닌 자본 거래.",
     hint: "출자금은 수익이 아닌 자본으로 처리합니다.",
+    tags: ["유형자산"],
   },
   {
     id: "pjb19", type: "journal", standard: "public", category: "public-advanced", difficulty: "practical",
@@ -4475,7 +5017,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 2000000000 }],
     distractors: ["퇴직급여", "퇴직급여충당부채"],
     explanation: "명예퇴직금: 별도 계정으로 처리. 일반 퇴직급여와 구분하여 표시.",
-    hint: "명예퇴직금은 별도 계정으로 관리합니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["종업원급여"],
   },
   {
     id: "pjb20", type: "journal", standard: "public", category: "public-advanced", difficulty: "practical",
@@ -4485,6 +5028,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["이자비용"],
     explanation: "공채 할인발행: 현금 97,000,000 + 할인발행차금 3,000,000 = 공채 액면 100,000,000.",
     hint: "공채도 사채와 동일하게 할인/할증 발행 처리합니다.",
+    tags: ["차입원가"],
   },
   {
     id: "poc01", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "practical",
@@ -4492,6 +5036,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "정부 출자(현금/현물): 자본금 증가. 보조금과 달리 수익이 아닌 자본 거래.",
     hint: "출자는 자본 거래, 보조금은 수익 거래입니다.",
+    tags: ["공기업회계"],
   },
   {
     id: "poc02", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "practical",
@@ -4499,6 +5044,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "연료 사용: 재고자산 → 비용 대체. 사용분만큼 연료비(비용) 인식.",
     hint: "재고자산 사용분은 비용으로 전환됩니다.",
+    tags: ["재고자산"],
   },
   {
     id: "poc03", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "practical",
@@ -4506,6 +5052,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "공채의 회계처리는 일반 기업의 사채와 동일. 할인발행 시 사채할인발행차금 계상.",
     hint: "공채와 사채의 회계처리 방식은 동일합니다.",
+    tags: ["차입원가"],
   },
   {
     id: "poc04", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "practical",
@@ -4513,6 +5060,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "명예퇴직금은 별도 계정으로 구분하여 처리. 일반 퇴직급여와 성격이 다름.",
     hint: "명예퇴직금은 구조조정 관련 특별한 비용으로 별도 관리합니다.",
+    tags: ["종업원급여"],
   },
   {
     id: "poc05", type: "ox", standard: "public", category: "public-ox-advanced", difficulty: "practical",
@@ -4520,6 +5068,7 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "공기업도 자회사에 대해 지분법 또는 연결재무제표 작성 의무. 일반 기업과 동일.",
     hint: "공기업도 회계기준에 따라 지분법을 적용합니다.",
+    tags: ["재무제표표시"],
   },
   {
     id: "pcalcb01", type: "calculation", standard: "public", category: "public-calc-advanced", difficulty: "practical",
@@ -4527,6 +5076,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 8750000,
     explanation: "반기 이자 = 500,000,000 × 3.5% / 2 = 8,750,000원.",
     hint: "반기 이자 = 액면 × 연이자율 × 1/2",
+    tags: ["공기업회계"],
   },
   {
     id: "pcalcb02", type: "calculation", standard: "public", category: "public-calc-advanced", difficulty: "practical",
@@ -4534,6 +5084,7 @@ export const PROBLEMS: Problem[] = [
     correctAnswer: 233,
     explanation: "총부채 = 10,000,000,000 - 3,000,000,000 = 7,000,000,000. 부채비율 = 7,000,000,000 / 3,000,000,000 × 100 ≈ 233%.",
     hint: "부채비율 = 총부채 / 자기자본 × 100%",
+    tags: ["공기업회계"],
   },
   {
     id: "cjb46", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -4543,6 +5094,7 @@ export const PROBLEMS: Problem[] = [
     distractors: ["당좌예금", "현금"],
     explanation: "당좌차월: 당좌예금 한도 초과 시 은행 자동 대출. 단기차입금(부채)으로 처리.",
     hint: "당좌차월은 은행에서 자동으로 빌려주는 단기 대출입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb47", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -4551,7 +5103,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "보통예금", amount: 300000 }],
     distractors: ["현금", "외상매입금"],
     explanation: "카드대금 결제: 미지급금(부채) 감소, 보통예금(자산) 감소.",
-    hint: "신용카드 대금 결제는 미지급금 부채를 없애는 분개입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cjb48", type: "journal", standard: "common", category: "journal-basic", difficulty: "basic",
@@ -4560,7 +5113,8 @@ export const PROBLEMS: Problem[] = [
     credit: [{ account: "현금", amount: 100000 }],
     distractors: ["접대비", "기부금"],
     explanation: "직원 경조사비: 복리후생비(비용). 거래처 경조사는 접대비로 구분.",
-    hint: "직원 관련 경조사는 복리후생비, 거래처는 접대비입니다.",
+    hint: "거래의 결합관계를 파악하세요. 어떤 계정이 증가/감소하는지 분류해보세요.",
+    tags: ["기초회계"],
   },
   {
     id: "cox31", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -4568,6 +5122,7 @@ export const PROBLEMS: Problem[] = [
     answer: false,
     explanation: "직원 경조사비: 복리후생비. 접대비는 거래처(외부) 관련 지출.",
     hint: "내부(직원) 관련 지출은 복리후생비, 외부(거래처) 관련은 접대비입니다.",
+    tags: ["기초회계"],
   },
   {
     id: "cox32", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
@@ -4575,5 +5130,6 @@ export const PROBLEMS: Problem[] = [
     answer: true,
     explanation: "당좌차월: 단기차입금(유동부채). 은행과의 단기 신용 거래.",
     hint: "당좌차월은 1년 이내 상환 예정의 단기 차입입니다.",
+    tags: ["기초회계"],
   },
 ];
