@@ -9,7 +9,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "IFRS16 리스부채 계산기",
-  description: "리스료, 할인율, 기간(개월)을 입력하면 IFRS16 기준 리스부채 현재가치와 월별 상환 스케줄을 자동 계산합니다.",
+  description: "월 리스료와 연 할인율을 입력하면 IFRS16 기준 리스부채 현재가치와 월별 상환 스케줄을 자동 계산합니다.",
   breadcrumb: {
     "@type": "BreadcrumbList",
     itemListElement: [
@@ -174,6 +174,8 @@ export default function LeaseCalculator() {
           </div>
         </>
       )}
+
+      <p className="text-[11px] text-text-sub mb-4">본 계산기는 연 할인율을 12로 나눈 월 할인율 기준으로 계산합니다.</p>
 
       <div className="flex gap-2">
         <Link href="/concept/ifrs16" className="flex-1 min-h-[44px] py-2.5 text-center border border-primary text-primary rounded-lg text-sm font-bold">
