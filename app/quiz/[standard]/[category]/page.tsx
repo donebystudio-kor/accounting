@@ -53,9 +53,11 @@ export default async function QuizPage({ params }: Props) {
     ? PROBLEMS.filter((p) => p.standard === "common" && p.category === category)
     : PROBLEMS.filter((p) => p.standard === standard && p.category === category);
 
+  // 공통 문제 합산: 같은 type의 문제만 포함
+  const stdTypes = new Set(stdProblems.map((p) => p.type));
   const commonProblems = isCommonStandard
     ? []
-    : PROBLEMS.filter((p) => p.standard === "common");
+    : PROBLEMS.filter((p) => p.standard === "common" && stdTypes.has(p.type));
 
   if (stdProblems.length === 0 && commonProblems.length === 0) notFound();
 

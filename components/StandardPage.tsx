@@ -9,7 +9,6 @@ interface Props {
 
 export default function StandardPage({ standard }: Props) {
   const stdCats = CATEGORIES.filter((c) => c.standard === standard.id);
-  const commonTotal = PROBLEMS.filter((p) => p.standard === "common").length;
 
   return (
     <div>
@@ -27,10 +26,14 @@ export default function StandardPage({ standard }: Props) {
 
       <div className="grid gap-2">
         {stdCats.map((cat) => {
-          const stdCount = PROBLEMS.filter(
+          const stdProblems = PROBLEMS.filter(
             (p) => p.standard === standard.id && p.category === cat.id
+          );
+          const stdTypes = new Set(stdProblems.map((p) => p.type));
+          const commonCount = PROBLEMS.filter(
+            (p) => p.standard === "common" && stdTypes.has(p.type)
           ).length;
-          const total = stdCount + commonTotal;
+          const total = stdProblems.length + commonCount;
 
           return (
             <Link
