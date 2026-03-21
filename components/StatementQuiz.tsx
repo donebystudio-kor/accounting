@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Problem } from "@/constants/problems";
 import GlossaryText from "./GlossaryText";
+import { DEFAULT_HINTS } from "@/constants/hints";
 
 interface Props {
   problem: Problem;
@@ -28,9 +29,7 @@ export default function StatementQuiz({ problem, onResult, onNext }: Props) {
     <div>
       <div className="bg-surface border border-border rounded-lg p-4 mb-4">
         <p className="font-medium leading-relaxed"><GlossaryText text={problem.text} /></p>
-        {problem.hint && (
-          <p className="text-xs text-primary mt-2">💡 {problem.hint}</p>
-        )}
+        <p className="text-xs text-primary mt-2">💡 {problem.hint || DEFAULT_HINTS.statement}</p>
       </div>
 
       {!submitted ? (

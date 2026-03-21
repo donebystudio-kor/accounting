@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Problem, JournalEntry } from "@/constants/problems";
 import { ACCOUNTS, ACCOUNT_TYPE_STYLE, AccountType } from "@/constants/accounts";
 import GlossaryText from "./GlossaryText";
+import { DEFAULT_HINTS } from "@/constants/hints";
 
 const TYPES: AccountType[] = ["자산", "부채", "자본", "수익", "비용"];
 
@@ -125,9 +126,7 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
         {!isCompound && (
           <p className="text-sm text-text-sub mt-1">금액: {totalAmount.toLocaleString()}원</p>
         )}
-        {problem.hint && (
-          <p className="text-xs text-primary mt-2">💡 {problem.hint}</p>
-        )}
+        <p className="text-xs text-primary mt-2">💡 {problem.hint || DEFAULT_HINTS.journal}</p>
       </div>
 
       {/* 실시간 합계 (복합분개) */}
