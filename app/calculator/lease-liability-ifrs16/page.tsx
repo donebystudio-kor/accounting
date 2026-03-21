@@ -9,7 +9,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "IFRS16 리스부채 계산기",
-  description: "리스료, 할인율을 입력하면 IFRS16 기준 리스부채 현재가치와 상환 스케줄을 자동 계산합니다.",
+  description: "리스료, 할인율, 기간(개월)을 입력하면 IFRS16 기준 리스부채 현재가치와 월별 상환 스케줄을 자동 계산합니다.",
   breadcrumb: {
     "@type": "BreadcrumbList",
     itemListElement: [
@@ -24,7 +24,7 @@ interface Row { period: number; opening: number; interest: number; payment: numb
 
 export default function LeaseCalculator() {
   const [payment, setPayment] = useState<number | null>(null);
-  const [periods, setPeriods] = useState<number | null>(null);
+  const [months, setMonths] = useState<number | null>(null);
   const [rate, setRate] = useState<number | null>(null);
   const [timing, setTiming] = useState<"end" | "beginning">("end");
 
@@ -33,28 +33,28 @@ export default function LeaseCalculator() {
   const errors = useMemo(() => {
     const e: string[] = [];
     if (payment !== null && payment <= 0) e.push("리스료는 0보다 커야 합니다.");
-    if (periods !== null && (periods < 1 || !Number.isInteger(periods))) e.push("기간은 1 이상 정수여야 합니다.");
+    if (months !== null && (months < 1 || !Number.isInteger(months))) e.push("기간은 1 이상 정수여야 합니다.");
     if (rate !== null && rate < 0) e.push("할인율은 0 이상이어야 합니다.");
     return e;
-  }, [payment, periods, rate]);
+  }, [payment, months, rate]);
 
-  const canCalc = payment !== null && payment > 0 && periods !== null && periods >= 1 && rate !== null && rate >= 0 && errors.length === 0;
+  const canCalc = payment !== null && payment > 0 && months !== null && months >= 1 && rate !== null && rate >= 0 && errors.length === 0;
 
   const result = useMemo(() => {
     if (!canCalc) return null;
-    const r = rate! / 100;
-    const n = periods!;
+    const monthlyRate = rate! / 100 / 12; // 연이자율 → 월이자율
+    const n = months!;
     const pmt = payment!;
 
     let pv: number;
-    if (r === 0) {
+    if (monthlyRate === 0) {
       pv = pmt * n;
     } else {
-      pv = pmt * (1 - Math.pow(1 + r, -n)) / r;
-      if (timing === "beginning") pv *= (1 + r);
+      pv = pmt * (1 - Math.pow(1 + monthlyRate, -n)) / monthlyRate;
+      if (timing === "beginning") pv *= (1 + monthlyRate);
     }
 
-    // 상환 스케줄
+    // 월별 상환 스케줄
     const rows: Row[] = [];
     let balance = pv;
     for (let i = 1; i <= n; i++) {
@@ -66,7 +66,7 @@ export default function LeaseCalculator() {
         interest = 0;
         principal = pmt;
       } else {
-        interest = opening * r;
+        interest = opening * monthlyRate;
         principal = pmt - interest;
       }
 
@@ -87,11 +87,10 @@ export default function LeaseCalculator() {
       });
       balance = closing;
     }
-    // 마지막 행 기말잔액 강제 0
     if (rows.length > 0) rows[rows.length - 1].closing = 0;
 
     return { pv: Math.round(pv), rows };
-  }, [canCalc, payment, periods, rate, timing]);
+  }, [canCalc, payment, months, rate, timing]);
 
   return (
     <div>
@@ -106,19 +105,19 @@ export default function LeaseCalculator() {
       </div>
 
       <h1 className="text-xl font-extrabold text-text mb-1">IFRS16 리스부채 계산기</h1>
-      <p className="text-xs text-text-sub mb-5">리스 현재가치와 상환 스케줄 자동 계산</p>
+      <p className="text-xs text-text-sub mb-5">월 단위 리스 현재가치와 상환 스케줄 자동 계산</p>
 
       <div className="bg-surface border border-border rounded-lg p-4 mb-5 space-y-3">
         <div>
-          <label className="text-xs font-medium text-text block mb-1">리스료 (연간)</label>
+          <label className="text-xs font-medium text-text block mb-1">리스료 (월)</label>
           <NumberInput value={payment} onChange={setPayment} placeholder="1,000,000" suffix="원" className="w-full" />
         </div>
         <div>
-          <label className="text-xs font-medium text-text block mb-1">기간</label>
-          <NumberInput value={periods} onChange={setPeriods} placeholder="5" suffix="년" integer className="w-full" min={1} />
+          <label className="text-xs font-medium text-text block mb-1">기간 (개월)</label>
+          <NumberInput value={months} onChange={setMonths} placeholder="36" suffix="개월" integer className="w-full" min={1} />
         </div>
         <div>
-          <label className="text-xs font-medium text-text block mb-1">할인율</label>
+          <label className="text-xs font-medium text-text block mb-1">할인율 (연)</label>
           <NumberInput value={rate} onChange={setRate} placeholder="5" suffix="%" className="w-full" min={0} />
         </div>
         <div>
@@ -153,7 +152,7 @@ export default function LeaseCalculator() {
             <table className="w-full text-xs">
               <thead>
                 <tr className="border-b border-border text-text-sub">
-                  <th className="py-2 text-center">회차</th>
+                  <th className="py-2 text-center">회차(월)</th>
                   <th className="py-2 text-right">기초잔액</th>
                   <th className="py-2 text-right">이자비용</th>
                   <th className="py-2 text-right">리스료</th>
