@@ -10,16 +10,15 @@ interface Props {
   params: Promise<{ standard: string; category: string }>;
 }
 
-const ALL_STANDARDS = [{ id: "common" }, ...STANDARDS];
-
 export async function generateStaticParams() {
   const params: { standard: string; category: string }[] = [];
+  // 모든 카테고리의 원래 기준 경로
   CATEGORIES.forEach((cat) => {
     params.push({ standard: cat.standard, category: cat.id });
   });
-  const commonCats = CATEGORIES.filter((c) => c.standard === "common");
+  // 각 기준에서 해당 기준 전용 카테고리 접근 (공통 문제 합산)
   STANDARDS.forEach((std) => {
-    commonCats.forEach((cat) => {
+    CATEGORIES.filter((c) => c.standard === std.id).forEach((cat) => {
       params.push({ standard: std.id, category: cat.id });
     });
   });
@@ -37,12 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    openGraph: {
-      title: `${title} — 회계던`,
-      description,
-      url,
-      type: "website",
-    },
+    openGraph: { title: `${title} — 회계던`, description, url, type: "website" },
     alternates: { canonical: url },
   };
 }
@@ -57,13 +51,18 @@ export default async function QuizPage({ params }: Props) {
     ? "공통"
     : (STANDARDS.find((s) => s.id === standard)?.name ?? standard);
 
-  const problems = isCommonStandard
-    ? PROBLEMS.filter((p) => p.standard === "common" && p.category === category)
-    : PROBLEMS.filter(
-        (p) =>
-          p.category === category &&
-          (p.standard === standard || p.standard === "common")
-      );
+  let problems;
+  if (isCommonStandard) {
+    // 공통 직접 접근: 공통 문제만
+    problems = PROBLEMS.filter((p) => p.standard === "common" && p.category === category);
+  } else {
+    // 기준별 카테고리 접근: 해당 카테고리 문제 + 모든 공통 문제
+    const stdProblems = PROBLEMS.filter(
+      (p) => p.standard === standard && p.category === category
+    );
+    const commonProblems = PROBLEMS.filter((p) => p.standard === "common");
+    problems = [...stdProblems, ...commonProblems];
+  }
 
   if (problems.length === 0) notFound();
 
@@ -74,7 +73,9 @@ export default async function QuizPage({ params }: Props) {
           ← 홈
         </Link>
         <span className="text-xs text-border">/</span>
-        <span className="text-xs text-text-sub">{stdName}</span>
+        <Link href={`/${standard}`} className="text-xs text-text-sub hover:text-primary">
+          {stdName}
+        </Link>
         <span className="text-xs text-border">/</span>
         <span className="text-xs font-semibold text-text">{cat.name}</span>
       </div>

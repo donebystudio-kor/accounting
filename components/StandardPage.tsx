@@ -8,9 +8,8 @@ interface Props {
 }
 
 export default function StandardPage({ standard }: Props) {
-  const commonCats = CATEGORIES.filter((c) => c.standard === "common");
   const stdCats = CATEGORIES.filter((c) => c.standard === standard.id);
-  const allCats = [...stdCats, ...commonCats];
+  const commonTotal = PROBLEMS.filter((p) => p.standard === "common").length;
 
   return (
     <div>
@@ -27,13 +26,12 @@ export default function StandardPage({ standard }: Props) {
       </section>
 
       <div className="grid gap-2">
-        {allCats.map((cat) => {
-          const count = PROBLEMS.filter(
-            (p) =>
-              p.category === cat.id &&
-              (p.standard === standard.id || p.standard === "common")
+        {stdCats.map((cat) => {
+          const stdCount = PROBLEMS.filter(
+            (p) => p.standard === standard.id && p.category === cat.id
           ).length;
-          if (count === 0) return null;
+          const total = stdCount + commonTotal;
+
           return (
             <Link
               key={cat.id}
@@ -41,16 +39,11 @@ export default function StandardPage({ standard }: Props) {
               className="flex items-center justify-between p-4 bg-surface border border-border rounded-lg hover:border-primary transition-colors"
             >
               <div>
-                <h3 className="font-semibold text-sm text-text">
-                  {cat.name}
-                  {cat.standard === "common" && (
-                    <span className="ml-1.5 text-[10px] text-text-sub font-normal">공통</span>
-                  )}
-                </h3>
+                <h3 className="font-semibold text-sm text-text">{cat.name}</h3>
                 <p className="text-xs text-text-sub mt-0.5">{cat.description}</p>
               </div>
               <span className="text-xs text-text-sub whitespace-nowrap ml-4">
-                {count}문제
+                {total}문제
               </span>
             </Link>
           );
