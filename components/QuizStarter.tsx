@@ -42,7 +42,7 @@ export default function QuizStarter({
           <div>
             <p className="text-sm font-medium text-text">공통 문제 포함</p>
             <p className="text-xs text-text-sub mt-0.5">
-              모든 기준에 적용되는 기본 문제를 함께 출제합니다
+              모든 회계기준에 공통으로 적용되는 문제를 함께 출제합니다
             </p>
           </div>
           <button
