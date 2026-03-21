@@ -43,7 +43,6 @@ export default function RootLayout({
               <Link href="/" className="text-text-sub hover:text-primary">문제풀기</Link>
               <Link href="/concepts" className="text-text-sub hover:text-primary">개념</Link>
               <Link href="/calculator" className="text-text-sub hover:text-primary">계산기</Link>
-              <Link href="/diagrams" className="text-text-sub hover:text-primary">다이어그램</Link>
               <Link href="/accounts" className="text-text-sub hover:text-primary">계정과목</Link>
             </nav>
           </div>
