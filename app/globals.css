@@ -1,25 +1,37 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #2563eb;
-  --color-primary-dark: #1d4ed8;
-  --color-debit: #dc2626;
-  --color-credit: #2563eb;
-  --color-correct: #16a34a;
-  --color-wrong: #dc2626;
-  --color-bg: #f8fafc;
-  --color-surface: #ffffff;
-  --color-text: #1e293b;
-  --color-text-sub: #64748b;
-  --color-border: #e2e8f0;
-  --color-asset: #f59e0b;
-  --color-liability: #8b5cf6;
-  --color-equity: #06b6d4;
-  --color-revenue: #22c55e;
-  --color-expense: #ef4444;
+  --color-primary: #2D6A4F;
+  --color-primary-light: #40916C;
+  --color-primary-dark: #1B4332;
+  --color-primary-bg: #D8F3DC;
+
+  --color-bg: #F8F9FA;
+  --color-surface: #FFFFFF;
+  --color-text: #212529;
+  --color-text-sub: #6C757D;
+  --color-border: #DEE2E6;
+
+  --color-debit: #C92A2A;
+  --color-credit: #1864AB;
+  --color-correct: #2B8A3E;
+  --color-wrong: #C92A2A;
+  --color-partial: #E67700;
+
+  --color-asset: #1864AB;
+  --color-asset-bg: #D0EBFF;
+  --color-liability: #D9480F;
+  --color-liability-bg: #FFE8CC;
+  --color-equity: #7048E8;
+  --color-equity-bg: #E5DBFF;
+  --color-revenue: #2B8A3E;
+  --color-revenue-bg: #D3F9D8;
+  --color-expense: #C92A2A;
+  --color-expense-bg: #FFE3E3;
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-text);
+  font-feature-settings: "ss01";
 }

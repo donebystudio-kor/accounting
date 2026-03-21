@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "회계던 — 클릭형 분개 연습",
-  description: "계정과목 버튼을 클릭해서 분개를 연습하는 인터랙티브 회계 학습 사이트",
+  title: "회계던 — 회계 기준별 인터랙티브 문제 풀이",
+  description:
+    "분개 문제, K-IFRS 문제, 회계 문제 풀기. 클릭형 인터랙티브 회계 학습 사이트.",
+  keywords: "분개 문제, 회계 문제 풀기, K-IFRS 문제, 회계 학습, 회계 연습",
 };
 
 export default function RootLayout({
@@ -13,21 +16,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="min-h-screen">
-        <header className="border-b border-border bg-surface sticky top-0 z-10">
-          <div className="mx-auto max-w-2xl px-4 py-3 flex items-center justify-between">
-            <a href="/" className="text-xl font-bold text-primary">
+      <body className="min-h-screen flex flex-col">
+        <header className="bg-surface border-b border-border sticky top-0 z-20">
+          <div className="mx-auto max-w-3xl px-4 h-12 flex items-center justify-between">
+            <Link href="/" className="text-lg font-extrabold text-primary">
               회계던
-            </a>
-            <span className="text-xs text-text-sub">클릭형 분개 연습</span>
+            </Link>
+            <span className="text-xs text-text-sub">
+              회계 기준별 문제 풀이
+            </span>
           </div>
         </header>
-        <main className="mx-auto max-w-2xl px-4 py-6">{children}</main>
-        <footer className="border-t border-border mt-12">
-          <div className="mx-auto max-w-2xl px-4 py-4 text-center text-xs text-text-sub">
-            <a href="/privacy" className="hover:underline">
+        <main className="flex-1 mx-auto max-w-3xl w-full px-4 py-6">
+          {children}
+        </main>
+        <footer className="border-t border-border">
+          <div className="mx-auto max-w-3xl px-4 py-4 flex items-center justify-between text-xs text-text-sub">
+            <span>&copy; 2026 회계던</span>
+            <Link href="/privacy" className="hover:underline">
               개인정보처리방침
-            </a>
+            </Link>
           </div>
         </footer>
       </body>
