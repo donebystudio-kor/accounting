@@ -39,9 +39,12 @@ export default function RootLayout({
             <Link href="/" className="text-lg font-extrabold text-primary">
               회계던
             </Link>
-            <span className="text-xs text-text-sub">
-              회계 기준별 문제 풀이
-            </span>
+            <nav className="flex items-center gap-4 text-xs">
+              <Link href="/" className="text-text-sub hover:text-primary">문제풀기</Link>
+              <Link href="/concepts" className="text-text-sub hover:text-primary">개념</Link>
+              <Link href="/calculator" className="text-text-sub hover:text-primary">계산기</Link>
+              <Link href="/diagrams" className="text-text-sub hover:text-primary">다이어그램</Link>
+            </nav>
           </div>
         </header>
         <main className="flex-1 mx-auto max-w-3xl w-full px-4 py-6">
