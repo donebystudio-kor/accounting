@@ -13,10 +13,7 @@ const STANDARD_FILTERS = [
   { label: "K-IFRS", key: "kifrs" },
   { label: "일반기업", key: "general" },
   { label: "은행업", key: "bank" },
-  { label: "보험업", key: "insurance" },
   { label: "공공기관", key: "public" },
-  { label: "정부", key: "government" },
-  { label: "정책금융", key: "policyBank" },
 ] as const;
 
 const STANDARD_LABELS: Record<string, string> = {
@@ -211,11 +208,24 @@ function AccountCard({
         <p className="text-[12px] text-text-sub mt-0.5 leading-tight">
           {account.nameEn}
         </p>
-        <span
-          className={`inline-block mt-2 px-2 py-0.5 text-[11px] font-semibold rounded border ${categoryStyle}`}
-        >
-          {account.category}
-        </span>
+        <div className="flex flex-wrap gap-1 mt-2">
+          <span
+            className={`inline-block px-2 py-0.5 text-[11px] font-semibold rounded border ${categoryStyle}`}
+          >
+            {account.category}
+          </span>
+          {account.liquidity && (
+            <span
+              className={`inline-block px-2 py-0.5 text-[11px] font-semibold rounded ${
+                account.liquidity === "유동"
+                  ? "bg-green-100 text-green-700"
+                  : "bg-gray-100 text-gray-600"
+              }`}
+            >
+              {account.liquidity}
+            </span>
+          )}
+        </div>
       </button>
 
       {/* 상세 패널 */}

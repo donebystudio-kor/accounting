@@ -4,6 +4,7 @@ export type Account = {
   name: string
   nameEn: string
   category: "자산" | "부채" | "자본" | "수익" | "비용"
+  liquidity?: "유동" | "비유동"
   standards: string[]
   definition: string
   standardDiff: {
@@ -34,6 +35,7 @@ export const accounts: Account[] = [
     name: "현금및현금성자산",
     nameEn: "Cash and cash equivalents",
     category: "자산",
+    liquidity: "유동",
     standards: ["공통"],
     definition: "즉시 사용 가능한 현금과 취득일로부터 만기가 3개월 이내인 단기 금융상품.",
     standardDiff: {
@@ -53,6 +55,7 @@ export const accounts: Account[] = [
     name: "매출채권",
     nameEn: "Trade receivables",
     category: "자산",
+    liquidity: "유동",
     standards: ["공통"],
     definition: "일반적 상거래에서 발생한 외상매출금과 받을어음의 합계.",
     standardDiff: {
@@ -73,6 +76,7 @@ export const accounts: Account[] = [
     name: "대손충당금",
     nameEn: "Allowance for credit losses / Loss allowance",
     category: "자산",
+    liquidity: "유동",
     standards: ["IFRS9"],
     definition: "매출채권·대출채권 등에서 기대신용손실(ECL) 기준으로 설정하는 차감 계정.",
     standardDiff: {
@@ -95,6 +99,7 @@ export const accounts: Account[] = [
     name: "재고자산",
     nameEn: "Inventories",
     category: "자산",
+    liquidity: "유동",
     standards: ["IAS2"],
     definition: "정상적인 영업과정에서 판매를 위해 보유하거나 생산 중인 자산.",
     standardDiff: {
@@ -116,6 +121,7 @@ export const accounts: Account[] = [
     name: "선급비용",
     nameEn: "Prepaid expenses",
     category: "자산",
+    liquidity: "유동",
     standards: ["공통"],
     definition: "이미 지급했으나 아직 비용으로 인식하지 않은 금액.",
     standardDiff: {
@@ -135,6 +141,7 @@ export const accounts: Account[] = [
     name: "단기금융상품",
     nameEn: "Short-term financial instruments",
     category: "자산",
+    liquidity: "유동",
     standards: ["공통"],
     definition: "만기가 1년 이내인 정기예금, 정기적금 등 단기 금융상품.",
     standardDiff: {
@@ -154,6 +161,7 @@ export const accounts: Account[] = [
     name: "당기손익-공정가치 측정 금융자산",
     nameEn: "Financial assets at FVPL",
     category: "자산",
+    liquidity: "유동",
     standards: ["IFRS9"],
     definition: "단기 매매 목적이거나 당기손익-공정가치 측정을 선택한 금융자산.",
     standardDiff: {
@@ -174,6 +182,7 @@ export const accounts: Account[] = [
     name: "기타포괄손익-공정가치 측정 금융자산",
     nameEn: "Financial assets at FVOCI",
     category: "자산",
+    liquidity: "비유동",
     standards: ["IFRS9"],
     definition: "공정가치 변동을 기타포괄손익으로 인식하도록 지정한 금융자산.",
     standardDiff: {
@@ -194,6 +203,7 @@ export const accounts: Account[] = [
     name: "상각후원가 측정 금융자산",
     nameEn: "Financial assets at amortised cost",
     category: "자산",
+    liquidity: "비유동",
     standards: ["IFRS9"],
     definition: "원리금만을 수취하는 목적으로 보유하는 금융자산. 유효이자율법으로 상각.",
     standardDiff: {
@@ -214,6 +224,7 @@ export const accounts: Account[] = [
     name: "계약자산",
     nameEn: "Contract asset",
     category: "자산",
+    liquidity: "유동",
     standards: ["IFRS15"],
     definition: "수행의무 이행으로 인식한 수익이 청구액을 초과할 때 발생.",
     standardDiff: {
@@ -258,6 +269,7 @@ export const accounts: Account[] = [
     name: "감가상각누계액",
     nameEn: "Accumulated depreciation",
     category: "자산",
+    liquidity: "비유동",
     standards: ["IAS16"],
     definition: "유형자산에 대해 누적된 감가상각비 총액. 자산 차감 계정.",
     standardDiff: {
@@ -279,6 +291,7 @@ export const accounts: Account[] = [
     name: "사용권자산",
     nameEn: "Right-of-use asset",
     category: "자산",
+    liquidity: "비유동",
     standards: ["IFRS16"],
     definition: "리스이용자가 리스기간 동안 기초자산을 사용할 권리를 나타내는 자산.",
     standardDiff: {
@@ -301,6 +314,7 @@ export const accounts: Account[] = [
     name: "무형자산",
     nameEn: "Intangible assets",
     category: "자산",
+    liquidity: "비유동",
     standards: ["IAS38"],
     definition: "물리적 실체는 없지만 식별 가능한 비화폐성 자산. 특허권, 상표권, 개발비 등.",
     standardDiff: {
@@ -322,6 +336,7 @@ export const accounts: Account[] = [
     name: "영업권",
     nameEn: "Goodwill",
     category: "자산",
+    liquidity: "비유동",
     standards: ["IAS36"],
     definition: "사업결합에서 이전대가가 피취득자 순자산 공정가치를 초과하는 금액.",
     standardDiff: {
@@ -342,6 +357,7 @@ export const accounts: Account[] = [
     name: "이연법인세자산",
     nameEn: "Deferred tax asset",
     category: "자산",
+    liquidity: "비유동",
     standards: ["IAS12"],
     definition: "차감할 일시적차이·이월결손금 등으로 인해 미래에 회수될 법인세 효과.",
     standardDiff: {
@@ -363,6 +379,7 @@ export const accounts: Account[] = [
     name: "투자부동산",
     nameEn: "Investment property",
     category: "자산",
+    liquidity: "비유동",
     standards: ["공통"],
     definition: "임대수익이나 시세차익을 목적으로 보유하는 부동산.",
     standardDiff: {
@@ -401,6 +418,7 @@ export const accounts: Account[] = [
     name: "자산손상누계액",
     nameEn: "Accumulated impairment losses",
     category: "자산",
+    liquidity: "비유동",
     standards: ["IAS36"],
     definition: "자산에 대해 누적된 손상차손 총액. 자산 차감 계정.",
     standardDiff: {
@@ -564,6 +582,7 @@ export const accounts: Account[] = [
     name: "매입채무",
     nameEn: "Trade payables",
     category: "부채",
+    liquidity: "유동",
     standards: ["공통"],
     definition: "일반적 상거래에서 발생한 외상매입금과 지급어음.",
     standardDiff: {
@@ -583,6 +602,7 @@ export const accounts: Account[] = [
     name: "리스부채",
     nameEn: "Lease liability",
     category: "부채",
+    liquidity: "비유동",
     standards: ["IFRS16"],
     definition: "리스 개시일에 리스료 지급 의무의 현재가치로 인식하는 부채.",
     standardDiff: {
@@ -605,6 +625,7 @@ export const accounts: Account[] = [
     name: "충당부채",
     nameEn: "Provision",
     category: "부채",
+    liquidity: "비유동",
     standards: ["IAS37"],
     definition: "지출 시기나 금액이 불확실한 부채. 현재 의무 존재 + 자원 유출 가능성 높을 때 인식.",
     standardDiff: {
@@ -626,6 +647,7 @@ export const accounts: Account[] = [
     name: "복구충당부채",
     nameEn: "Decommissioning / Restoration provision",
     category: "부채",
+    liquidity: "비유동",
     standards: ["IAS37"],
     definition: "자산 철거·원상복구 의무에 대한 충당부채. 미래 지출액의 현재가치로 인식.",
     standardDiff: {
@@ -647,6 +669,7 @@ export const accounts: Account[] = [
     name: "확정급여채무",
     nameEn: "Defined benefit obligation",
     category: "부채",
+    liquidity: "비유동",
     standards: ["IAS19"],
     definition: "확정급여제도에서 종업원에게 지급할 미래 퇴직급여의 현재가치.",
     standardDiff: {
@@ -668,6 +691,7 @@ export const accounts: Account[] = [
     name: "이연법인세부채",
     nameEn: "Deferred tax liability",
     category: "부채",
+    liquidity: "비유동",
     standards: ["IAS12"],
     definition: "가산할 일시적차이로 인해 미래에 납부할 법인세 효과.",
     standardDiff: {
@@ -688,6 +712,7 @@ export const accounts: Account[] = [
     name: "계약부채",
     nameEn: "Contract liability",
     category: "부채",
+    liquidity: "유동",
     standards: ["IFRS15"],
     definition: "고객에게서 받은 대가가 수익 인식액을 초과할 때 발생하는 부채(선수금 성격).",
     standardDiff: {
@@ -708,6 +733,7 @@ export const accounts: Account[] = [
     name: "사채",
     nameEn: "Bonds payable",
     category: "부채",
+    liquidity: "비유동",
     standards: ["공통"],
     definition: "기업이 자금 조달을 위해 발행한 채무증권.",
     standardDiff: {
@@ -746,6 +772,7 @@ export const accounts: Account[] = [
     name: "차입금",
     nameEn: "Borrowings",
     category: "부채",
+    liquidity: "비유동",
     standards: ["공통"],
     definition: "금융기관 등으로부터 차입한 자금.",
     standardDiff: {
@@ -815,25 +842,6 @@ export const accounts: Account[] = [
       public: "정부보조금",
       government: "정부보조금",
       policyBank: "정부보조금"
-    }
-  },
-  {
-    id: "transfer-payable",
-    name: "전출금",
-    nameEn: "Transfer payable",
-    category: "부채",
-    standards: ["공통"],
-    definition: "공공기관·정부기관이 다른 기관에 전출할 의무가 있는 금액.",
-    standardDiff: {
-      kifrs: "해당없음",
-      general: "해당없음",
-      sme: "해당없음",
-      bank: "해당없음",
-      insurance: "해당없음",
-      financial: "해당없음",
-      public: "전출금",
-      government: "전출금",
-      policyBank: "해당없음"
     }
   },
   {
@@ -1501,42 +1509,42 @@ export const accounts: Account[] = [
   },
 
   // --- 당좌자산 ---
-  { id: "ordinary-deposit", name: "보통예금", nameEn: "Ordinary deposit", category: "자산", standards: ["공통"], definition: "은행에 예치한 수시 입출금 가능한 예금.", standardDiff: { kifrs: "보통예금" } },
-  { id: "current-deposit", name: "당좌예금", nameEn: "Current account", category: "자산", standards: ["공통"], definition: "수표·어음 발행을 위해 은행과 당좌거래계약을 맺고 예치한 예금.", standardDiff: { kifrs: "당좌예금" } },
-  { id: "petty-cash", name: "소액현금", nameEn: "Petty cash", category: "자산", standards: ["공통"], definition: "소액 지출을 위해 별도로 관리하는 현금 자금.", standardDiff: { kifrs: "소액현금" } },
-  { id: "notes-receivable", name: "받을어음", nameEn: "Notes receivable", category: "자산", standards: ["공통"], definition: "상거래에서 수취한 약속어음·환어음.", standardDiff: { kifrs: "받을어음" } },
-  { id: "accrued-income", name: "미수수익", nameEn: "Accrued income", category: "자산", standards: ["공통"], definition: "수익은 발생했으나 아직 수취하지 않은 금액.", standardDiff: { kifrs: "미수수익" } },
-  { id: "other-receivables", name: "미수금", nameEn: "Other receivables", category: "자산", standards: ["공통"], definition: "일반적 상거래 이외에서 발생한 미수채권.", standardDiff: { kifrs: "미수금" } },
-  { id: "advance-payments", name: "선급금", nameEn: "Advance payments", category: "자산", standards: ["공통"], definition: "재화·용역 수취 전 미리 지급한 금액.", standardDiff: { kifrs: "선급금" } },
-  { id: "vat-receivable", name: "부가세대급금", nameEn: "VAT receivable", category: "자산", standards: ["공통"], definition: "매입 시 부담한 부가가치세로 환급 대상인 금액.", standardDiff: { kifrs: "부가세대급금" } },
-  { id: "suspense-payments", name: "가지급금", nameEn: "Suspense payments", category: "자산", standards: ["공통"], definition: "지출은 했으나 계정과목이 확정되지 않은 임시 자산 계정.", standardDiff: { kifrs: "가지급금" } },
-  { id: "deposits-paid", name: "임차보증금", nameEn: "Lease deposit paid", category: "자산", standards: ["공통"], definition: "부동산 임차 시 임대인에게 지급한 보증금.", standardDiff: { kifrs: "임차보증금" } },
-  { id: "long-term-deposits", name: "장기금융상품", nameEn: "Long-term financial instruments", category: "자산", standards: ["공통"], definition: "만기가 1년을 초과하는 정기예금·적금 등.", standardDiff: { kifrs: "장기금융상품" } },
-  { id: "land", name: "토지", nameEn: "Land", category: "자산", standards: ["IAS16"], definition: "영업 목적으로 보유하는 토지. 감가상각 대상 아님.", standardDiff: { kifrs: "토지" }, relatedConceptTag: "ias16" },
-  { id: "buildings", name: "건물", nameEn: "Buildings", category: "자산", standards: ["IAS16"], definition: "영업 목적으로 보유하는 건물 및 구축물.", standardDiff: { kifrs: "건물" }, relatedConceptTag: "ias16" },
-  { id: "machinery", name: "기계장치", nameEn: "Machinery and equipment", category: "자산", standards: ["IAS16"], definition: "제조·생산에 사용하는 기계·장치류.", standardDiff: { kifrs: "기계장치" }, relatedConceptTag: "ias16" },
-  { id: "vehicles", name: "차량운반구", nameEn: "Vehicles", category: "자산", standards: ["IAS16"], definition: "영업용 자동차·트럭 등 운반 수단.", standardDiff: { kifrs: "차량운반구" }, relatedConceptTag: "ias16" },
-  { id: "tools-fixtures", name: "비품", nameEn: "Furniture and fixtures", category: "자산", standards: ["IAS16"], definition: "사무용 가구, 집기, 전산기기 등.", standardDiff: { kifrs: "비품" }, relatedConceptTag: "ias16" },
-  { id: "construction-in-progress", name: "건설중인자산", nameEn: "Construction in progress", category: "자산", standards: ["IAS16"], definition: "완공 전 건설 중인 유형자산. 완공 시 해당 자산으로 대체.", standardDiff: { kifrs: "건설중인자산" }, relatedConceptTag: "ias16" },
-  { id: "development-costs", name: "개발비", nameEn: "Development costs", category: "자산", standards: ["IAS38"], definition: "IAS38 인식 요건을 충족하는 개발 단계 지출. 무형자산으로 자본화.", standardDiff: { kifrs: "개발비" }, relatedConceptTag: "ias38" },
-  { id: "software", name: "소프트웨어", nameEn: "Software", category: "자산", standards: ["IAS38"], definition: "구입하거나 개발한 소프트웨어 자산.", standardDiff: { kifrs: "소프트웨어" }, relatedConceptTag: "ias38" },
-  { id: "patents", name: "특허권", nameEn: "Patents", category: "자산", standards: ["IAS38"], definition: "발명에 대한 독점적 사용 권리.", standardDiff: { kifrs: "특허권" }, relatedConceptTag: "ias38" },
-  { id: "franchise", name: "영업권(프랜차이즈)", nameEn: "Franchise rights", category: "자산", standards: ["IAS38"], definition: "가맹계약에 따른 영업 권리.", standardDiff: { kifrs: "프랜차이즈" }, relatedConceptTag: "ias38" },
-  { id: "equity-method-investments", name: "지분법적용투자주식", nameEn: "Equity method investments", category: "자산", standards: ["공통"], definition: "피투자회사에 유의적 영향력을 행사할 수 있는 주식. 지분법으로 평가.", standardDiff: { kifrs: "지분법적용투자주식", general: "지분법적용투자주식", bank: "지분법적용투자주식" } },
-  { id: "subsidiary-investments", name: "종속기업투자주식", nameEn: "Investment in subsidiaries", category: "자산", standards: ["공통"], definition: "지배력을 보유한 종속기업에 대한 투자 주식.", standardDiff: { kifrs: "종속기업투자주식" } },
+  { id: "ordinary-deposit", name: "보통예금", nameEn: "Ordinary deposit", category: "자산", liquidity: "유동", standards: ["공통"], definition: "은행에 예치한 수시 입출금 가능한 예금.", standardDiff: { kifrs: "보통예금" } },
+  { id: "current-deposit", name: "당좌예금", nameEn: "Current account", category: "자산", liquidity: "유동", standards: ["공통"], definition: "수표·어음 발행을 위해 은행과 당좌거래계약을 맺고 예치한 예금.", standardDiff: { kifrs: "당좌예금" } },
+  { id: "petty-cash", name: "소액현금", nameEn: "Petty cash", category: "자산", liquidity: "유동", standards: ["공통"], definition: "소액 지출을 위해 별도로 관리하는 현금 자금.", standardDiff: { kifrs: "소액현금" } },
+  { id: "notes-receivable", name: "받을어음", nameEn: "Notes receivable", category: "자산", liquidity: "유동", standards: ["공통"], definition: "상거래에서 수취한 약속어음·환어음.", standardDiff: { kifrs: "받을어음" } },
+  { id: "accrued-income", name: "미수수익", nameEn: "Accrued income", category: "자산", liquidity: "유동", standards: ["공통"], definition: "수익은 발생했으나 아직 수취하지 않은 금액.", standardDiff: { kifrs: "미수수익" } },
+  { id: "other-receivables", name: "미수금", nameEn: "Other receivables", category: "자산", liquidity: "유동", standards: ["공통"], definition: "일반적 상거래 이외에서 발생한 미수채권.", standardDiff: { kifrs: "미수금" } },
+  { id: "advance-payments", name: "선급금", nameEn: "Advance payments", category: "자산", liquidity: "유동", standards: ["공통"], definition: "재화·용역 수취 전 미리 지급한 금액.", standardDiff: { kifrs: "선급금" } },
+  { id: "vat-receivable", name: "부가세대급금", nameEn: "VAT receivable", category: "자산", liquidity: "유동", standards: ["공통"], definition: "매입 시 부담한 부가가치세로 환급 대상인 금액.", standardDiff: { kifrs: "부가세대급금" } },
+  { id: "suspense-payments", name: "가지급금", nameEn: "Suspense payments", category: "자산", liquidity: "유동", standards: ["공통"], definition: "지출은 했으나 계정과목이 확정되지 않은 임시 자산 계정.", standardDiff: { kifrs: "가지급금" } },
+  { id: "deposits-paid", name: "임차보증금", nameEn: "Lease deposit paid", category: "자산", liquidity: "비유동", standards: ["공통"], definition: "부동산 임차 시 임대인에게 지급한 보증금.", standardDiff: { kifrs: "임차보증금" } },
+  { id: "long-term-deposits", name: "장기금융상품", nameEn: "Long-term financial instruments", category: "자산", liquidity: "비유동", standards: ["공통"], definition: "만기가 1년을 초과하는 정기예금·적금 등.", standardDiff: { kifrs: "장기금융상품" } },
+  { id: "land", name: "토지", nameEn: "Land", category: "자산", liquidity: "비유동", standards: ["IAS16"], definition: "영업 목적으로 보유하는 토지. 감가상각 대상 아님.", standardDiff: { kifrs: "토지" }, relatedConceptTag: "ias16" },
+  { id: "buildings", name: "건물", nameEn: "Buildings", category: "자산", liquidity: "비유동", standards: ["IAS16"], definition: "영업 목적으로 보유하는 건물 및 구축물.", standardDiff: { kifrs: "건물" }, relatedConceptTag: "ias16" },
+  { id: "machinery", name: "기계장치", nameEn: "Machinery and equipment", category: "자산", liquidity: "비유동", standards: ["IAS16"], definition: "제조·생산에 사용하는 기계·장치류.", standardDiff: { kifrs: "기계장치" }, relatedConceptTag: "ias16" },
+  { id: "vehicles", name: "차량운반구", nameEn: "Vehicles", category: "자산", liquidity: "비유동", standards: ["IAS16"], definition: "영업용 자동차·트럭 등 운반 수단.", standardDiff: { kifrs: "차량운반구" }, relatedConceptTag: "ias16" },
+  { id: "tools-fixtures", name: "비품", nameEn: "Furniture and fixtures", category: "자산", liquidity: "비유동", standards: ["IAS16"], definition: "사무용 가구, 집기, 전산기기 등.", standardDiff: { kifrs: "비품" }, relatedConceptTag: "ias16" },
+  { id: "construction-in-progress", name: "건설중인자산", nameEn: "Construction in progress", category: "자산", liquidity: "비유동", standards: ["IAS16"], definition: "완공 전 건설 중인 유형자산. 완공 시 해당 자산으로 대체.", standardDiff: { kifrs: "건설중인자산" }, relatedConceptTag: "ias16" },
+  { id: "development-costs", name: "개발비", nameEn: "Development costs", category: "자산", liquidity: "비유동", standards: ["IAS38"], definition: "IAS38 인식 요건을 충족하는 개발 단계 지출. 무형자산으로 자본화.", standardDiff: { kifrs: "개발비" }, relatedConceptTag: "ias38" },
+  { id: "software", name: "소프트웨어", nameEn: "Software", category: "자산", liquidity: "비유동", standards: ["IAS38"], definition: "구입하거나 개발한 소프트웨어 자산.", standardDiff: { kifrs: "소프트웨어" }, relatedConceptTag: "ias38" },
+  { id: "patents", name: "특허권", nameEn: "Patents", category: "자산", liquidity: "비유동", standards: ["IAS38"], definition: "발명에 대한 독점적 사용 권리.", standardDiff: { kifrs: "특허권" }, relatedConceptTag: "ias38" },
+  { id: "franchise", name: "영업권(프랜차이즈)", nameEn: "Franchise rights", category: "자산", liquidity: "비유동", standards: ["IAS38"], definition: "가맹계약에 따른 영업 권리.", standardDiff: { kifrs: "프랜차이즈" }, relatedConceptTag: "ias38" },
+  { id: "equity-method-investments", name: "지분법적용투자주식", nameEn: "Equity method investments", category: "자산", liquidity: "비유동", standards: ["공통"], definition: "피투자회사에 유의적 영향력을 행사할 수 있는 주식. 지분법으로 평가.", standardDiff: { kifrs: "지분법적용투자주식", general: "지분법적용투자주식", bank: "지분법적용투자주식" } },
+  { id: "subsidiary-investments", name: "종속기업투자주식", nameEn: "Investment in subsidiaries", category: "자산", liquidity: "비유동", standards: ["공통"], definition: "지배력을 보유한 종속기업에 대한 투자 주식.", standardDiff: { kifrs: "종속기업투자주식" } },
   // --- 부채 ---
-  { id: "notes-payable", name: "지급어음", nameEn: "Notes payable", category: "부채", standards: ["공통"], definition: "상거래에서 발행한 약속어음.", standardDiff: { kifrs: "지급어음" } },
-  { id: "accrued-expenses", name: "미지급비용", nameEn: "Accrued expenses", category: "부채", standards: ["공통"], definition: "비용은 발생했으나 아직 지급하지 않은 금액.", standardDiff: { kifrs: "미지급비용" } },
-  { id: "other-payables", name: "미지급금", nameEn: "Other payables", category: "부채", standards: ["공통"], definition: "일반적 상거래 이외에서 발생한 미지급채무.", standardDiff: { kifrs: "미지급금" } },
-  { id: "advance-receipts", name: "선수금", nameEn: "Advance receipts", category: "부채", standards: ["공통"], definition: "재화·용역 제공 전 미리 수취한 금액.", standardDiff: { kifrs: "선수금", bank: "해당없음" } },
-  { id: "unearned-revenue", name: "선수수익", nameEn: "Unearned revenue / Deferred revenue", category: "부채", standards: ["공통"], definition: "이미 수취했으나 아직 수익으로 인식하지 않은 금액.", standardDiff: { kifrs: "선수수익" } },
-  { id: "vat-payable", name: "부가세예수금", nameEn: "VAT payable", category: "부채", standards: ["공통"], definition: "매출 시 고객으로부터 수취한 부가가치세 납부 의무.", standardDiff: { kifrs: "부가세예수금" } },
-  { id: "withholding-tax", name: "예수금(원천징수)", nameEn: "Withholding tax payable", category: "부채", standards: ["공통"], definition: "종업원 급여 등에서 원천징수한 세금 납부 의무.", standardDiff: { kifrs: "예수금" } },
-  { id: "suspense-receipts", name: "가수금", nameEn: "Suspense receipts", category: "부채", standards: ["공통"], definition: "수취는 했으나 계정과목이 확정되지 않은 임시 부채 계정.", standardDiff: { kifrs: "가수금" } },
-  { id: "deposits-received-security", name: "임대보증금", nameEn: "Security deposits received", category: "부채", standards: ["공통"], definition: "부동산 임대 시 임차인으로부터 수취한 보증금.", standardDiff: { kifrs: "임대보증금" } },
-  { id: "current-portion-lt-debt", name: "유동성장기부채", nameEn: "Current portion of long-term debt", category: "부채", standards: ["공통"], definition: "장기차입금 중 1년 이내 만기 도래 부분.", standardDiff: { kifrs: "유동성장기부채" } },
-  { id: "income-tax-payable", name: "미지급법인세", nameEn: "Income tax payable", category: "부채", standards: ["공통"], definition: "당기 법인세 중 아직 납부하지 않은 금액.", standardDiff: { kifrs: "미지급법인세" } },
-  { id: "dividends-payable", name: "미지급배당금", nameEn: "Dividends payable", category: "부채", standards: ["공통"], definition: "주주총회 결의 후 아직 지급하지 않은 배당금.", standardDiff: { kifrs: "미지급배당금" } },
+  { id: "notes-payable", name: "지급어음", nameEn: "Notes payable", category: "부채", liquidity: "유동", standards: ["공통"], definition: "상거래에서 발행한 약속어음.", standardDiff: { kifrs: "지급어음" } },
+  { id: "accrued-expenses", name: "미지급비용", nameEn: "Accrued expenses", category: "부채", liquidity: "유동", standards: ["공통"], definition: "비용은 발생했으나 아직 지급하지 않은 금액.", standardDiff: { kifrs: "미지급비용" } },
+  { id: "other-payables", name: "미지급금", nameEn: "Other payables", category: "부채", liquidity: "유동", standards: ["공통"], definition: "일반적 상거래 이외에서 발생한 미지급채무.", standardDiff: { kifrs: "미지급금" } },
+  { id: "advance-receipts", name: "선수금", nameEn: "Advance receipts", category: "부채", liquidity: "유동", standards: ["공통"], definition: "재화·용역 제공 전 미리 수취한 금액.", standardDiff: { kifrs: "선수금", bank: "해당없음" } },
+  { id: "unearned-revenue", name: "선수수익", nameEn: "Unearned revenue / Deferred revenue", category: "부채", liquidity: "유동", standards: ["공통"], definition: "이미 수취했으나 아직 수익으로 인식하지 않은 금액.", standardDiff: { kifrs: "선수수익" } },
+  { id: "vat-payable", name: "부가세예수금", nameEn: "VAT payable", category: "부채", liquidity: "유동", standards: ["공통"], definition: "매출 시 고객으로부터 수취한 부가가치세 납부 의무.", standardDiff: { kifrs: "부가세예수금" } },
+  { id: "withholding-tax", name: "예수금(원천징수)", nameEn: "Withholding tax payable", category: "부채", liquidity: "유동", standards: ["공통"], definition: "종업원 급여 등에서 원천징수한 세금 납부 의무.", standardDiff: { kifrs: "예수금" } },
+  { id: "suspense-receipts", name: "가수금", nameEn: "Suspense receipts", category: "부채", liquidity: "유동", standards: ["공통"], definition: "수취는 했으나 계정과목이 확정되지 않은 임시 부채 계정.", standardDiff: { kifrs: "가수금" } },
+  { id: "deposits-received-security", name: "임대보증금", nameEn: "Security deposits received", category: "부채", liquidity: "비유동", standards: ["공통"], definition: "부동산 임대 시 임차인으로부터 수취한 보증금.", standardDiff: { kifrs: "임대보증금" } },
+  { id: "current-portion-lt-debt", name: "유동성장기부채", nameEn: "Current portion of long-term debt", category: "부채", liquidity: "유동", standards: ["공통"], definition: "장기차입금 중 1년 이내 만기 도래 부분.", standardDiff: { kifrs: "유동성장기부채" } },
+  { id: "income-tax-payable", name: "미지급법인세", nameEn: "Income tax payable", category: "부채", liquidity: "유동", standards: ["공통"], definition: "당기 법인세 중 아직 납부하지 않은 금액.", standardDiff: { kifrs: "미지급법인세" } },
+  { id: "dividends-payable", name: "미지급배당금", nameEn: "Dividends payable", category: "부채", liquidity: "유동", standards: ["공통"], definition: "주주총회 결의 후 아직 지급하지 않은 배당금.", standardDiff: { kifrs: "미지급배당금" } },
   // --- 자본 ---
   { id: "legal-reserve", name: "이익준비금", nameEn: "Legal reserve", category: "자본", standards: ["공통"], definition: "상법에 따라 배당액의 10% 이상 적립 의무가 있는 법정준비금.", standardDiff: { kifrs: "이익준비금" } },
   { id: "voluntary-reserve", name: "임의적립금", nameEn: "Voluntary reserve", category: "자본", standards: ["공통"], definition: "정관 또는 주주총회 결의로 적립하는 준비금.", standardDiff: { kifrs: "임의적립금" } },
@@ -1566,5 +1574,27 @@ export const accounts: Account[] = [
   { id: "foreign-exchange-loss", name: "외환차손", nameEn: "Foreign exchange loss", category: "비용", standards: ["공통"], definition: "외화 거래의 결제 시 환율 변동으로 발생하는 손실.", standardDiff: { kifrs: "외환차손" } },
   { id: "misc-expense", name: "잡손실", nameEn: "Miscellaneous loss", category: "비용", standards: ["공통"], definition: "영업외 소액 손실 항목.", standardDiff: { kifrs: "잡손실" } },
   { id: "cost-of-construction", name: "공사원가", nameEn: "Construction costs", category: "비용", standards: ["공통"], definition: "건설업에서 수주한 공사에 소요된 원가.", standardDiff: { kifrs: "공사원가", public: "공사원가", government: "프로그램순원가" } },
+
+  // --- 추가 계정과목 ---
+  { id: "raw-materials", name: "원재료", nameEn: "Raw materials", category: "자산", liquidity: "유동", standards: ["공통"], definition: "제품 제조를 위해 구입한 원자재.", standardDiff: { kifrs: "원재료", general: "원재료", bank: "해당없음", public: "원재료" } },
+  { id: "work-in-progress", name: "재공품", nameEn: "Work in progress", category: "자산", liquidity: "유동", standards: ["공통"], definition: "제조 공정에 투입되었으나 아직 완성되지 않은 중간 단계 자산.", standardDiff: { kifrs: "재공품", general: "재공품", bank: "해당없음", public: "재공품" } },
+  { id: "semi-finished-goods", name: "반제품", nameEn: "Semi-finished goods", category: "자산", liquidity: "유동", standards: ["공통"], definition: "자체 제조한 중간 제품으로 외부 판매도 가능한 상태.", standardDiff: { kifrs: "반제품", general: "반제품", bank: "해당없음", public: "반제품" } },
+  { id: "finished-goods", name: "제품", nameEn: "Finished goods", category: "자산", liquidity: "유동", standards: ["공통"], definition: "제조 공정이 완료되어 판매 가능한 상태의 재고자산.", standardDiff: { kifrs: "제품", general: "제품", bank: "해당없음", public: "제품" } },
+  { id: "merchandise", name: "상품", nameEn: "Merchandise", category: "자산", liquidity: "유동", standards: ["공통"], definition: "외부에서 구입하여 그대로 판매할 목적으로 보유하는 재고자산.", standardDiff: { kifrs: "상품", general: "상품", bank: "해당없음", public: "상품" } },
+  { id: "supplies-asset", name: "소모품", nameEn: "Supplies (asset)", category: "자산", liquidity: "유동", standards: ["공통"], definition: "구입했으나 아직 사용하지 않은 소모성 자재.", standardDiff: { kifrs: "소모품", general: "소모품" } },
+  { id: "labor-cost", name: "노무비", nameEn: "Labor cost", category: "비용", standards: ["공통"], definition: "제품 제조에 직접 투입된 작업자의 인건비.", standardDiff: { kifrs: "노무비", general: "노무비", bank: "해당없음", public: "노무비" } },
+  { id: "manufacturing-overhead", name: "제조간접비", nameEn: "Manufacturing overhead", category: "비용", standards: ["공통"], definition: "특정 제품에 직접 추적할 수 없는 제조 관련 비용.", standardDiff: { kifrs: "제조간접비", general: "제조간접비", bank: "해당없음", public: "해당없음" } },
+  { id: "stock-options", name: "주식선택권", nameEn: "Share-based payment reserve", category: "자본", standards: ["공통"], definition: "주식기준보상을 부여한 대가로 인식하는 자본 항목.", standardDiff: { kifrs: "주식선택권", general: "주식선택권" }, journalExample: "차) 주식보상비용 ××× / 대) 주식선택권 ×××" },
+  { id: "accrued-interest", name: "미수이자", nameEn: "Accrued interest receivable", category: "자산", liquidity: "유동", standards: ["공통"], definition: "이자 수익이 발생했으나 아직 수취하지 않은 미수 이자.", standardDiff: { kifrs: "미수이자", general: "미수이자", bank: "미수이자", public: "미수이자" } },
+  { id: "derivative-asset", name: "파생상품자산", nameEn: "Derivative financial assets", category: "자산", liquidity: "유동", standards: ["IFRS9"], definition: "선물, 옵션, 스왑 등 파생금융상품의 공정가치 중 양(+)의 값.", standardDiff: { kifrs: "파생상품자산", general: "파생상품자산", bank: "파생상품자산" }, relatedConceptTag: "ifrs9" },
+  { id: "current-tax-asset", name: "당기법인세자산", nameEn: "Current tax asset", category: "자산", liquidity: "유동", standards: ["IAS12"], definition: "납부한 법인세가 납부해야 할 금액을 초과하는 경우 환급받을 금액.", standardDiff: { kifrs: "당기법인세자산", general: "당기법인세자산" }, relatedConceptTag: "ias12" },
+  { id: "derivative-liability", name: "파생상품부채", nameEn: "Derivative financial liabilities", category: "부채", liquidity: "유동", standards: ["IFRS9"], definition: "파생금융상품의 공정가치 중 음(-)의 값.", standardDiff: { kifrs: "파생상품부채", general: "파생상품부채", bank: "파생상품부채" }, relatedConceptTag: "ifrs9" },
+  { id: "current-tax-liability", name: "당기법인세부채", nameEn: "Current tax liability", category: "부채", liquidity: "유동", standards: ["IAS12"], definition: "당기 및 전기의 과세소득에 대해 납부해야 할 법인세 중 미납액.", standardDiff: { kifrs: "당기법인세부채", general: "미지급법인세" }, relatedConceptTag: "ias12" },
+  { id: "guarantee-provision", name: "지급보증충당부채", nameEn: "Guarantee provision", category: "부채", liquidity: "비유동", standards: ["IAS37"], definition: "타인 채무에 대해 보증을 섰을 때 설정하는 충당부채.", standardDiff: { kifrs: "지급보증충당부채", bank: "지급보증충당부채", policyBank: "지급보증충당부채" }, relatedConceptTag: "ias37" },
+  { id: "unpaid-transfer", name: "미지급전출금", nameEn: "Transfer payable", category: "부채", liquidity: "유동", standards: ["공통"], definition: "공공기관이 타 기관에 전출할 의무가 발생했으나 아직 지급하지 않은 금액.", standardDiff: { kifrs: "해당없음", public: "미지급전출금", government: "미지급전출금" } },
+  { id: "construction-receivable", name: "공사미수금", nameEn: "Construction receivable", category: "자산", liquidity: "유동", standards: ["IFRS15"], definition: "건설계약에서 공사 진행에 따라 청구했으나 아직 수취하지 못한 금액.", standardDiff: { kifrs: "공사미수금", general: "공사미수금", public: "공사미수금" }, relatedConceptTag: "ifrs15" },
+  { id: "construction-advance", name: "공사선수금", nameEn: "Advance from customers (construction)", category: "부채", liquidity: "유동", standards: ["IFRS15"], definition: "건설계약에서 공사 수행 전 발주처로부터 미리 수취한 금액.", standardDiff: { kifrs: "공사선수금", general: "공사선수금", public: "공사선수금" }, relatedConceptTag: "ifrs15" },
+  { id: "call-loans", name: "콜론", nameEn: "Call loans", category: "자산", liquidity: "유동", standards: ["공통"], definition: "은행이 다른 금융기관에 초단기로 대여한 자금.", standardDiff: { bank: "콜론", policyBank: "콜론" } },
+  { id: "call-money", name: "콜머니", nameEn: "Call money", category: "부채", liquidity: "유동", standards: ["공통"], definition: "은행이 다른 금융기관으로부터 초단기로 차입한 자금.", standardDiff: { bank: "콜머니", policyBank: "콜머니" } },
 
 ]
