@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { STANDARDS } from "@/constants/standards";
+import { CONCEPTS } from "@/constants/concepts";
 
 const TYPES = ["journal", "ox", "calculation"];
 
@@ -29,6 +30,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "weekly",
         priority: 0.8,
       });
+    });
+  });
+
+  // 개념 페이지
+  CONCEPTS.forEach((c) => {
+    routes.push({
+      url: `${base}/concept/${c.tag.toLowerCase()}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
     });
   });
 
