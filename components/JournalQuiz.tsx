@@ -108,7 +108,7 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
       const ok = field === "account" ? pick.account === answer.account : pick.amount === answer.amount;
       return ok
         ? "border-correct bg-green-50 text-correct font-semibold"
-        : "border-wrong bg-red-50 text-wrong";
+        : "border-wrong/70 bg-amber-50 text-wrong font-medium";
     }
     if (isActive) return "border-primary ring-2 ring-primary/20 bg-primary-bg/30";
     const hasPick = field === "account" ? pick.account : pick.amount !== null;
@@ -281,8 +281,8 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
         </button>
       ) : (
         <div className="space-y-3">
-          <div className={`p-3 rounded-lg border text-sm ${isCorrect ? "bg-green-50 border-correct text-correct" : isPartial ? "bg-orange-50 border-partial text-partial" : "bg-red-50 border-wrong text-wrong"}`}>
-            <p className="font-bold">{isCorrect ? "정답!" : isPartial ? "부분 정답" : "오답"}</p>
+          <div className={`p-3 rounded-lg border text-sm ${isCorrect ? "bg-green-50 border-correct text-correct" : isPartial ? "bg-orange-50 border-partial text-partial" : "bg-amber-50 border-wrong/70 text-wrong"}`}>
+            <p className="font-bold">{isCorrect ? "정답!" : isPartial ? "부분 정답" : "❌ 오답"}</p>
             {!isCorrect && (
               <div className="mt-1 text-xs space-y-0.5">
                 {debitEntries.map((e, i) => (

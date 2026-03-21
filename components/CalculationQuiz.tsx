@@ -90,8 +90,8 @@ export default function CalculationQuiz({ problem, onResult, onNext }: Props) {
             </div>
           </div>
 
-          <div className={`p-3 rounded-lg border text-sm ${isCorrect ? "bg-green-50 border-correct text-correct" : "bg-red-50 border-wrong text-wrong"}`}>
-            <p className="font-bold">{isCorrect ? "정답!" : "오답"}</p>
+          <div className={`p-3 rounded-lg border text-sm ${isCorrect ? "bg-green-50 border-correct text-correct" : "bg-amber-50 border-wrong/70 text-wrong"}`}>
+            <p className="font-bold">{isCorrect ? "정답!" : "❌ 오답"}</p>
           </div>
 
           <div className="p-3 bg-surface border border-border rounded-lg">
