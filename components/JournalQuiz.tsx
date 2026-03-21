@@ -81,7 +81,6 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
     const allAccOk = debitAccOk && creditAccOk;
     const allAmtOk = debitAmtOk && creditAmtOk;
     const full = allAccOk && allAmtOk;
-    // 부분정답: 양쪽 계정 맞고 금액 틀림 OR 한쪽만 완전 정답
     const partial = !full && (allAccOk || debitAccOk || creditAccOk);
     return { full, partial };
   };
@@ -111,9 +110,11 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
     }
     if (isActive) return "border-primary ring-2 ring-primary/20 bg-primary-bg/30";
     const hasPick = field === "account" ? pick.account : pick.amount !== null;
-    if (hasPick) return "border-primary/50 bg-primary-bg/20 text-primary";
+    if (hasPick) return "border-primary/50 bg-primary-bg/20 text-primary font-medium";
     return "border-border text-text-sub";
   };
+
+  const balanceMismatch = isCompound && !submitted && debitTotal !== creditTotal && (debitTotal > 0 || creditTotal > 0);
 
   return (
     <div>
@@ -130,20 +131,19 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
 
       {/* 실시간 합계 (복합분개) */}
       {isCompound && !submitted && (
-        <div className={`flex justify-between text-xs px-1 mb-2 ${debitTotal !== creditTotal && (debitTotal > 0 || creditTotal > 0) ? "text-wrong font-semibold" : "text-text-sub"}`}>
-          <span>차변 합계: {debitTotal.toLocaleString()}</span>
-          <span>대변 합계: {creditTotal.toLocaleString()}</span>
-          {debitTotal !== creditTotal && (debitTotal > 0 || creditTotal > 0) && (
-            <span>⚠ 불균형</span>
-          )}
+        <div className={`flex items-center justify-between text-xs px-2 py-1.5 mb-3 rounded-md ${balanceMismatch ? "bg-red-50 text-wrong font-bold" : "bg-bg text-text-sub"}`}>
+          <span>차변: {debitTotal.toLocaleString()}</span>
+          {balanceMismatch && <span className="text-sm">⚠️ 대차 불일치</span>}
+          <span>대변: {creditTotal.toLocaleString()}</span>
         </div>
       )}
 
-      {/* 분개 슬롯 */}
-      <div className="grid grid-cols-2 gap-3 mb-4">
-        <div>
+      {/* 분개 슬롯 — 차변/대변 명확 분리 */}
+      <div className="grid grid-cols-2 gap-0 mb-4 border border-border rounded-lg overflow-hidden">
+        {/* 차변 */}
+        <div className="bg-red-50/30 p-3 border-r border-border">
           <p className="text-xs font-bold text-debit mb-2">차변 (Dr.)</p>
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             {debitEntries.map((entry, i) => {
               const pick = debitPicks[i] || { account: null, amount: null };
               return (
@@ -151,15 +151,15 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
                   <button
                     disabled={submitted}
                     onClick={() => setActiveSlot({ side: "debit", idx: i, field: "account" })}
-                    className={`flex-1 px-2.5 py-2 border rounded-md text-sm text-left transition-all ${slotStyle("debit", i, "account", pick, entry)}`}
+                    className={`flex-1 min-h-[44px] px-3 py-2.5 border rounded-md text-sm text-left transition-all ${slotStyle("debit", i, "account", pick, entry)}`}
                   >
-                    {pick.account || "계정과목"}
+                    {pick.account || "계정과목 선택"}
                   </button>
                   {isCompound && (
                     <button
                       disabled={submitted}
                       onClick={() => setActiveSlot({ side: "debit", idx: i, field: "amount" })}
-                      className={`w-24 px-2 py-2 border rounded-md text-sm text-right transition-all ${slotStyle("debit", i, "amount", pick, entry)}`}
+                      className={`w-24 min-h-[44px] px-2 py-2.5 border rounded-md text-sm text-right transition-all ${slotStyle("debit", i, "amount", pick, entry)}`}
                     >
                       {pick.amount !== null ? pick.amount.toLocaleString() : "금액"}
                     </button>
@@ -169,9 +169,10 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
             })}
           </div>
         </div>
-        <div>
+        {/* 대변 */}
+        <div className="bg-blue-50/30 p-3">
           <p className="text-xs font-bold text-credit mb-2">대변 (Cr.)</p>
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             {creditEntries.map((entry, i) => {
               const pick = creditPicks[i] || { account: null, amount: null };
               return (
@@ -179,15 +180,15 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
                   <button
                     disabled={submitted}
                     onClick={() => setActiveSlot({ side: "credit", idx: i, field: "account" })}
-                    className={`flex-1 px-2.5 py-2 border rounded-md text-sm text-left transition-all ${slotStyle("credit", i, "account", pick, entry)}`}
+                    className={`flex-1 min-h-[44px] px-3 py-2.5 border rounded-md text-sm text-left transition-all ${slotStyle("credit", i, "account", pick, entry)}`}
                   >
-                    {pick.account || "계정과목"}
+                    {pick.account || "계정과목 선택"}
                   </button>
                   {isCompound && (
                     <button
                       disabled={submitted}
                       onClick={() => setActiveSlot({ side: "credit", idx: i, field: "amount" })}
-                      className={`w-24 px-2 py-2 border rounded-md text-sm text-right transition-all ${slotStyle("credit", i, "amount", pick, entry)}`}
+                      className={`w-24 min-h-[44px] px-2 py-2.5 border rounded-md text-sm text-right transition-all ${slotStyle("credit", i, "amount", pick, entry)}`}
                     >
                       {pick.amount !== null ? pick.amount.toLocaleString() : "금액"}
                     </button>
@@ -202,15 +203,18 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
       {/* 선택 패널 */}
       {!submitted && activeSlot && (
         <div className="bg-surface border border-primary/20 rounded-lg p-3 mb-4">
+          <p className="text-[11px] text-text-sub mb-2">
+            {activeSlot.side === "debit" ? "차변" : "대변"} {activeSlot.idx + 1}번 — {activeSlot.field === "account" ? "계정과목 선택" : "금액 선택"}
+          </p>
           {activeSlot.field === "account" ? (
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               {TYPES.map((type) => {
                 const accs = grouped[type];
                 if (!accs.length) return null;
                 return (
                   <div key={type}>
                     <p className="text-[11px] text-text-sub mb-1">{type}</p>
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-1.5">
                       {accs.map((a) => (
                         <button
                           key={a.name}
@@ -225,7 +229,7 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
                             if (isCompound) setActiveSlot({ ...activeSlot, field: "amount" });
                             else setActiveSlot(null);
                           }}
-                          className={`px-2.5 py-1.5 text-xs border rounded-md active:scale-95 transition-all ${ACCOUNT_TYPE_STYLE[a.type]}`}
+                          className={`min-h-[44px] px-3 py-2 text-xs border rounded-md active:scale-95 transition-all ${ACCOUNT_TYPE_STYLE[a.type]}`}
                         >
                           {a.name}
                         </button>
@@ -236,28 +240,25 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
               })}
             </div>
           ) : (
-            <div>
-              <p className="text-[11px] text-text-sub mb-2">금액 선택</p>
-              <div className="flex flex-wrap gap-1.5">
-                {amountChoices.map((amt) => (
-                  <button
-                    key={amt}
-                    onClick={() => {
-                      const { side, idx } = activeSlot;
-                      const setter = side === "debit" ? setDebitPicks : setCreditPicks;
-                      setter((prev) => {
-                        const next = [...prev];
-                        next[idx] = { ...next[idx], amount: amt };
-                        return next;
-                      });
-                      setActiveSlot(null);
-                    }}
-                    className="px-3 py-1.5 text-xs border border-border rounded-md hover:border-primary active:scale-95 transition-all"
-                  >
-                    {amt.toLocaleString()}원
-                  </button>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-2">
+              {amountChoices.map((amt) => (
+                <button
+                  key={amt}
+                  onClick={() => {
+                    const { side, idx } = activeSlot;
+                    const setter = side === "debit" ? setDebitPicks : setCreditPicks;
+                    setter((prev) => {
+                      const next = [...prev];
+                      next[idx] = { ...next[idx], amount: amt };
+                      return next;
+                    });
+                    setActiveSlot(null);
+                  }}
+                  className="min-h-[44px] px-4 py-2 text-sm border border-border rounded-md hover:border-primary active:scale-95 transition-all"
+                >
+                  {amt.toLocaleString()}원
+                </button>
+              ))}
             </div>
           )}
         </div>
@@ -274,7 +275,7 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
         <button
           onClick={handleSubmit}
           disabled={!allFilled()}
-          className="w-full py-2.5 bg-primary text-white rounded-lg font-bold text-sm disabled:opacity-40 active:scale-[0.98] transition-transform"
+          className="w-full min-h-[44px] py-2.5 bg-primary text-white rounded-lg font-bold text-sm disabled:opacity-40 active:scale-[0.98] transition-transform"
         >
           제출
         </button>
@@ -299,7 +300,7 @@ export default function JournalQuiz({ problem, onResult, onNext }: Props) {
           </div>
           <button
             onClick={onNext}
-            className="w-full py-2.5 bg-primary text-white rounded-lg font-bold text-sm active:scale-[0.98] transition-transform"
+            className="w-full min-h-[44px] py-2.5 bg-primary text-white rounded-lg font-bold text-sm active:scale-[0.98] transition-transform"
           >
             다음 문제
           </button>

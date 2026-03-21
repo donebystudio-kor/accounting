@@ -28,8 +28,18 @@ interface Props {
   categoryName: string;
 }
 
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function QuizSession({ problems, categoryName }: Props) {
   const router = useRouter();
+  const [shuffled] = useState(() => shuffle(problems));
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
@@ -49,7 +59,7 @@ export default function QuizSession({ problems, categoryName }: Props) {
     };
   }, [timerEnabled, index]);
 
-  const problem = problems[index];
+  const problem = shuffled[index];
 
   const handleResult = (correct: boolean, partial: boolean) => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -77,13 +87,12 @@ export default function QuizSession({ problems, categoryName }: Props) {
   };
 
   const handleNext = () => {
-    if (index + 1 >= problems.length) {
-      // 결과를 sessionStorage에 저장하고 result 페이지로 이동
+    if (index + 1 >= shuffled.length) {
       const finalElapsed = totalElapsed + elapsed;
-      const finalScore = score; // 이미 handleResult에서 업데이트됨
+      const finalScore = score;
       const summary: QuizSummary = {
         categoryName,
-        problems,
+        problems: shuffled,
         results: [...results],
         totalScore: finalScore,
         totalElapsed: finalElapsed,
@@ -102,7 +111,7 @@ export default function QuizSession({ problems, categoryName }: Props) {
       {/* 상단 바 */}
       <div className="flex items-center justify-between mb-3 text-xs text-text-sub">
         <span>
-          {index + 1} / {problems.length}
+          {index + 1} / {shuffled.length}
         </span>
         <div className="flex items-center gap-3">
           <span className="font-bold text-primary">{score}점</span>
@@ -122,7 +131,7 @@ export default function QuizSession({ problems, categoryName }: Props) {
       <div className="w-full h-1 bg-border rounded-full mb-5">
         <div
           className="h-full bg-primary rounded-full transition-all"
-          style={{ width: `${((index + 1) / problems.length) * 100}%` }}
+          style={{ width: `${((index + 1) / shuffled.length) * 100}%` }}
         />
       </div>
 
