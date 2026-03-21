@@ -73,7 +73,7 @@ export default function Home() {
             <span className="text-2xl">📚</span>
             <div>
               <h3 className="font-bold text-text text-sm">공통 문제 풀기</h3>
-              <p className="text-xs text-text-sub">모든 기준에 적용되는 기본 문제</p>
+              <p className="text-xs text-text-sub">모든 기준에 적용되는 기본 문제 (기초회계)</p>
             </div>
           </div>
           <span className="text-xs text-text-sub">{PROBLEMS.filter((p) => p.standard === "common").length}개</span>
