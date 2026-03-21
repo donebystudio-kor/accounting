@@ -1,5 +1,6 @@
 import { CONCEPTS } from "@/constants/concepts";
 import { PROBLEMS } from "@/constants/problems";
+import ConceptDiagram from "@/components/diagrams";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -61,6 +62,9 @@ export default async function ConceptPage({ params }: Props) {
         <h1 className="text-2xl font-extrabold text-text">{concept.name}</h1>
         <p className="text-xs text-text-sub mt-1">관련 문제 {related.length}개</p>
       </div>
+
+      {/* 다이어그램 */}
+      <ConceptDiagram tag={concept.tag} />
 
       {/* 개념 설명 */}
       <section className="bg-surface border border-border rounded-lg p-5 mb-6">
