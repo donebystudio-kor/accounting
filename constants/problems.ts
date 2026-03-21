@@ -33,6 +33,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "현금", amount: 500000 }],
     credit: [{ account: "자본금", amount: 500000 }],
     explanation: "사업주가 현금을 출자하면 자산(현금) 증가, 자본(자본금) 증가.",
+    hint: "출자 거래에서 어떤 자산이 들어오고, 자본이 어떻게 변하는지 생각해보세요.",
     distractors: ["보통예금", "이익잉여금", "선수금"],
   },
   {
@@ -41,6 +42,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "상품", amount: 1000000 }],
     credit: [{ account: "현금", amount: 1000000 }],
     explanation: "상품(자산) 증가, 현금(자산) 감소.",
+    hint: "현금으로 무언가를 구입했을 때 자산 간 교환을 떠올려보세요.",
     distractors: ["매출원가", "외상매입금", "선급금"],
   },
   {
@@ -49,6 +51,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "현금", amount: 800000 }],
     credit: [{ account: "매출", amount: 800000 }],
     explanation: "현금(자산) 증가, 매출(수익) 발생.",
+    hint: "물건을 팔고 돈을 받았을 때, 수익은 어느 쪽에 기록될까요?",
     distractors: ["외상매출금", "선수금", "매출원가"],
   },
   {
@@ -57,6 +60,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "상품", amount: 1500000 }],
     credit: [{ account: "외상매입금", amount: 1500000 }],
     explanation: "외상 매입: 상품(자산) 증가, 외상매입금(부채) 증가.",
+    hint: "대금을 나중에 지급하기로 했다면, 부채가 발생합니다.",
     distractors: ["미지급금", "지급어음", "선수금"],
   },
   {
@@ -65,6 +69,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "외상매출금", amount: 2000000 }],
     credit: [{ account: "매출", amount: 2000000 }],
     explanation: "외상 판매: 외상매출금(자산) 증가, 매출(수익) 발생.",
+    hint: "대금을 나중에 받기로 했다면, 채권이 발생합니다.",
     distractors: ["미수금", "받을어음", "선급금"],
   },
   {
@@ -73,6 +78,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "외상매입금", amount: 1500000 }],
     credit: [{ account: "현금", amount: 1500000 }],
     explanation: "외상매입금(부채) 감소, 현금(자산) 감소.",
+    hint: "부채를 갚는 거래입니다. 부채 감소는 어느 쪽일까요?",
     distractors: ["미지급금", "지급어음", "상품"],
   },
   {
@@ -81,6 +87,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "현금", amount: 2000000 }],
     credit: [{ account: "외상매출금", amount: 2000000 }],
     explanation: "현금(자산) 증가, 외상매출금(자산) 감소.",
+    hint: "채권을 회수하는 거래입니다. 자산 간 교환을 생각해보세요.",
     distractors: ["미수금", "받을어음", "매출"],
   },
   {
@@ -89,6 +96,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "보통예금", amount: 3000000 }],
     credit: [{ account: "단기차입금", amount: 3000000 }],
     explanation: "보통예금(자산) 증가, 단기차입금(부채) 증가.",
+    hint: "돈을 빌리면 자산이 늘고, 동시에 갚아야 할 의무도 생깁니다.",
     distractors: ["현금", "장기차입금", "미지급금"],
   },
   {
@@ -97,6 +105,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "임차료", amount: 300000 }],
     credit: [{ account: "현금", amount: 300000 }],
     explanation: "임차료(비용) 발생, 현금(자산) 감소.",
+    hint: "매달 지급하는 비용입니다. 비용은 어느 쪽에 기록될까요?",
     distractors: ["임대료수익", "선급비용", "미지급비용"],
   },
   {
@@ -105,6 +114,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "급여", amount: 2500000 }],
     credit: [{ account: "보통예금", amount: 2500000 }],
     explanation: "급여(비용) 발생, 보통예금(자산) 감소.",
+    hint: "직원에게 지급하는 비용입니다. 지급 수단이 무엇인지 확인하세요.",
     distractors: ["현금", "미지급비용", "예수금"],
   },
   {
@@ -113,6 +123,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "비품", amount: 500000 }],
     credit: [{ account: "현금", amount: 500000 }],
     explanation: "비품(자산) 증가, 현금(자산) 감소.",
+    hint: "오래 사용할 물건을 구입했습니다. 비용일까요, 자산일까요?",
     distractors: ["소모품비", "미지급금", "선급금"],
   },
   {
@@ -121,6 +132,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "선급금", amount: 200000 }],
     credit: [{ account: "현금", amount: 200000 }],
     explanation: "선급금(자산) 증가, 현금(자산) 감소. 선급금은 미리 지급한 금액.",
+    hint: "아직 물건을 받지 않았지만 미리 돈을 줬습니다. 이건 자산일까요, 비용일까요?",
     distractors: ["선급비용", "선수금", "미지급금"],
   },
   {
@@ -129,6 +141,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "현금", amount: 500000 }],
     credit: [{ account: "선수금", amount: 500000 }],
     explanation: "현금(자산) 증가, 선수금(부채) 증가. 상품 인도 전에 받은 금액은 부채.",
+    hint: "아직 물건을 주지 않았지만 미리 돈을 받았습니다. 이건 수익일까요, 부채일까요?",
     distractors: ["매출", "선급금", "예수금"],
   },
   {
@@ -137,6 +150,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "보험료", amount: 120000 }],
     credit: [{ account: "현금", amount: 120000 }],
     explanation: "보험료(비용) 발생, 현금(자산) 감소.",
+    hint: "정기적으로 납부하는 비용입니다. 비용 발생과 현금 감소를 분개해보세요.",
     distractors: ["선급비용", "미지급비용", "세금과공과"],
   },
   {
@@ -145,6 +159,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "보통예금", amount: 50000 }],
     credit: [{ account: "이자수익", amount: 50000 }],
     explanation: "보통예금(자산) 증가, 이자수익(수익) 발생.",
+    hint: "은행에서 돈이 들어왔습니다. 예금 이자는 수익입니다.",
     distractors: ["현금", "미수수익", "이자비용"],
   },
   {
@@ -153,6 +168,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "상품", amount: 1000000 }],
     credit: [{ account: "지급어음", amount: 1000000 }],
     explanation: "상품(자산) 증가, 지급어음(부채) 증가. 어음 발행은 외상매입금과 구분.",
+    hint: "어음을 발행했다는 건 나중에 갚겠다는 약속입니다. 외상매입금과 구분해보세요.",
     distractors: ["외상매입금", "미지급금", "받을어음"],
   },
   {
@@ -161,6 +177,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "받을어음", amount: 1200000 }],
     credit: [{ account: "매출", amount: 1200000 }],
     explanation: "받을어음(자산) 증가, 매출(수익) 발생. 외상매출금과 구분.",
+    hint: "어음을 받았다는 건 나중에 받을 권리입니다. 외상매출금과 구분해보세요.",
     distractors: ["외상매출금", "미수금", "지급어음"],
   },
   {
@@ -169,6 +186,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "단기대여금", amount: 1000000 }],
     credit: [{ account: "현금", amount: 1000000 }],
     explanation: "단기대여금(자산) 증가, 현금(자산) 감소. 단기차입금과 혼동 주의.",
+    hint: "돈을 빌려주는 거래입니다. 빌려주는 것과 빌리는 것의 계정을 구분하세요.",
     distractors: ["단기차입금", "미수금", "선급금"],
   },
   {
@@ -177,6 +195,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "현금", amount: 400000 }],
     credit: [{ account: "임대료수익", amount: 400000 }],
     explanation: "현금(자산) 증가, 임대료수익(수익) 발생. 임차료(비용)와 구분.",
+    hint: "건물을 빌려주고 돈을 받는 거래입니다. 빌려주는 입장의 수익을 생각하세요.",
     distractors: ["임차료", "선수수익", "미수수익"],
   },
   {
@@ -185,6 +204,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "광고선전비", amount: 500000 }],
     credit: [{ account: "보통예금", amount: 500000 }],
     explanation: "광고선전비(비용) 발생, 보통예금(자산) 감소.",
+    hint: "홍보를 위해 지출한 비용입니다. 접대비와 구분해보세요.",
     distractors: ["접대비", "현금", "미지급비용"],
   },
   // ══════════════════════════════════════
@@ -199,6 +219,7 @@ export const PROBLEMS: Problem[] = [
     ],
     credit: [{ account: "보통예금", amount: 3060000 }],
     explanation: "원금(부채 감소) + 이자(비용 발생). 차변 합계 3,060,000 = 대변 3,060,000.",
+    hint: "원금 상환과 이자 지급이 동시에 일어납니다. 각각의 성격을 구분하세요.",
     distractors: ["장기차입금", "현금", "미지급비용"],
   },
   {
@@ -207,6 +228,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "비품", amount: 800000 }],
     credit: [{ account: "미지급금", amount: 800000 }],
     explanation: "상품 이외 자산의 외상 구입은 미지급금. 외상매입금은 상품 거래에만 사용.",
+    hint: "상품이 아닌 자산을 외상으로 구입했습니다. 외상매입금과 다른 계정을 사용합니다.",
     distractors: ["외상매입금", "지급어음", "미지급비용"],
   },
   {
@@ -218,6 +240,7 @@ export const PROBLEMS: Problem[] = [
       { account: "유형자산처분이익", amount: 200000 },
     ],
     explanation: "처분가액 > 장부가액 → 처분이익 200,000. 상품 외 자산 처분은 미수금 사용.",
+    hint: "자산을 팔았는데 장부가액보다 비싸게 팔았습니다. 그 차이는 무엇일까요?",
     distractors: ["외상매출금", "유형자산처분손실", "매출"],
   },
   {
@@ -229,6 +252,7 @@ export const PROBLEMS: Problem[] = [
       { account: "외상매입금", amount: 1000000 },
     ],
     explanation: "복합 결제: 어음분은 지급어음, 외상분은 외상매입금.",
+    hint: "하나의 매입에 두 가지 결제 수단을 사용했습니다. 각각 어떤 부채인지 구분하세요.",
     distractors: ["현금", "미지급금", "받을어음"],
   },
   {
@@ -240,6 +264,7 @@ export const PROBLEMS: Problem[] = [
       { account: "보통예금", amount: 2800000 },
     ],
     explanation: "급여 총액(비용). 원천징수 → 예수금(부채), 실지급 → 보통예금 감소.",
+    hint: "급여 총액에서 일부를 공제합니다. 공제한 금액은 회사가 대신 보관하는 것입니다.",
     distractors: ["현금", "미지급비용", "세금과공과"],
   },
   {
@@ -251,6 +276,7 @@ export const PROBLEMS: Problem[] = [
     ],
     credit: [{ account: "비품", amount: 500000 }],
     explanation: "처분가액 < 장부가액 → 처분손실 200,000.",
+    hint: "자산을 팔았는데 장부가액보다 싸게 팔았습니다. 그 차이는 무엇일까요?",
     distractors: ["유형자산처분이익", "미수금", "감가상각비"],
   },
   {
@@ -259,6 +285,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "보험료", amount: 80000 }],
     credit: [{ account: "선급비용", amount: 80000 }],
     explanation: "결산 수정분개. 선급비용(자산) 감소 → 보험료(비용) 인식.",
+    hint: "미리 지급한 비용 중 올해 해당분을 비용으로 전환하는 결산 분개입니다.",
     distractors: ["선급금", "미지급비용", "현금"],
   },
   {
@@ -267,6 +294,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "임대료수익", amount: 100000 }],
     credit: [{ account: "선수수익", amount: 100000 }],
     explanation: "결산 수정분개. 차기 귀속 수익을 선수수익(부채)으로 이연.",
+    hint: "미리 받은 수익 중 내년 해당분을 부채로 전환하는 결산 분개입니다.",
     distractors: ["선수금", "미수수익", "임차료"],
   },
   {
@@ -275,6 +303,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "감가상각비", amount: 600000 }],
     credit: [{ account: "건물", amount: 600000 }],
     explanation: "감가상각비(비용) 인식, 건물(자산) 장부가액 감소.",
+    hint: "자산의 가치가 시간이 지남에 따라 줄어듭니다. 이를 비용으로 인식하는 분개입니다.",
     distractors: ["수선비", "임차료", "미지급비용"],
   },
   {
@@ -286,6 +315,7 @@ export const PROBLEMS: Problem[] = [
     ],
     credit: [{ account: "보통예금", amount: 1100000 }],
     explanation: "공급가액 → 임차료(비용), 부가세 → 부가세예수금. 합계 일치 확인.",
+    hint: "부가세가 포함된 거래입니다. 공급가액과 부가세를 분리해서 생각하세요.",
     distractors: ["현금", "미지급비용", "선급비용", "세금과공과"],
   },
   // ══════════════════════════════════════
@@ -296,60 +326,70 @@ export const PROBLEMS: Problem[] = [
     text: "자산이 증가하면 차변(왼쪽)에 기록한다.",
     answer: true,
     explanation: "자산의 증가는 차변, 감소는 대변에 기록합니다.",
+    hint: "자산, 부채, 자본, 수익, 비용 각각의 증가/감소가 차변과 대변 중 어디인지 정리해보세요.",
   },
   {
     id: "cox02", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
     text: "부채가 증가하면 차변(왼쪽)에 기록한다.",
     answer: false,
     explanation: "부채의 증가는 대변(오른쪽)에 기록합니다. 부채 감소가 차변입니다.",
+    hint: "부채는 자산과 반대 방향으로 기록됩니다.",
   },
   {
     id: "cox03", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
     text: "비용이 발생하면 대변(오른쪽)에 기록한다.",
     answer: false,
     explanation: "비용의 발생은 차변(왼쪽)에 기록합니다.",
+    hint: "비용의 성격을 생각해보세요. 비용은 자본을 줄이는 요소입니다.",
   },
   {
     id: "cox04", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
     text: "수익이 발생하면 대변(오른쪽)에 기록한다.",
     answer: true,
     explanation: "수익의 발생은 대변에 기록합니다.",
+    hint: "수익의 성격을 생각해보세요. 수익은 자본을 늘리는 요소입니다.",
   },
   {
     id: "cox05", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
     text: "외상매입금과 미지급금은 같은 계정과목이다.",
     answer: false,
     explanation: "외상매입금은 상품 매입 대금, 미지급금은 상품 외 거래 대금입니다.",
+    hint: "두 계정의 사용 범위 차이를 생각해보세요. 상품 거래와 그 외 거래를 구분합니다.",
   },
   {
     id: "cox06", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
     text: "선급금은 부채 계정이다.",
     answer: false,
     explanation: "선급금은 미리 지급한 금액으로 자산 계정입니다. 선수금이 부채.",
+    hint: "미리 지급한 금액의 성격을 생각해보세요. 나중에 돌려받거나 물건을 받을 권리입니다.",
   },
   {
     id: "cox07", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
     text: "분개에서 차변 합계와 대변 합계는 항상 일치해야 한다.",
     answer: true,
     explanation: "복식부기의 기본 원리. 대차평균의 원리.",
+    hint: "복식부기의 가장 기본적인 원리를 떠올려보세요.",
   },
   {
     id: "cox08", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
     text: "감가상각비는 자산 계정이다.",
     answer: false,
     explanation: "감가상각비는 비용 계정입니다. 자산의 가치 감소를 비용으로 인식.",
+    hint: "자산의 가치 감소를 기록하는 항목의 성격을 생각해보세요.",
   },
   {
     id: "cox09", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
     text: "이자수익은 비용 계정이다.",
     answer: false,
     explanation: "이자수익은 수익 계정입니다. 이자비용이 비용.",
+    hint: "은행에 돈을 맡기고 받는 대가의 성격을 생각해보세요.",
   },
   {
     id: "cox10", type: "ox", standard: "common", category: "ox-basic", difficulty: "basic",
     text: "재무상태표는 일정 시점의 자산, 부채, 자본을 나타낸다.",
     answer: true,
     explanation: "재무상태표(대차대조표)는 특정 시점의 재무 상태를 보여줍니다. 손익계산서가 기간.",
+    hint: "재무상태표와 손익계산서의 차이를 생각해보세요. 시점 vs 기간.",
   },
   // ══════════════════════════════════════
   // k-ifrs / kifrs-basic (10개)
@@ -360,6 +400,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "재고자산", amount: 1000000 }],
     credit: [{ account: "매입채무", amount: 1000000 }],
     explanation: "K-IFRS에서는 상품 대신 재고자산, 외상매입금 대신 매입채무를 사용합니다.",
+    hint: "K-IFRS에서 상품과 외상매입금 대신 사용하는 계정명을 떠올려보세요.",
     distractors: ["상품", "외상매입금", "미지급금"],
   },
   {
@@ -368,6 +409,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "매출채권", amount: 2000000 }],
     credit: [{ account: "매출", amount: 2000000 }],
     explanation: "K-IFRS에서는 외상매출금 대신 매출채권을 사용합니다.",
+    hint: "K-IFRS에서 외상매출금 대신 사용하는 계정명을 떠올려보세요.",
     distractors: ["외상매출금", "미수금", "받을어음"],
   },
   {
@@ -376,6 +418,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "대손상각비", amount: 500000 }],
     credit: [{ account: "매출채권", amount: 500000 }],
     explanation: "매출채권 회수 불가능 시 대손상각비(비용) 인식, 매출채권(자산) 감소.",
+    hint: "회수 불가능한 채권에 대해 어떤 비용을 인식하는지 생각해보세요.",
     distractors: ["유형자산처분손실", "충당부채", "이자비용"],
   },
   {
@@ -384,6 +427,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "감가상각비", amount: 1200000 }],
     credit: [{ account: "건물", amount: 1200000 }],
     explanation: "감가상각비(비용) 인식, 건물(자산) 장부가액 감소.",
+    hint: "유형자산의 가치 감소를 기간별로 인식하는 분개입니다.",
     distractors: ["수선비", "임차료", "투자부동산"],
   },
   {
@@ -392,6 +436,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "토지", amount: 50000000 }],
     credit: [{ account: "현금", amount: 50000000 }],
     explanation: "토지(자산) 증가, 현금(자산) 감소. K-IFRS와 일반기업회계기준 동일.",
+    hint: "토지는 감가상각하지 않는 자산입니다. 취득 시 분개를 생각해보세요.",
     distractors: ["건물", "투자부동산", "보통예금"],
   },
   {
@@ -400,6 +445,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "재고자산평가손실", amount: 300000 }],
     credit: [{ account: "재고자산", amount: 300000 }],
     explanation: "재고자산의 순실현가능가치가 취득원가보다 낮을 때 평가손실 인식.",
+    hint: "재고자산의 시가가 원가보다 낮아졌을 때 인식하는 손실입니다.",
     distractors: ["매출원가", "상품", "감가상각비"],
   },
   {
@@ -417,6 +463,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "매입채무", amount: 1000000 }],
     credit: [{ account: "보통예금", amount: 1000000 }],
     explanation: "매입채무(부채) 감소, 보통예금(자산) 감소.",
+    hint: "K-IFRS에서 상품 매입 대금을 갚을 때 사용하는 계정을 생각해보세요.",
     distractors: ["외상매입금", "미지급금", "현금"],
   },
   {
@@ -425,6 +472,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "기계장치", amount: 10000000 }],
     credit: [{ account: "보통예금", amount: 10000000 }],
     explanation: "기계장치(자산) 증가, 보통예금(자산) 감소.",
+    hint: "생산 설비를 구입하는 거래입니다. 어떤 자산 계정을 사용할까요?",
     distractors: ["비품", "현금", "미지급금"],
   },
   {
@@ -433,6 +481,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "장기차입금", amount: 5000000 }],
     credit: [{ account: "보통예금", amount: 5000000 }],
     explanation: "장기차입금(부채) 감소, 보통예금(자산) 감소.",
+    hint: "장기간 빌린 돈을 갚는 거래입니다. 단기차입금과 구분하세요.",
     distractors: ["단기차입금", "현금", "이자비용"],
   },
   // ══════════════════════════════════════
@@ -444,6 +493,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "사용권자산", amount: 12000000 }],
     credit: [{ account: "리스부채", amount: 12000000 }],
     explanation: "IFRS 16: 리스이용자는 사용권자산(자산)과 리스부채(부채)를 인식합니다.",
+    hint: "IFRS 16에서 리스이용자가 인식하는 두 가지 항목을 생각해보세요.",
     distractors: ["비품", "임차료", "장기차입금"],
   },
   {
@@ -452,6 +502,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "이자비용", amount: 200000 }],
     credit: [{ account: "리스부채", amount: 200000 }],
     explanation: "리스부채에 대한 이자비용 인식. 리스부채 장부금액 증가(유효이자법).",
+    hint: "리스부채에 대한 이자를 인식합니다. 유효이자법을 떠올려보세요.",
     distractors: ["임차료", "감가상각비", "미지급비용"],
   },
   {
@@ -460,6 +511,7 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "감가상각비", amount: 2400000 }],
     credit: [{ account: "사용권자산", amount: 2400000 }],
     explanation: "사용권자산을 리스기간에 걸쳐 감가상각합니다.",
+    hint: "사용권자산도 일반 유형자산처럼 감가상각합니다.",
     distractors: ["임차료", "리스부채", "건물"],
   },
   {
@@ -468,14 +520,16 @@ export const PROBLEMS: Problem[] = [
     debit: [{ account: "감가상각비", amount: 800000 }],
     credit: [{ account: "투자부동산", amount: 800000 }],
     explanation: "투자부동산 원가모형 적용 시 감가상각비를 인식합니다.",
+    hint: "투자 목적으로 보유하는 부동산의 감가상각입니다. 원가모형 적용 시.",
     distractors: ["건물", "임대료수익", "수선비"],
   },
   {
     id: "ki05", type: "journal", standard: "k-ifrs", category: "kifrs-intermediate", difficulty: "intermediate",
-    text: "매출채권 800,000원에 대해 대손충당금(충당부채)을 설정하였다.",
+    text: "매출채권 800,000원에 대해 대손충당금을 설정하였다.",
     debit: [{ account: "대손상각비", amount: 800000 }],
-    credit: [{ account: "충당부채", amount: 800000 }],
-    explanation: "예상 대손에 대해 대손상각비(비용)를 인식하고 충당부채를 설정합니다.",
+    credit: [{ account: "대손충당금", amount: 800000 }],
+    explanation: "예상 대손에 대해 대손상각비(비용)를 인식하고 대손충당금을 설정합니다.",
+    hint: "매출채권의 예상 회수 불능분을 차감하는 계정을 생각해보세요.",
     distractors: ["매출채권", "미지급비용", "유형자산처분손실"],
   },
   // ══════════════════════════════════════
@@ -486,60 +540,70 @@ export const PROBLEMS: Problem[] = [
     text: "K-IFRS에서 재고자산은 취득원가와 순실현가능가치 중 낮은 금액으로 평가한다.",
     answer: true,
     explanation: "저가법 적용. 순실현가능가치가 낮으면 평가손실 인식.",
+    hint: "재고자산 평가 시 적용하는 방법을 생각해보세요. 원가와 시가 중 어느 쪽?",
   },
   {
     id: "kox02", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
     text: "K-IFRS에서 외상매출금은 매출채권으로 표시한다.",
     answer: true,
     explanation: "K-IFRS는 매출채권, 일반기업회계기준은 외상매출금 사용.",
+    hint: "K-IFRS와 일반기업회계기준에서 사용하는 계정명 차이를 떠올려보세요.",
   },
   {
     id: "kox03", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
     text: "IFRS 16에 따라 리스이용자는 모든 리스를 운용리스와 금융리스로 구분한다.",
     answer: false,
     explanation: "IFRS 16은 리스이용자의 운용/금융리스 구분을 폐지. 단일 모델로 사용권자산과 리스부채를 인식.",
+    hint: "IFRS 16이 리스이용자의 회계처리를 어떻게 단순화했는지 생각해보세요.",
   },
   {
     id: "kox04", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
     text: "사용권자산은 리스부채와 동일한 금액으로 최초 인식한다.",
     answer: false,
     explanation: "사용권자산 = 리스부채 + 선급리스료 + 초기직접원가 + 복구원가 등. 동일하지 않을 수 있음.",
+    hint: "사용권자산의 최초 측정에 포함되는 항목들을 떠올려보세요.",
   },
   {
     id: "kox05", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
     text: "K-IFRS에서 투자부동산은 원가모형 또는 공정가치모형을 선택 적용할 수 있다.",
     answer: true,
     explanation: "원가모형과 공정가치모형 중 선택. 공정가치모형은 감가상각 불필요.",
+    hint: "투자부동산의 후속 측정에 사용할 수 있는 두 가지 모형을 생각해보세요.",
   },
   {
     id: "kox06", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
     text: "충당부채는 지출의 시기 또는 금액이 불확실한 부채이다.",
     answer: true,
     explanation: "현재 의무, 경제적 효익 유출 가능성, 신뢰성 있는 추정 세 가지 조건 충족 시 인식.",
+    hint: "충당부채의 인식 조건 세 가지를 떠올려보세요.",
   },
   {
     id: "kox07", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
     text: "K-IFRS에서 유형자산은 원가모형만 적용할 수 있다.",
     answer: false,
     explanation: "원가모형과 재평가모형 중 선택 가능. 재평가모형은 공정가치로 재평가.",
+    hint: "유형자산의 후속 측정에 사용할 수 있는 모형이 하나뿐인지 생각해보세요.",
   },
   {
     id: "kox08", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
     text: "대손충당금은 매출채권에서 차감하는 형식으로 표시한다.",
     answer: true,
     explanation: "재무상태표에서 매출채권 차감 표시. 순액으로 보고.",
+    hint: "매출채권의 재무상태표 표시 방법을 생각해보세요. 총액 vs 순액.",
   },
   {
     id: "kox09", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "intermediate",
     text: "K-IFRS에서 연구비는 자산으로 인식할 수 있다.",
     answer: false,
     explanation: "연구단계 지출은 전액 비용. 개발단계 지출만 조건 충족 시 무형자산 인식 가능.",
+    hint: "연구단계와 개발단계의 회계처리 차이를 생각해보세요.",
   },
   {
     id: "kox10", type: "ox", standard: "k-ifrs", category: "kifrs-ox", difficulty: "basic",
     text: "기타포괄손익은 당기손익에 포함된다.",
     answer: false,
     explanation: "기타포괄손익은 당기손익과 구분. 포괄손익계산서에 별도 표시.",
+    hint: "포괄손익계산서의 구성 요소를 떠올려보세요. 당기손익과 구분되는 것이 있습니다.",
   },
   // ══════════════════════════════════════
   // Batch 1 추가 (90개)
@@ -3167,7 +3231,7 @@ export const PROBLEMS: Problem[] = [
     text: "CP 액면 10,000,000원, 할인율 3%, 만기 90일. 실제 수령액은? (365일 기준, 원 미만 버림)",
     correctAnswer: 9926027,
     explanation: "할인액 = 10,000,000 × 3% × 90/365 = 73,973. 수령액 = 10,000,000 - 73,973 = 9,926,027.",
-    hint: "수령액 = 액면가 - (액면가 × 할인율 × 일수/365)",
+    hint: "수령액 = 액면가 - (액면가 × 할인율 × 일수/365), 원 미만 버림은 최종 수령액 기준",
   },
   {
     id: "bcalca04", type: "calculation", standard: "bank", category: "bank-calc-advanced", difficulty: "advanced",
