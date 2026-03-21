@@ -42,7 +42,7 @@ export default function CalculatorListPage() {
           if (!aIsIFRS && bIsIFRS) return 1;
           const aNum = parseInt(a.standard.replace(/\D/g, ""));
           const bNum = parseInt(b.standard.replace(/\D/g, ""));
-          return bNum - aNum;
+          return aNum - bNum;
         }).map((c) => {
           const count = PROBLEMS.filter((p) => p.tags?.includes(c.relatedConceptTag)).length;
           return (

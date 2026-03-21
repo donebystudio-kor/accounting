@@ -26,7 +26,7 @@ export default function ConceptsPage() {
           if (!aIsIFRS && bIsIFRS) return 1;
           const aNum = parseInt(a.tag.replace(/\D/g, ""));
           const bNum = parseInt(b.tag.replace(/\D/g, ""));
-          return bNum - aNum;
+          return aNum - bNum;
         }).map((c) => {
           const count = PROBLEMS.filter((p) => p.tags?.includes(c.tag)).length;
           return (
