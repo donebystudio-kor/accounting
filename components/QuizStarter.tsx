@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Problem } from "@/constants/problems";
 import QuizSession from "./QuizSession";
-import { clearWrong, clearBookmarks, clearSolved, getWrongIds, getBookmarks } from "@/lib/storage";
+import { clearWrong, clearBookmarks, clearSolved, getWrongIds, getBookmarks, getUnsolvedIds } from "@/lib/storage";
 
 interface Props {
   stdProblems: Problem[];
@@ -13,6 +13,7 @@ interface Props {
 }
 
 type DifficultyFilter = "all" | "basic-intermediate" | "advanced-practical";
+type RangeFilter = "all" | "unsolved" | "wrong" | "bookmark";
 type CountOption = 10 | 20 | 50 | "all";
 
 export default function QuizStarter({
@@ -24,16 +25,29 @@ export default function QuizStarter({
   const [started, setStarted] = useState(false);
   const [includeCommon, setIncludeCommon] = useState(true);
   const [diffFilter, setDiffFilter] = useState<DifficultyFilter>("all");
+  const [rangeFilter, setRangeFilter] = useState<RangeFilter>("all");
   const [countOption, setCountOption] = useState<CountOption>("all");
 
-  const allProblems = useMemo(() => {
+  // localStorage 데이터 (클라이언트에서만)
+  const [wrongIds, setWrongIds] = useState<string[]>([]);
+  const [bookmarkIds, setBookmarkIds] = useState<string[]>([]);
+  const [unsolvedIds, setUnsolvedIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    const allIds = [...stdProblems, ...commonProblems].map((p) => p.id);
+    setWrongIds(getWrongIds());
+    setBookmarkIds(getBookmarks());
+    setUnsolvedIds(getUnsolvedIds(allIds));
+  }, [stdProblems, commonProblems]);
+
+  // 1차: 기준 + 공통 + 난이도
+  const baseProblems = useMemo(() => {
     const base = isCommonStandard
       ? stdProblems
       : includeCommon
       ? [...stdProblems, ...commonProblems]
       : stdProblems;
 
-    // 난이도 필터
     if (diffFilter === "basic-intermediate") {
       return base.filter((p) => p.difficulty === "basic" || p.difficulty === "intermediate");
     }
@@ -43,10 +57,33 @@ export default function QuizStarter({
     return base;
   }, [stdProblems, commonProblems, isCommonStandard, includeCommon, diffFilter]);
 
+  // 2차: 문제 범위 적용
+  const rangedProblems = useMemo(() => {
+    if (rangeFilter === "unsolved") {
+      const set = new Set(unsolvedIds);
+      return baseProblems.filter((p) => set.has(p.id));
+    }
+    if (rangeFilter === "wrong") {
+      const set = new Set(wrongIds);
+      // 오답 횟수 많은 순
+      return baseProblems.filter((p) => set.has(p.id)).sort((a, b) => {
+        const ai = wrongIds.indexOf(a.id);
+        const bi = wrongIds.indexOf(b.id);
+        return ai - bi;
+      });
+    }
+    if (rangeFilter === "bookmark") {
+      const set = new Set(bookmarkIds);
+      return baseProblems.filter((p) => set.has(p.id));
+    }
+    return baseProblems;
+  }, [baseProblems, rangeFilter, wrongIds, bookmarkIds, unsolvedIds]);
+
+  // 3차: 문제 수
   const finalProblems = useMemo(() => {
-    if (countOption === "all") return allProblems;
-    return allProblems.slice(0, countOption);
-  }, [allProblems, countOption]);
+    if (countOption === "all") return rangedProblems;
+    return rangedProblems.slice(0, countOption);
+  }, [rangedProblems, countOption]);
 
   if (started) {
     return <QuizSession problems={finalProblems} categoryName={categoryName} />;
@@ -56,6 +93,13 @@ export default function QuizStarter({
     { value: "all", label: "전체" },
     { value: "basic-intermediate", label: "초급·중급" },
     { value: "advanced-practical", label: "고급·실전" },
+  ];
+
+  const rangeOptions: { value: RangeFilter; label: string; count: number }[] = [
+    { value: "all", label: "전체", count: baseProblems.length },
+    { value: "unsolved", label: "안 푼 문제", count: baseProblems.filter((p) => new Set(unsolvedIds).has(p.id)).length },
+    { value: "wrong", label: "오답 문제", count: baseProblems.filter((p) => new Set(wrongIds).has(p.id)).length },
+    { value: "bookmark", label: "북마크", count: baseProblems.filter((p) => new Set(bookmarkIds).has(p.id)).length },
   ];
 
   const countOptions: { value: CountOption; label: string }[] = [
@@ -75,24 +119,39 @@ export default function QuizStarter({
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-text">공통 문제 포함</p>
-              <p className="text-xs text-text-sub mt-0.5">
-                모든 회계기준에 공통으로 적용되는 문제를 함께 출제합니다
-              </p>
+              <p className="text-xs text-text-sub mt-0.5">모든 회계기준에 공통으로 적용되는 문제를 함께 출제합니다</p>
             </div>
             <button
               onClick={() => setIncludeCommon(!includeCommon)}
-              className={`relative w-11 h-6 rounded-full transition-colors ${
-                includeCommon ? "bg-primary" : "bg-border"
-              }`}
+              className={`relative w-11 h-6 rounded-full transition-colors ${includeCommon ? "bg-primary" : "bg-border"}`}
             >
-              <span
-                className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${
-                  includeCommon ? "translate-x-5" : ""
-                }`}
-              />
+              <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${includeCommon ? "translate-x-5" : ""}`} />
             </button>
           </div>
         )}
+
+        {/* 문제 범위 */}
+        <div>
+          <p className="text-sm font-medium text-text mb-2">문제 범위</p>
+          <div className="grid grid-cols-2 gap-2">
+            {rangeOptions.map((opt) => (
+              <button
+                key={opt.value}
+                onClick={() => setRangeFilter(opt.value)}
+                disabled={opt.count === 0 && opt.value !== "all"}
+                className={`min-h-[40px] px-3 py-2 text-xs border rounded-md font-medium transition-colors ${
+                  rangeFilter === opt.value
+                    ? "border-primary bg-primary-bg/30 text-primary"
+                    : opt.count === 0 && opt.value !== "all"
+                    ? "border-border text-text-sub/30 cursor-not-allowed"
+                    : "border-border text-text-sub hover:border-primary/50"
+                }`}
+              >
+                {opt.label} ({opt.count})
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* 난이도 선택 */}
         <div>
@@ -119,7 +178,7 @@ export default function QuizStarter({
           <p className="text-sm font-medium text-text mb-2">문제 수</p>
           <div className="flex gap-2">
             {countOptions.map((opt) => {
-              const disabled = opt.value !== "all" && opt.value > allProblems.length;
+              const disabled = opt.value !== "all" && opt.value > rangedProblems.length;
               return (
                 <button
                   key={String(opt.value)}
@@ -142,9 +201,12 @@ export default function QuizStarter({
 
         {/* 문제 수 요약 */}
         <div className="text-xs text-text-sub pt-2 border-t border-border">
-          사용 가능: <span className="font-bold text-text">{allProblems.length}문제</span>
+          사용 가능: <span className="font-bold text-text">{rangedProblems.length}문제</span>
           {countOption !== "all" && (
-            <> → 출제: <span className="font-bold text-primary">{Math.min(countOption as number, allProblems.length)}문제</span></>
+            <> → 출제: <span className="font-bold text-primary">{Math.min(countOption as number, rangedProblems.length)}문제</span></>
+          )}
+          {rangedProblems.length === 0 && rangeFilter !== "all" && (
+            <p className="mt-1 text-wrong">선택한 조건에 해당하는 문제가 없습니다</p>
           )}
         </div>
       </div>
@@ -159,38 +221,17 @@ export default function QuizStarter({
 
       {/* 초기화 */}
       <div className="flex gap-2 mt-4">
-        <button
-          onClick={() => {
-            if (confirm("오답 기록을 모두 삭제할까요?")) {
-              clearWrong();
-              alert("오답 기록이 초기화되었습니다.");
-            }
-          }}
-          className="flex-1 min-h-[40px] py-2 text-xs border border-border rounded-lg text-text-sub hover:border-wrong hover:text-wrong transition-colors"
-        >
-          오답 기록 초기화
+        <button onClick={() => { if (confirm("오답 기록을 모두 삭제할까요?")) { clearWrong(); setWrongIds([]); } }}
+          className="flex-1 min-h-[40px] py-2 text-xs border border-border rounded-lg text-text-sub hover:border-wrong hover:text-wrong transition-colors">
+          오답 초기화
         </button>
-        <button
-          onClick={() => {
-            if (confirm("북마크를 모두 삭제할까요?")) {
-              clearBookmarks();
-              alert("북마크가 초기화되었습니다.");
-            }
-          }}
-          className="flex-1 min-h-[40px] py-2 text-xs border border-border rounded-lg text-text-sub hover:border-wrong hover:text-wrong transition-colors"
-        >
+        <button onClick={() => { if (confirm("북마크를 모두 삭제할까요?")) { clearBookmarks(); setBookmarkIds([]); } }}
+          className="flex-1 min-h-[40px] py-2 text-xs border border-border rounded-lg text-text-sub hover:border-wrong hover:text-wrong transition-colors">
           북마크 초기화
         </button>
-        <button
-          onClick={() => {
-            if (confirm("푼 문제 기록을 모두 초기화할까요?")) {
-              clearSolved();
-              alert("푼 문제 기록이 초기화되었습니다.");
-            }
-          }}
-          className="flex-1 min-h-[40px] py-2 text-xs border border-border rounded-lg text-text-sub hover:border-wrong hover:text-wrong transition-colors"
-        >
-          풀이 기록 초기화
+        <button onClick={() => { if (confirm("푼 문제 기록을 모두 초기화할까요?")) { clearSolved(); setUnsolvedIds([...stdProblems, ...commonProblems].map(p=>p.id)); } }}
+          className="flex-1 min-h-[40px] py-2 text-xs border border-border rounded-lg text-text-sub hover:border-wrong hover:text-wrong transition-colors">
+          풀이 초기화
         </button>
       </div>
     </div>
