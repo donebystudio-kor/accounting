@@ -14,4 +14,7 @@ export const CATEGORIES: Category[] = [
   { id: "kifrs-basic", standard: "k-ifrs", name: "K-IFRS 기본 분개", description: "K-IFRS 기본 분개와 개념" },
   { id: "kifrs-intermediate", standard: "k-ifrs", name: "K-IFRS 심화 분개", description: "K-IFRS 특수 거래 분개" },
   { id: "kifrs-ox", standard: "k-ifrs", name: "K-IFRS OX 퀴즈", description: "K-IFRS 핵심 개념 참/거짓 판별" },
+  // 계산형
+  { id: "calc-basic", standard: "common", name: "계산 문제", description: "회계 계산 연습" },
+  { id: "kifrs-calc", standard: "k-ifrs", name: "K-IFRS 계산 문제", description: "K-IFRS 계산 연습" },
 ];
