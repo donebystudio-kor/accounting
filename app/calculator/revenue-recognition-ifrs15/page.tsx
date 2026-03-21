@@ -47,6 +47,7 @@ export default function RevenueRecognitionCalculator() {
         e.push("진행률은 0~100 사이여야 합니다.");
     }
     if (priorRevenue !== null && priorRevenue < 0) e.push("전기인식수익은 0 이상이어야 합니다.");
+    // 전기 인식 수익이 누적 인식 수익을 초과하는지는 계산 시 체크 (입력 시점에는 누적 미확정)
     return e;
   }, [contractPrice, progressMethod, totalCostEstimate, actualCostToDate, progressPercent, priorRevenue]);
 
@@ -77,6 +78,7 @@ export default function RevenueRecognitionCalculator() {
     }
 
     const cumulativeRevenue = Math.round(cp * pct / 100);
+    if (prior > cumulativeRevenue) return { pct: 0, cumulativeRevenue: 0, currentRevenue: 0, contractAsset: null, contractLiability: null, error: "전기 인식 수익이 누적 인식 수익을 초과합니다." as string | null };
     const currentRevenue = cumulativeRevenue - prior;
 
     let contractAsset: number | null = null;
@@ -87,7 +89,7 @@ export default function RevenueRecognitionCalculator() {
       else if (diff < 0) contractLiability = Math.abs(diff);
     }
 
-    return { pct: Math.round(pct * 100) / 100, cumulativeRevenue, currentRevenue, contractAsset, contractLiability };
+    return { pct: Math.round(pct * 100) / 100, cumulativeRevenue, currentRevenue, contractAsset, contractLiability, error: null as string | null };
   }, [canCalc, contractPrice, progressMethod, totalCostEstimate, actualCostToDate, progressPercent, priorRevenue, billedAmount]);
 
   return (
@@ -166,7 +168,10 @@ export default function RevenueRecognitionCalculator() {
         <p className="text-center text-xs text-text-sub py-6">값을 입력하면 자동 계산됩니다</p>
       )}
 
-      {result && (
+      {result?.error && (
+        <div className="text-xs text-wrong py-4">{result.error}</div>
+      )}
+      {result && !result.error && (
         <>
           {/* 진행률 프로그레스 바 */}
           <div className="bg-surface border border-border rounded-lg p-4 mb-4">

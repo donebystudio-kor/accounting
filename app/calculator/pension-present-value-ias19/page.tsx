@@ -77,15 +77,17 @@ export default function PensionPVCalculator() {
       let closing = opening + sc + interestCost;
 
       // 마지막 연도 보정
+      let adjInterest = interestCost;
       if (i === n) {
         closing = fv;
+        adjInterest = closing - opening - sc;
       }
 
       rows.push({
         year: i,
         opening: Math.round(opening),
         serviceCost: Math.round(sc),
-        interestCost: Math.round(interestCost),
+        interestCost: Math.round(adjInterest),
         closing: Math.round(closing),
       });
       balance = closing;
@@ -129,6 +131,7 @@ export default function PensionPVCalculator() {
         <div>
           <label className="text-xs font-medium text-text block mb-1">당기근무원가 (선택, 기본 0)</label>
           <NumberInput value={currentServiceCost} onChange={(v) => setCurrentServiceCost(v ?? 0)} placeholder="0" suffix="원" className="w-full" min={0} />
+          <p className="text-[10px] text-text-sub mt-1">근무원가는 매년 동일하게 적용됩니다</p>
         </div>
         {errors.length > 0 && (
           <div className="text-xs text-wrong">{errors.join(" ")}</div>
