@@ -19,7 +19,15 @@ export default function ConceptsPage() {
       <p className="text-sm text-text-sub mb-6">주요 IFRS/IAS 기준서별 개념 설명과 핵심 분개 패턴</p>
 
       <div className="grid gap-2">
-        {CONCEPTS.map((c) => {
+        {[...CONCEPTS].sort((a, b) => {
+          const aIsIFRS = a.tag.startsWith("IFRS");
+          const bIsIFRS = b.tag.startsWith("IFRS");
+          if (aIsIFRS && !bIsIFRS) return -1;
+          if (!aIsIFRS && bIsIFRS) return 1;
+          const aNum = parseInt(a.tag.replace(/\D/g, ""));
+          const bNum = parseInt(b.tag.replace(/\D/g, ""));
+          return bNum - aNum;
+        }).map((c) => {
           const count = PROBLEMS.filter((p) => p.tags?.includes(c.tag)).length;
           return (
             <Link

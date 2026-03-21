@@ -35,7 +35,15 @@ export default function CalculatorListPage() {
       <h1 className="text-2xl font-extrabold text-text mb-1">회계 계산기</h1>
       <p className="text-sm text-text-sub mb-6">IFRS/IAS 기준서별 자동 계산</p>
       <div className="grid gap-3">
-        {CALCULATORS.map((c) => {
+        {[...CALCULATORS].sort((a, b) => {
+          const aIsIFRS = a.standard.startsWith("IFRS");
+          const bIsIFRS = b.standard.startsWith("IFRS");
+          if (aIsIFRS && !bIsIFRS) return -1;
+          if (!aIsIFRS && bIsIFRS) return 1;
+          const aNum = parseInt(a.standard.replace(/\D/g, ""));
+          const bNum = parseInt(b.standard.replace(/\D/g, ""));
+          return bNum - aNum;
+        }).map((c) => {
           const count = PROBLEMS.filter((p) => p.tags?.includes(c.relatedConceptTag)).length;
           return (
             <Link key={c.slug} href={c.href} className="flex items-center justify-between p-4 bg-surface border border-border rounded-lg hover:border-primary transition-colors">
