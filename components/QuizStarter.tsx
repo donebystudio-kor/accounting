@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { Problem } from "@/constants/problems";
 import QuizSession from "./QuizSession";
-import { clearWrong, clearBookmarks, getWrongIds, getBookmarks } from "@/lib/storage";
+import { clearWrong, clearBookmarks, clearSolved, getWrongIds, getBookmarks } from "@/lib/storage";
 
 interface Props {
   stdProblems: Problem[];
@@ -180,6 +180,17 @@ export default function QuizStarter({
           className="flex-1 min-h-[40px] py-2 text-xs border border-border rounded-lg text-text-sub hover:border-wrong hover:text-wrong transition-colors"
         >
           북마크 초기화
+        </button>
+        <button
+          onClick={() => {
+            if (confirm("푼 문제 기록을 모두 초기화할까요?")) {
+              clearSolved();
+              alert("푼 문제 기록이 초기화되었습니다.");
+            }
+          }}
+          className="flex-1 min-h-[40px] py-2 text-xs border border-border rounded-lg text-text-sub hover:border-wrong hover:text-wrong transition-colors"
+        >
+          풀이 기록 초기화
         </button>
       </div>
     </div>

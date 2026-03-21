@@ -65,6 +65,19 @@ export default function Home() {
             );
           })}
         </div>
+        <Link
+          href="/quiz/common/journal"
+          className="mt-3 flex items-center justify-between p-4 bg-surface border border-border rounded-lg hover:border-primary transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">📚</span>
+            <div>
+              <h3 className="font-bold text-text text-sm">공통 문제 풀기</h3>
+              <p className="text-xs text-text-sub">모든 기준에 적용되는 기본 문제</p>
+            </div>
+          </div>
+          <span className="text-xs text-text-sub">{PROBLEMS.filter((p) => p.standard === "common").length}개</span>
+        </Link>
       </section>
 
       <section className="p-4 bg-primary-bg/40 border border-primary/10 rounded-lg text-sm text-text-sub">
