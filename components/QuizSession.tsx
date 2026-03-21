@@ -7,6 +7,7 @@ import JournalQuiz from "./JournalQuiz";
 import OxQuiz from "./OxQuiz";
 import CalculationQuiz from "./CalculationQuiz";
 import StatementQuiz from "./StatementQuiz";
+import { addWrong, getWrongCount, isBookmarked, toggleBookmark, savePosition } from "@/lib/storage";
 
 export interface QuizResult {
   problemId: string;
@@ -76,6 +77,9 @@ export default function QuizSession({ problems, categoryName }: Props) {
     };
     setResults((prev) => [...prev, result]);
 
+    // 오답 저장
+    if (!correct) addWrong(problem.id);
+
     if (correct) {
       setScore((s) => s + 10);
       setStreak((s) => s + 1);
@@ -104,9 +108,12 @@ export default function QuizSession({ problems, categoryName }: Props) {
       router.push("/result");
       return;
     }
-    setIndex((i) => i + 1);
+    const nextIdx = index + 1;
+    setIndex(nextIdx);
     setElapsed(0);
     setKey((k) => k + 1);
+    // 위치 저장
+    savePosition({ standard: categoryName, type: "quiz", index: nextIdx });
   };
 
   return (
@@ -136,6 +143,24 @@ export default function QuizSession({ problems, categoryName }: Props) {
           className="h-full bg-primary rounded-full transition-all"
           style={{ width: `${((index + 1) / shuffled.length) * 100}%` }}
         />
+      </div>
+
+      {/* 오답 배지 + 북마크 */}
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          {getWrongCount(problem.id) > 0 && (
+            <span className="text-[10px] text-wrong bg-amber-50 px-2 py-0.5 rounded">
+              ❌ {getWrongCount(problem.id)}회 오답
+            </span>
+          )}
+        </div>
+        <button
+          onClick={() => { toggleBookmark(problem.id); setKey((k) => k + 0.1); }}
+          className="text-lg"
+          title={isBookmarked(problem.id) ? "북마크 해제" : "북마크"}
+        >
+          {isBookmarked(problem.id) ? "★" : "☆"}
+        </button>
       </div>
 
       {/* 문제 렌더 */}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { STANDARDS } from "@/constants/standards";
 import { PROBLEMS } from "@/constants/problems";
+import HomeStats from "@/components/HomeStats";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -38,6 +39,8 @@ export default function Home() {
           회계 기준별 인터랙티브 문제 풀이
         </p>
       </section>
+
+      <HomeStats />
 
       <section className="mb-8">
         <h2 className="font-bold text-text mb-3">회계기준 선택</h2>
