@@ -44,6 +44,19 @@ export default function Home() {
 
       <section className="mb-8">
         <h2 className="font-bold text-text mb-3">회계기준 선택</h2>
+        <Link
+          href="/common"
+          className="mb-3 flex items-center justify-between p-4 bg-surface border border-border rounded-lg hover:border-primary transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">📚</span>
+            <div>
+              <h3 className="font-bold text-text text-sm">공통 문제 풀기</h3>
+              <p className="text-xs text-text-sub">모든 기준에 적용되는 기본 문제 (기초회계)</p>
+            </div>
+          </div>
+          <span className="text-xs text-text-sub">{PROBLEMS.filter((p) => p.standard === "common").length}개</span>
+        </Link>
         <div className="grid gap-3 sm:grid-cols-2">
           {STANDARDS.map((std) => {
             const count = PROBLEMS.filter(
@@ -65,19 +78,6 @@ export default function Home() {
             );
           })}
         </div>
-        <Link
-          href="/common"
-          className="mt-3 flex items-center justify-between p-4 bg-surface border border-border rounded-lg hover:border-primary transition-colors"
-        >
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">📚</span>
-            <div>
-              <h3 className="font-bold text-text text-sm">공통 문제 풀기</h3>
-              <p className="text-xs text-text-sub">모든 기준에 적용되는 기본 문제 (기초회계)</p>
-            </div>
-          </div>
-          <span className="text-xs text-text-sub">{PROBLEMS.filter((p) => p.standard === "common").length}개</span>
-        </Link>
       </section>
 
       <section className="p-4 bg-primary-bg/40 border border-primary/10 rounded-lg text-sm text-text-sub">
