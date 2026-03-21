@@ -3,7 +3,6 @@
 
 const WRONG_KEY = "accounting_wrong";
 const BOOKMARKS_KEY = "accounting_bookmarks";
-const POSITION_KEY = "accounting_last_position";
 const SOLVED_KEY = "accounting_solved";
 
 // === 오답 ===
@@ -64,37 +63,7 @@ export function clearBookmarks() {
   if (typeof window !== "undefined") localStorage.removeItem(BOOKMARKS_KEY);
 }
 
-// === 마지막 위치 ===
-export interface LastPosition {
-  standard: string;
-  type: string;
-  index: number;
-  savedAt: string;
-}
 
-export function savePosition(pos: Omit<LastPosition, "savedAt">) {
-  if (typeof window === "undefined") return;
-  const data: LastPosition = { ...pos, savedAt: new Date().toISOString() };
-  localStorage.setItem(POSITION_KEY, JSON.stringify(data));
-}
-
-export function getLastPosition(): LastPosition | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const raw = localStorage.getItem(POSITION_KEY);
-    if (!raw) return null;
-    return JSON.parse(raw);
-  } catch { return null; }
-}
-
-export function clearPosition() {
-  if (typeof window !== "undefined") localStorage.removeItem(POSITION_KEY);
-}
-
-export function isPositionStale(pos: LastPosition): boolean {
-  const saved = new Date(pos.savedAt).getTime();
-  return Date.now() - saved > 24 * 60 * 60 * 1000;
-}
 
 // === 푼 문제 ===
 export function getSolved(): Record<string, true> {

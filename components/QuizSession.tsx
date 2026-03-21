@@ -7,7 +7,7 @@ import JournalQuiz from "./JournalQuiz";
 import OxQuiz from "./OxQuiz";
 import CalculationQuiz from "./CalculationQuiz";
 import StatementQuiz from "./StatementQuiz";
-import { addWrong, addSolved, getWrongCount, isBookmarked, toggleBookmark, savePosition } from "@/lib/storage";
+import { addWrong, addSolved, getWrongCount, isBookmarked, toggleBookmark } from "@/lib/storage";
 
 export interface QuizResult {
   problemId: string;
@@ -113,8 +113,6 @@ export default function QuizSession({ problems, categoryName }: Props) {
     setIndex(nextIdx);
     setElapsed(0);
     setKey((k) => k + 1);
-    // 위치 저장
-    savePosition({ standard: categoryName, type: "quiz", index: nextIdx });
   };
 
   return (
