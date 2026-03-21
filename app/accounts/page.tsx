@@ -161,6 +161,7 @@ export default function AccountsPage() {
               onToggle={() =>
                 setExpandedId(expandedId === account.id ? null : account.id)
               }
+              selectedStandard={selectedStandard}
             />
           ))}
         </div>
@@ -179,13 +180,20 @@ function AccountCard({
   account,
   isExpanded,
   onToggle,
+  selectedStandard,
 }: {
   account: Account;
   isExpanded: boolean;
   onToggle: () => void;
+  selectedStandard: string | null;
 }) {
   const categoryStyle = ACCOUNT_TYPE_STYLE[account.category as keyof typeof ACCOUNT_TYPE_STYLE] ?? "";
   const questionCount = getQuestionCount(account.relatedQuestionTag);
+
+  // 기준 필터 선택 시 해당 기준의 명칭으로 카드 표시
+  const displayName = selectedStandard
+    ? (account.standardDiff[selectedStandard as keyof typeof account.standardDiff] ?? account.name)
+    : account.name;
 
   return (
     <div className="flex flex-col">
@@ -198,7 +206,7 @@ function AccountCard({
         }`}
       >
         <p className="font-bold text-sm text-text leading-tight">
-          {account.name}
+          {displayName}
         </p>
         <p className="text-[12px] text-text-sub mt-0.5 leading-tight">
           {account.nameEn}
@@ -220,38 +228,53 @@ function AccountCard({
           <h3 className="text-xs font-bold text-text mb-2">
             기준별 명칭 비교
           </h3>
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-xs">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-1.5 pr-3 text-text-sub font-semibold">
-                    기준
-                  </th>
-                  <th className="text-left py-1.5 text-text-sub font-semibold">
-                    계정과목명
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.entries(account.standardDiff).map(([key, value]) => (
-                  <tr key={key} className="border-b border-border/50">
-                    <td className="py-1.5 pr-3 text-text-sub whitespace-nowrap">
-                      {STANDARD_LABELS[key] ?? key}
-                    </td>
-                    <td
-                      className={`py-1.5 ${
-                        value === "해당없음"
-                          ? "text-text-sub/50 italic"
-                          : "text-text"
-                      }`}
-                    >
-                      {value}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {(() => {
+            const kifrsName = account.standardDiff.kifrs;
+            const diffEntries = Object.entries(account.standardDiff).filter(
+              ([key, value]) => key !== "kifrs" && value !== kifrsName
+            );
+            if (diffEntries.length === 0) {
+              return (
+                <p className="text-xs text-text-sub mb-4">
+                  모든 기준에서 동일하게 사용합니다
+                </p>
+              );
+            }
+            return (
+              <div className="overflow-x-auto mb-4">
+                <table className="w-full text-xs">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-1.5 pr-3 text-text-sub font-semibold">
+                        기준
+                      </th>
+                      <th className="text-left py-1.5 text-text-sub font-semibold">
+                        계정과목명
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {diffEntries.map(([key, value]) => (
+                      <tr key={key} className="border-b border-border/50">
+                        <td className="py-1.5 pr-3 text-text-sub whitespace-nowrap">
+                          {STANDARD_LABELS[key] ?? key}
+                        </td>
+                        <td
+                          className={`py-1.5 ${
+                            value === "해당없음"
+                              ? "text-text-sub/50 italic"
+                              : "text-text"
+                          }`}
+                        >
+                          {value}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
+          })()}
 
           {/* 관련 분개 */}
           {account.journalExample && (
