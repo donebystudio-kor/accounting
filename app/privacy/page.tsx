@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "개인정보처리방침 — 회계던" };
+export const metadata: Metadata = {
+  title: "개인정보처리방침",
+  description: "회계던 개인정보처리방침. 수집하는 개인정보, 쿠키 정책, 문의처 안내.",
+  openGraph: {
+    title: "개인정보처리방침 — 회계던",
+    description: "회계던 개인정보처리방침.",
+    url: "/privacy",
+  },
+  alternates: { canonical: "/privacy" },
+};
 
 export default function PrivacyPage() {
   return (
