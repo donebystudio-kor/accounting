@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
-import { CATEGORIES } from "@/constants/categories";
 import { STANDARDS } from "@/constants/standards";
+
+const TYPES = ["journal", "ox", "calculation"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://accounting-theta-pink.vercel.app";
@@ -19,23 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // 공통 카테고리 퀴즈 경로
-  const commonCats = CATEGORIES.filter((c) => c.standard === "common");
-  commonCats.forEach((cat) => {
-    routes.push({
-      url: `${base}/quiz/common/${cat.id}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    });
-  });
-
-  // 기준별 카테고리 퀴즈 경로 (전용 + 공통)
-  STANDARDS.forEach((std) => {
-    const stdCats = CATEGORIES.filter((c) => c.standard === std.id);
-    [...stdCats, ...commonCats].forEach((cat) => {
+  // 공통 + 기준별 퀴즈 경로
+  ["common", ...STANDARDS.map((s) => s.id)].forEach((std) => {
+    TYPES.forEach((type) => {
       routes.push({
-        url: `${base}/quiz/${std.id}/${cat.id}`,
+        url: `${base}/quiz/${std}/${type}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.8,

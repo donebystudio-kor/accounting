@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { CATEGORIES } from "@/constants/categories";
 import { PROBLEMS } from "@/constants/problems";
 import { Standard } from "@/constants/standards";
 
@@ -7,9 +6,13 @@ interface Props {
   standard: Standard;
 }
 
-export default function StandardPage({ standard }: Props) {
-  const stdCats = CATEGORIES.filter((c) => c.standard === standard.id);
+const TYPE_INFO: { type: string; name: string; description: string }[] = [
+  { type: "journal", name: "분개", description: "차변/대변 계정과목 클릭 문제" },
+  { type: "ox", name: "OX 퀴즈", description: "회계 개념 참/거짓 판별" },
+  { type: "calculation", name: "계산 문제", description: "회계 계산 연습" },
+];
 
+export default function StandardPage({ standard }: Props) {
   return (
     <div>
       <div className="flex items-center gap-2 mb-6">
@@ -25,28 +28,25 @@ export default function StandardPage({ standard }: Props) {
       </section>
 
       <div className="grid gap-2">
-        {stdCats.map((cat) => {
-          const stdProblems = PROBLEMS.filter(
-            (p) => p.standard === standard.id && p.category === cat.id
-          );
-          const stdTypes = new Set(stdProblems.map((p) => p.type));
-          const commonCount = PROBLEMS.filter(
-            (p) => p.standard === "common" && stdTypes.has(p.type)
+        {TYPE_INFO.map(({ type, name, description }) => {
+          const count = PROBLEMS.filter(
+            (p) =>
+              p.type === type &&
+              (p.standard === standard.id || p.standard === "common")
           ).length;
-          const total = stdProblems.length + commonCount;
-
+          if (count === 0) return null;
           return (
             <Link
-              key={cat.id}
-              href={`/quiz/${standard.id}/${cat.id}`}
+              key={type}
+              href={`/quiz/${standard.id}/${type}`}
               className="flex items-center justify-between p-4 bg-surface border border-border rounded-lg hover:border-primary transition-colors"
             >
               <div>
-                <h3 className="font-semibold text-sm text-text">{cat.name}</h3>
-                <p className="text-xs text-text-sub mt-0.5">{cat.description}</p>
+                <h3 className="font-semibold text-sm text-text">{name}</h3>
+                <p className="text-xs text-text-sub mt-0.5">{description}</p>
               </div>
               <span className="text-xs text-text-sub whitespace-nowrap ml-4">
-                {total}문제
+                {count}문제
               </span>
             </Link>
           );
