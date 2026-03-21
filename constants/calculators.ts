@@ -56,4 +56,28 @@ export const CALCULATORS: CalculatorDef[] = [
     href: "/calculator/provision-present-value-ias37",
     relatedConceptTag: "IAS37",
   },
+  {
+    slug: "impairment-test-ias36",
+    title: "손상차손 계산기",
+    standard: "IAS 36",
+    description: "장부금액·회수가능액 비교로 손상차손 인식 여부 자동 판정",
+    href: "/calculator/impairment-test-ias36",
+    relatedConceptTag: "IAS36",
+  },
+  {
+    slug: "revenue-recognition-ifrs15",
+    title: "수익인식 계산기",
+    standard: "IFRS 15",
+    description: "진행률 기준 당기 인식 수익과 계약자산·부채 자동 계산",
+    href: "/calculator/revenue-recognition-ifrs15",
+    relatedConceptTag: "IFRS15",
+  },
+  {
+    slug: "pension-present-value-ias19",
+    title: "퇴직급여 계산기",
+    standard: "IAS 19",
+    description: "확정급여채무 현재가치와 연도별 이자비용·근무원가 자동 계산",
+    href: "/calculator/pension-present-value-ias19",
+    relatedConceptTag: "IAS19",
+  },
 ];
