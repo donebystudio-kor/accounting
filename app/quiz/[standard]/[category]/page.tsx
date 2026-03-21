@@ -1,7 +1,7 @@
 import { STANDARDS } from "@/constants/standards";
 import { CATEGORIES } from "@/constants/categories";
 import { PROBLEMS } from "@/constants/problems";
-import QuizSession from "@/components/QuizSession";
+import QuizStarter from "@/components/QuizStarter";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -12,11 +12,9 @@ interface Props {
 
 export async function generateStaticParams() {
   const params: { standard: string; category: string }[] = [];
-  // 모든 카테고리의 원래 기준 경로
   CATEGORIES.forEach((cat) => {
     params.push({ standard: cat.standard, category: cat.id });
   });
-  // 각 기준에서 해당 기준 전용 카테고리 접근 (공통 문제 합산)
   STANDARDS.forEach((std) => {
     CATEGORIES.filter((c) => c.standard === std.id).forEach((cat) => {
       params.push({ standard: std.id, category: cat.id });
@@ -51,20 +49,15 @@ export default async function QuizPage({ params }: Props) {
     ? "공통"
     : (STANDARDS.find((s) => s.id === standard)?.name ?? standard);
 
-  let problems;
-  if (isCommonStandard) {
-    // 공통 직접 접근: 공통 문제만
-    problems = PROBLEMS.filter((p) => p.standard === "common" && p.category === category);
-  } else {
-    // 기준별 카테고리 접근: 해당 카테고리 문제 + 모든 공통 문제
-    const stdProblems = PROBLEMS.filter(
-      (p) => p.standard === standard && p.category === category
-    );
-    const commonProblems = PROBLEMS.filter((p) => p.standard === "common");
-    problems = [...stdProblems, ...commonProblems];
-  }
+  const stdProblems = isCommonStandard
+    ? PROBLEMS.filter((p) => p.standard === "common" && p.category === category)
+    : PROBLEMS.filter((p) => p.standard === standard && p.category === category);
 
-  if (problems.length === 0) notFound();
+  const commonProblems = isCommonStandard
+    ? []
+    : PROBLEMS.filter((p) => p.standard === "common");
+
+  if (stdProblems.length === 0 && commonProblems.length === 0) notFound();
 
   return (
     <div>
@@ -79,7 +72,12 @@ export default async function QuizPage({ params }: Props) {
         <span className="text-xs text-border">/</span>
         <span className="text-xs font-semibold text-text">{cat.name}</span>
       </div>
-      <QuizSession problems={problems} categoryName={`${stdName} · ${cat.name}`} />
+      <QuizStarter
+        stdProblems={stdProblems}
+        commonProblems={commonProblems}
+        categoryName={`${stdName} · ${cat.name}`}
+        isCommonStandard={isCommonStandard}
+      />
     </div>
   );
 }
