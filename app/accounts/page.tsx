@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { accounts, type Account } from "@/data/accounts";
 import { PROBLEMS } from "@/constants/problems";
@@ -106,14 +106,20 @@ export default function AccountsPage() {
           }}
         >
           {filtered.map((account) => (
-            <AccountCard
-              key={account.id}
-              account={account}
-              isExpanded={expandedId === account.id}
-              onToggle={() =>
-                setExpandedId(expandedId === account.id ? null : account.id)
-              }
-            />
+            <React.Fragment key={account.id}>
+              <AccountCard
+                account={account}
+                isExpanded={expandedId === account.id}
+                onToggle={() =>
+                  setExpandedId(expandedId === account.id ? null : account.id)
+                }
+              />
+              {expandedId === account.id && (
+                <div className="col-span-full" ref={(el) => { if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }}>
+                  <AccountDetail account={account} />
+                </div>
+              )}
+            </React.Fragment>
           ))}
         </div>
 
@@ -121,13 +127,6 @@ export default function AccountsPage() {
           <p className="text-center text-text-sub text-sm py-12">
             검색 결과가 없습니다.
           </p>
-        )}
-
-        {/* 상세 패널 (카드 그리드 아래) */}
-        {expandedId && (
-          <div className="w-full mt-6">
-            <AccountDetail account={filtered.find((a) => a.id === expandedId) ?? accounts.find((a) => a.id === expandedId)!} />
-          </div>
         )}
       </div>
     </>

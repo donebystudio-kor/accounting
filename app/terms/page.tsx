@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { terms, type Term } from "@/data/terms";
 import { PROBLEMS } from "@/constants/problems";
@@ -116,14 +116,20 @@ export default function TermsPage() {
           }}
         >
           {filtered.map((term) => (
-            <TermCard
-              key={term.id}
-              term={term}
-              isExpanded={expandedId === term.id}
-              onToggle={() =>
-                setExpandedId(expandedId === term.id ? null : term.id)
-              }
-            />
+            <React.Fragment key={term.id}>
+              <TermCard
+                term={term}
+                isExpanded={expandedId === term.id}
+                onToggle={() =>
+                  setExpandedId(expandedId === term.id ? null : term.id)
+                }
+              />
+              {expandedId === term.id && (
+                <div className="col-span-full" ref={(el) => { if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }}>
+                  <TermDetail term={term} />
+                </div>
+              )}
+            </React.Fragment>
           ))}
         </div>
 
@@ -131,13 +137,6 @@ export default function TermsPage() {
           <p className="text-center text-text-sub text-sm py-12">
             검색 결과가 없습니다.
           </p>
-        )}
-
-        {/* 상세 패널 (카드 그리드 아래) */}
-        {expandedId && (
-          <div className="w-full mt-6">
-            <TermDetail term={filtered.find((t) => t.id === expandedId) ?? terms.find((t) => t.id === expandedId)!} />
-          </div>
         )}
       </div>
     </>
