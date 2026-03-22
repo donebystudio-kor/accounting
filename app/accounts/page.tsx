@@ -98,29 +98,72 @@ export default function AccountsPage() {
           {filtered.length}개 계정과목
         </p>
 
-        {/* 카드 그리드 */}
-        <div
-          className="grid gap-3"
-          style={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
-          }}
-        >
-          {filtered.map((account) => (
-            <AccountCard
-              key={account.id}
-              account={account}
-              isExpanded={expandedId === account.id}
-              onToggle={() =>
-                setExpandedId(expandedId === account.id ? null : account.id)
-              }
-            />
-          ))}
+        {/* 좌우 분할 레이아웃 (데스크탑) / 단일 컬럼 (모바일) */}
+        <div className="md:flex md:gap-6">
+          {/* 왼쪽: 카드 그리드 */}
+          <div className="md:w-[60%]">
+            <div
+              className="grid gap-3"
+              style={{
+                gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+              }}
+            >
+              {filtered.map((account) => (
+                <AccountCard
+                  key={account.id}
+                  account={account}
+                  isExpanded={expandedId === account.id}
+                  onToggle={() =>
+                    setExpandedId(expandedId === account.id ? null : account.id)
+                  }
+                />
+              ))}
+            </div>
+
+            {filtered.length === 0 && (
+              <p className="text-center text-text-sub text-sm py-12">
+                검색 결과가 없습니다.
+              </p>
+            )}
+          </div>
+
+          {/* 오른쪽: 상세 패널 (데스크탑) */}
+          <div className="hidden md:block md:w-[40%]">
+            <div className="sticky top-20">
+              {expandedId ? (
+                <AccountDetail account={filtered.find((a) => a.id === expandedId) ?? accounts.find((a) => a.id === expandedId)!} />
+              ) : (
+                <div className="p-8 bg-surface border border-border rounded-lg text-center text-sm text-text-sub">
+                  계정과목을 선택하면 설명이 표시됩니다
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
-        {filtered.length === 0 && (
-          <p className="text-center text-text-sub text-sm py-12">
-            검색 결과가 없습니다.
-          </p>
+        {/* 하단 패널 (모바일) */}
+        {expandedId && (
+          <div className="md:hidden">
+            {/* 배경 오버레이 */}
+            <div
+              className="fixed inset-0 bg-black/40 z-40"
+              onClick={() => setExpandedId(null)}
+            />
+            {/* 패널 */}
+            <div className="fixed bottom-0 left-0 w-full z-50 bg-surface rounded-t-2xl shadow-lg max-h-[70vh] overflow-y-auto">
+              <div className="sticky top-0 bg-surface flex justify-end p-3 border-b border-border">
+                <button
+                  onClick={() => setExpandedId(null)}
+                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-text-sub text-lg font-bold"
+                >
+                  X
+                </button>
+              </div>
+              <div className="p-4">
+                <AccountDetail account={filtered.find((a) => a.id === expandedId) ?? accounts.find((a) => a.id === expandedId)!} />
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </>
@@ -137,81 +180,84 @@ function AccountCard({
   onToggle: () => void;
 }) {
   const categoryStyle = ACCOUNT_TYPE_STYLE[account.category as keyof typeof ACCOUNT_TYPE_STYLE] ?? "";
+
+  return (
+    <button
+      onClick={onToggle}
+      className={`text-left p-3 bg-surface border rounded-lg transition-colors min-h-[72px] ${
+        isExpanded
+          ? "border-primary ring-1 ring-primary"
+          : "border-border hover:border-primary"
+      }`}
+    >
+      <p className="font-bold text-sm text-text leading-tight">
+        {account.name}
+      </p>
+      <div className="flex flex-wrap gap-1 mt-2">
+        <span
+          className={`inline-block px-2 py-0.5 text-[11px] font-semibold rounded border ${categoryStyle}`}
+        >
+          {account.category}
+        </span>
+        {account.liquidity && (
+          <span
+            className={`inline-block px-2 py-0.5 text-[11px] font-semibold rounded ${
+              account.liquidity === "유동"
+                ? "bg-green-100 text-green-700"
+                : "bg-gray-100 text-gray-600"
+            }`}
+          >
+            {account.liquidity}
+          </span>
+        )}
+      </div>
+    </button>
+  );
+}
+
+function AccountDetail({ account }: { account: Account }) {
   const questionCount = getQuestionCount(account.relatedQuestionTag);
 
   return (
-    <div className="flex flex-col">
-      <button
-        onClick={onToggle}
-        className={`text-left p-3 bg-surface border rounded-lg transition-colors min-h-[72px] ${
-          isExpanded
-            ? "border-primary ring-1 ring-primary"
-            : "border-border hover:border-primary"
-        }`}
-      >
-        <p className="font-bold text-sm text-text leading-tight">
-          {account.name}
-        </p>
-        <div className="flex flex-wrap gap-1 mt-2">
-          <span
-            className={`inline-block px-2 py-0.5 text-[11px] font-semibold rounded border ${categoryStyle}`}
-          >
-            {account.category}
-          </span>
-          {account.liquidity && (
-            <span
-              className={`inline-block px-2 py-0.5 text-[11px] font-semibold rounded ${
-                account.liquidity === "유동"
-                  ? "bg-green-100 text-green-700"
-                  : "bg-gray-100 text-gray-600"
-              }`}
-            >
-              {account.liquidity}
-            </span>
-          )}
-        </div>
-      </button>
+    <div className="p-4 bg-surface border border-primary/30 rounded-lg">
+      {/* 계정과목명 */}
+      <p className="font-bold text-text mb-1">{account.name}</p>
 
-      {/* 상세 패널 */}
-      {isExpanded && (
-        <div className="mt-1 p-4 bg-surface border border-primary/30 rounded-lg">
-          {/* 영문명 */}
-          <p className="text-xs text-text-sub mb-2">{account.nameEn}</p>
+      {/* 영문명 */}
+      <p className="text-xs text-text-sub mb-2">{account.nameEn}</p>
 
-          {/* 정의 */}
-          <p className="text-sm text-text mb-4">{account.definition}</p>
+      {/* 정의 */}
+      <p className="text-sm text-text mb-4">{account.definition}</p>
 
-          {/* 관련 분개 */}
-          {account.journalExample && (
-            <div className="mb-4">
-              <h3 className="text-xs font-bold text-text mb-1">관련 분개</h3>
-              <p className="text-xs text-text bg-bg p-2 rounded font-mono">
-                {account.journalExample}
-              </p>
-            </div>
-          )}
-
-          {/* CTA */}
-          <div className="flex flex-wrap gap-2">
-            {account.relatedQuestionTag && questionCount > 0 && (
-              <Link
-                href={`/quiz?tag=${account.relatedQuestionTag}`}
-                className="px-3 py-1.5 text-xs font-semibold bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
-              >
-                관련 문제 풀기 ({questionCount}개)
-              </Link>
-            )}
-            {account.relatedConceptTag && (
-              <Link
-                href={`/concept/${account.relatedConceptTag}`}
-                className="px-3 py-1.5 text-xs font-semibold bg-surface border border-border text-text rounded-lg hover:border-primary transition-colors"
-              >
-                개념 보기
-              </Link>
-            )}
-          </div>
+      {/* 관련 분개 */}
+      {account.journalExample && (
+        <div className="mb-4">
+          <h3 className="text-xs font-bold text-text mb-1">관련 분개</h3>
+          <p className="text-xs text-text bg-bg p-2 rounded font-mono">
+            {account.journalExample}
+          </p>
         </div>
       )}
+
+      {/* CTA */}
+      <div className="flex flex-wrap gap-2">
+        {account.relatedQuestionTag && questionCount > 0 && (
+          <Link
+            href={`/quiz?tag=${account.relatedQuestionTag}`}
+            className="px-3 py-1.5 text-xs font-semibold bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+          >
+            관련 문제 풀기 ({questionCount}개)
+          </Link>
+        )}
+        {account.relatedConceptTag && (
+          <Link
+            href={`/concept/${account.relatedConceptTag}`}
+            className="px-3 py-1.5 text-xs font-semibold bg-surface border border-border text-text rounded-lg hover:border-primary transition-colors"
+          >
+            개념 보기
+          </Link>
+        )}
+      </div>
     </div>
   );
 }

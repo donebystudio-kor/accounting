@@ -108,29 +108,72 @@ export default function TermsPage() {
           {filtered.length}개 용어
         </p>
 
-        {/* 카드 그리드 */}
-        <div
-          className="grid gap-3"
-          style={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
-          }}
-        >
-          {filtered.map((term) => (
-            <TermCard
-              key={term.id}
-              term={term}
-              isExpanded={expandedId === term.id}
-              onToggle={() =>
-                setExpandedId(expandedId === term.id ? null : term.id)
-              }
-            />
-          ))}
+        {/* 좌우 분할 레이아웃 (데스크탑) / 단일 컬럼 (모바일) */}
+        <div className="md:flex md:gap-6">
+          {/* 왼쪽: 카드 그리드 */}
+          <div className="md:w-[60%]">
+            <div
+              className="grid gap-3"
+              style={{
+                gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
+              }}
+            >
+              {filtered.map((term) => (
+                <TermCard
+                  key={term.id}
+                  term={term}
+                  isExpanded={expandedId === term.id}
+                  onToggle={() =>
+                    setExpandedId(expandedId === term.id ? null : term.id)
+                  }
+                />
+              ))}
+            </div>
+
+            {filtered.length === 0 && (
+              <p className="text-center text-text-sub text-sm py-12">
+                검색 결과가 없습니다.
+              </p>
+            )}
+          </div>
+
+          {/* 오른쪽: 상세 패널 (데스크탑) */}
+          <div className="hidden md:block md:w-[40%]">
+            <div className="sticky top-20">
+              {expandedId ? (
+                <TermDetail term={filtered.find((t) => t.id === expandedId) ?? terms.find((t) => t.id === expandedId)!} />
+              ) : (
+                <div className="p-8 bg-surface border border-border rounded-lg text-center text-sm text-text-sub">
+                  용어를 선택하면 설명이 표시됩니다
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
-        {filtered.length === 0 && (
-          <p className="text-center text-text-sub text-sm py-12">
-            검색 결과가 없습니다.
-          </p>
+        {/* 하단 패널 (모바일) */}
+        {expandedId && (
+          <div className="md:hidden">
+            {/* 배경 오버레이 */}
+            <div
+              className="fixed inset-0 bg-black/40 z-40"
+              onClick={() => setExpandedId(null)}
+            />
+            {/* 패널 */}
+            <div className="fixed bottom-0 left-0 w-full z-50 bg-surface rounded-t-2xl shadow-lg max-h-[70vh] overflow-y-auto">
+              <div className="sticky top-0 bg-surface flex justify-end p-3 border-b border-border">
+                <button
+                  onClick={() => setExpandedId(null)}
+                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-text-sub text-lg font-bold"
+                >
+                  X
+                </button>
+              </div>
+              <div className="p-4">
+                <TermDetail term={filtered.find((t) => t.id === expandedId) ?? terms.find((t) => t.id === expandedId)!} />
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </>
@@ -147,61 +190,62 @@ function TermCard({
   onToggle: () => void;
 }) {
   const style = CATEGORY_STYLE[term.category] ?? "";
+
+  return (
+    <button
+      onClick={onToggle}
+      className={`text-left px-3 py-2 rounded-lg border transition-colors min-h-[56px] flex items-center ${style} ${
+        isExpanded
+          ? "border-primary ring-1 ring-primary"
+          : "border-transparent hover:border-primary"
+      }`}
+    >
+      <p className="font-bold text-sm leading-tight">{term.name}</p>
+    </button>
+  );
+}
+
+function TermDetail({ term }: { term: Term }) {
+  const style = CATEGORY_STYLE[term.category] ?? "";
   const questionCount = getQuestionCount(term.relatedQuestionTag);
 
   return (
-    <div className="flex flex-col">
-      <button
-        onClick={onToggle}
-        className={`text-left px-3 py-2 rounded-lg border transition-colors min-h-[56px] flex items-center ${style} ${
-          isExpanded
-            ? "border-primary ring-1 ring-primary"
-            : "border-transparent hover:border-primary"
-        }`}
-      >
-        <p className="font-bold text-sm leading-tight">{term.name}</p>
-      </button>
-
-      {/* 상세 패널 */}
-      {isExpanded && (
-        <div className="mt-1 p-4 bg-surface border border-primary/30 rounded-lg">
-          {/* 용어명 + 영문명 */}
-          <div className="mb-2">
-            <span className="font-bold text-text">{term.name}</span>
-            {term.nameEn && (
-              <span className="ml-2 text-xs text-text-sub">
-                {term.nameEn}
-              </span>
-            )}
-          </div>
-
-          {/* 카테고리 태그 */}
-          <span
-            className={`inline-block px-2 py-0.5 text-[11px] font-semibold rounded mb-3 ${style}`}
-          >
-            {term.category}
+    <div className="p-4 bg-surface border border-primary/30 rounded-lg">
+      {/* 용어명 + 영문명 */}
+      <div className="mb-2">
+        <span className="font-bold text-text">{term.name}</span>
+        {term.nameEn && (
+          <span className="ml-2 text-xs text-text-sub">
+            {term.nameEn}
           </span>
+        )}
+      </div>
 
-          {/* 정의 */}
-          <p className="text-sm text-text mb-4">{term.definition}</p>
+      {/* 카테고리 태그 */}
+      <span
+        className={`inline-block px-2 py-0.5 text-[11px] font-semibold rounded mb-3 ${style}`}
+      >
+        {term.category}
+      </span>
 
-          {/* 예문 */}
-          {term.example && (
-            <div className="bg-surface border border-border rounded p-3 mb-4">
-              <p className="font-mono text-sm text-text">{term.example}</p>
-            </div>
-          )}
+      {/* 정의 */}
+      <p className="text-sm text-text mb-4">{term.definition}</p>
 
-          {/* 관련 문제 CTA */}
-          {term.relatedQuestionTag && questionCount > 0 && (
-            <Link
-              href={`/quiz?tag=${term.relatedQuestionTag}`}
-              className="inline-block px-3 py-1.5 text-xs font-semibold bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
-            >
-              관련 문제 풀기 ({questionCount}개)
-            </Link>
-          )}
+      {/* 예문 */}
+      {term.example && (
+        <div className="bg-surface border border-border rounded p-3 mb-4">
+          <p className="font-mono text-sm text-text">{term.example}</p>
         </div>
+      )}
+
+      {/* 관련 문제 CTA */}
+      {term.relatedQuestionTag && questionCount > 0 && (
+        <Link
+          href={`/quiz?tag=${term.relatedQuestionTag}`}
+          className="inline-block px-3 py-1.5 text-xs font-semibold bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+        >
+          관련 문제 풀기 ({questionCount}개)
+        </Link>
       )}
     </div>
   );
