@@ -33,6 +33,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TBWKVVNL4H" />
+        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TBWKVVNL4H');` }} />
+      </head>
       <body className="min-h-screen flex flex-col">
         <header className="bg-surface border-b border-border sticky top-0 z-20">
           <div className="mx-auto max-w-3xl px-4 h-12 flex items-center justify-between">
