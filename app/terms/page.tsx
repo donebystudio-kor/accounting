@@ -116,20 +116,14 @@ export default function TermsPage() {
           }}
         >
           {filtered.map((term) => (
-            <React.Fragment key={term.id}>
-              <TermCard
-                term={term}
-                isExpanded={expandedId === term.id}
-                onToggle={() =>
-                  setExpandedId(expandedId === term.id ? null : term.id)
-                }
-              />
-              {expandedId === term.id && (
-                <div className="col-span-full" ref={(el) => { if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }}>
-                  <TermDetail term={term} />
-                </div>
-              )}
-            </React.Fragment>
+            <TermCard
+              key={term.id}
+              term={term}
+              isExpanded={expandedId === term.id}
+              onToggle={() =>
+                setExpandedId(expandedId === term.id ? null : term.id)
+              }
+            />
           ))}
         </div>
 
@@ -138,6 +132,16 @@ export default function TermsPage() {
             검색 결과가 없습니다.
           </p>
         )}
+
+        {/* 상세 패널 (그리드 아래 고정) */}
+        {expandedId && (() => {
+          const term = filtered.find((t) => t.id === expandedId) ?? terms.find((t) => t.id === expandedId);
+          return term ? (
+            <div className="w-full mt-4" ref={(el) => { if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }}>
+              <TermDetail term={term} />
+            </div>
+          ) : null;
+        })()}
       </div>
     </>
   );

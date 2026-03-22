@@ -106,20 +106,14 @@ export default function AccountsPage() {
           }}
         >
           {filtered.map((account) => (
-            <React.Fragment key={account.id}>
-              <AccountCard
-                account={account}
-                isExpanded={expandedId === account.id}
-                onToggle={() =>
-                  setExpandedId(expandedId === account.id ? null : account.id)
-                }
-              />
-              {expandedId === account.id && (
-                <div className="col-span-full" ref={(el) => { if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }}>
-                  <AccountDetail account={account} />
-                </div>
-              )}
-            </React.Fragment>
+            <AccountCard
+              key={account.id}
+              account={account}
+              isExpanded={expandedId === account.id}
+              onToggle={() =>
+                setExpandedId(expandedId === account.id ? null : account.id)
+              }
+            />
           ))}
         </div>
 
@@ -128,6 +122,16 @@ export default function AccountsPage() {
             검색 결과가 없습니다.
           </p>
         )}
+
+        {/* 상세 패널 (그리드 아래 고정) */}
+        {expandedId && (() => {
+          const account = filtered.find((a) => a.id === expandedId) ?? accounts.find((a) => a.id === expandedId);
+          return account ? (
+            <div className="w-full mt-4" ref={(el) => { if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }}>
+              <AccountDetail account={account} />
+            </div>
+          ) : null;
+        })()}
       </div>
     </>
   );
