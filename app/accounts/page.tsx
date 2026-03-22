@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { accounts, type Account } from "@/data/accounts";
 import { PROBLEMS } from "@/constants/problems";
@@ -18,6 +18,25 @@ export default function AccountsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("전체");
   const [search, setSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [colCount, setColCount] = useState(3);
+  const panelRef = useCallback((el: HTMLDivElement | null) => {
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [expandedId]);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    const update = () => {
+      const style = getComputedStyle(grid);
+      const cols = style.gridTemplateColumns.split(" ").length;
+      setColCount(cols);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(grid);
+    return () => ro.disconnect();
+  }, []);
 
   const filtered = useMemo(() => {
     return accounts.filter((a) => {
@@ -100,21 +119,43 @@ export default function AccountsPage() {
 
         {/* 카드 그리드 */}
         <div
+          ref={gridRef}
           className="grid gap-3"
           style={{
             gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
           }}
         >
-          {filtered.map((account) => (
-            <AccountCard
-              key={account.id}
-              account={account}
-              isExpanded={expandedId === account.id}
-              onToggle={() =>
-                setExpandedId(expandedId === account.id ? null : account.id)
+          {(() => {
+            const items: React.ReactNode[] = [];
+            const selectedIdx = expandedId ? filtered.findIndex((a) => a.id === expandedId) : -1;
+            const insertAfterRow = selectedIdx >= 0 ? Math.floor(selectedIdx / colCount) : -1;
+
+            filtered.forEach((account, i) => {
+              items.push(
+                <AccountCard
+                  key={account.id}
+                  account={account}
+                  isExpanded={expandedId === account.id}
+                  onToggle={() =>
+                    setExpandedId(expandedId === account.id ? null : account.id)
+                  }
+                />
+              );
+              const currentRow = Math.floor(i / colCount);
+              const isRowEnd = i === filtered.length - 1 || Math.floor((i + 1) / colCount) !== currentRow;
+              if (isRowEnd && currentRow === insertAfterRow && expandedId) {
+                const selectedAccount = filtered.find((a) => a.id === expandedId);
+                if (selectedAccount) {
+                  items.push(
+                    <div key="detail-panel" className="col-span-full" ref={panelRef}>
+                      <AccountDetail account={selectedAccount} />
+                    </div>
+                  );
+                }
               }
-            />
-          ))}
+            });
+            return items;
+          })()}
         </div>
 
         {filtered.length === 0 && (
@@ -122,16 +163,6 @@ export default function AccountsPage() {
             검색 결과가 없습니다.
           </p>
         )}
-
-        {/* 상세 패널 (그리드 아래 고정) */}
-        {expandedId && (() => {
-          const account = filtered.find((a) => a.id === expandedId) ?? accounts.find((a) => a.id === expandedId);
-          return account ? (
-            <div className="w-full mt-4" ref={(el) => { if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }}>
-              <AccountDetail account={account} />
-            </div>
-          ) : null;
-        })()}
       </div>
     </>
   );

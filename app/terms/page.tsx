@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { terms, type Term } from "@/data/terms";
 import { PROBLEMS } from "@/constants/problems";
@@ -31,6 +31,25 @@ export default function TermsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("전체");
   const [search, setSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [colCount, setColCount] = useState(4);
+  const panelRef = useCallback((el: HTMLDivElement | null) => {
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [expandedId]);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    const update = () => {
+      const style = getComputedStyle(grid);
+      const cols = style.gridTemplateColumns.split(" ").length;
+      setColCount(cols);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(grid);
+    return () => ro.disconnect();
+  }, []);
 
   const filtered = useMemo(() => {
     return terms.filter((t) => {
@@ -110,21 +129,44 @@ export default function TermsPage() {
 
         {/* 카드 그리드 */}
         <div
+          ref={gridRef}
           className="grid gap-3"
           style={{
             gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
           }}
         >
-          {filtered.map((term) => (
-            <TermCard
-              key={term.id}
-              term={term}
-              isExpanded={expandedId === term.id}
-              onToggle={() =>
-                setExpandedId(expandedId === term.id ? null : term.id)
+          {(() => {
+            const items: React.ReactNode[] = [];
+            const selectedIdx = expandedId ? filtered.findIndex((t) => t.id === expandedId) : -1;
+            const insertAfterRow = selectedIdx >= 0 ? Math.floor(selectedIdx / colCount) : -1;
+
+            filtered.forEach((term, i) => {
+              items.push(
+                <TermCard
+                  key={term.id}
+                  term={term}
+                  isExpanded={expandedId === term.id}
+                  onToggle={() =>
+                    setExpandedId(expandedId === term.id ? null : term.id)
+                  }
+                />
+              );
+              // 해당 행의 마지막 카드 뒤에 패널 삽입
+              const currentRow = Math.floor(i / colCount);
+              const isRowEnd = i === filtered.length - 1 || Math.floor((i + 1) / colCount) !== currentRow;
+              if (isRowEnd && currentRow === insertAfterRow && expandedId) {
+                const selectedTerm = filtered.find((t) => t.id === expandedId);
+                if (selectedTerm) {
+                  items.push(
+                    <div key="detail-panel" className="col-span-full" ref={panelRef}>
+                      <TermDetail term={selectedTerm} />
+                    </div>
+                  );
+                }
               }
-            />
-          ))}
+            });
+            return items;
+          })()}
         </div>
 
         {filtered.length === 0 && (
@@ -132,16 +174,6 @@ export default function TermsPage() {
             검색 결과가 없습니다.
           </p>
         )}
-
-        {/* 상세 패널 (그리드 아래 고정) */}
-        {expandedId && (() => {
-          const term = filtered.find((t) => t.id === expandedId) ?? terms.find((t) => t.id === expandedId);
-          return term ? (
-            <div className="w-full mt-4" ref={(el) => { if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }}>
-              <TermDetail term={term} />
-            </div>
-          ) : null;
-        })()}
       </div>
     </>
   );
