@@ -73,7 +73,7 @@ export default function AccountsPage() {
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              onClick={() => { setSelectedCategory(cat); setExpandedId(null); }}
               className={`px-3 py-1 text-xs font-semibold rounded-full border transition-colors ${
                 selectedCategory === cat
                   ? "bg-primary text-white border-primary"
@@ -90,7 +90,7 @@ export default function AccountsPage() {
           type="text"
           placeholder="계정과목 검색 (한글/영문)"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => { setSearch(e.target.value); setExpandedId(null); }}
           className="w-full mb-4 px-3 py-2 text-sm bg-surface border border-border rounded-lg focus:outline-none focus:border-primary"
         />
 
