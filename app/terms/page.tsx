@@ -108,71 +108,35 @@ export default function TermsPage() {
           {filtered.length}개 용어
         </p>
 
-        {/* 좌우 분할 레이아웃 (데스크탑) / 단일 컬럼 (모바일) */}
-        <div className="md:flex md:gap-6">
-          {/* 왼쪽: 카드 그리드 */}
-          <div className="md:w-[60%]">
-            <div
-              className="grid gap-3"
-              style={{
-                gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
-              }}
-            >
-              {filtered.map((term) => (
-                <TermCard
-                  key={term.id}
-                  term={term}
-                  isExpanded={expandedId === term.id}
-                  onToggle={() =>
-                    setExpandedId(expandedId === term.id ? null : term.id)
-                  }
-                />
-              ))}
-            </div>
-
-            {filtered.length === 0 && (
-              <p className="text-center text-text-sub text-sm py-12">
-                검색 결과가 없습니다.
-              </p>
-            )}
-          </div>
-
-          {/* 오른쪽: 상세 패널 (데스크탑) */}
-          <div className="hidden md:block md:w-[40%]">
-            <div className="sticky top-20">
-              {expandedId ? (
-                <TermDetail term={filtered.find((t) => t.id === expandedId) ?? terms.find((t) => t.id === expandedId)!} />
-              ) : (
-                <div className="p-8 bg-surface border border-border rounded-lg text-center text-sm text-text-sub">
-                  용어를 선택하면 설명이 표시됩니다
-                </div>
-              )}
-            </div>
-          </div>
+        {/* 카드 그리드 */}
+        <div
+          className="grid gap-3"
+          style={{
+            gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
+          }}
+        >
+          {filtered.map((term) => (
+            <TermCard
+              key={term.id}
+              term={term}
+              isExpanded={expandedId === term.id}
+              onToggle={() =>
+                setExpandedId(expandedId === term.id ? null : term.id)
+              }
+            />
+          ))}
         </div>
 
-        {/* 하단 패널 (모바일) */}
+        {filtered.length === 0 && (
+          <p className="text-center text-text-sub text-sm py-12">
+            검색 결과가 없습니다.
+          </p>
+        )}
+
+        {/* 상세 패널 (카드 그리드 아래) */}
         {expandedId && (
-          <div className="md:hidden">
-            {/* 배경 오버레이 */}
-            <div
-              className="fixed inset-0 bg-black/40 z-40"
-              onClick={() => setExpandedId(null)}
-            />
-            {/* 패널 */}
-            <div className="fixed bottom-0 left-0 w-full z-50 bg-surface rounded-t-2xl shadow-lg max-h-[70vh] overflow-y-auto">
-              <div className="sticky top-0 bg-surface flex justify-end p-3 border-b border-border">
-                <button
-                  onClick={() => setExpandedId(null)}
-                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-text-sub text-lg font-bold"
-                >
-                  X
-                </button>
-              </div>
-              <div className="p-4">
-                <TermDetail term={filtered.find((t) => t.id === expandedId) ?? terms.find((t) => t.id === expandedId)!} />
-              </div>
-            </div>
+          <div className="w-full mt-6">
+            <TermDetail term={filtered.find((t) => t.id === expandedId) ?? terms.find((t) => t.id === expandedId)!} />
           </div>
         )}
       </div>
@@ -210,7 +174,7 @@ function TermDetail({ term }: { term: Term }) {
   const questionCount = getQuestionCount(term.relatedQuestionTag);
 
   return (
-    <div className="p-4 bg-surface border border-primary/30 rounded-lg">
+    <div className="p-5 bg-surface border border-border rounded-lg">
       {/* 용어명 + 영문명 */}
       <div className="mb-2">
         <span className="font-bold text-text">{term.name}</span>
