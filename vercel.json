@@ -3,7 +3,13 @@
     {
       "source": "/(.*)",
       "destination": "https://hoegyedon.com/$1",
-      "permanent": true
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "accounting-theta-pink.vercel.app"
+        }
+      ]
     }
   ]
 }
