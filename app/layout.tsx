@@ -36,6 +36,7 @@ export default function RootLayout({
       <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-TBWKVVNL4H" />
         <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TBWKVVNL4H');` }} />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048160642416104" crossOrigin="anonymous" />
       </head>
       <body className="min-h-screen flex flex-col">
         <header className="bg-surface border-b border-border sticky top-0 z-20">
