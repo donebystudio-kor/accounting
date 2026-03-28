@@ -58,7 +58,7 @@ export default function Home() {
         <div className="grid gap-3 sm:grid-cols-2">
           {STANDARDS.map((std) => {
             const count = PROBLEMS.filter(
-              (p) => p.standard === std.id || p.standard === "common"
+              (p) => p.standard === std.id
             ).length;
             return (
               <Link
