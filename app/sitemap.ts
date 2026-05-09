@@ -11,6 +11,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ];
 
+  // 추가 정적 페이지 (메인 메뉴)
+  const staticPages = [
+    { path: "quiz", priority: 0.9 },
+    { path: "concepts", priority: 0.9 },
+    { path: "terms", priority: 0.9 },
+    { path: "calculator", priority: 0.8 },
+    { path: "diagrams", priority: 0.8 },
+    { path: "accounts", priority: 0.8 },
+    { path: "bank", priority: 0.7 },
+    { path: "general", priority: 0.7 },
+    { path: "common", priority: 0.7 },
+    { path: "k-ifrs", priority: 0.7 },
+    { path: "result", priority: 0.5 },
+  ];
+  staticPages.forEach((p) => {
+    routes.push({
+      url: `${base}/${p.path}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: p.priority,
+    });
+  });
+
   // 기준별 정적 페이지
   STANDARDS.forEach((std) => {
     routes.push({
