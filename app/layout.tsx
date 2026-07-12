@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 
-const BASE_URL = "https://accounting-theta-pink.vercel.app";
+const BASE_URL = "https://hoegyedon.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

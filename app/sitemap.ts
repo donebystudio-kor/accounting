@@ -5,7 +5,7 @@ import { CONCEPTS } from "@/constants/concepts";
 const TYPES = ["journal", "ox", "calculation"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://accounting-theta-pink.vercel.app";
+  const base = "https://hoegyedon.com";
   const routes: MetadataRoute.Sitemap = [
     { url: base, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
     { url: `${base}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
