@@ -6,6 +6,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "회계 계산기 모음 | IFRS IAS 자동 계산 | 회계던",
   description: "IFRS16 리스부채, IAS16 감가상각, IFRS9 대손충당금 등 회계 계산기. 무료 자동 계산.",
+  openGraph: {
+    title: "회계 계산기 모음 | IFRS IAS 자동 계산 | 회계던",
+    description: "IFRS16 리스부채, IAS16 감가상각, IFRS9 대손충당금 등 회계 계산기. 무료 자동 계산.",
+    url: "/calculator",
+  },
   alternates: { canonical: "/calculator" },
 };
 

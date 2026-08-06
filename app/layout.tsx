@@ -11,14 +11,14 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "K-IFRS, 일반기업, 은행업, 공기업 회계기준별 분개·OX·계산 문제 555개. 무료 회계 학습 플랫폼.",
+    "K-IFRS, 일반기업, 은행업, 공기업 회계기준별 분개·OX·계산 문제 810개. 무료 회계 학습 플랫폼.",
   keywords: "분개 문제, 회계 문제 풀기, K-IFRS 문제, 회계 학습, 일반기업회계기준, 은행업회계, 공기업회계",
   openGraph: {
     type: "website",
     locale: "ko_KR",
     siteName: "회계던",
     title: "회계던 | 회계기준별 인터랙티브 문제 풀이",
-    description: "K-IFRS, 일반기업, 은행업, 공기업 회계기준별 분개·OX·계산 문제 555개. 무료 회계 학습 플랫폼.",
+    description: "K-IFRS, 일반기업, 은행업, 공기업 회계기준별 분개·OX·계산 문제 810개. 무료 회계 학습 플랫폼.",
     url: BASE_URL,
   },
   alternates: {

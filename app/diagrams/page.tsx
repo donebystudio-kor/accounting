@@ -5,6 +5,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "회계 다이어그램 모음 | IFRS IAS 흐름도 | 회계던",
   description: "IFRS 16 리스, IAS 16 유형자산, IFRS 9 금융상품 등 주요 회계기준서 SVG 흐름도.",
+  openGraph: {
+    title: "회계 다이어그램 모음 | IFRS IAS 흐름도 | 회계던",
+    description: "IFRS 16 리스, IAS 16 유형자산, IFRS 9 금융상품 등 주요 회계기준서 SVG 흐름도.",
+    url: "/diagrams",
+  },
   alternates: { canonical: "/diagrams" },
 };
 

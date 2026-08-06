@@ -4,6 +4,11 @@ export const metadata: Metadata = {
   title: "계정과목 사전 | K-IFRS·은행·공공기관 회계 계정과목 비교",
   description:
     "실무에서 자주 쓰는 회계 계정과목 정의 및 분개 정리",
+  openGraph: {
+    title: "계정과목 사전 | K-IFRS·은행·공공기관 회계 계정과목 비교",
+    description: "실무에서 자주 쓰는 회계 계정과목 정의 및 분개 정리",
+    url: "/accounts",
+  },
   alternates: { canonical: "/accounts" },
 };
 

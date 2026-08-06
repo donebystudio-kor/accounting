@@ -6,6 +6,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "회계 개념 모음 | IFRS IAS 기준서별 학습 | 회계던",
   description: "IFRS 16 리스, IAS 16 유형자산, IFRS 9 금융상품 등 주요 회계기준서 개념 설명과 핵심 분개 패턴.",
+  openGraph: {
+    title: "회계 개념 모음 | IFRS IAS 기준서별 학습 | 회계던",
+    description: "IFRS 16 리스, IAS 16 유형자산, IFRS 9 금융상품 등 주요 회계기준서 개념 설명과 핵심 분개 패턴.",
+    url: "/concepts",
+  },
   alternates: { canonical: "/concepts" },
 };
 

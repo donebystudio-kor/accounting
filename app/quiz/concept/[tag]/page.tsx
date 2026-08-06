@@ -17,9 +17,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tag } = await params;
   const concept = CONCEPTS.find((c) => c.tag.toLowerCase() === tag.toLowerCase());
   if (!concept) return {};
+  const title = `${concept.code} ${concept.name} 문제 풀기 | 회계던`;
+  const description = `${concept.code} ${concept.name} 관련 분개·OX·계산 문제 풀이.`;
+  const url = `/quiz/concept/${tag}`;
   return {
-    title: `${concept.code} ${concept.name} 문제 풀기 | 회계던`,
-    description: `${concept.code} ${concept.name} 관련 분개·OX·계산 문제 풀이.`,
+    title,
+    description,
+    openGraph: { title, description, url },
+    alternates: { canonical: url },
   };
 }
 

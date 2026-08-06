@@ -6,10 +6,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "회계던 | 회계기준별 인터랙티브 문제 풀이",
-  description: "K-IFRS, 일반기업, 은행업, 공기업 회계기준별 분개·OX·계산 문제 555개. 무료 회계 학습 플랫폼.",
+  description: "K-IFRS, 일반기업, 은행업, 공기업 회계기준별 분개·OX·계산 문제 810개. 무료 회계 학습 플랫폼.",
   openGraph: {
     title: "회계던 | 회계기준별 인터랙티브 문제 풀이",
-    description: "K-IFRS, 일반기업, 은행업, 공기업 회계기준별 분개·OX·계산 문제 555개. 무료 회계 학습 플랫폼.",
+    description: "K-IFRS, 일반기업, 은행업, 공기업 회계기준별 분개·OX·계산 문제 810개. 무료 회계 학습 플랫폼.",
     url: "/",
   },
   alternates: { canonical: "/" },
