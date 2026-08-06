@@ -66,5 +66,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
+  // 회계 기초 개념 페이지
+  ["debit-credit", "journal-entry", "financial-statements", "account-titles"].forEach((slug) => {
+    routes.push({
+      url: `${base}/concept/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+  });
+
   return routes;
 }
