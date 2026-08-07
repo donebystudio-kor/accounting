@@ -67,7 +67,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // 회계 기초 개념 페이지
-  ["debit-credit", "journal-entry", "financial-statements", "account-titles"].forEach((slug) => {
+  [
+    "debit-credit",
+    "journal-entry",
+    "financial-statements",
+    "account-titles",
+    "depreciation",
+    "study-roadmap",
+    "kifrs-vs-kgaap",
+    "accounting-certificates",
+  ].forEach((slug) => {
     routes.push({
       url: `${base}/concept/${slug}`,
       lastModified: new Date(),

@@ -19,6 +19,10 @@ const BASIC_CONCEPTS = [
   { slug: "journal-entry", title: "분개 기초", summary: "거래를 회계로 옮기는 원리" },
   { slug: "financial-statements", title: "재무제표 5가지", summary: "읽는 법" },
   { slug: "account-titles", title: "계정과목 분류", summary: "완전 이해" },
+  { slug: "depreciation", title: "감가상각", summary: "정액법·정률법·생산량비례법 차이" },
+  { slug: "study-roadmap", title: "회계 공부 순서", summary: "무엇부터 시작할까" },
+  { slug: "kifrs-vs-kgaap", title: "K-IFRS vs 일반기업회계기준", summary: "두 기준의 차이" },
+  { slug: "accounting-certificates", title: "회계 자격증 비교", summary: "선택 가이드" },
 ];
 
 export default function ConceptsPage() {
