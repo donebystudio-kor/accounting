@@ -66,6 +66,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
+  // 회계 기초·범용 계산기
+  ["break-even-point", "financial-ratios", "bond-issue-price"].forEach((slug) => {
+    routes.push({
+      url: `${base}/calculator/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+  });
+
   // 회계 기초 개념 페이지
   [
     "debit-credit",
